@@ -1,0 +1,116 @@
+{
+  "table_name": "EMPONB_COUNTRY_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "COUNTRY_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique country code",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "COUNTRY_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the country",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "ISO_CODE",
+      "data_type": "CHAR",
+      "size": "3",
+      "key": false,
+      "description": "ISO country code (ISO-2/ISO-3)",
+      "sequence": 3
+    },
+    {
+      "column_name": "DIAL_CODE",
+      "data_type": "CHAR",
+      "size": "6",
+      "key": false,
+      "description": "International dialing code (e.g. +91)",
+      "sequence": 4
+    },
+    {
+      "column_name": "CURRENCY_CODE",
+      "data_type": "CHAR",
+      "size": "3",
+      "key": false,
+      "description": "Default currency code for the country",
+      "sequence": 5
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Active flag; soft-disable instead of physical delete when referenced",
+      "sequence": 6,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation date",
+      "sequence": 7
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 8
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal where record was created",
+      "sequence": 9
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Last change date",
+      "sequence": 10
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last changed the record",
+      "sequence": 11
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal where record was last changed",
+      "sequence": 12
+    }
+  ]
+}

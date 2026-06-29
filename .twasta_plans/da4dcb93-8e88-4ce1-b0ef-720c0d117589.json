@@ -1,0 +1,19 @@
+{
+  "id": "da4dcb93-8e88-4ce1-b0ef-720c0d117589",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It agains showing same error \n\nbusiness-logic function 'send_candidate_link' is ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It agains showing same error \n\nbusiness-logic function 'send_candidate_link' is ",
+  "created_at": 1782701595.744073,
+  "updated_at": 1782701688.8635054,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It agains showing same error \n\nbusiness-logic function 'send_candidate_link' is not deployed (no compiled function body found)\n\n\nEnsure none of the action buttons gets removed.",
+  "resume_ref": {
+    "session_id": "f5cb3a33-6cbf-4162-a30c-bd9c17748577",
+    "claude_session_id": "de11db9b-b293-46a2-b703-f2d268bf6ebd"
+  },
+  "depends_on": []
+}

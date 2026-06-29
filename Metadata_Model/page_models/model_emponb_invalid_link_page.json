@@ -1,0 +1,91 @@
+{
+  "page": {
+    "obj_name": "emponb_invalid_link_page",
+    "title": "Invalid or Expired Link",
+    "kind": "external",
+    "pageMode": "web",
+    "pageSchemaVersion": 2,
+    "inputs": [],
+    "actions": [],
+    "sections": [
+      {
+        "id": "sec_main",
+        "name": "Main",
+        "tag": "main",
+        "blocks": [
+          {
+            "id": "hero_1",
+            "type": "hero",
+            "eyebrow": "Employee Onboarding",
+            "title": "This onboarding link is no longer valid",
+            "subtitle": "The link you opened has expired, is invalid, or the onboarding form has already been submitted. For your security, each link is single-use and time-limited.",
+            "align": "center",
+            "height": "normal",
+            "background": {
+              "kind": "gradient",
+              "gradientFrom": "#0f172a",
+              "gradientTo": "#1e3a8a",
+              "gradientAngle": 135
+            },
+            "textColor": "#ffffff",
+            "imageSide": "none"
+          },
+          {
+            "id": "callout_1",
+            "type": "callout",
+            "variant": "warning",
+            "title": "Why am I seeing this?",
+            "body": "Your onboarding access link may no longer work for one of these reasons: the link has passed its expiry date and time, the link or access key is invalid, or you have already completed and submitted your onboarding details. Once a form is submitted, the link can no longer be opened.",
+            "icon": "⚠️",
+            "iconPosition": "left",
+            "iconSize": "md",
+            "align": "left"
+          },
+          {
+            "id": "heading_reasons",
+            "type": "heading",
+            "level": 2,
+            "text": "Common reasons"
+          },
+          {
+            "id": "list_reasons",
+            "type": "bullet_list",
+            "items": [
+              { "id": "r1", "text": "The link has expired. Onboarding links are valid for a limited time only.", "indent": 0 },
+              { "id": "r2", "text": "The link or access key is invalid or was not copied completely from the email.", "indent": 0 },
+              { "id": "r3", "text": "Your onboarding details have already been submitted, so the form is now closed.", "indent": 0 }
+            ]
+          },
+          {
+            "id": "callout_help",
+            "type": "callout",
+            "variant": "info",
+            "title": "Need a new link?",
+            "body": "Please contact your HR / Onboarding Coordinator. They can re-send a fresh onboarding link to your registered email address so you can complete your details.",
+            "icon": "✉️",
+            "iconPosition": "left",
+            "iconSize": "md",
+            "align": "left"
+          },
+          {
+            "id": "cta_contact",
+            "type": "cta_banner",
+            "title": "Contact HR to resolve this",
+            "subtitle": "Reach out to the Onboarding team and they will help you get back on track.",
+            "align": "center",
+            "background": { "kind": "color", "color": "var(--color-accent)" },
+            "textColor": "#ffffff",
+            "primaryCta": {
+              "id": "cta_hr",
+              "label": "Email HR",
+              "url": "mailto:hr@proteusvision.com",
+              "variant": "secondary",
+              "size": "md"
+            }
+          }
+        ]
+      }
+    ],
+    "blocks": []
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "table_name": "EMPONB_PAYHEAD_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "AD_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique allowance/deduction (pay head) code.",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "AD_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Descriptive name of the pay head.",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "AMOUNT_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "How the amount is computed: Fixed, Percentage or Formula.",
+      "sequence": 3,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Fixed",
+          "label": "Fixed"
+        },
+        {
+          "value": "Percentage",
+          "label": "Percentage"
+        },
+        {
+          "value": "Formula",
+          "label": "Formula"
+        }
+      ]
+    },
+    {
+      "column_name": "DEFAULT_FREQUENCY",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Default application frequency: Monthly, Annual or One-time.",
+      "sequence": 4,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Monthly",
+          "label": "Monthly"
+        },
+        {
+          "value": "Annual",
+          "label": "Annual"
+        },
+        {
+          "value": "One-time",
+          "label": "One-time"
+        }
+      ]
+    },
+    {
+      "column_name": "APPL_MODE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Whether the pay head is an Earning or a Deduction.",
+      "sequence": 5,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Earning",
+          "label": "Earning"
+        },
+        {
+          "value": "Deduction",
+          "label": "Deduction"
+        }
+      ]
+    },
+    {
+      "column_name": "RES_FORMULA",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Formula expression used to derive the amount. Mandatory when Amount Type is Formula.",
+      "sequence": 6
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Active flag; only active pay heads are selectable.",
+      "sequence": 7,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp.",
+      "sequence": 8
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record.",
+      "sequence": 9
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP from which the record was created.",
+      "sequence": 10
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Last modification timestamp.",
+      "sequence": 11
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last modified the record.",
+      "sequence": 12
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP from which the record was last modified.",
+      "sequence": 13
+    }
+  ]
+}

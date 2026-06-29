@@ -1,0 +1,19 @@
+{
+  "id": "aa63dc97-412d-4d19-83a4-e8db2421e089",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "I have 9 rows displaying proper data in 'Audit Trail' and 'Delete'List' 3-dots a",
+  "kind": "modify",
+  "status": "completed",
+  "description": "I have 9 rows displaying proper data in 'Audit Trail' and 'Delete'List' 3-dots a",
+  "created_at": 1782697782.8225372,
+  "updated_at": 1782698111.2049127,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "I have 9 rows displaying proper data in 'Audit Trail' and 'Delete'List' 3-dots also present but no action other than '",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "8d6713ca-0710-4d69-beb9-0f56b9d717c5"
+  },
+  "depends_on": []
+}

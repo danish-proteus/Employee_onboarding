@@ -1,0 +1,18 @@
+{
+  "object_name": "emponb_qualification_master",
+  "tables": {
+    "EMPONB_QUALIFICATION_MASTER": [
+      "ADD_TERM",
+      "ADD_DATE",
+      "QLF_TYPE",
+      "CHG_TERM",
+      "QLF_NAME",
+      "CHG_DATE",
+      "ADD_USER",
+      "ACTIVE_FLAG",
+      "QLF_CODE",
+      "COURSE_TYPE",
+      "CHG_USER"
+    ]
+  }
+}

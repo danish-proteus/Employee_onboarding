@@ -1,0 +1,24 @@
+{
+  "object_name": "emponb_onboarding_settings",
+  "tables": {
+    "EMPONB_ONBOARDING_SETTINGS": [
+      "ADD_TERM",
+      "ADD_DATE",
+      "IOFLOW_BASE_URL",
+      "MAX_VALIDATION_ATTEMPTS",
+      "IOFLOW_EMPLOYEE_ENDPOINT",
+      "HR_NOTIFY_EMAIL_TEMPLATE",
+      "CHG_TERM",
+      "CHG_DATE",
+      "SETTINGS_ID",
+      "ADD_USER",
+      "IOFLOW_BANK_ENDPOINT",
+      "KEY_VALIDITY_DAYS",
+      "IOFLOW_AADHAR_ENDPOINT",
+      "CHG_USER",
+      "CANDIDATE_SUBMIT_EMAIL_TEMPLATE",
+      "IOFLOW_AUTH_TOKEN",
+      "IOFLOW_PAN_ENDPOINT"
+    ]
+  }
+}

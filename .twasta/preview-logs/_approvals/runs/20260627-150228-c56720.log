@@ -1,0 +1,8 @@
+=== preview run 20260627-150228-c56720 ===
+kind=execute action=approval_list user=7014e11e-1c26-4e50-b546-2c38c876bee0
+started=2026-06-27T15:02:28
+project=Employee_onboarding
+obj=_approvals
+payload_keys=limit,offset,status
+  • approval_list ok
+finished=2026-06-27T15:02:28 status=OK

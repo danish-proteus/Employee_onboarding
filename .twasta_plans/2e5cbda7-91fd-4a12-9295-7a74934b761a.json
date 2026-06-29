@@ -1,0 +1,19 @@
+{
+  "id": "2e5cbda7-91fd-4a12-9295-7a74934b761a",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It should actually translate logged_in_user value instead of saving 'logged_in_u",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It should actually translate logged_in_user value instead of saving 'logged_in_u",
+  "created_at": 1782548060.0359836,
+  "updated_at": 1782548090.152236,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It should actually translate logged_in_user value instead of saving 'logged_in_user()'",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "6649e48b-573b-45fe-a55e-1e8422fb2179"
+  },
+  "depends_on": []
+}

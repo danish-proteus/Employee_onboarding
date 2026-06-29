@@ -1,0 +1,19 @@
+{
+  "id": "f40a83aa-c103-41d3-bb3b-6d5468d6b6f3",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "where is following option \n\n2. It should have a button to send link to candidate",
+  "kind": "modify",
+  "status": "completed",
+  "description": "where is following option \n\n2. It should have a button to send link to candidate",
+  "created_at": 1782548641.814852,
+  "updated_at": 1782548669.8783329,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "where is following option \n\n2. It should have a button to send link to candidate over email to candidate with a key.",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "32b30bf1-f549-4746-84c4-48c809bfd212"
+  },
+  "depends_on": []
+}

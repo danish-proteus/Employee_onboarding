@@ -1,0 +1,19 @@
+{
+  "id": "51de9c83-4376-4412-b7e6-e8aac237e1ba",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Again the business logic in 'Send/Resend Link' is missing \n\nEnsure you do not re",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Again the business logic in 'Send/Resend Link' is missing \n\nEnsure you do not re",
+  "created_at": 1782699999.7144506,
+  "updated_at": 1782700333.026797,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Again the business logic in 'Send/Resend Link' is missing \n\nEnsure you do not remove the these actions.\n\nbusiness-logic function 'send_candidate_link' is not deployed (no compiled function body found)",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "895e200c-f581-446b-a2e0-27d70af889df"
+  },
+  "depends_on": []
+}

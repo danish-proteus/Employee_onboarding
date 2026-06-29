@@ -1,0 +1,69 @@
+=== preview run 20260627-111358-d024d2 ===
+kind=visual action=render user=7014e11e-1c26-4e50-b546-2c38c876bee0
+started=2026-06-27T11:13:58
+project=Employee_onboarding
+obj=emponb_status_distribution
+  ┌─ SOURCE SQL — emponb_status_distribution
+      SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN :calendar_month_start AND :calendar_today GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC
+  └─
+  ┌─ TRACEBACK
+      Traceback (most recent call last):
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1815, in _execute_context
+          context = constructor(
+                    ^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1417, in _init_compiled
+          compiled.construct_params(
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/sql/compiler.py", line 1962, in construct_params
+          raise exc.InvalidRequestError(
+      sqlalchemy.exc.InvalidRequestError: A value is required for bind parameter 'calendar_month_start' (Background on this error at: https://sqlalche.me/e/20/cd3x)
+      
+      The above exception was the direct cause of the following exception:
+      
+      Traceback (most recent call last):
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/backend/app/services/visual_data_service.py", line 651, in _execute
+          return _run_readonly(engine, schema, capped, params, kind=kind)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/backend/app/services/visual_data_service.py", line 607, in _run_readonly
+          rows = conn.execute(text(capped), params).mappings().all()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+          return meth(
+                 ^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+          return connection._execute_clauseelement(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+          ret = self._execute_context(
+                ^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1821, in _execute_context
+          self._handle_dbapi_exception(
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+          raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1815, in _execute_context
+          context = constructor(
+                    ^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1417, in _init_compiled
+          compiled.construct_params(
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/venv/lib/python3.12/site-packages/sqlalchemy/sql/compiler.py", line 1962, in construct_params
+          raise exc.InvalidRequestError(
+      sqlalchemy.exc.StatementError: (sqlalchemy.exc.InvalidRequestError) A value is required for bind parameter 'calendar_month_start'
+      [SQL: SELECT * FROM (SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN %(calendar_month_start)s AND %(calendar_today)s GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC) AS _viz LIMIT 5000]
+      [parameters: [{}]]
+      (Background on this error at: https://sqlalche.me/e/20/cd3x)
+      
+      The above exception was the direct cause of the following exception:
+      
+      Traceback (most recent call last):
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/backend/app/services/preview_logging.py", line 149, in run
+          yield run
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/backend/app/routers/visualdata.py", line 124, in visual_data
+          **visual_data_service.get_visual_data(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/backend/app/services/visual_data_service.py", line 889, in get_visual_data
+          rows = _execute(
+                 ^^^^^^^^^
+        File "/home/pankaj.tajane/Pankaj/GitHub/platform.twasta.ai/backend/app/services/visual_data_service.py", line 655, in _execute
+          raise VisualDataError(f"Query failed: {cause}") from exc
+      app.services.visual_data_service.VisualDataError: Query failed: A value is required for bind parameter 'calendar_month_start' (Background on this error at: https://sqlalche.me/e/20/cd3x)
+  └─
+finished=2026-06-27T11:13:58 status=ERROR

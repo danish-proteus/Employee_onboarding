@@ -1,0 +1,120 @@
+{
+  "table_name": "EMPONB_CAND_EDUCATION",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Parent candidate id",
+      "sequence": 1
+    },
+    {
+      "column_name": "LINE_NO",
+      "data_type": "NUMBER",
+      "size": "5",
+      "key": true,
+      "description": "Auto-sequenced line number",
+      "sequence": 2
+    },
+    {
+      "column_name": "QLF_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Qualification code",
+      "sequence": 3,
+      "mandatory": true,
+      "lookup": {
+        "table": "EMPONB_QUALIFICATION_MASTER",
+        "display_column": "QLF_NAME",
+        "value_column": "QLF_CODE"
+      }
+    },
+    {
+      "column_name": "QLF_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Qualification type",
+      "sequence": 4
+    },
+    {
+      "column_name": "INSTITUTE",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Institute name",
+      "sequence": 5
+    },
+    {
+      "column_name": "PASS_YEAR",
+      "data_type": "NUMBER",
+      "size": "4",
+      "key": false,
+      "description": "Year of passing",
+      "sequence": 6
+    },
+    {
+      "column_name": "CLASS",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Class / division",
+      "sequence": 7
+    },
+    {
+      "column_name": "PERCENTAGE",
+      "data_type": "NUMBER",
+      "size": "5,2",
+      "key": false,
+      "description": "Percentage scored",
+      "sequence": 8
+    },
+    {
+      "column_name": "COUNTRY_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Country reference",
+      "sequence": 9,
+      "lookup": {
+        "table": "EMPONB_COUNTRY_MASTER",
+        "display_column": "COUNTRY_NAME",
+        "value_column": "COUNTRY_CODE"
+      }
+    },
+    {
+      "column_name": "COURSE_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Course type",
+      "sequence": 10,
+      "allowed_values": [
+        {
+          "value": "Full-time",
+          "label": "Full-time"
+        },
+        {
+          "value": "Part-time",
+          "label": "Part-time"
+        },
+        {
+          "value": "Distance",
+          "label": "Distance"
+        }
+      ]
+    },
+    {
+      "column_name": "COURSE_DURATION",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Course duration",
+      "sequence": 11
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "38ea9402-0506-41c5-8e96-0a4214431fb7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Also surface them in the list-row \u22ee menu \u2014 add them as row actions on the list f",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Also surface them in the list-row \u22ee menu \u2014 add them as row actions on the list f",
+  "created_at": 1782698138.2236788,
+  "updated_at": 1782698238.135179,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Also surface them in the list-row \u22ee menu \u2014 add them as row actions on the list form (form 1)",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "b65310b4-29de-4276-895d-9d073e5422a5"
+  },
+  "depends_on": []
+}

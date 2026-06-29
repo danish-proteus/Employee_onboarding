@@ -1,0 +1,19 @@
+{
+  "id": "9235b31d-d6b0-412c-b8d0-19ab61638bc7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Re-build the app properly",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Re-build the app properly",
+  "created_at": 1782551987.0182161,
+  "updated_at": 1782552003.6506004,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Re-build the app properly",
+  "resume_ref": {
+    "session_id": "112c8a4b-011f-4996-bbe7-cfef9fe5de77",
+    "claude_session_id": "fd8602c3-4036-43b1-91b4-2ed3910d3431"
+  },
+  "depends_on": []
+}

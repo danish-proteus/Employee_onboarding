@@ -1,0 +1,19 @@
+{
+  "id": "6b0497da-bfac-424c-b3af-379359614eb8",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "rebuild the app",
+  "kind": "modify",
+  "status": "completed",
+  "description": "rebuild the app",
+  "created_at": 1782552043.8867698,
+  "updated_at": 1782552071.0167143,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "rebuild the app",
+  "resume_ref": {
+    "session_id": "da1e703a-514d-473a-8fbc-a9c19d3e43f8",
+    "claude_session_id": "ea1215eb-d1c1-44f1-b6d5-524ec31a6387"
+  },
+  "depends_on": []
+}

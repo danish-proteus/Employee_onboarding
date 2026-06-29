@@ -1,0 +1,85 @@
+{
+  "table_name": "EMPONB_CAND_EXPERIENCE",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Parent candidate id",
+      "sequence": 1
+    },
+    {
+      "column_name": "LINE_NO",
+      "data_type": "NUMBER",
+      "size": "5",
+      "key": true,
+      "description": "Auto-sequenced line number",
+      "sequence": 2
+    },
+    {
+      "column_name": "ORGANISATION",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Previous organisation",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "DESIGNATION",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Designation held",
+      "sequence": 4
+    },
+    {
+      "column_name": "FROM_DATE",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Employment start date",
+      "sequence": 5
+    },
+    {
+      "column_name": "TO_DATE",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Employment end date",
+      "sequence": 6
+    },
+    {
+      "column_name": "GROSS_AMT",
+      "data_type": "NUMBER",
+      "size": "12,2",
+      "key": false,
+      "description": "Gross amount earned",
+      "sequence": 7
+    },
+    {
+      "column_name": "CURRENCY_CODE",
+      "data_type": "CHAR",
+      "size": "3",
+      "key": false,
+      "description": "Currency code",
+      "sequence": 8
+    },
+    {
+      "column_name": "COUNTRY_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Country reference",
+      "sequence": 9,
+      "lookup": {
+        "table": "EMPONB_COUNTRY_MASTER",
+        "display_column": "COUNTRY_NAME",
+        "value_column": "COUNTRY_CODE"
+      }
+    }
+  ]
+}

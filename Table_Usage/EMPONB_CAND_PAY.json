@@ -1,0 +1,27 @@
+{
+  "table_name": "EMPONB_CAND_PAY",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "5",
+      "usage_type": "R",
+      "referred_columns": [
+        "RES_FORMULA",
+        "UPD_PAYSTRU",
+        "AD_CODE",
+        "AMOUNT_CALC",
+        "AMOUNT",
+        "APPL_MODE",
+        "FREQUENCY",
+        "AMOUNT_TYPE",
+        "LINE_NO",
+        "CANDIDATE_ID"
+      ],
+      "join_info": {
+        "column": "AD_CODE",
+        "join_table": "EMPONB_PAYHEAD_MASTER",
+        "join_column": "AD_CODE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "e88a3660-5e59-4b0a-b2bb-47e66851b41b",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "getting below error:\n\nbusiness-logic function 'send_candidate_link' is not deplo",
+  "kind": "modify",
+  "status": "completed",
+  "description": "getting below error:\n\nbusiness-logic function 'send_candidate_link' is not deplo",
+  "created_at": 1782698307.3392637,
+  "updated_at": 1782698648.1505175,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "getting below error:\n\nbusiness-logic function 'send_candidate_link' is not deployed (no compiled function body found)",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "059143ac-5a03-4064-9ac0-74d44ee82fdb"
+  },
+  "depends_on": []
+}

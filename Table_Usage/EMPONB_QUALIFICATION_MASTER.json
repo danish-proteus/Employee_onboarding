@@ -1,0 +1,36 @@
+{
+  "table_name": "EMPONB_QUALIFICATION_MASTER",
+  "objects": [
+    {
+      "object_name": "emponb_qualification_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "ADD_TERM",
+        "QLF_TYPE",
+        "ADD_DATE",
+        "CHG_TERM",
+        "QLF_NAME",
+        "CHG_DATE",
+        "ADD_USER",
+        "ACTIVE_FLAG",
+        "QLF_CODE",
+        "COURSE_TYPE",
+        "CHG_USER"
+      ]
+    },
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "3",
+      "usage_type": "R",
+      "referred_columns": [
+        "QLF_CODE"
+      ],
+      "join_info": {
+        "column": "QLF_CODE",
+        "join_table": "EMPONB_CAND_EDUCATION",
+        "join_column": "QLF_CODE"
+      }
+    }
+  ]
+}

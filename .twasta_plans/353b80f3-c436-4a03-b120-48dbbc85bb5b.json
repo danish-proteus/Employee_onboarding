@@ -1,0 +1,19 @@
+{
+  "id": "353b80f3-c436-4a03-b120-48dbbc85bb5b",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Getting below error while adding new record in Candidate onboarding\n\n\nInitiated ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Getting below error while adding new record in Candidate onboarding\n\n\nInitiated ",
+  "created_at": 1782547959.711044,
+  "updated_at": 1782547997.5730655,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Getting below error while adding new record in Candidate onboarding\n\n\nInitiated By\nlogged_in_user()\nInitiated By cannot exceed 10 characters (you entered 16).",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "2f1a0aa3-951c-47e9-937c-87a0fd1b6eb7"
+  },
+  "depends_on": []
+}

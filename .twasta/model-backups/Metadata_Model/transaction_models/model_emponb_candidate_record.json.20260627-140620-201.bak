@@ -1,0 +1,4576 @@
+{
+  "transaction": {
+    "obj_name": "emponb_candidate_record",
+    "sql_models": [
+      {
+        "sql_model": {
+          "form_title": "Candidate Record",
+          "form_descr": "HR creates and manages the candidate onboarding record from initial capture through submission, review and confirmation as employee.",
+          "form_no": "1",
+          "main_table": "EMPONB_CANDIDATE_RECORD",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Candidate ID",
+                "descr": "System-generated unique candidate identifier",
+                "key": true,
+                "default_value": "auto_generate()",
+                "protect": "1",
+                "mandatory": true,
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "candidate_name",
+                "db_name": "CANDIDATE_NAME",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Candidate Name",
+                "descr": "Name of the candidate captured by HR",
+                "mandatory": true,
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gender",
+                "db_name": "GENDER",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Gender",
+                "descr": "Candidate gender",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "M",
+                      "display": "Male"
+                    },
+                    {
+                      "data": "F",
+                      "display": "Female"
+                    },
+                    {
+                      "data": "O",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "country_code",
+                "db_name": "COUNTRY_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Country",
+                "descr": "Country of the candidate",
+                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
+                "must_exist_in": "EMPONB_COUNTRY_MASTER",
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "country_name",
+                "db_name": "COUNTRY_NAME",
+                "table_name": "EMPONB_COUNTRY_MASTER",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Country Name",
+                "descr": "Country name from master",
+                "protect": "1",
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_display_name": "Country master",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "design_code",
+                "db_name": "DESIGN_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Designation",
+                "descr": "Designation code captured at initiation",
+                "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)",
+                "must_exist_in": "EMPONB_DESIG_DEPT_MASTER",
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "designation_name",
+                "db_name": "DESIGNATION_NAME",
+                "table_name": "EMPONB_DESIG_DEPT_MASTER",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Designation Name",
+                "descr": "Designation name from master",
+                "protect": "1",
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_display_name": "Designation/Department master",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "email_id",
+                "db_name": "EMAIL_ID",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Email ID",
+                "descr": "Candidate email used to send the onboarding link",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Valid email",
+                    "message": "Enter a valid email address.",
+                    "expression": "match({form.email_id}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
+                  }
+                ],
+                "x": "80",
+                "y": "80",
+                "col_id": "8",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "120",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "status",
+                "db_name": "STATUS",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Status",
+                "descr": "Lifecycle status of the candidate record",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Initiated",
+                      "display": "Initiated"
+                    },
+                    {
+                      "data": "Link Generated",
+                      "display": "Link Generated"
+                    },
+                    {
+                      "data": "Link Accessed",
+                      "display": "Link Accessed"
+                    },
+                    {
+                      "data": "DataSubmitted",
+                      "display": "Data Submitted"
+                    },
+                    {
+                      "data": "Review",
+                      "display": "Review"
+                    },
+                    {
+                      "data": "Confirmed",
+                      "display": "Confirmed"
+                    },
+                    {
+                      "data": "Cancelled",
+                      "display": "Cancelled"
+                    }
+                  ]
+                },
+                "display": {
+                  "type": "status_tag",
+                  "map": [
+                    {
+                      "when": "Initiated",
+                      "color": "grey"
+                    },
+                    {
+                      "when": "Link Generated",
+                      "color": "blue"
+                    },
+                    {
+                      "when": "Link Accessed",
+                      "color": "cyan"
+                    },
+                    {
+                      "when": "DataSubmitted",
+                      "color": "amber"
+                    },
+                    {
+                      "when": "Review",
+                      "color": "purple"
+                    },
+                    {
+                      "when": "Confirmed",
+                      "color": "green"
+                    },
+                    {
+                      "when": "Cancelled",
+                      "color": "red"
+                    }
+                  ],
+                  "defaultColor": "grey"
+                },
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "status_date",
+                "db_name": "STATUS_DATE",
+                "group_name": "Basic",
+                "col_type": "DATETIME",
+                "heading": "Status Date",
+                "descr": "Timestamp of the last status transition",
+                "protect": "1",
+                "x": "100",
+                "y": "100",
+                "col_id": "10",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "initiated_by",
+                "db_name": "INITIATED_BY",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Initiated By",
+                "descr": "HR user who initiated the candidate",
+                "protect": "1",
+                "default_value": ":user_id",
+                "x": "110",
+                "y": "110",
+                "col_id": "11",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "initiated_on",
+                "db_name": "INITIATED_ON",
+                "group_name": "Basic",
+                "col_type": "DATETIME",
+                "heading": "Initiated On",
+                "descr": "Date the candidate was initiated",
+                "protect": "1",
+                "default_value": "now()",
+                "x": "120",
+                "y": "120",
+                "col_id": "12",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "access_key",
+                "db_name": "ACCESS_KEY",
+                "group_name": "Access Key",
+                "col_type": "VARCHAR",
+                "heading": "Access Key",
+                "descr": "System-generated unique access token for the candidate form",
+                "protect": "1",
+                "x": "130",
+                "y": "130",
+                "col_id": "13",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_generated_on",
+                "db_name": "KEY_GENERATED_ON",
+                "group_name": "Access Key",
+                "col_type": "DATETIME",
+                "heading": "Key Generated On",
+                "descr": "Timestamp when the access key was generated",
+                "protect": "1",
+                "x": "140",
+                "y": "140",
+                "col_id": "14",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_expiry_datetime",
+                "db_name": "KEY_EXPIRY_DATETIME",
+                "group_name": "Access Key",
+                "col_type": "DATETIME",
+                "heading": "Key Expiry",
+                "descr": "Key expiry = KEY_GENERATED_ON + :key_validity_days",
+                "protect": "1",
+                "x": "150",
+                "y": "150",
+                "col_id": "15",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_valid_flag",
+                "db_name": "KEY_VALID_FLAG",
+                "group_name": "Access Key",
+                "col_type": "CHAR",
+                "heading": "Key Valid",
+                "descr": "Whether the access key is still valid",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "160",
+                "y": "160",
+                "col_id": "16",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "form_url",
+                "db_name": "FORM_URL",
+                "group_name": "Access Key",
+                "col_type": "VARCHAR",
+                "heading": "Form URL",
+                "descr": "External candidate form URL with the access key",
+                "protect": "1",
+                "x": "170",
+                "y": "170",
+                "col_id": "17",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "link_sent_on",
+                "db_name": "LINK_SENT_ON",
+                "group_name": "Access Key",
+                "col_type": "DATETIME",
+                "heading": "Link Sent On",
+                "descr": "Timestamp when the link was sent to the candidate",
+                "protect": "1",
+                "x": "180",
+                "y": "180",
+                "col_id": "18",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "link_accessed_on",
+                "db_name": "LINK_ACCESSED_ON",
+                "group_name": "Access Key",
+                "col_type": "DATETIME",
+                "heading": "Link Accessed On",
+                "descr": "Timestamp when the candidate first opened the link",
+                "protect": "1",
+                "x": "190",
+                "y": "190",
+                "col_id": "19",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "submitted_on",
+                "db_name": "SUBMITTED_ON",
+                "group_name": "Access Key",
+                "col_type": "DATETIME",
+                "heading": "Submitted On",
+                "descr": "Timestamp when the candidate submitted the form",
+                "protect": "1",
+                "x": "200",
+                "y": "200",
+                "col_id": "20",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "name_prefix",
+                "db_name": "NAME_PREFIX",
+                "group_name": "Personal",
+                "col_type": "CHAR",
+                "heading": "Name Prefix",
+                "descr": "Salutation / name prefix",
+                "protect": "1",
+                "x": "210",
+                "y": "210",
+                "col_id": "21",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_fname",
+                "db_name": "EMP_FNAME",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "First Name",
+                "descr": "Candidate first name",
+                "protect": "1",
+                "x": "220",
+                "y": "220",
+                "col_id": "22",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_mname",
+                "db_name": "EMP_MNAME",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Middle Name",
+                "descr": "Candidate middle name",
+                "protect": "1",
+                "x": "230",
+                "y": "230",
+                "col_id": "23",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_lname",
+                "db_name": "EMP_LNAME",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Last Name",
+                "descr": "Candidate last name",
+                "protect": "1",
+                "x": "240",
+                "y": "240",
+                "col_id": "24",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "birthdate",
+                "db_name": "BIRTHDATE",
+                "group_name": "Personal",
+                "col_type": "DATE",
+                "heading": "Birth Date",
+                "descr": "Date of birth",
+                "protect": "1",
+                "x": "250",
+                "y": "250",
+                "col_id": "25",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "nationality",
+                "db_name": "NATIONALITY",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Nationality",
+                "descr": "Candidate nationality",
+                "protect": "1",
+                "x": "260",
+                "y": "260",
+                "col_id": "26",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "marital_status",
+                "db_name": "MARITAL_STATUS",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Marital Status",
+                "descr": "Marital status",
+                "protect": "1",
+                "x": "270",
+                "y": "270",
+                "col_id": "27",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "marriage_anniversary",
+                "db_name": "MARRIAGE_ANNIVERSARY",
+                "group_name": "Personal",
+                "col_type": "DATE",
+                "heading": "Marriage Anniversary",
+                "descr": "Marriage anniversary date",
+                "protect": "1",
+                "x": "280",
+                "y": "280",
+                "col_id": "28",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "blood_group",
+                "db_name": "BLOOD_GROUP",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Blood Group",
+                "descr": "Blood group",
+                "protect": "1",
+                "x": "290",
+                "y": "290",
+                "col_id": "29",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "religion",
+                "db_name": "RELIGION",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Religion",
+                "descr": "Religion",
+                "protect": "1",
+                "x": "300",
+                "y": "300",
+                "col_id": "30",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "cast_category",
+                "db_name": "CAST_CATEGORY",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Caste Category",
+                "descr": "Caste category",
+                "protect": "1",
+                "x": "310",
+                "y": "310",
+                "col_id": "31",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "mother_tongue",
+                "db_name": "MOTHER_TONGUE",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Mother Tongue",
+                "descr": "Mother tongue",
+                "protect": "1",
+                "x": "320",
+                "y": "320",
+                "col_id": "32",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "physical_handicap",
+                "db_name": "PHYSICAL_HANDICAP",
+                "group_name": "Personal",
+                "col_type": "CHAR",
+                "heading": "Physically Handicapped",
+                "descr": "Physical handicap flag",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "330",
+                "y": "330",
+                "col_id": "33",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hobby1",
+                "db_name": "HOBBY1",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Hobby 1",
+                "descr": "Hobby 1",
+                "protect": "1",
+                "x": "340",
+                "y": "340",
+                "col_id": "34",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hobby2",
+                "db_name": "HOBBY2",
+                "group_name": "Personal",
+                "col_type": "VARCHAR",
+                "heading": "Hobby 2",
+                "descr": "Hobby 2",
+                "protect": "1",
+                "x": "350",
+                "y": "350",
+                "col_id": "35",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "total_experience",
+                "db_name": "TOTAL_EXPERIENCE",
+                "group_name": "Personal",
+                "col_type": "NUMBER",
+                "heading": "Total Experience",
+                "descr": "Total experience in years",
+                "protect": "1",
+                "x": "360",
+                "y": "360",
+                "col_id": "36",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "5,2",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_address",
+                "db_name": "CURRENT_ADDRESS",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Current Address",
+                "descr": "Current address",
+                "protect": "1",
+                "x": "370",
+                "y": "370",
+                "col_id": "37",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_pin",
+                "db_name": "CURRENT_PIN",
+                "group_name": "Contact & Address",
+                "col_type": "CHAR",
+                "heading": "Current PIN",
+                "descr": "Current address PIN code (6 digits)",
+                "protect": "1",
+                "x": "380",
+                "y": "380",
+                "col_id": "38",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "6",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_city",
+                "db_name": "CURRENT_CITY",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Current City",
+                "descr": "Current city",
+                "protect": "1",
+                "x": "390",
+                "y": "390",
+                "col_id": "39",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_state",
+                "db_name": "CURRENT_STATE",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Current State",
+                "descr": "Current state",
+                "protect": "1",
+                "x": "400",
+                "y": "400",
+                "col_id": "40",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_address",
+                "db_name": "PERMANENT_ADDRESS",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Permanent Address",
+                "descr": "Permanent address",
+                "protect": "1",
+                "x": "410",
+                "y": "410",
+                "col_id": "41",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_pin",
+                "db_name": "PERMANENT_PIN",
+                "group_name": "Contact & Address",
+                "col_type": "CHAR",
+                "heading": "Permanent PIN",
+                "descr": "Permanent address PIN code (6 digits)",
+                "protect": "1",
+                "x": "420",
+                "y": "420",
+                "col_id": "42",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "6",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_city",
+                "db_name": "PERMANENT_CITY",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Permanent City",
+                "descr": "Permanent city",
+                "protect": "1",
+                "x": "430",
+                "y": "430",
+                "col_id": "43",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_state",
+                "db_name": "PERMANENT_STATE",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Permanent State",
+                "descr": "Permanent state",
+                "protect": "1",
+                "x": "440",
+                "y": "440",
+                "col_id": "44",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "mobile",
+                "db_name": "MOBILE",
+                "group_name": "Contact & Address",
+                "col_type": "CHAR",
+                "heading": "Mobile",
+                "descr": "Mobile number (10 digits)",
+                "protect": "1",
+                "x": "450",
+                "y": "450",
+                "col_id": "45",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "alternate_telephone",
+                "db_name": "ALTERNATE_TELEPHONE",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Alternate Telephone",
+                "descr": "Alternate telephone number",
+                "protect": "1",
+                "x": "460",
+                "y": "460",
+                "col_id": "46",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "contact_person",
+                "db_name": "CONTACT_PERSON",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Contact Person",
+                "descr": "Emergency contact person name",
+                "protect": "1",
+                "x": "470",
+                "y": "470",
+                "col_id": "47",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "contact_person_mobile",
+                "db_name": "CONTACT_PERSON_MOBILE",
+                "group_name": "Contact & Address",
+                "col_type": "CHAR",
+                "heading": "Contact Person Mobile",
+                "descr": "Emergency contact mobile",
+                "protect": "1",
+                "x": "480",
+                "y": "480",
+                "col_id": "48",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "contact_person_email",
+                "db_name": "CONTACT_PERSON_EMAIL",
+                "group_name": "Contact & Address",
+                "col_type": "VARCHAR",
+                "heading": "Contact Person Email",
+                "descr": "Emergency contact email",
+                "protect": "1",
+                "x": "490",
+                "y": "490",
+                "col_id": "49",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "120",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_no",
+                "db_name": "PAN_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "CHAR",
+                "heading": "PAN No",
+                "descr": "PAN number (AAAAA9999A)",
+                "protect": "1",
+                "x": "500",
+                "y": "500",
+                "col_id": "50",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_no",
+                "db_name": "AADHAR_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "CHAR",
+                "heading": "Aadhar No",
+                "descr": "Aadhar number (12 digits)",
+                "protect": "1",
+                "x": "510",
+                "y": "510",
+                "col_id": "51",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "12",
+                "width": 120,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "passport_no",
+                "db_name": "PASSPORT_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Passport No",
+                "descr": "Passport number",
+                "protect": "1",
+                "x": "520",
+                "y": "520",
+                "col_id": "52",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "driving_lic_no",
+                "db_name": "DRIVING_LIC_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Driving Licence No",
+                "descr": "Driving licence number",
+                "protect": "1",
+                "x": "530",
+                "y": "530",
+                "col_id": "53",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pf_no",
+                "db_name": "PF_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "PF No",
+                "descr": "Provident fund number",
+                "protect": "1",
+                "x": "540",
+                "y": "540",
+                "col_id": "54",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "esic_no",
+                "db_name": "ESIC_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "ESIC No",
+                "descr": "ESIC number",
+                "protect": "1",
+                "x": "550",
+                "y": "550",
+                "col_id": "55",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_account_no",
+                "db_name": "BANK_ACCOUNT_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Bank Account No",
+                "descr": "Bank account number",
+                "protect": "1",
+                "x": "560",
+                "y": "560",
+                "col_id": "56",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_ifsc_code",
+                "db_name": "BANK_IFSC_CODE",
+                "group_name": "Statutory & Financial",
+                "col_type": "CHAR",
+                "heading": "Bank IFSC Code",
+                "descr": "Bank IFSC code (11-char)",
+                "protect": "1",
+                "x": "570",
+                "y": "570",
+                "col_id": "57",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "11",
+                "width": 110,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_name",
+                "db_name": "BANK_NAME",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Bank Name",
+                "descr": "Bank name",
+                "protect": "1",
+                "x": "580",
+                "y": "580",
+                "col_id": "58",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_validated",
+                "db_name": "PAN_VALIDATED",
+                "group_name": "Validation Status",
+                "col_type": "CHAR",
+                "heading": "PAN Validated",
+                "descr": "Whether PAN is validated via IOFLOW",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "590",
+                "y": "590",
+                "col_id": "59",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_validated_name",
+                "db_name": "PAN_VALIDATED_NAME",
+                "group_name": "Validation Status",
+                "col_type": "VARCHAR",
+                "heading": "PAN Name Returned",
+                "descr": "Name returned by PAN validation",
+                "protect": "1",
+                "x": "600",
+                "y": "600",
+                "col_id": "60",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_attempts",
+                "db_name": "PAN_ATTEMPTS",
+                "group_name": "Validation Status",
+                "col_type": "NUMBER",
+                "heading": "PAN Attempts",
+                "descr": "PAN validation attempts used",
+                "protect": "1",
+                "default_value": "0",
+                "x": "610",
+                "y": "610",
+                "col_id": "61",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_validated",
+                "db_name": "AADHAR_VALIDATED",
+                "group_name": "Validation Status",
+                "col_type": "CHAR",
+                "heading": "Aadhar Validated",
+                "descr": "Whether Aadhar is validated via IOFLOW",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "620",
+                "y": "620",
+                "col_id": "62",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_validated_name",
+                "db_name": "AADHAR_VALIDATED_NAME",
+                "group_name": "Validation Status",
+                "col_type": "VARCHAR",
+                "heading": "Aadhar Name Returned",
+                "descr": "Name returned by Aadhar validation",
+                "protect": "1",
+                "x": "630",
+                "y": "630",
+                "col_id": "63",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_attempts",
+                "db_name": "AADHAR_ATTEMPTS",
+                "group_name": "Validation Status",
+                "col_type": "NUMBER",
+                "heading": "Aadhar Attempts",
+                "descr": "Aadhar validation attempts used",
+                "protect": "1",
+                "default_value": "0",
+                "x": "640",
+                "y": "640",
+                "col_id": "64",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_validated",
+                "db_name": "BANK_VALIDATED",
+                "group_name": "Validation Status",
+                "col_type": "CHAR",
+                "heading": "Bank Validated",
+                "descr": "Whether bank is validated via IOFLOW",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "650",
+                "y": "650",
+                "col_id": "65",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_validated_name",
+                "db_name": "BANK_VALIDATED_NAME",
+                "group_name": "Validation Status",
+                "col_type": "VARCHAR",
+                "heading": "Bank Name Returned",
+                "descr": "Name returned by bank validation",
+                "protect": "1",
+                "x": "660",
+                "y": "660",
+                "col_id": "66",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_attempts",
+                "db_name": "BANK_ATTEMPTS",
+                "group_name": "Validation Status",
+                "col_type": "NUMBER",
+                "heading": "Bank Attempts",
+                "descr": "Bank validation attempts used",
+                "protect": "1",
+                "default_value": "0",
+                "x": "670",
+                "y": "670",
+                "col_id": "67",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_doc",
+                "db_name": "PAN_DOC",
+                "group_name": "Attachments",
+                "col_type": "VARCHAR",
+                "heading": "PAN Document",
+                "descr": "PAN document attachment",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "680",
+                "y": "680",
+                "col_id": "68",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_doc",
+                "db_name": "AADHAR_DOC",
+                "group_name": "Attachments",
+                "col_type": "VARCHAR",
+                "heading": "Aadhar Document",
+                "descr": "Aadhar document attachment",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "690",
+                "y": "690",
+                "col_id": "69",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_doc",
+                "db_name": "BANK_DOC",
+                "group_name": "Attachments",
+                "col_type": "VARCHAR",
+                "heading": "Bank Document",
+                "descr": "Cancelled cheque / passbook image",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "700",
+                "y": "700",
+                "col_id": "70",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_code",
+                "db_name": "EMP_CODE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Employee Code",
+                "descr": "Employee code assigned at finalization (unique)",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Emp code unique",
+                    "message": "Employee code already exists.",
+                    "builtin": {
+                      "kind": "must_be_unique"
+                    }
+                  }
+                ],
+                "x": "710",
+                "y": "710",
+                "col_id": "71",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "fin_designation",
+                "db_name": "DESIGNATION",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Designation",
+                "descr": "Final designation name",
+                "x": "720",
+                "y": "720",
+                "col_id": "72",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "dept_code",
+                "db_name": "DEPT_CODE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Department",
+                "descr": "Department code",
+                "x": "730",
+                "y": "730",
+                "col_id": "73",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "grade",
+                "db_name": "GRADE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Grade",
+                "descr": "Grade code",
+                "x": "740",
+                "y": "740",
+                "col_id": "74",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "cadre",
+                "db_name": "CADRE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Cadre",
+                "descr": "Cadre code",
+                "x": "750",
+                "y": "750",
+                "col_id": "75",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "fin_design_code",
+                "db_name": "FIN_DESIGN_CODE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Design Code",
+                "descr": "Final design code",
+                "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)",
+                "must_exist_in": "EMPONB_DESIG_DEPT_MASTER",
+                "x": "760",
+                "y": "760",
+                "col_id": "76",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "report_to",
+                "db_name": "REPORT_TO",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Reports To",
+                "descr": "Reporting manager",
+                "x": "770",
+                "y": "770",
+                "col_id": "77",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "joined_as",
+                "db_name": "JOINED_AS",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Joined As",
+                "descr": "Joining category",
+                "x": "780",
+                "y": "780",
+                "col_id": "78",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "date_join",
+                "db_name": "DATE_JOIN",
+                "group_name": "HR Finalization",
+                "col_type": "DATE",
+                "heading": "Date of Joining",
+                "descr": "Date of joining (mandatory before Confirm)",
+                "x": "790",
+                "y": "790",
+                "col_id": "79",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "work_shift",
+                "db_name": "WORK_SHIFT",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Work Shift",
+                "descr": "Work shift code",
+                "lookup": "EMPONB_ORG_SETUP_MASTER(SHIFT_NAME, WORK_SHIFT)",
+                "x": "800",
+                "y": "800",
+                "col_id": "80",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hol_tblno",
+                "db_name": "HOL_TBLNO",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Holiday Table",
+                "descr": "Holiday table number",
+                "lookup": "EMPONB_ORG_SETUP_MASTER(HOL_TBL_NAME, HOL_TBLNO)",
+                "x": "810",
+                "y": "810",
+                "col_id": "81",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_site",
+                "db_name": "EMP_SITE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Employment Site",
+                "descr": "Employment site code",
+                "lookup": "EMPONB_ORG_SETUP_MASTER(SITE_NAME, EMP_SITE)",
+                "must_exist_in": "EMPONB_ORG_SETUP_MASTER",
+                "x": "820",
+                "y": "820",
+                "col_id": "82",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pay_site",
+                "db_name": "PAY_SITE",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Payroll Site",
+                "descr": "Payroll site code",
+                "lookup": "EMPONB_ORG_SETUP_MASTER(PAY_SITE_NAME, PAY_SITE)",
+                "x": "830",
+                "y": "830",
+                "col_id": "83",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "basic",
+                "db_name": "BASIC",
+                "group_name": "HR Finalization",
+                "col_type": "NUMBER",
+                "heading": "Basic",
+                "descr": "Basic pay",
+                "x": "840",
+                "y": "840",
+                "col_id": "84",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gross",
+                "db_name": "GROSS",
+                "group_name": "HR Finalization",
+                "col_type": "NUMBER",
+                "heading": "Gross",
+                "descr": "Gross pay (must be >= Basic)",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Gross >= Basic",
+                    "message": "Gross must be greater than or equal to Basic.",
+                    "expression": "{form.gross} >= {form.basic}"
+                  }
+                ],
+                "x": "850",
+                "y": "850",
+                "col_id": "85",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "probation_date",
+                "db_name": "PROBATION_DATE",
+                "group_name": "HR Finalization",
+                "col_type": "DATE",
+                "heading": "Probation Date",
+                "descr": "Probation end date",
+                "x": "860",
+                "y": "860",
+                "col_id": "86",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "probation_prd",
+                "db_name": "PROBATION_PRD",
+                "group_name": "HR Finalization",
+                "col_type": "NUMBER",
+                "heading": "Probation Period",
+                "descr": "Probation period (months)",
+                "x": "870",
+                "y": "870",
+                "col_id": "87",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "notice_prd",
+                "db_name": "NOTICE_PRD",
+                "group_name": "HR Finalization",
+                "col_type": "NUMBER",
+                "heading": "Notice Period",
+                "descr": "Notice period (days)",
+                "x": "880",
+                "y": "880",
+                "col_id": "88",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "email_id_off",
+                "db_name": "EMAIL_ID_OFF",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Official Email",
+                "descr": "Official email id",
+                "x": "890",
+                "y": "890",
+                "col_id": "89",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "120",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "report_to_admin",
+                "db_name": "REPORT_TO__ADMIN",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Admin Reports To",
+                "descr": "Administrative reporting manager",
+                "x": "900",
+                "y": "900",
+                "col_id": "90",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "user_id",
+                "db_name": "USER_ID",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "User ID",
+                "descr": "Assigned user id",
+                "x": "910",
+                "y": "910",
+                "col_id": "91",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "remarks",
+                "db_name": "REMARKS",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Remarks",
+                "descr": "HR remarks",
+                "x": "920",
+                "y": "920",
+                "col_id": "92",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "employee_pushed_flag",
+                "db_name": "EMPLOYEE_PUSHED_FLAG",
+                "group_name": "HR Finalization",
+                "col_type": "CHAR",
+                "heading": "Employee Pushed",
+                "descr": "Whether employee was pushed to IOFLOW",
+                "protect": "1",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "930",
+                "y": "930",
+                "col_id": "93",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "employee_push_ref",
+                "db_name": "EMPLOYEE_PUSH_REF",
+                "group_name": "HR Finalization",
+                "col_type": "VARCHAR",
+                "heading": "Employee Push Ref",
+                "descr": "Reference returned by IOFLOW employee creation",
+                "protect": "1",
+                "x": "940",
+                "y": "940",
+                "col_id": "94",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_date",
+                "db_name": "ADD_DATE",
+                "group_name": "Audit",
+                "col_type": "DATETIME",
+                "heading": "Added Date",
+                "descr": "Record creation timestamp",
+                "protect": "1",
+                "default_value": ":audit_add_date",
+                "x": "950",
+                "y": "950",
+                "col_id": "95",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_user",
+                "db_name": "ADD_USER",
+                "group_name": "Audit",
+                "col_type": "CHAR",
+                "heading": "Added By",
+                "descr": "User who created the record",
+                "protect": "1",
+                "default_value": ":audit_add_user",
+                "x": "960",
+                "y": "960",
+                "col_id": "96",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_term",
+                "db_name": "ADD_TERM",
+                "group_name": "Audit",
+                "col_type": "VARCHAR",
+                "heading": "Added Terminal",
+                "descr": "Terminal that created the record",
+                "protect": "1",
+                "default_value": ":audit_add_terminal",
+                "x": "970",
+                "y": "970",
+                "col_id": "97",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_date",
+                "db_name": "CHG_DATE",
+                "group_name": "Audit",
+                "col_type": "DATETIME",
+                "heading": "Changed Date",
+                "descr": "Record change timestamp",
+                "protect": "1",
+                "default_value": ":audit_chg_date",
+                "x": "980",
+                "y": "980",
+                "col_id": "98",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_user",
+                "db_name": "CHG_USER",
+                "group_name": "Audit",
+                "col_type": "CHAR",
+                "heading": "Changed By",
+                "descr": "User who changed the record",
+                "protect": "1",
+                "default_value": ":audit_chg_user",
+                "x": "990",
+                "y": "990",
+                "col_id": "99",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_term",
+                "db_name": "CHG_TERM",
+                "group_name": "Audit",
+                "col_type": "VARCHAR",
+                "heading": "Changed Terminal",
+                "descr": "Terminal that changed the record",
+                "protect": "1",
+                "default_value": ":audit_chg_terminal",
+                "x": "1000",
+                "y": "1000",
+                "col_id": "100",
+                "table_name": "EMPONB_CANDIDATE_RECORD",
+                "table_display_name": "Candidate onboarding main table",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CANDIDATE_RECORD",
+                  "main_table": true,
+                  "table_descr": "Candidate onboarding main table"
+                },
+                {
+                  "table": "EMPONB_COUNTRY_MASTER",
+                  "main_table": false,
+                  "table_descr": "Country master",
+                  "column": "COUNTRY_CODE",
+                  "join_table": "EMPONB_CANDIDATE_RECORD",
+                  "join_column": "COUNTRY_CODE",
+                  "join_type": "left"
+                },
+                {
+                  "table": "EMPONB_DESIG_DEPT_MASTER",
+                  "main_table": false,
+                  "table_descr": "Designation/Department master",
+                  "column": "DESIGN_CODE",
+                  "join_table": "EMPONB_CANDIDATE_RECORD",
+                  "join_column": "DESIGN_CODE",
+                  "join_type": "left"
+                }
+              ]
+            }
+          },
+          "validations": [
+            {
+              "type": "expression",
+              "name": "PAN format",
+              "message": "PAN must match AAAAA9999A.",
+              "expression": "is_empty({form.pan_no}) or match({form.pan_no}, \"^[A-Z]{5}[0-9]{4}[A-Z]$\")"
+            },
+            {
+              "type": "expression",
+              "name": "Aadhar format",
+              "message": "Aadhar must be 12 digits.",
+              "expression": "is_empty({form.aadhar_no}) or match({form.aadhar_no}, \"^[0-9]{12}$\")"
+            },
+            {
+              "type": "expression",
+              "name": "IFSC format",
+              "message": "IFSC must be a valid 11-char code.",
+              "expression": "is_empty({form.bank_ifsc_code}) or match({form.bank_ifsc_code}, \"^[A-Z]{4}0[A-Z0-9]{6}$\")"
+            },
+            {
+              "type": "expression",
+              "name": "Mobile format",
+              "message": "Mobile must be 10 digits.",
+              "expression": "is_empty({form.mobile}) or match({form.mobile}, \"^[0-9]{10}$\")"
+            },
+            {
+              "type": "expression",
+              "name": "Current PIN format",
+              "message": "Current PIN must be 6 digits.",
+              "expression": "is_empty({form.current_pin}) or match({form.current_pin}, \"^[0-9]{6}$\")"
+            },
+            {
+              "type": "expression",
+              "name": "Permanent PIN format",
+              "message": "Permanent PIN must be 6 digits.",
+              "expression": "is_empty({form.permanent_pin}) or match({form.permanent_pin}, \"^[0-9]{6}$\")"
+            },
+            {
+              "type": "expression",
+              "name": "Contact email format",
+              "message": "Contact person email must be valid.",
+              "expression": "is_empty({form.contact_person_email}) or match({form.contact_person_email}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
+            }
+          ]
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Past Experience",
+          "form_descr": "Prior employment rows entered by the candidate.",
+          "form_no": "2",
+          "parent_form_no": "1",
+          "parent_key_col": "CANDIDATE_ID",
+          "main_table": "EMPONB_CAND_EXPERIENCE",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate id",
+                "key": true,
+                "hidden": "1",
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Auto line number",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "organisation",
+                "db_name": "ORGANISATION",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Organisation",
+                "descr": "Previous organisation",
+                "mandatory": true,
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "designation",
+                "db_name": "DESIGNATION",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Designation",
+                "descr": "Designation held",
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "from_date",
+                "db_name": "FROM_DATE",
+                "group_name": "Basic",
+                "col_type": "DATE",
+                "heading": "From Date",
+                "descr": "Employment start date",
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "to_date",
+                "db_name": "TO_DATE",
+                "group_name": "Basic",
+                "col_type": "DATE",
+                "heading": "To Date",
+                "descr": "Employment end date",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "To >= From",
+                    "message": "To Date must be on or after From Date.",
+                    "expression": "is_empty({form.to_date}) or {form.to_date} >= {form.from_date}"
+                  }
+                ],
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gross_amt",
+                "db_name": "GROSS_AMT",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Gross Amount",
+                "descr": "Gross compensation",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Gross >= 0",
+                    "message": "Gross amount must be >= 0.",
+                    "expression": "{form.gross_amt} >= 0"
+                  }
+                ],
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "currency_code",
+                "db_name": "CURRENCY_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Currency",
+                "descr": "Currency code",
+                "x": "80",
+                "y": "80",
+                "col_id": "8",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "country_code",
+                "db_name": "COUNTRY_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Country",
+                "descr": "Country code",
+                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
+                "must_exist_in": "EMPONB_COUNTRY_MASTER",
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
+                "table_name": "EMPONB_CAND_EXPERIENCE",
+                "table_display_name": "Candidate past experience detail",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_EXPERIENCE",
+                  "main_table": true,
+                  "table_descr": "Candidate past experience detail"
+                },
+                {
+                  "table": "EMPONB_COUNTRY_MASTER",
+                  "main_table": false,
+                  "table_descr": "Country master",
+                  "column": "COUNTRY_CODE",
+                  "join_table": "EMPONB_CAND_EXPERIENCE",
+                  "join_column": "COUNTRY_CODE",
+                  "join_type": "left"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Education",
+          "form_descr": "Educational qualification rows entered by the candidate.",
+          "form_no": "3",
+          "parent_form_no": "1",
+          "parent_key_col": "CANDIDATE_ID",
+          "main_table": "EMPONB_CAND_EDUCATION",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate id",
+                "key": true,
+                "hidden": "1",
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Auto line number",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "qlf_code",
+                "db_name": "QLF_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Qualification",
+                "descr": "Qualification code",
+                "mandatory": true,
+                "lookup": "EMPONB_QUALIFICATION_MASTER(QLF_NAME, QLF_CODE)",
+                "must_exist_in": "EMPONB_QUALIFICATION_MASTER",
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "qlf_type",
+                "db_name": "QLF_TYPE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Qualification Type",
+                "descr": "Qualification type",
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "institute",
+                "db_name": "INSTITUTE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Institute",
+                "descr": "Institute name",
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pass_year",
+                "db_name": "PASS_YEAR",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Pass Year",
+                "descr": "Year of passing",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Pass year valid",
+                    "message": "Pass year cannot be in the future.",
+                    "expression": "is_empty({form.pass_year}) or {form.pass_year} <= year(today())"
+                  }
+                ],
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "4",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "class",
+                "db_name": "CLASS",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Class",
+                "descr": "Class / division",
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "percentage",
+                "db_name": "PERCENTAGE",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Percentage",
+                "descr": "Percentage marks",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Percentage range",
+                    "message": "Percentage must be between 0 and 100.",
+                    "expression": "is_empty({form.percentage}) or ({form.percentage} >= 0 and {form.percentage} <= 100)"
+                  }
+                ],
+                "x": "80",
+                "y": "80",
+                "col_id": "8",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "5,2",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "country_code",
+                "db_name": "COUNTRY_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Country",
+                "descr": "Country code",
+                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
+                "must_exist_in": "EMPONB_COUNTRY_MASTER",
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "course_type",
+                "db_name": "COURSE_TYPE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Course Type",
+                "descr": "Course type",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Full-time",
+                      "display": "Full-time"
+                    },
+                    {
+                      "data": "Part-time",
+                      "display": "Part-time"
+                    },
+                    {
+                      "data": "Distance",
+                      "display": "Distance"
+                    }
+                  ]
+                },
+                "x": "100",
+                "y": "100",
+                "col_id": "10",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "course_duration",
+                "db_name": "COURSE_DURATION",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Course Duration",
+                "descr": "Course duration",
+                "x": "110",
+                "y": "110",
+                "col_id": "11",
+                "table_name": "EMPONB_CAND_EDUCATION",
+                "table_display_name": "Candidate education detail",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_EDUCATION",
+                  "main_table": true,
+                  "table_descr": "Candidate education detail"
+                },
+                {
+                  "table": "EMPONB_QUALIFICATION_MASTER",
+                  "main_table": false,
+                  "table_descr": "Qualification master",
+                  "column": "QLF_CODE",
+                  "join_table": "EMPONB_CAND_EDUCATION",
+                  "join_column": "QLF_CODE",
+                  "join_type": "left"
+                },
+                {
+                  "table": "EMPONB_COUNTRY_MASTER",
+                  "main_table": false,
+                  "table_descr": "Country master",
+                  "column": "COUNTRY_CODE",
+                  "join_table": "EMPONB_CAND_EDUCATION",
+                  "join_column": "COUNTRY_CODE",
+                  "join_type": "left"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Family",
+          "form_descr": "Family member rows entered by the candidate.",
+          "form_no": "4",
+          "parent_form_no": "1",
+          "parent_key_col": "CANDIDATE_ID",
+          "main_table": "EMPONB_CAND_FAMILY",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate id",
+                "key": true,
+                "hidden": "1",
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_FAMILY",
+                "table_display_name": "Candidate family detail",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Auto line number",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_FAMILY",
+                "table_display_name": "Candidate family detail",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "member_name",
+                "db_name": "MEMBER_NAME",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Member Name",
+                "descr": "Family member name",
+                "mandatory": true,
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_FAMILY",
+                "table_display_name": "Candidate family detail",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "date_birth",
+                "db_name": "DATE_BIRTH",
+                "group_name": "Basic",
+                "col_type": "DATE",
+                "heading": "Date of Birth",
+                "descr": "Member date of birth",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "DOB not future",
+                    "message": "Date of birth cannot be in the future.",
+                    "expression": "is_empty({form.date_birth}) or {form.date_birth} <= today()"
+                  }
+                ],
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_FAMILY",
+                "table_display_name": "Candidate family detail",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gender",
+                "db_name": "GENDER",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Gender",
+                "descr": "Member gender",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "M",
+                      "display": "Male"
+                    },
+                    {
+                      "data": "F",
+                      "display": "Female"
+                    },
+                    {
+                      "data": "O",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_FAMILY",
+                "table_display_name": "Candidate family detail",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "relation",
+                "db_name": "RELATION",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Relation",
+                "descr": "Relation to candidate",
+                "mandatory": true,
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_FAMILY",
+                "table_display_name": "Candidate family detail",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_FAMILY",
+                  "main_table": true,
+                  "table_descr": "Candidate family detail"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Candidate Pay",
+          "form_descr": "HR-entered pay-head rows defining the candidate's compensation structure.",
+          "form_no": "5",
+          "parent_form_no": "1",
+          "parent_key_col": "CANDIDATE_ID",
+          "main_table": "EMPONB_CAND_PAY",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate id",
+                "key": true,
+                "hidden": "1",
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Auto line number",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ad_code",
+                "db_name": "AD_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Pay Head",
+                "descr": "Allowance/deduction code",
+                "mandatory": true,
+                "lookup": "EMPONB_PAYHEAD_MASTER(AD_NAME, AD_CODE)",
+                "must_exist_in": "EMPONB_PAYHEAD_MASTER",
+                "item_change": {
+                  "mode": "rule",
+                  "source_table": "EMPONB_PAYHEAD_MASTER",
+                  "match_table_col": "AD_CODE",
+                  "fill": [
+                    {
+                      "form_col": "amount_type",
+                      "table_col": "AMOUNT_TYPE"
+                    },
+                    {
+                      "form_col": "frequency",
+                      "table_col": "DEFAULT_FREQUENCY"
+                    },
+                    {
+                      "form_col": "res_formula",
+                      "table_col": "RES_FORMULA"
+                    },
+                    {
+                      "form_col": "appl_mode",
+                      "table_col": "APPL_MODE"
+                    }
+                  ]
+                },
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount",
+                "db_name": "AMOUNT",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Amount",
+                "descr": "Amount",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Amount >= 0",
+                    "message": "Amount must be >= 0.",
+                    "expression": "{form.amount} >= 0"
+                  }
+                ],
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount_type",
+                "db_name": "AMOUNT_TYPE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Amount Type",
+                "descr": "Amount type",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Fixed",
+                      "display": "Fixed"
+                    },
+                    {
+                      "data": "Percentage",
+                      "display": "Percentage"
+                    },
+                    {
+                      "data": "Formula",
+                      "display": "Formula"
+                    }
+                  ]
+                },
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "frequency",
+                "db_name": "FREQUENCY",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Frequency",
+                "descr": "Frequency",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Monthly",
+                      "display": "Monthly"
+                    },
+                    {
+                      "data": "Annual",
+                      "display": "Annual"
+                    },
+                    {
+                      "data": "One-time",
+                      "display": "One-time"
+                    }
+                  ]
+                },
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "res_formula",
+                "db_name": "RES_FORMULA",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Formula",
+                "descr": "Result formula (mandatory if type=Formula)",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Formula required",
+                    "message": "Formula is mandatory when Amount Type is Formula.",
+                    "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
+                  }
+                ],
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount_calc",
+                "db_name": "AMOUNT_CALC",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Calculated Amount",
+                "descr": "Derived amount for formula heads",
+                "protect": "1",
+                "x": "80",
+                "y": "80",
+                "col_id": "8",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "upd_paystru",
+                "db_name": "UPD_PAYSTRU",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Update Pay Structure",
+                "descr": "Include in payroll write-back / IOFLOW payload",
+                "default_value": "Y",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "appl_mode",
+                "db_name": "APPL_MODE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Application Mode",
+                "descr": "Earning or Deduction",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Earning",
+                      "display": "Earning"
+                    },
+                    {
+                      "data": "Deduction",
+                      "display": "Deduction"
+                    }
+                  ]
+                },
+                "x": "100",
+                "y": "100",
+                "col_id": "10",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure detail",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_PAY",
+                  "main_table": true,
+                  "table_descr": "Candidate pay structure detail"
+                },
+                {
+                  "table": "EMPONB_PAYHEAD_MASTER",
+                  "main_table": false,
+                  "table_descr": "Pay head master",
+                  "column": "AD_CODE",
+                  "join_table": "EMPONB_CAND_PAY",
+                  "join_column": "AD_CODE",
+                  "join_type": "left"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      }
+    ],
+    "actions": [
+      {
+        "name": "Send/Resend Link",
+        "handler": "message",
+        "scope": "row",
+        "business_logic": {
+          "method": "send_candidate_link",
+          "description": "Generate key and send onboarding link",
+          "spec": "Generate a unique ACCESS_KEY, set KEY_GENERATED_ON=now(), compute KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days days, set KEY_VALID_FLAG='Y', build FORM_URL (external candidate form + key), set STATUS='Link Generated', stamp STATUS_DATE and LINK_SENT_ON. Send an email to the candidate (EMAIL_ID) with the link. Return a confirmation message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Email present",
+            "message": "A valid email is required before sending the link.",
+            "expression": "not_empty({form.email_id}) and match({form.email_id}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
+          },
+          {
+            "type": "expression",
+            "name": "Not confirmed",
+            "message": "Cannot send a link for a confirmed/cancelled candidate.",
+            "expression": "in_list({form.status}, \"Initiated,Link Generated,Link Accessed\")"
+          }
+        ]
+      },
+      {
+        "name": "Re-validate PAN",
+        "handler": "message",
+        "scope": "row",
+        "business_logic": {
+          "method": "revalidate_pan",
+          "description": "Re-validate PAN via IOFLOW",
+          "spec": "Invoke the IOFLOW PAN endpoint with PAN_NO; store PAN_VALIDATED and PAN_VALIDATED_NAME from the response and increment PAN_ATTEMPTS. Block the call if PAN_ATTEMPTS has reached :max_validation_attempts. Return the validation outcome message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "PAN attempts cap",
+            "message": "Maximum PAN validation attempts reached.",
+            "expression": "{form.pan_attempts} < {var.max_validation_attempts}"
+          }
+        ]
+      },
+      {
+        "name": "Re-validate Aadhar",
+        "handler": "message",
+        "business_logic": {
+          "method": "revalidate_aadhar",
+          "description": "Re-validate Aadhar via IOFLOW",
+          "spec": "Invoke the IOFLOW Aadhar endpoint with AADHAR_NO; store AADHAR_VALIDATED and AADHAR_VALIDATED_NAME and increment AADHAR_ATTEMPTS. Block if AADHAR_ATTEMPTS has reached :max_validation_attempts. Return the outcome message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Aadhar attempts cap",
+            "message": "Maximum Aadhar validation attempts reached.",
+            "expression": "{form.aadhar_attempts} < {var.max_validation_attempts}"
+          }
+        ]
+      },
+      {
+        "name": "Re-validate Bank",
+        "handler": "message",
+        "business_logic": {
+          "method": "revalidate_bank",
+          "description": "Re-validate bank via IOFLOW",
+          "spec": "Invoke the IOFLOW Bank endpoint with BANK_ACCOUNT_NO and BANK_IFSC_CODE; store BANK_VALIDATED and BANK_VALIDATED_NAME and increment BANK_ATTEMPTS. Block if BANK_ATTEMPTS has reached :max_validation_attempts. Return the outcome message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Bank attempts cap",
+            "message": "Maximum bank validation attempts reached.",
+            "expression": "{form.bank_attempts} < {var.max_validation_attempts}"
+          }
+        ]
+      },
+      {
+        "name": "Review",
+        "handler": "message",
+        "business_logic": {
+          "method": "mark_review",
+          "description": "Move record to Review",
+          "spec": "Set STATUS='Review' and stamp STATUS_DATE=now(). Return a confirmation message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Must be submitted",
+            "message": "Only data-submitted candidates can be moved to Review.",
+            "expression": "{form.status} == \"DataSubmitted\""
+          }
+        ]
+      },
+      {
+        "name": "Confirm",
+        "handler": "message",
+        "business_logic": {
+          "method": "confirm_candidate",
+          "description": "Confirm and push to IOFLOW Employee",
+          "spec": "Validate EMP_CODE present and unique, DATE_JOIN present, GROSS>=BASIC. Trigger the IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization + pay structure rows where UPD_PAYSTRU='Y'). Store EMPLOYEE_PUSHED_FLAG='Y' and EMPLOYEE_PUSH_REF from the response. Set STATUS='Confirmed' and stamp STATUS_DATE. Send a notification to the INITIATED_BY HR user. Return a confirmation message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Status Review",
+            "message": "Confirm is only allowed when status is Review.",
+            "expression": "{form.status} == \"Review\""
+          },
+          {
+            "type": "expression",
+            "name": "Emp code present",
+            "message": "Employee code is mandatory before Confirm.",
+            "expression": "not_empty({form.emp_code})"
+          },
+          {
+            "type": "expression",
+            "name": "Date join present",
+            "message": "Date of joining is mandatory before Confirm.",
+            "expression": "not_empty({form.date_join})"
+          },
+          {
+            "type": "expression",
+            "name": "Gross ge basic",
+            "message": "Gross must be greater than or equal to Basic.",
+            "expression": "{form.gross} >= {form.basic}"
+          }
+        ],
+        "confirmation": {
+          "mode": "reconfirm",
+          "message": "Confirm candidate {form.candidate_name} and push to IOFLOW Employee?"
+        }
+      },
+      {
+        "name": "Cancel",
+        "handler": "message",
+        "business_logic": {
+          "method": "cancel_candidate",
+          "description": "Cancel the candidate record",
+          "spec": "Set STATUS='Cancelled', invalidate the access key (KEY_VALID_FLAG='N'), stamp STATUS_DATE. Return a confirmation message.",
+          "language": "plpgsql"
+        },
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Not confirmed",
+            "message": "A confirmed candidate cannot be cancelled.",
+            "expression": "{form.status} != \"Confirmed\""
+          }
+        ],
+        "confirmation": {
+          "mode": "reconfirm",
+          "message": "Cancel onboarding for {form.candidate_name}?"
+        }
+      },
+      {
+        "name": "delete",
+        "handler": "system",
+        "system_op": "delete",
+        "validations": [
+          {
+            "type": "expression",
+            "name": "Deletable only when link not accessed",
+            "message": "Delete is allowed only while status is Link Generated and the link has not been accessed.",
+            "expression": "{form.status} == \"Link Generated\" and is_empty({form.link_accessed_on})"
+          }
+        ]
+      }
+    ],
+    "cross_updates": [],
+    "pre_commit": [],
+    "post_commit": [],
+    "follow_up_actions": [
+      {
+        "event": "on-add",
+        "name": "init_candidate",
+        "business_logic": {
+          "method": "init_candidate",
+          "description": "Initialise a new candidate",
+          "spec": "On add/initiate, ensure CANDIDATE_ID is generated, set STATUS='Initiated' and stamp STATUS_DATE, INITIATED_BY and INITIATED_ON if not already set.",
+          "language": "plpgsql"
+        }
+      }
+    ],
+    "attach_docs": [
+      "PAN Document",
+      "Aadhar Document",
+      "Bank Document"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "7797012f-6e09-4075-bf16-703073214840",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "The custom buttons (Send/Resend Link, Review, Confirm, Cancel, Re-validate\u2026) are",
+  "kind": "modify",
+  "status": "completed",
+  "description": "The custom buttons (Send/Resend Link, Review, Confirm, Cancel, Re-validate\u2026) are",
+  "created_at": 1782549304.221955,
+  "updated_at": 1782549410.810006,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "The custom buttons (Send/Resend Link, Review, Confirm, Cancel, Re-validate\u2026) are NOT showing \u2014 only Audit Trail and Delete appear, and I want them to show",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "31441126-7258-4acc-8676-082d013113b4"
+  },
+  "depends_on": []
+}

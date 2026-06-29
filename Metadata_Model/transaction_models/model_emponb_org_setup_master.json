@@ -1,0 +1,520 @@
+{
+  "transaction": {
+    "obj_name": "emponb_org_setup_master",
+    "sql_models": [
+      {
+        "sql_model": {
+          "form_title": "Org Setup Master",
+          "form_descr": "Maintain employment site, payroll site, work shift and holiday table values used at confirmation.",
+          "form_no": "1",
+          "main_table": "EMPONB_ORG_SETUP_MASTER",
+          "columns": [
+            {
+              "column": {
+                "name": "emp_site",
+                "db_name": "EMP_SITE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Employment Site Code",
+                "descr": "Unique employment site code",
+                "key": true,
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Emp site unique",
+                    "message": "Employment site code {form.emp_site} already exists.",
+                    "builtin": {
+                      "kind": "must_be_unique"
+                    }
+                  }
+                ],
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "10",
+                "width": 100,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "site_name",
+                "db_name": "SITE_NAME",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Employment Site Name",
+                "descr": "Name of the employment site",
+                "mandatory": true,
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pay_site",
+                "db_name": "PAY_SITE",
+                "group_name": "Payroll Site",
+                "col_type": "CHAR",
+                "heading": "Payroll Site Code",
+                "descr": "Payroll site code",
+                "x": "40",
+                "y": "40",
+                "col_id": "3",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pay_site_name",
+                "db_name": "PAY_SITE_NAME",
+                "group_name": "Payroll Site",
+                "col_type": "VARCHAR",
+                "heading": "Payroll Site Name",
+                "descr": "Name of the payroll site",
+                "x": "50",
+                "y": "50",
+                "col_id": "4",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "work_shift",
+                "db_name": "WORK_SHIFT",
+                "group_name": "Work Shift",
+                "col_type": "CHAR",
+                "heading": "Work Shift Code",
+                "descr": "Work shift code",
+                "x": "60",
+                "y": "60",
+                "col_id": "5",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "shift_name",
+                "db_name": "SHIFT_NAME",
+                "group_name": "Work Shift",
+                "col_type": "VARCHAR",
+                "heading": "Shift Name",
+                "descr": "Name of the work shift",
+                "x": "70",
+                "y": "70",
+                "col_id": "6",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "shift_timings",
+                "db_name": "SHIFT_TIMINGS",
+                "group_name": "Work Shift",
+                "col_type": "VARCHAR",
+                "heading": "Shift Timings",
+                "descr": "Timings of the work shift (e.g. 09:00-18:00)",
+                "x": "80",
+                "y": "80",
+                "col_id": "7",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hol_tblno",
+                "db_name": "HOL_TBLNO",
+                "group_name": "Holiday Table",
+                "col_type": "CHAR",
+                "heading": "Holiday Table No",
+                "descr": "Holiday table number",
+                "x": "90",
+                "y": "90",
+                "col_id": "8",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hol_tbl_name",
+                "db_name": "HOL_TBL_NAME",
+                "group_name": "Holiday Table",
+                "col_type": "VARCHAR",
+                "heading": "Holiday Table Name",
+                "descr": "Name of the holiday table",
+                "x": "100",
+                "y": "100",
+                "col_id": "9",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "active_flag",
+                "db_name": "ACTIVE_FLAG",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Active",
+                "descr": "Only active rows are selectable in finalization",
+                "default_value": "Y",
+                "mandatory": true,
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "display": {
+                  "type": "status_tag",
+                  "map": [
+                    {
+                      "when": "Y",
+                      "color": "green",
+                      "label": "Active"
+                    },
+                    {
+                      "when": "N",
+                      "color": "grey",
+                      "label": "Inactive"
+                    }
+                  ],
+                  "defaultColor": "grey"
+                },
+                "x": "30",
+                "y": "30",
+                "col_id": "10",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_date",
+                "db_name": "ADD_DATE",
+                "group_name": "Others",
+                "col_type": "DATETIME",
+                "heading": "Added Date",
+                "descr": "Record creation timestamp",
+                "default_value": ":audit_add_date",
+                "protect": "1",
+                "x": "110",
+                "y": "110",
+                "col_id": "11",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_user",
+                "db_name": "ADD_USER",
+                "group_name": "Others",
+                "col_type": "CHAR",
+                "heading": "Added By",
+                "descr": "User who created the record",
+                "default_value": ":audit_add_user",
+                "protect": "1",
+                "x": "120",
+                "y": "120",
+                "col_id": "12",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_term",
+                "db_name": "ADD_TERM",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Added Terminal",
+                "descr": "Terminal where the record was created",
+                "default_value": ":audit_add_terminal",
+                "protect": "1",
+                "x": "130",
+                "y": "130",
+                "col_id": "13",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_date",
+                "db_name": "CHG_DATE",
+                "group_name": "Others",
+                "col_type": "DATETIME",
+                "heading": "Changed Date",
+                "descr": "Last change timestamp",
+                "default_value": ":audit_chg_date",
+                "protect": "1",
+                "x": "140",
+                "y": "140",
+                "col_id": "14",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_user",
+                "db_name": "CHG_USER",
+                "group_name": "Others",
+                "col_type": "CHAR",
+                "heading": "Changed By",
+                "descr": "User who last changed the record",
+                "default_value": ":audit_chg_user",
+                "protect": "1",
+                "x": "150",
+                "y": "150",
+                "col_id": "15",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_term",
+                "db_name": "CHG_TERM",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Changed Terminal",
+                "descr": "Terminal where the record was last changed",
+                "default_value": ":audit_chg_terminal",
+                "protect": "1",
+                "x": "160",
+                "y": "160",
+                "col_id": "16",
+                "table_name": "EMPONB_ORG_SETUP_MASTER",
+                "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_ORG_SETUP_MASTER",
+                  "main_table": true,
+                  "table_descr": "Organisation setup master (sites, shifts, holiday tables)"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      }
+    ],
+    "actions": [],
+    "cross_updates": [],
+    "pre_commit": [],
+    "post_commit": [],
+    "follow_up_actions": [],
+    "attach_docs": []
+  }
+}

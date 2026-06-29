@@ -1,0 +1,592 @@
+{
+  "transaction": {
+    "obj_name": "emponb_onboarding_settings",
+    "sql_models": [
+      {
+        "sql_model": {
+          "form_title": "Onboarding Settings",
+          "form_descr": "Single-record configuration governing access-key life, retry limits and IOFLOW connectivity.",
+          "form_no": "1",
+          "main_table": "EMPONB_ONBOARDING_SETTINGS",
+          "columns": [
+            {
+              "column": {
+                "name": "settings_id",
+                "db_name": "SETTINGS_ID",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Settings ID",
+                "descr": "Single-record configuration identifier",
+                "key": true,
+                "default_value": "auto_generate()",
+                "protect": "1",
+                "mandatory": true,
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "10",
+                "width": 100,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_validity_days",
+                "db_name": "KEY_VALIDITY_DAYS",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Key Validity (Days)",
+                "descr": "Number of days an access key remains valid",
+                "default_value": "1",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Validity positive",
+                    "error_code": "KVD_POS",
+                    "message": "Key Validity Days must be greater than 0.",
+                    "expression": "{form.key_validity_days} > 0"
+                  }
+                ],
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "5",
+                "width": 50,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "max_validation_attempts",
+                "db_name": "MAX_VALIDATION_ATTEMPTS",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Max Validation Attempts",
+                "descr": "Maximum PAN/Aadhaar/Bank validation attempts allowed",
+                "default_value": "3",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Attempts range",
+                    "error_code": "MVA_RANGE",
+                    "message": "Max Validation Attempts must be between 1 and 10.",
+                    "builtin": {
+                      "kind": "value_in_range",
+                      "min": {
+                        "source": "const",
+                        "value": "1"
+                      },
+                      "max": {
+                        "source": "const",
+                        "value": "10"
+                      }
+                    }
+                  }
+                ],
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ioflow_base_url",
+                "db_name": "IOFLOW_BASE_URL",
+                "group_name": "IOFLOW Connectivity",
+                "col_type": "VARCHAR",
+                "heading": "IOFLOW Base URL",
+                "descr": "Base URL of the IOFLOW integration service",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Base URL well-formed",
+                    "error_code": "URL_BASE",
+                    "message": "IOFLOW Base URL must be a well-formed URL.",
+                    "expression": "match({form.ioflow_base_url}, \"^https?://.+\")"
+                  }
+                ],
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ioflow_pan_endpoint",
+                "db_name": "IOFLOW_PAN_ENDPOINT",
+                "group_name": "IOFLOW Connectivity",
+                "col_type": "VARCHAR",
+                "heading": "IOFLOW PAN Endpoint",
+                "descr": "Endpoint for PAN validation",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "PAN endpoint well-formed",
+                    "error_code": "URL_PAN",
+                    "message": "IOFLOW PAN Endpoint must be a well-formed URL.",
+                    "expression": "match({form.ioflow_pan_endpoint}, \"^https?://.+\")"
+                  }
+                ],
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ioflow_aadhar_endpoint",
+                "db_name": "IOFLOW_AADHAR_ENDPOINT",
+                "group_name": "IOFLOW Connectivity",
+                "col_type": "VARCHAR",
+                "heading": "IOFLOW Aadhaar Endpoint",
+                "descr": "Endpoint for Aadhaar validation",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Aadhaar endpoint well-formed",
+                    "error_code": "URL_AADHAR",
+                    "message": "IOFLOW Aadhaar Endpoint must be a well-formed URL.",
+                    "expression": "match({form.ioflow_aadhar_endpoint}, \"^https?://.+\")"
+                  }
+                ],
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ioflow_bank_endpoint",
+                "db_name": "IOFLOW_BANK_ENDPOINT",
+                "group_name": "IOFLOW Connectivity",
+                "col_type": "VARCHAR",
+                "heading": "IOFLOW Bank Endpoint",
+                "descr": "Endpoint for Bank validation",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Bank endpoint well-formed",
+                    "error_code": "URL_BANK",
+                    "message": "IOFLOW Bank Endpoint must be a well-formed URL.",
+                    "expression": "match({form.ioflow_bank_endpoint}, \"^https?://.+\")"
+                  }
+                ],
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ioflow_employee_endpoint",
+                "db_name": "IOFLOW_EMPLOYEE_ENDPOINT",
+                "group_name": "IOFLOW Connectivity",
+                "col_type": "VARCHAR",
+                "heading": "IOFLOW Employee Endpoint",
+                "descr": "Endpoint for Employee creation push",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Employee endpoint well-formed",
+                    "error_code": "URL_EMP",
+                    "message": "IOFLOW Employee Endpoint must be a well-formed URL.",
+                    "expression": "match({form.ioflow_employee_endpoint}, \"^https?://.+\")"
+                  }
+                ],
+                "x": "80",
+                "y": "80",
+                "col_id": "8",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ioflow_auth_token",
+                "db_name": "IOFLOW_AUTH_TOKEN",
+                "group_name": "IOFLOW Connectivity",
+                "col_type": "VARCHAR",
+                "heading": "IOFLOW Auth Token",
+                "descr": "Authorization token for IOFLOW API calls",
+                "mandatory": true,
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hr_notify_email_template",
+                "db_name": "HR_NOTIFY_EMAIL_TEMPLATE",
+                "group_name": "Email Templates",
+                "col_type": "VARCHAR",
+                "heading": "HR Notify Email Template",
+                "descr": "Email template used to notify the initiating HR user",
+                "x": "100",
+                "y": "100",
+                "col_id": "10",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "2000",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "candidate_submit_email_template",
+                "db_name": "CANDIDATE_SUBMIT_EMAIL_TEMPLATE",
+                "group_name": "Email Templates",
+                "col_type": "VARCHAR",
+                "heading": "Candidate Submit Email Template",
+                "descr": "Email template emailed to the candidate on submission",
+                "x": "110",
+                "y": "110",
+                "col_id": "11",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "2000",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_date",
+                "db_name": "ADD_DATE",
+                "group_name": "Others",
+                "col_type": "DATETIME",
+                "heading": "Added On",
+                "descr": "Record creation timestamp",
+                "default_value": ":audit_add_date",
+                "protect": "1",
+                "x": "120",
+                "y": "120",
+                "col_id": "12",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_user",
+                "db_name": "ADD_USER",
+                "group_name": "Others",
+                "col_type": "CHAR",
+                "heading": "Added By",
+                "descr": "User who created the record",
+                "default_value": ":audit_add_user",
+                "protect": "1",
+                "x": "130",
+                "y": "130",
+                "col_id": "13",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_term",
+                "db_name": "ADD_TERM",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Added Terminal",
+                "descr": "Terminal that created the record",
+                "default_value": ":audit_add_terminal",
+                "protect": "1",
+                "x": "140",
+                "y": "140",
+                "col_id": "14",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_date",
+                "db_name": "CHG_DATE",
+                "group_name": "Others",
+                "col_type": "DATETIME",
+                "heading": "Changed On",
+                "descr": "Record last-changed timestamp",
+                "default_value": ":audit_chg_date",
+                "protect": "1",
+                "x": "150",
+                "y": "150",
+                "col_id": "15",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_user",
+                "db_name": "CHG_USER",
+                "group_name": "Others",
+                "col_type": "CHAR",
+                "heading": "Changed By",
+                "descr": "User who last changed the record",
+                "default_value": ":audit_chg_user",
+                "protect": "1",
+                "x": "160",
+                "y": "160",
+                "col_id": "16",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_term",
+                "db_name": "CHG_TERM",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Changed Terminal",
+                "descr": "Terminal that last changed the record",
+                "default_value": ":audit_chg_terminal",
+                "protect": "1",
+                "x": "170",
+                "y": "170",
+                "col_id": "17",
+                "table_name": "EMPONB_ONBOARDING_SETTINGS",
+                "table_display_name": "Onboarding settings configuration table",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_ONBOARDING_SETTINGS",
+                  "main_table": true,
+                  "table_descr": "Onboarding settings configuration table"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      }
+    ],
+    "actions": [
+      {
+        "name": "Delete",
+        "handler": "system",
+        "system_op": "delete",
+        "validations": [
+          {
+            "type": "expression",
+            "name": "No delete",
+            "error_code": "NO_DELETE",
+            "message": "Onboarding Settings cannot be deleted. Edit (Save) only.",
+            "expression": "1 == 0"
+          }
+        ]
+      }
+    ],
+    "cross_updates": [],
+    "pre_commit": [],
+    "post_commit": [],
+    "follow_up_actions": [],
+    "attach_docs": []
+  }
+}

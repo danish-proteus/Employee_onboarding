@@ -1,0 +1,149 @@
+{
+  "table_name": "EMPONB_DESIG_DEPT_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "DESIGN_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique design code identifying the designation",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "DESIGNATION_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the designation",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "DEPT_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Department code",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "DEPT_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Department name",
+      "sequence": 4
+    },
+    {
+      "column_name": "GRADE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Grade code",
+      "sequence": 5
+    },
+    {
+      "column_name": "GRADE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Grade name",
+      "sequence": 6
+    },
+    {
+      "column_name": "CADRE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Cadre code",
+      "sequence": 7
+    },
+    {
+      "column_name": "CADRE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Cadre name",
+      "sequence": 8
+    },
+    {
+      "column_name": "JOINED_AS",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Default joined-as value associated with this designation",
+      "sequence": 9
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Active flag; only active and mandatory design codes are selectable",
+      "sequence": 10,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 11
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 12
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP that created the record",
+      "sequence": 13
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record last-change timestamp",
+      "sequence": 14
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last changed the record",
+      "sequence": 15
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP that last changed the record",
+      "sequence": 16
+    }
+  ]
+}

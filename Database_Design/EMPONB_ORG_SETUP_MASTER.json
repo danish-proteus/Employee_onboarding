@@ -1,0 +1,148 @@
+{
+  "table_name": "EMPONB_ORG_SETUP_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "EMP_SITE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique employment site code",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "SITE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the employment site",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "PAY_SITE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Payroll site code",
+      "sequence": 3
+    },
+    {
+      "column_name": "PAY_SITE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the payroll site",
+      "sequence": 4
+    },
+    {
+      "column_name": "WORK_SHIFT",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Work shift code",
+      "sequence": 5
+    },
+    {
+      "column_name": "SHIFT_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the work shift",
+      "sequence": 6
+    },
+    {
+      "column_name": "SHIFT_TIMINGS",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Timings of the work shift (e.g. 09:00-18:00)",
+      "sequence": 7
+    },
+    {
+      "column_name": "HOL_TBLNO",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Holiday table number",
+      "sequence": 8
+    },
+    {
+      "column_name": "HOL_TBL_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the holiday table",
+      "sequence": 9
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Only active rows are selectable in finalization",
+      "sequence": 10,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 11
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 12
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal where the record was created",
+      "sequence": 13
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Last change timestamp",
+      "sequence": 14
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last changed the record",
+      "sequence": 15
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal where the record was last changed",
+      "sequence": 16
+    }
+  ]
+}

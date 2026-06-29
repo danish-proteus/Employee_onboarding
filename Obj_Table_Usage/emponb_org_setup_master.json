@@ -1,0 +1,23 @@
+{
+  "object_name": "emponb_org_setup_master",
+  "tables": {
+    "EMPONB_ORG_SETUP_MASTER": [
+      "ADD_TERM",
+      "ADD_DATE",
+      "PAY_SITE_NAME",
+      "PAY_SITE",
+      "CHG_TERM",
+      "CHG_DATE",
+      "SITE_NAME",
+      "SHIFT_NAME",
+      "ADD_USER",
+      "HOL_TBL_NAME",
+      "EMP_SITE",
+      "ACTIVE_FLAG",
+      "SHIFT_TIMINGS",
+      "CHG_USER",
+      "WORK_SHIFT",
+      "HOL_TBLNO"
+    ]
+  }
+}

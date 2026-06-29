@@ -1,0 +1,141 @@
+{
+  "table_name": "EMPONB_CAND_PAY",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Parent candidate id",
+      "sequence": 1
+    },
+    {
+      "column_name": "LINE_NO",
+      "data_type": "NUMBER",
+      "size": "5",
+      "key": true,
+      "description": "Auto-sequenced line number",
+      "sequence": 2
+    },
+    {
+      "column_name": "AD_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Allowance/Deduction code",
+      "sequence": 3,
+      "mandatory": true,
+      "lookup": {
+        "table": "EMPONB_PAYHEAD_MASTER",
+        "display_column": "AD_NAME",
+        "value_column": "AD_CODE"
+      }
+    },
+    {
+      "column_name": "AMOUNT",
+      "data_type": "NUMBER",
+      "size": "12,2",
+      "key": false,
+      "description": "Pay head amount",
+      "sequence": 4
+    },
+    {
+      "column_name": "AMOUNT_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Amount type",
+      "sequence": 5,
+      "allowed_values": [
+        {
+          "value": "Fixed",
+          "label": "Fixed"
+        },
+        {
+          "value": "Percentage",
+          "label": "Percentage"
+        },
+        {
+          "value": "Formula",
+          "label": "Formula"
+        }
+      ]
+    },
+    {
+      "column_name": "FREQUENCY",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Frequency",
+      "sequence": 6,
+      "allowed_values": [
+        {
+          "value": "Monthly",
+          "label": "Monthly"
+        },
+        {
+          "value": "Annual",
+          "label": "Annual"
+        },
+        {
+          "value": "One-time",
+          "label": "One-time"
+        }
+      ]
+    },
+    {
+      "column_name": "RES_FORMULA",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Formula when amount type is Formula",
+      "sequence": 7
+    },
+    {
+      "column_name": "AMOUNT_CALC",
+      "data_type": "NUMBER",
+      "size": "12,2",
+      "key": false,
+      "description": "Derived amount",
+      "sequence": 8
+    },
+    {
+      "column_name": "UPD_PAYSTRU",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Write-back to payroll flag",
+      "sequence": 9,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "APPL_MODE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Earning or deduction",
+      "sequence": 10,
+      "allowed_values": [
+        {
+          "value": "Earning",
+          "label": "Earning"
+        },
+        {
+          "value": "Deduction",
+          "label": "Deduction"
+        }
+      ]
+    }
+  ]
+}

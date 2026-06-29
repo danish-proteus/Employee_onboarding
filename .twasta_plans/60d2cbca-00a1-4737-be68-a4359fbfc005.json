@@ -1,0 +1,19 @@
+{
+  "id": "60d2cbca-00a1-4737-be68-a4359fbfc005",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Accessibility removed from 3-dot for custom actions again",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Accessibility removed from 3-dot for custom actions again",
+  "created_at": 1782699121.1579194,
+  "updated_at": 1782699387.4732838,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Accessibility removed from 3-dot for custom actions again",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "e00969e9-dc20-45b7-a0f6-7b4331b2d182"
+  },
+  "depends_on": []
+}

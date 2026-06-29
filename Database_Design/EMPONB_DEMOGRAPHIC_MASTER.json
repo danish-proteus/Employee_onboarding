@@ -1,0 +1,135 @@
+{
+  "table_name": "EMPONB_DEMOGRAPHIC_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "LOOKUP_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": true,
+      "description": "Category of demographic lookup value",
+      "sequence": 1,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "RELIGION",
+          "label": "Religion"
+        },
+        {
+          "value": "CASTE",
+          "label": "Caste Category"
+        },
+        {
+          "value": "BLOOD_GROUP",
+          "label": "Blood Group"
+        },
+        {
+          "value": "MARITAL_STATUS",
+          "label": "Marital Status"
+        },
+        {
+          "value": "NAME_PREFIX",
+          "label": "Name Prefix"
+        },
+        {
+          "value": "MOTHER_TONGUE",
+          "label": "Mother Tongue"
+        },
+        {
+          "value": "NATIONALITY",
+          "label": "Nationality"
+        },
+        {
+          "value": "RELATION",
+          "label": "Relation"
+        }
+      ]
+    },
+    {
+      "column_name": "LOOKUP_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique code within the lookup type",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "LOOKUP_DESC",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Display description shown in candidate drop-downs",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Only active values appear in candidate form drop-downs",
+      "sequence": 4,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 5
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 6
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP that created the record",
+      "sequence": 7
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Last modification timestamp",
+      "sequence": 8
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last modified the record",
+      "sequence": 9
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP that last modified the record",
+      "sequence": 10
+    }
+  ]
+}

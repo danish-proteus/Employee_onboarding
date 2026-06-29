@@ -1,0 +1,82 @@
+{
+  "page": {
+    "obj_name": "emponb_site_header",
+    "title": "Employee Onboarding Header",
+    "kind": "external",
+    "pageMode": "web",
+    "pageSchemaVersion": 2,
+    "inputs": [],
+    "actions": [],
+    "sections": [
+      {
+        "id": "sec_header",
+        "name": "Header",
+        "tag": "header",
+        "blocks": [
+          {
+            "id": "hdr_cols",
+            "type": "columns",
+            "count": 3,
+            "gap": 24,
+            "align": "center",
+            "columns": [
+              {
+                "id": "col_logo",
+                "width": "220px",
+                "blocks": [
+                  {
+                    "id": "logo_img",
+                    "type": "image",
+                    "url": "",
+                    "alt": "Tenant logo",
+                    "caption": "",
+                    "rounded": false,
+                    "shadow": false,
+                    "align": "left",
+                    "maxWidth": 180
+                  }
+                ]
+              },
+              {
+                "id": "col_title",
+                "blocks": [
+                  {
+                    "id": "portal_title",
+                    "type": "heading",
+                    "level": 2,
+                    "text": "Employee Onboarding"
+                  }
+                ]
+              },
+              {
+                "id": "col_help",
+                "width": "auto",
+                "blocks": [
+                  {
+                    "id": "help_links",
+                    "type": "button_group",
+                    "align": "right",
+                    "gap": 8,
+                    "buttons": [
+                      {
+                        "id": "btn_contact_hr",
+                        "label": "Help / Contact HR",
+                        "variant": "outline",
+                        "on_click": {
+                          "kind": "external_url",
+                          "url": "mailto:hr@proteustech.co",
+                          "newTab": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "blocks": []
+  }
+}

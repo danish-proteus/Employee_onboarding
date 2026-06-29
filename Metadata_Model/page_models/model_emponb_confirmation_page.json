@@ -1,0 +1,97 @@
+{
+  "page": {
+    "obj_name": "emponb_confirmation_page",
+    "title": "Onboarding Confirmation",
+    "kind": "external",
+    "pageMode": "web",
+    "pageSchemaVersion": 2,
+    "inputs": [],
+    "actions": [],
+    "seo": {
+      "title": "Thank You — Employee Onboarding",
+      "description": "Your onboarding details have been received. A copy has been emailed to you."
+    },
+    "sections": [
+      {
+        "id": "sec_hero",
+        "name": "Hero",
+        "tag": "main",
+        "blocks": [
+          {
+            "id": "hero_confirm",
+            "type": "hero",
+            "eyebrow": "Employee Onboarding",
+            "title": "Thank you — your details have been received",
+            "subtitle": "We've successfully recorded your onboarding submission. A copy of everything you submitted has been emailed to you for your records.",
+            "align": "center",
+            "height": "tall",
+            "background": {
+              "kind": "gradient",
+              "gradientFrom": "#0f172a",
+              "gradientTo": "#1e3a8a",
+              "gradientAngle": 135
+            },
+            "textColor": "#ffffff",
+            "imageSide": "none"
+          }
+        ]
+      },
+      {
+        "id": "sec_body",
+        "name": "Confirmation",
+        "tag": "main",
+        "blocks": [
+          {
+            "id": "callout_received",
+            "type": "callout",
+            "variant": "success",
+            "title": "Submission complete",
+            "body": "Your onboarding form has been submitted and locked. Our HR team has been notified and will review your details. A confirmation email containing a full summary of the information you provided has been sent to the email address on your record.",
+            "icon": "✅",
+            "iconPosition": "left",
+            "iconSize": "md",
+            "align": "left"
+          },
+          {
+            "id": "what_next_heading",
+            "type": "heading",
+            "level": 2,
+            "text": "What happens next"
+          },
+          {
+            "id": "what_next_list",
+            "type": "numbered_list",
+            "items": [
+              { "id": "wn1", "text": "Our HR team reviews your submitted personal, statutory and financial details.", "indent": 0 },
+              { "id": "wn2", "text": "Your documents and validations (PAN, Aadhaar and bank) are verified as part of the review.", "indent": 0 },
+              { "id": "wn3", "text": "Once confirmed, you'll be set up as an employee and HR will reach out with your joining details.", "indent": 0 }
+            ]
+          },
+          {
+            "id": "note_link",
+            "type": "callout",
+            "variant": "info",
+            "title": "This link is now closed",
+            "body": "For security, your onboarding link has been deactivated after submission. If you need to make a correction, please contact HR rather than reopening the link.",
+            "icon": "🔒",
+            "iconPosition": "left",
+            "iconSize": "md",
+            "align": "left"
+          },
+          {
+            "id": "contact_hr_heading",
+            "type": "heading",
+            "level": 3,
+            "text": "Need help?"
+          },
+          {
+            "id": "contact_hr_para",
+            "type": "paragraph",
+            "text": "If you didn't receive your confirmation email or have any questions about your onboarding, please get in touch with our HR team, who will be happy to assist you."
+          }
+        ]
+      }
+    ],
+    "blocks": []
+  }
+}

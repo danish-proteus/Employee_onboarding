@@ -1,0 +1,331 @@
+{
+  "application": {
+    "id": "emponb",
+    "title": "Employee Onboarding",
+    "description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
+    "icon": "badge",
+    "theme_color": "#1565C0",
+    "group": "NA",
+    "generated": true,
+    "auth": {
+      "providers": [
+        "project-users"
+      ],
+      "requireLogin": true,
+      "defaultRoles": [
+        "member"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "proteus_vision",
+      "twasta"
+    ],
+    "requireLogin": true,
+    "defaultRoles": [
+      "hr_coordinator"
+    ],
+    "grants": [
+      {
+        "role": "hr_coordinator",
+        "obj_name": "emponb_candidate_record",
+        "actions": [
+          "view",
+          "add",
+          "edit",
+          "delete",
+          "approve"
+        ]
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "id": "emponb.1",
+      "title": "Master Data Management",
+      "parent_id": "",
+      "icon_image": "storage",
+      "description": "Reference masters driving selection lists, validations and cross-updates across onboarding.",
+      "obj_name": "emponb_master_data_group",
+      "obj_type": "-",
+      "menu_path": "emponb.1",
+      "functional_specs": "Group of reference master data transactions used throughout the onboarding process."
+    },
+    {
+      "id": "emponb.1.1",
+      "title": "Country Master",
+      "parent_id": "emponb.1",
+      "icon_image": "public",
+      "description": "Maintain countries used for nationality, address and detail-line country codes.",
+      "obj_name": "emponb_country_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.1",
+      "functional_specs": "Header-only master with COUNTRY_CODE, COUNTRY_NAME, ISO_CODE, DIAL_CODE, CURRENCY_CODE, ACTIVE_FLAG. COUNTRY_CODE unique and mandatory; ACTIVE_FLAG defaults to 'Y'. Soft-disable when referenced. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "emponb.1.2",
+      "title": "Designation & Department Master",
+      "parent_id": "emponb.1",
+      "icon_image": "work",
+      "description": "Maintain designations, departments, grades, cadres and design codes used by HR.",
+      "obj_name": "emponb_designation_dept_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.2",
+      "functional_specs": "Header-only master with DESIGN_CODE, DESIGNATION_NAME, DEPT_CODE, DEPT_NAME, GRADE, GRADE_NAME, CADRE, CADRE_NAME, JOINED_AS, ACTIVE_FLAG. Codes unique within master; DESIGN_CODE mandatory and active to be selectable. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "emponb.1.3",
+      "title": "Organisation Setup Master",
+      "parent_id": "emponb.1",
+      "icon_image": "apartment",
+      "description": "Maintain employment site, payroll site, work shift and holiday table values used at confirmation.",
+      "obj_name": "emponb_org_setup_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.3",
+      "functional_specs": "Header-only master with EMP_SITE, SITE_NAME, PAY_SITE, PAY_SITE_NAME, WORK_SHIFT, SHIFT_NAME, SHIFT_TIMINGS, HOL_TBLNO, HOL_TBL_NAME, ACTIVE_FLAG. Codes unique; only active rows selectable in finalization. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "emponb.1.4",
+      "title": "Allowance / Deduction (Pay Head) Master",
+      "parent_id": "emponb.1",
+      "icon_image": "payments",
+      "description": "Maintain pay heads referenced by the candidate pay structure (AD_CODE).",
+      "obj_name": "emponb_payhead_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.4",
+      "functional_specs": "Header-only master with AD_CODE, AD_NAME, AMOUNT_TYPE (Fixed/Percentage/Formula), DEFAULT_FREQUENCY (Monthly/Annual/One-time), RES_FORMULA, APPL_MODE (Earning/Deduction), ACTIVE_FLAG. AD_CODE unique; RES_FORMULA mandatory when AMOUNT_TYPE='Formula'. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "emponb.1.5",
+      "title": "Qualification Master",
+      "parent_id": "emponb.1",
+      "icon_image": "school",
+      "description": "Maintain qualification codes/types used in candidate education detail.",
+      "obj_name": "emponb_qualification_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.5",
+      "functional_specs": "Header-only master with QLF_CODE, QLF_NAME, QLF_TYPE (Academic/Professional/Certification), COURSE_TYPE (Full-time/Part-time/Distance), ACTIVE_FLAG. QLF_CODE unique; QLF_TYPE mandatory. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "emponb.1.6",
+      "title": "Demographic Reference Master",
+      "parent_id": "emponb.1",
+      "icon_image": "diversity_3",
+      "description": "Maintain lookup values for Religion, Caste, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Relation.",
+      "obj_name": "emponb_demographic_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.6",
+      "functional_specs": "Header-only master with LOOKUP_TYPE, LOOKUP_CODE, LOOKUP_DESC, ACTIVE_FLAG. (LOOKUP_TYPE, LOOKUP_CODE) unique; only active values appear in candidate drop-downs. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "emponb.2",
+      "title": "Onboarding Configuration",
+      "parent_id": "",
+      "icon_image": "settings",
+      "description": "System parameters controlling link generation, key behaviour and integration endpoints.",
+      "obj_name": "emponb_config_group",
+      "obj_type": "-",
+      "menu_path": "emponb.2",
+      "functional_specs": "Group for onboarding system configuration."
+    },
+    {
+      "id": "emponb.2.1",
+      "title": "Onboarding Settings",
+      "parent_id": "emponb.2",
+      "icon_image": "tune",
+      "description": "Single-record configuration governing access-key life, retry limits and IOFLOW connectivity.",
+      "obj_name": "emponb_onboarding_settings",
+      "obj_type": "T",
+      "menu_path": "emponb.2.1",
+      "functional_specs": "Single-record/effective-dated config: KEY_VALIDITY_DAYS (default 1), MAX_VALIDATION_ATTEMPTS (default 3), IOFLOW_BASE_URL, IOFLOW_PAN_ENDPOINT, IOFLOW_AADHAR_ENDPOINT, IOFLOW_BANK_ENDPOINT, IOFLOW_EMPLOYEE_ENDPOINT, IOFLOW_AUTH_TOKEN, HR_NOTIFY_EMAIL_TEMPLATE, CANDIDATE_SUBMIT_EMAIL_TEMPLATE. Validations: KEY_VALIDITY_DAYS>0, MAX_VALIDATION_ATTEMPTS 1-10, URLs mandatory and well-formed. Exposes project variables :key_validity_days and :max_validation_attempts (declared under Variables panel). Edit (Save) only; no delete."
+    },
+    {
+      "id": "emponb.3",
+      "title": "Candidate Onboarding Management",
+      "parent_id": "",
+      "icon_image": "how_to_reg",
+      "description": "HR-facing master transaction covering the full candidate onboarding lifecycle.",
+      "obj_name": "emponb_candidate_group",
+      "obj_type": "-",
+      "menu_path": "emponb.3",
+      "functional_specs": "Group for the candidate onboarding record and its lifecycle actions."
+    },
+    {
+      "id": "emponb.3.1",
+      "title": "Candidate Onboarding Record",
+      "parent_id": "emponb.3",
+      "icon_image": "person_add",
+      "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee.",
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "menu_path": "emponb.3.1",
+      "functional_specs": "Header + four detail tables (Past Experience, Educational Qualification, Family, Candidate Pay). STATUS lifecycle Link Generated -> Link Accessed -> DataSubmitted -> Review -> Confirmed with STATUS_DATE stamped on each transition. Header fields: HR capture (CANDIDATE_ID, CANDIDATE_NAME, GENDER, COUNTRY_CODE, DESIGN_CODE, EMAIL_ID, STATUS, STATUS_DATE, INITIATED_BY, INITIATED_ON), access key (ACCESS_KEY, KEY_GENERATED_ON, KEY_EXPIRY_DATETIME, KEY_VALID_FLAG, FORM_URL, LINK_SENT_ON, LINK_ACCESSED_ON, SUBMITTED_ON), candidate personal/contact/statutory/financial, validation status (PAN/AADHAR/BANK *_VALIDATED, *_VALIDATED_NAME, *_ATTEMPTS), attachments (PAN_DOC, AADHAR_DOC, BANK_DOC), HR finalization (EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF). Field validations: PAN AAAAA9999A, AADHAR 12 digits, IFSC 11-char, MOBILE 10 digits, PIN 6 digits, valid emails; validation attempts capped at :max_validation_attempts; KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days; EMP_CODE unique & DATE_JOIN mandatory & GROSS>=BASIC before Confirm; Confirm only when STATUS=Review. Actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while Link Generated and not accessed), Send/Resend Link, Re-validate PAN/AADHAR/Bank (IOFLOW), Review, Confirm (Push to IOFLOW Employee), Cancel. Triggers: send-email candidate link on Send Link, IOFLOW validation on Re-validate, set STATUS=Review on Review, IOFLOW Employee-creation API + store EMPLOYEE_PUSHED_FLAG/EMPLOYEE_PUSH_REF + send-notification to HR on Confirm, set STATUS=DataSubmitted + invalidate key + notify on candidate Submit."
+    },
+    {
+      "id": "emponb.4",
+      "title": "Reports & Visuals",
+      "parent_id": "",
+      "icon_image": "insights",
+      "description": "Onboarding analytics, tracking grids and printable candidate data sheet.",
+      "obj_name": "emponb_reports_group",
+      "obj_type": "-",
+      "menu_path": "emponb.4",
+      "functional_specs": "Group of visuals and reports for onboarding monitoring and documentation."
+    },
+    {
+      "id": "emponb.4.1",
+      "title": "Onboarding Pipeline by Status",
+      "parent_id": "emponb.4",
+      "icon_image": "stacked_bar_chart",
+      "description": "Count of candidates per STATUS per period.",
+      "obj_name": "emponb_pipeline_by_status",
+      "obj_type": "V",
+      "menu_path": "emponb.4.1",
+      "functional_specs": "Stacked-Column-Chart. Criteria: date range (INITIATED_ON), DESIGN_CODE, COUNTRY_CODE. Data: count of candidates per STATUS per period. Drill-down: click segment -> filtered candidate list."
+    },
+    {
+      "id": "emponb.4.2",
+      "title": "Candidate Status Distribution",
+      "parent_id": "emponb.4",
+      "icon_image": "donut_large",
+      "description": "STATUS vs candidate count.",
+      "obj_name": "emponb_status_distribution",
+      "obj_type": "V",
+      "menu_path": "emponb.4.2",
+      "functional_specs": "Pie-Chart / Doughnut-Chart. Criteria: date range. Data: STATUS vs candidate count."
+    },
+    {
+      "id": "emponb.4.3",
+      "title": "Onboarding Tracker",
+      "parent_id": "emponb.4",
+      "icon_image": "table_view",
+      "description": "Candidate-wise current status with hyperlink to the record.",
+      "obj_name": "emponb_onboarding_tracker",
+      "obj_type": "V",
+      "menu_path": "emponb.4.3",
+      "functional_specs": "Grid. Criteria: STATUS, INITIATED_BY, date range, DESIGNATION. Data: CANDIDATE_NAME, EMAIL_ID, DESIGNATION, STATUS, STATUS_DATE, LINK_SENT_ON, LINK_ACCESSED_ON, SUBMITTED_ON, KEY_EXPIRY_DATETIME, INITIATED_BY. Hyperlink CANDIDATE_NAME -> Candidate Onboarding Record."
+    },
+    {
+      "id": "emponb.4.4",
+      "title": "Expired / Pending Links",
+      "parent_id": "emponb.4",
+      "icon_image": "link_off",
+      "description": "Links awaiting candidate action with expiry highlighting.",
+      "obj_name": "emponb_expired_pending_links",
+      "obj_type": "V",
+      "menu_path": "emponb.4.4",
+      "functional_specs": "Grid. Criteria: status in (Link Generated, Link Accessed). Data: CANDIDATE_NAME, EMAIL_ID, LINK_SENT_ON, KEY_EXPIRY_DATETIME, days pending, STATUS. Conditional highlight for keys past expiry."
+    },
+    {
+      "id": "emponb.4.5",
+      "title": "Validation Outcome Summary",
+      "parent_id": "emponb.4",
+      "icon_image": "verified",
+      "description": "PAN/AADHAR/BANK validated vs failed vs attempts-exhausted.",
+      "obj_name": "emponb_validation_outcome",
+      "obj_type": "V",
+      "menu_path": "emponb.4.5",
+      "functional_specs": "Grid / Column-Chart. Criteria: date range. Data: counts of PAN/AADHAR/BANK validated vs failed vs attempts-exhausted."
+    },
+    {
+      "id": "emponb.4.6",
+      "title": "Onboarding Aging",
+      "parent_id": "emponb.4",
+      "icon_image": "hourglass_bottom",
+      "description": "Average days in each status / candidate-wise aging buckets.",
+      "obj_name": "emponb_onboarding_aging",
+      "obj_type": "V",
+      "menu_path": "emponb.4.6",
+      "functional_specs": "Bar-Chart. Criteria: status. Data: average days in each status / candidate-wise aging buckets."
+    },
+    {
+      "id": "emponb.4.7",
+      "title": "Candidate Profile Data Sheet",
+      "parent_id": "emponb.4",
+      "icon_image": "description",
+      "description": "Pixel-perfect printable consolidation of a candidate for the personnel file.",
+      "obj_name": "emponb_candidate_data_sheet",
+      "obj_type": "R",
+      "menu_path": "emponb.4.7",
+      "functional_specs": "Jasper document report. Criteria: CANDIDATE_ID. Header (company logo + title), candidate photo block, signature block, page breaks between sections. Grouping: (1) Personal & Contact, (2) Statutory & Bank with validation status, (3) Past Experience, (4) Educational Qualification, (5) Family, (6) Employment & Pay Structure. Pay Structure sub-totals of earnings, deductions and net (GROSS). All header fields plus four detail tables."
+    },
+    {
+      "id": "emponb.5",
+      "title": "HR Onboarding Dashboard",
+      "parent_id": "",
+      "icon_image": "dashboard",
+      "description": "Consolidated onboarding metrics and visuals for HR / Onboarding Coordinator.",
+      "obj_name": "emponb_hr_dashboard",
+      "obj_type": "D",
+      "menu_path": "emponb.5",
+      "functional_specs": "Dashboard for HR / Onboarding Coordinator. Criteria with defaults: date range (default current month on INITIATED_ON), DESIGN_CODE (All), INITIATED_BY (current user), STATUS (All). Cards: Total Candidates Initiated, Links Pending Action, Data Submitted (awaiting review), Confirmed this period, Expired Links. Visuals: Onboarding Pipeline by Status (Stacked-Column), Candidate Status Distribution (Doughnut), Onboarding Tracker (Grid with hyperlink), Validation Outcome Summary (Column-Chart), Onboarding Aging (Bar-Chart)."
+    },
+    {
+      "id": "emponb.6",
+      "title": "Candidate Onboarding Portal",
+      "parent_id": "",
+      "icon_image": "language",
+      "description": "Public anonymous external site hosting the key-validated candidate onboarding form.",
+      "obj_name": "emponb_onboarding_portal",
+      "obj_type": "X",
+      "menu_path": "emponb.6",
+      "functional_specs": "{\"slug\":\"onboarding\",\"title\":\"Employee Onboarding\",\"is_primary\":true,\"theme\":{\"preset\":\"corporate\"},\"custom_domains\":[],\"header_page_obj_name\":\"emponb_site_header\",\"footer_page_obj_name\":\"emponb_site_footer\"}"
+    },
+    {
+      "id": "emponb.6.1",
+      "title": "Header",
+      "parent_id": "emponb.6",
+      "icon_image": "web_asset",
+      "description": "Shared site header rendered on every portal page.",
+      "obj_name": "emponb_site_header",
+      "obj_type": "S",
+      "menu_path": "emponb.6.1",
+      "functional_specs": "External chrome header: tenant logo (left), portal title 'Employee Onboarding' (center), help/contact-HR link (right). No login control (anonymous site)."
+    },
+    {
+      "id": "emponb.6.2",
+      "title": "Footer",
+      "parent_id": "emponb.6",
+      "icon_image": "web_asset",
+      "description": "Shared site footer rendered on every portal page.",
+      "obj_name": "emponb_site_footer",
+      "obj_type": "S",
+      "menu_path": "emponb.6.2",
+      "functional_specs": "External chrome footer: copyright line, privacy/data-use note, contact line (HR email/phone), optional secondary link group (Privacy, Terms)."
+    },
+    {
+      "id": "emponb.6.3",
+      "title": "Candidate Onboarding Form",
+      "parent_id": "emponb.6",
+      "icon_image": "assignment_ind",
+      "description": "Public, key-validated intake form the candidate opens from the emailed link.",
+      "obj_name": "emponb_candidate_form",
+      "obj_type": "S",
+      "menu_path": "emponb.6.3",
+      "functional_specs": "External anonymous Smart Page reached at /onboard?key=<ACCESS_KEY>. Key-validation gate via GET /api/onboard/validate-key: if invalid/expired/already-submitted render callout and hide inputs; on first successful open set STATUS=Link Accessed and stamp LINK_ACCESSED_ON. Hero with branding and candidate name. Sections: Personal Details (NAME_PREFIX, EMP_FNAME, EMP_MNAME, EMP_LNAME, GENDER, BIRTHDATE, NATIONALITY, MARITAL_STATUS, MARRIAGE_ANNIVERSARY, BLOOD_GROUP, RELIGION, CAST_CATEGORY, MOTHER_TONGUE, PHYSICAL_HANDICAP, HOBBY1, HOBBY2, TOTAL_EXPERIENCE); Address & Contact (current/permanent address, MOBILE, ALTERNATE_TELEPHONE, emergency contact, optional same-as-current copy); Statutory & Financial with inline Validate PAN/Aadhaar/Bank buttons showing validated status, returned name and remaining attempts; Document upload (PAN_DOC, AADHAR_DOC, BANK_DOC); repeater grids for Past Experience, Educational Qualification, Family. Actions/CTAs: Validate PAN/Aadhaar/Bank (POST /api/onboard/validate/{type}), Upload (POST /api/onboard/upload), Save draft (POST /api/onboard/save, keeps editable), Submit (POST /api/onboard/submit -> final validation, lock, STATUS=DataSubmitted, email candidate summary, notify HR). Validation capped at :max_validation_attempts; attachments image/PDF with size limit; BANK_DOC must be cancelled cheque/passbook. Loads via GET /api/onboard/draft and master lookups /api/masters/countries, /api/masters/qualifications, /api/masters/lookups."
+    },
+    {
+      "id": "emponb.6.4",
+      "title": "Onboarding Confirmation",
+      "parent_id": "emponb.6",
+      "icon_image": "task_alt",
+      "description": "Thank-you page shown to the candidate after Submit.",
+      "obj_name": "emponb_confirmation_page",
+      "obj_type": "S",
+      "menu_path": "emponb.6.4",
+      "functional_specs": "External anonymous Smart Page. Hero confirmation banner, callout summarizing details received and a copy emailed, contact-HR line. No inputs."
+    },
+    {
+      "id": "emponb.6.5",
+      "title": "Invalid / Expired Link",
+      "parent_id": "emponb.6",
+      "icon_image": "link_off",
+      "description": "Page explaining the onboarding link is no longer valid.",
+      "obj_name": "emponb_invalid_link_page",
+      "obj_type": "S",
+      "menu_path": "emponb.6.5",
+      "functional_specs": "External anonymous Smart Page. Hero + callout explaining the link is expired/invalid/already submitted and to contact HR. No inputs."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "12f4c215-a2f5-42e2-8a10-f60690398ddc",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Do you mean in 3-dot where 'Audit Trail' and 'Delete' is appearing",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Do you mean in 3-dot where 'Audit Trail' and 'Delete' is appearing",
+  "created_at": 1782697325.037324,
+  "updated_at": 1782697336.0481517,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Do you mean in 3-dot where 'Audit Trail' and 'Delete' is appearing",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "a6a1a0c1-060a-48ac-b849-99c7e33f52ec"
+  },
+  "depends_on": []
+}

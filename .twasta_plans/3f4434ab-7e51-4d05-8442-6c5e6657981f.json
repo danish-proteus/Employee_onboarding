@@ -1,0 +1,19 @@
+{
+  "id": "3f4434ab-7e51-4d05-8442-6c5e6657981f",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "In this screen, 'Send/Resend Link' action reconfig the business logic to python.",
+  "kind": "modify",
+  "status": "completed",
+  "description": "In this screen, 'Send/Resend Link' action reconfig the business logic to python.",
+  "created_at": 1782705525.580212,
+  "updated_at": 1782705730.6355407,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "In this screen, 'Send/Resend Link' action reconfig the business logic to python.",
+  "resume_ref": {
+    "session_id": "3855b7fe-645e-4252-b90b-83cb14bdfeae",
+    "claude_session_id": "3d934e14-868c-4481-947b-676c3c13e5a6"
+  },
+  "depends_on": []
+}

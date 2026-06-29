@@ -1,0 +1,19 @@
+{
+  "id": "6e15c187-b211-41aa-a107-7bd2042ab7fc",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Buttons not appearing yeat",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Buttons not appearing yeat",
+  "created_at": 1782551705.29722,
+  "updated_at": 1782551979.7161953,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Buttons not appearing yeat",
+  "resume_ref": {
+    "session_id": "3e8c83d1-a152-4607-8e02-3216a9529c43",
+    "claude_session_id": "e4031b12-ae08-48ed-9b8a-c013d8d297a0"
+  },
+  "depends_on": []
+}

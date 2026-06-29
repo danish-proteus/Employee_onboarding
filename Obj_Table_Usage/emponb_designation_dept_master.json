@@ -1,0 +1,23 @@
+{
+  "object_name": "emponb_designation_dept_master",
+  "tables": {
+    "EMPONB_DESIG_DEPT_MASTER": [
+      "GRADE",
+      "ADD_TERM",
+      "ADD_DATE",
+      "CHG_TERM",
+      "CADRE",
+      "CADRE_NAME",
+      "JOINED_AS",
+      "DESIGN_CODE",
+      "CHG_DATE",
+      "ACTIVE_FLAG",
+      "ADD_USER",
+      "DEPT_CODE",
+      "DEPT_NAME",
+      "CHG_USER",
+      "DESIGNATION_NAME",
+      "GRADE_NAME"
+    ]
+  }
+}

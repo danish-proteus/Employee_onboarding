@@ -1,0 +1,22 @@
+{
+  "table_name": "EMPONB_DEMOGRAPHIC_MASTER",
+  "objects": [
+    {
+      "object_name": "emponb_demographic_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "ADD_TERM",
+        "ADD_DATE",
+        "LOOKUP_TYPE",
+        "CHG_TERM",
+        "CHG_DATE",
+        "LOOKUP_DESC",
+        "ADD_USER",
+        "LOOKUP_CODE",
+        "ACTIVE_FLAG",
+        "CHG_USER"
+      ]
+    }
+  ]
+}

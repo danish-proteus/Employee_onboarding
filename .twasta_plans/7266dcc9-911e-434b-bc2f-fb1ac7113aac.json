@@ -1,0 +1,19 @@
+{
+  "id": "7266dcc9-911e-434b-bc2f-fb1ac7113aac",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "those actions are not appearing, may be set visible false or depends on some val",
+  "kind": "modify",
+  "status": "completed",
+  "description": "those actions are not appearing, may be set visible false or depends on some val",
+  "created_at": 1782697454.4733639,
+  "updated_at": 1782697514.9392192,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "those actions are not appearing, may be set visible false or depends on some value ?",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "db13b850-e24c-44b2-9f8b-46436e837fcb"
+  },
+  "depends_on": []
+}

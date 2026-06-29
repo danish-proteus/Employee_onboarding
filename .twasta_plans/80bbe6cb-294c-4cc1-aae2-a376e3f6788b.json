@@ -1,0 +1,19 @@
+{
+  "id": "80bbe6cb-294c-4cc1-aae2-a376e3f6788b",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Perpare sample data",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Perpare sample data",
+  "created_at": 1782547181.754124,
+  "updated_at": 1782547219.7396393,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Perpare sample data",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "f6a6e652-4530-49d9-8fd8-6bde315e4be0"
+  },
+  "depends_on": []
+}

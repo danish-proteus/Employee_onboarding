@@ -1,0 +1,28 @@
+{
+  "table_name": "EMPONB_CAND_EDUCATION",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "3",
+      "usage_type": "M",
+      "referred_columns": [
+        "QLF_TYPE",
+        "COUNTRY_CODE",
+        "COURSE_DURATION",
+        "PERCENTAGE",
+        "PASS_YEAR",
+        "INSTITUTE",
+        "CLASS",
+        "LINE_NO",
+        "COURSE_TYPE",
+        "CANDIDATE_ID",
+        "QLF_CODE"
+      ],
+      "join_info": {
+        "column": "COUNTRY_CODE",
+        "join_table": "EMPONB_COUNTRY_MASTER",
+        "join_column": "COUNTRY_CODE"
+      }
+    }
+  ]
+}

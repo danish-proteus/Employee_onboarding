@@ -1,0 +1,152 @@
+{
+  "table_name": "EMPONB_ONBOARDING_SETTINGS",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "SETTINGS_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Single-record configuration identifier",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "KEY_VALIDITY_DAYS",
+      "data_type": "NUMBER",
+      "size": "5",
+      "key": false,
+      "description": "Number of days an access key remains valid",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "MAX_VALIDATION_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "Maximum PAN/Aadhaar/Bank validation attempts allowed",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "IOFLOW_BASE_URL",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Base URL of the IOFLOW integration service",
+      "sequence": 4,
+      "mandatory": true
+    },
+    {
+      "column_name": "IOFLOW_PAN_ENDPOINT",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Endpoint for PAN validation",
+      "sequence": 5,
+      "mandatory": true
+    },
+    {
+      "column_name": "IOFLOW_AADHAR_ENDPOINT",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Endpoint for Aadhaar validation",
+      "sequence": 6,
+      "mandatory": true
+    },
+    {
+      "column_name": "IOFLOW_BANK_ENDPOINT",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Endpoint for Bank validation",
+      "sequence": 7,
+      "mandatory": true
+    },
+    {
+      "column_name": "IOFLOW_EMPLOYEE_ENDPOINT",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Endpoint for Employee creation push",
+      "sequence": 8,
+      "mandatory": true
+    },
+    {
+      "column_name": "IOFLOW_AUTH_TOKEN",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Authorization token for IOFLOW API calls",
+      "sequence": 9,
+      "mandatory": true
+    },
+    {
+      "column_name": "HR_NOTIFY_EMAIL_TEMPLATE",
+      "data_type": "VARCHAR",
+      "size": "2000",
+      "key": false,
+      "description": "Email template used to notify the initiating HR user",
+      "sequence": 10
+    },
+    {
+      "column_name": "CANDIDATE_SUBMIT_EMAIL_TEMPLATE",
+      "data_type": "VARCHAR",
+      "size": "2000",
+      "key": false,
+      "description": "Email template emailed to the candidate on submission",
+      "sequence": 11
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 12
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 13
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal that created the record",
+      "sequence": 14
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record last-changed timestamp",
+      "sequence": 15
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last changed the record",
+      "sequence": 16
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal that last changed the record",
+      "sequence": 17
+    }
+  ]
+}

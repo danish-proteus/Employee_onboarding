@@ -1,0 +1,19 @@
+{
+  "object_name": "emponb_country_master",
+  "tables": {
+    "EMPONB_COUNTRY_MASTER": [
+      "ADD_TERM",
+      "ADD_DATE",
+      "CURRENCY_CODE",
+      "COUNTRY_CODE",
+      "CHG_TERM",
+      "CHG_DATE",
+      "ACTIVE_FLAG",
+      "ADD_USER",
+      "COUNTRY_NAME",
+      "CHG_USER",
+      "ISO_CODE",
+      "DIAL_CODE"
+    ]
+  }
+}

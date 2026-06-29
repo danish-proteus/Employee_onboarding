@@ -1,0 +1,19 @@
+{
+  "id": "d9abf6e0-c8d8-485f-b0ee-bfebc2921242",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "unable to find button on 'Candidate Onboarding Record'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "unable to find button on 'Candidate Onboarding Record'",
+  "created_at": 1782548926.784152,
+  "updated_at": 1782548968.6079378,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "unable to find button on 'Candidate Onboarding Record'",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "6e1f07b6-60a1-437d-ab70-e824459b6dd0"
+  },
+  "depends_on": []
+}

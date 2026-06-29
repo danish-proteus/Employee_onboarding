@@ -1,0 +1,137 @@
+{
+  "table_name": "EMPONB_QUALIFICATION_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "QLF_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique qualification code",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "QLF_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Descriptive name of the qualification",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "QLF_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Type of qualification",
+      "sequence": 3,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Academic",
+          "label": "Academic"
+        },
+        {
+          "value": "Professional",
+          "label": "Professional"
+        },
+        {
+          "value": "Certification",
+          "label": "Certification"
+        }
+      ]
+    },
+    {
+      "column_name": "COURSE_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Mode of the course",
+      "sequence": 4,
+      "allowed_values": [
+        {
+          "value": "Full-time",
+          "label": "Full-time"
+        },
+        {
+          "value": "Part-time",
+          "label": "Part-time"
+        },
+        {
+          "value": "Distance",
+          "label": "Distance"
+        }
+      ]
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Active status flag",
+      "sequence": 5,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 6
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 7
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP where the record was created",
+      "sequence": 8
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record last-change timestamp",
+      "sequence": 9
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last changed the record",
+      "sequence": 10
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal/IP where the record was last changed",
+      "sequence": 11
+    }
+  ]
+}

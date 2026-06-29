@@ -1,0 +1,7 @@
+=== preview run 20260627-133723-3fe5dd ===
+kind=visual action=render user=7014e11e-1c26-4e50-b546-2c38c876bee0
+started=2026-06-27T13:37:23
+project=Employee_onboarding
+obj=emponb_onboarding_tracker
+  • visual emponb_onboarding_tracker: needs input missing=STATUS,INITIATED_BY,DESIGNATION
+finished=2026-06-27T13:37:23 status=OK

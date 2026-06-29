@@ -1,0 +1,28 @@
+{
+  "table_name": "EMPONB_ORG_SETUP_MASTER",
+  "objects": [
+    {
+      "object_name": "emponb_org_setup_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "ADD_TERM",
+        "PAY_SITE_NAME",
+        "ADD_DATE",
+        "PAY_SITE",
+        "HOL_TBLNO",
+        "CHG_TERM",
+        "CHG_DATE",
+        "ACTIVE_FLAG",
+        "ADD_USER",
+        "HOL_TBL_NAME",
+        "EMP_SITE",
+        "SHIFT_NAME",
+        "SHIFT_TIMINGS",
+        "CHG_USER",
+        "WORK_SHIFT",
+        "SITE_NAME"
+      ]
+    }
+  ]
+}

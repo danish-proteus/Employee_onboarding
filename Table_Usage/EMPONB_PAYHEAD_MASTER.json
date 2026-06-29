@@ -1,0 +1,38 @@
+{
+  "table_name": "EMPONB_PAYHEAD_MASTER",
+  "objects": [
+    {
+      "object_name": "emponb_payhead_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "RES_FORMULA",
+        "DEFAULT_FREQUENCY",
+        "ADD_TERM",
+        "ADD_DATE",
+        "CHG_TERM",
+        "AD_CODE",
+        "CHG_DATE",
+        "ACTIVE_FLAG",
+        "APPL_MODE",
+        "ADD_USER",
+        "AMOUNT_TYPE",
+        "AD_NAME",
+        "CHG_USER"
+      ]
+    },
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "5",
+      "usage_type": "M",
+      "referred_columns": [
+        "AD_CODE"
+      ],
+      "join_info": {
+        "column": "AD_CODE",
+        "join_table": "EMPONB_CAND_PAY",
+        "join_column": "AD_CODE"
+      }
+    }
+  ]
+}

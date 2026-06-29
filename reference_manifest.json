@@ -1,0 +1,467 @@
+{
+  "project_name": "Employee Onboarding",
+  "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
+  "generated_at": "2026-06-27T09:29:26.685261+00:00",
+  "owner_user_id": "",
+  "navigation_summary": [
+    {
+      "obj_name": "emponb_country_master",
+      "obj_type": "T",
+      "title": "Country Master",
+      "description": "Maintain countries used for nationality, address and detail-line country codes."
+    },
+    {
+      "obj_name": "emponb_designation_dept_master",
+      "obj_type": "T",
+      "title": "Designation & Department Master",
+      "description": "Maintain designations, departments, grades, cadres and design codes used by HR."
+    },
+    {
+      "obj_name": "emponb_org_setup_master",
+      "obj_type": "T",
+      "title": "Organisation Setup Master",
+      "description": "Maintain employment site, payroll site, work shift and holiday table values used at confirmation."
+    },
+    {
+      "obj_name": "emponb_payhead_master",
+      "obj_type": "T",
+      "title": "Allowance / Deduction (Pay Head) Master",
+      "description": "Maintain pay heads referenced by the candidate pay structure (AD_CODE)."
+    },
+    {
+      "obj_name": "emponb_qualification_master",
+      "obj_type": "T",
+      "title": "Qualification Master",
+      "description": "Maintain qualification codes/types used in candidate education detail."
+    },
+    {
+      "obj_name": "emponb_demographic_master",
+      "obj_type": "T",
+      "title": "Demographic Reference Master",
+      "description": "Maintain lookup values for Religion, Caste, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Rel"
+    },
+    {
+      "obj_name": "emponb_onboarding_settings",
+      "obj_type": "T",
+      "title": "Onboarding Settings",
+      "description": "Single-record configuration governing access-key life, retry limits and IOFLOW connectivity."
+    },
+    {
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "title": "Candidate Onboarding Record",
+      "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
+    },
+    {
+      "obj_name": "emponb_pipeline_by_status",
+      "obj_type": "V",
+      "title": "Onboarding Pipeline by Status",
+      "description": "Count of candidates per STATUS per period."
+    },
+    {
+      "obj_name": "emponb_status_distribution",
+      "obj_type": "V",
+      "title": "Candidate Status Distribution",
+      "description": "STATUS vs candidate count."
+    },
+    {
+      "obj_name": "emponb_onboarding_tracker",
+      "obj_type": "V",
+      "title": "Onboarding Tracker",
+      "description": "Candidate-wise current status with hyperlink to the record."
+    },
+    {
+      "obj_name": "emponb_expired_pending_links",
+      "obj_type": "V",
+      "title": "Expired / Pending Links",
+      "description": "Links awaiting candidate action with expiry highlighting."
+    },
+    {
+      "obj_name": "emponb_validation_outcome",
+      "obj_type": "V",
+      "title": "Validation Outcome Summary",
+      "description": "PAN/AADHAR/BANK validated vs failed vs attempts-exhausted."
+    },
+    {
+      "obj_name": "emponb_onboarding_aging",
+      "obj_type": "V",
+      "title": "Onboarding Aging",
+      "description": "Average days in each status / candidate-wise aging buckets."
+    },
+    {
+      "obj_name": "emponb_candidate_data_sheet",
+      "obj_type": "R",
+      "title": "Candidate Profile Data Sheet",
+      "description": "Pixel-perfect printable consolidation of a candidate for the personnel file."
+    },
+    {
+      "obj_name": "emponb_hr_dashboard",
+      "obj_type": "D",
+      "title": "HR Onboarding Dashboard",
+      "description": "Consolidated onboarding metrics and visuals for HR / Onboarding Coordinator."
+    },
+    {
+      "obj_name": "emponb_onboarding_portal",
+      "obj_type": "X",
+      "title": "Candidate Onboarding Portal",
+      "description": "Public anonymous external site hosting the key-validated candidate onboarding form."
+    },
+    {
+      "obj_name": "emponb_site_header",
+      "obj_type": "S",
+      "title": "Header",
+      "description": "Shared site header rendered on every portal page."
+    },
+    {
+      "obj_name": "emponb_site_footer",
+      "obj_type": "S",
+      "title": "Footer",
+      "description": "Shared site footer rendered on every portal page."
+    },
+    {
+      "obj_name": "emponb_candidate_form",
+      "obj_type": "S",
+      "title": "Candidate Onboarding Form",
+      "description": "Public, key-validated intake form the candidate opens from the emailed link."
+    },
+    {
+      "obj_name": "emponb_confirmation_page",
+      "obj_type": "S",
+      "title": "Onboarding Confirmation",
+      "description": "Thank-you page shown to the candidate after Submit."
+    },
+    {
+      "obj_name": "emponb_invalid_link_page",
+      "obj_type": "S",
+      "title": "Invalid / Expired Link",
+      "description": "Page explaining the onboarding link is no longer valid."
+    }
+  ],
+  "tables": [
+    {
+      "table_name": "EMPONB_CANDIDATE_RECORD",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR"
+      ],
+      "other_columns": [
+        "CANDIDATE_NAME VARCHAR",
+        "GENDER CHAR",
+        "COUNTRY_CODE CHAR",
+        "DESIGN_CODE CHAR",
+        "EMAIL_ID VARCHAR",
+        "STATUS VARCHAR",
+        "STATUS_DATE DATETIME",
+        "INITIATED_BY CHAR",
+        "INITIATED_ON DATETIME",
+        "ACCESS_KEY VARCHAR",
+        "KEY_GENERATED_ON DATETIME",
+        "KEY_EXPIRY_DATETIME DATETIME",
+        "KEY_VALID_FLAG CHAR",
+        "FORM_URL VARCHAR",
+        "LINK_SENT_ON DATETIME",
+        "LINK_ACCESSED_ON DATETIME",
+        "SUBMITTED_ON DATETIME",
+        "NAME_PREFIX CHAR",
+        "EMP_FNAME VARCHAR",
+        "EMP_MNAME VARCHAR",
+        "EMP_LNAME VARCHAR",
+        "BIRTHDATE DATE",
+        "NATIONALITY VARCHAR",
+        "MARITAL_STATUS VARCHAR",
+        "MARRIAGE_ANNIVERSARY DATE",
+        "BLOOD_GROUP VARCHAR",
+        "RELIGION VARCHAR",
+        "CAST_CATEGORY VARCHAR",
+        "MOTHER_TONGUE VARCHAR",
+        "PHYSICAL_HANDICAP CHAR",
+        "HOBBY1 VARCHAR",
+        "HOBBY2 VARCHAR",
+        "TOTAL_EXPERIENCE NUMBER",
+        "CURRENT_ADDRESS VARCHAR",
+        "CURRENT_PIN CHAR",
+        "CURRENT_CITY VARCHAR",
+        "CURRENT_STATE VARCHAR",
+        "PERMANENT_ADDRESS VARCHAR",
+        "PERMANENT_PIN CHAR",
+        "PERMANENT_CITY VARCHAR",
+        "PERMANENT_STATE VARCHAR",
+        "MOBILE CHAR",
+        "ALTERNATE_TELEPHONE VARCHAR",
+        "CONTACT_PERSON VARCHAR",
+        "CONTACT_PERSON_MOBILE CHAR",
+        "CONTACT_PERSON_EMAIL VARCHAR",
+        "PAN_NO CHAR",
+        "AADHAR_NO CHAR",
+        "PASSPORT_NO VARCHAR",
+        "DRIVING_LIC_NO VARCHAR",
+        "PF_NO VARCHAR",
+        "ESIC_NO VARCHAR",
+        "BANK_ACCOUNT_NO VARCHAR",
+        "BANK_IFSC_CODE CHAR",
+        "BANK_NAME VARCHAR",
+        "PAN_VALIDATED CHAR",
+        "PAN_VALIDATED_NAME VARCHAR",
+        "PAN_ATTEMPTS NUMBER",
+        "AADHAR_VALIDATED CHAR",
+        "AADHAR_VALIDATED_NAME VARCHAR",
+        "AADHAR_ATTEMPTS NUMBER",
+        "BANK_VALIDATED CHAR",
+        "BANK_VALIDATED_NAME VARCHAR",
+        "BANK_ATTEMPTS NUMBER",
+        "PAN_DOC VARCHAR",
+        "AADHAR_DOC VARCHAR",
+        "BANK_DOC VARCHAR",
+        "EMP_CODE CHAR",
+        "DESIGNATION VARCHAR",
+        "DEPT_CODE CHAR",
+        "GRADE CHAR",
+        "CADRE CHAR",
+        "FIN_DESIGN_CODE CHAR",
+        "REPORT_TO VARCHAR",
+        "JOINED_AS VARCHAR",
+        "DATE_JOIN DATE",
+        "WORK_SHIFT CHAR",
+        "HOL_TBLNO CHAR",
+        "EMP_SITE CHAR",
+        "PAY_SITE CHAR",
+        "BASIC NUMBER",
+        "GROSS NUMBER",
+        "PROBATION_DATE DATE",
+        "PROBATION_PRD NUMBER",
+        "NOTICE_PRD NUMBER",
+        "EMAIL_ID_OFF VARCHAR",
+        "REPORT_TO__ADMIN VARCHAR",
+        "USER_ID CHAR",
+        "REMARKS VARCHAR",
+        "EMPLOYEE_PUSHED_FLAG CHAR",
+        "EMPLOYEE_PUSH_REF VARCHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_EDUCATION",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "QLF_CODE CHAR",
+        "QLF_TYPE VARCHAR",
+        "INSTITUTE VARCHAR",
+        "PASS_YEAR NUMBER",
+        "CLASS VARCHAR",
+        "PERCENTAGE NUMBER",
+        "COUNTRY_CODE CHAR",
+        "COURSE_TYPE VARCHAR",
+        "COURSE_DURATION VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_EXPERIENCE",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "ORGANISATION VARCHAR",
+        "DESIGNATION VARCHAR",
+        "FROM_DATE DATE",
+        "TO_DATE DATE",
+        "GROSS_AMT NUMBER",
+        "CURRENCY_CODE CHAR",
+        "COUNTRY_CODE CHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_FAMILY",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "MEMBER_NAME VARCHAR",
+        "DATE_BIRTH DATE",
+        "GENDER CHAR",
+        "RELATION CHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_PAY",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "AD_CODE CHAR",
+        "AMOUNT NUMBER",
+        "AMOUNT_TYPE VARCHAR",
+        "FREQUENCY VARCHAR",
+        "RES_FORMULA VARCHAR",
+        "AMOUNT_CALC NUMBER",
+        "UPD_PAYSTRU CHAR",
+        "APPL_MODE VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_COUNTRY_MASTER",
+      "description": "",
+      "key_columns": [
+        "COUNTRY_CODE CHAR"
+      ],
+      "other_columns": [
+        "COUNTRY_NAME VARCHAR",
+        "ISO_CODE CHAR",
+        "DIAL_CODE CHAR",
+        "CURRENCY_CODE CHAR",
+        "ACTIVE_FLAG CHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_DEMOGRAPHIC_MASTER",
+      "description": "",
+      "key_columns": [
+        "LOOKUP_TYPE VARCHAR",
+        "LOOKUP_CODE CHAR"
+      ],
+      "other_columns": [
+        "LOOKUP_DESC VARCHAR",
+        "ACTIVE_FLAG CHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_DESIG_DEPT_MASTER",
+      "description": "",
+      "key_columns": [
+        "DESIGN_CODE CHAR"
+      ],
+      "other_columns": [
+        "DESIGNATION_NAME VARCHAR",
+        "DEPT_CODE CHAR",
+        "DEPT_NAME VARCHAR",
+        "GRADE CHAR",
+        "GRADE_NAME VARCHAR",
+        "CADRE CHAR",
+        "CADRE_NAME VARCHAR",
+        "JOINED_AS VARCHAR",
+        "ACTIVE_FLAG CHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_ONBOARDING_SETTINGS",
+      "description": "",
+      "key_columns": [
+        "SETTINGS_ID CHAR"
+      ],
+      "other_columns": [
+        "KEY_VALIDITY_DAYS NUMBER",
+        "MAX_VALIDATION_ATTEMPTS NUMBER",
+        "IOFLOW_BASE_URL VARCHAR",
+        "IOFLOW_PAN_ENDPOINT VARCHAR",
+        "IOFLOW_AADHAR_ENDPOINT VARCHAR",
+        "IOFLOW_BANK_ENDPOINT VARCHAR",
+        "IOFLOW_EMPLOYEE_ENDPOINT VARCHAR",
+        "IOFLOW_AUTH_TOKEN VARCHAR",
+        "HR_NOTIFY_EMAIL_TEMPLATE VARCHAR",
+        "CANDIDATE_SUBMIT_EMAIL_TEMPLATE VARCHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_ORG_SETUP_MASTER",
+      "description": "",
+      "key_columns": [
+        "EMP_SITE CHAR"
+      ],
+      "other_columns": [
+        "SITE_NAME VARCHAR",
+        "PAY_SITE CHAR",
+        "PAY_SITE_NAME VARCHAR",
+        "WORK_SHIFT CHAR",
+        "SHIFT_NAME VARCHAR",
+        "SHIFT_TIMINGS VARCHAR",
+        "HOL_TBLNO CHAR",
+        "HOL_TBL_NAME VARCHAR",
+        "ACTIVE_FLAG CHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_PAYHEAD_MASTER",
+      "description": "",
+      "key_columns": [
+        "AD_CODE CHAR"
+      ],
+      "other_columns": [
+        "AD_NAME VARCHAR",
+        "AMOUNT_TYPE VARCHAR",
+        "DEFAULT_FREQUENCY VARCHAR",
+        "APPL_MODE VARCHAR",
+        "RES_FORMULA VARCHAR",
+        "ACTIVE_FLAG CHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_QUALIFICATION_MASTER",
+      "description": "",
+      "key_columns": [
+        "QLF_CODE CHAR"
+      ],
+      "other_columns": [
+        "QLF_NAME VARCHAR",
+        "QLF_TYPE VARCHAR",
+        "COURSE_TYPE VARCHAR",
+        "ACTIVE_FLAG CHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    }
+  ]
+}

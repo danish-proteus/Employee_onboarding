@@ -1,0 +1,135 @@
+{
+  "page": {
+    "obj_name": "emponb_site_footer",
+    "title": "Site Footer",
+    "kind": "external",
+    "pageMode": "web",
+    "pageSchemaVersion": 2,
+    "inputs": [],
+    "actions": [],
+    "sections": [
+      {
+        "id": "sec_footer",
+        "name": "Footer",
+        "tag": "footer",
+        "blocks": [
+          {
+            "id": "cols_footer",
+            "type": "columns",
+            "count": 3,
+            "gap": 32,
+            "align": "top",
+            "columns": [
+              {
+                "id": "col_brand",
+                "blocks": [
+                  {
+                    "id": "h_brand",
+                    "type": "heading",
+                    "level": 3,
+                    "text": "Employee Onboarding"
+                  },
+                  {
+                    "id": "p_brand",
+                    "type": "paragraph",
+                    "text": "Your secure portal for completing employee onboarding. Please complete your details using the personalised link sent to your email."
+                  }
+                ]
+              },
+              {
+                "id": "col_links",
+                "blocks": [
+                  {
+                    "id": "h_links",
+                    "type": "heading",
+                    "level": 3,
+                    "text": "Information"
+                  },
+                  {
+                    "id": "nav_footer",
+                    "type": "nav_menu",
+                    "source": "site",
+                    "align": "left",
+                    "includeHome": false,
+                    "root": "Default Footer"
+                  },
+                  {
+                    "id": "bg_legal",
+                    "type": "button_group",
+                    "align": "left",
+                    "gap": 8,
+                    "buttons": [
+                      {
+                        "id": "btn_privacy",
+                        "label": "Privacy",
+                        "variant": "link",
+                        "on_click": { "kind": "external_url", "url": "/privacy", "newTab": false }
+                      },
+                      {
+                        "id": "btn_terms",
+                        "label": "Terms",
+                        "variant": "link",
+                        "on_click": { "kind": "external_url", "url": "/terms", "newTab": false }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "col_contact",
+                "blocks": [
+                  {
+                    "id": "h_contact",
+                    "type": "heading",
+                    "level": 3,
+                    "text": "Need help?"
+                  },
+                  {
+                    "id": "p_contact",
+                    "type": "paragraph",
+                    "text": "For assistance with your onboarding, contact our HR team:"
+                  },
+                  {
+                    "id": "bg_contact",
+                    "type": "button_group",
+                    "align": "left",
+                    "gap": 8,
+                    "buttons": [
+                      {
+                        "id": "btn_email",
+                        "label": "hr@proteusvision.com",
+                        "variant": "outline",
+                        "on_click": { "kind": "external_url", "url": "mailto:hr@proteusvision.com", "newTab": false }
+                      },
+                      {
+                        "id": "btn_phone",
+                        "label": "+91 22 1234 5678",
+                        "variant": "ghost",
+                        "on_click": { "kind": "external_url", "url": "tel:+912212345678", "newTab": false }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "div_footer",
+            "type": "divider"
+          },
+          {
+            "id": "p_privacy_note",
+            "type": "paragraph",
+            "text": "Data-use note: The information you provide is collected solely for the purpose of your employment onboarding and is processed in accordance with our privacy policy. We do not share your personal data with third parties except as required to complete your onboarding."
+          },
+          {
+            "id": "p_copyright",
+            "type": "paragraph",
+            "text": "© 2026 Proteus Technologies. All rights reserved. Employee Onboarding Portal."
+          }
+        ]
+      }
+    ],
+    "blocks": []
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "DASHBOARD": {
+    "DASHBOARD_ID": "EMPONB_HR_DASHBOARD",
+    "DASHBOARD_TYPE": "S",
+    "DASHBOARD_NAME": "HR Onboarding Dashboard",
+    "DASHBOARD_DESCR": "Consolidated onboarding metrics and visuals for HR / Onboarding Coordinator.",
+    "CREATED_BY": "kandarp.baghar@proteustech.co",
+    "CREATED_DATE": "2026-06-27",
+    "REFRESH_INTERVAL_SECONDS": 0,
+
+    "GLOBAL_CRITERIA": [
+      {
+        "PARAM_NAME": "from_date",
+        "PROMPT_LABEL": "From Date (Initiated On)",
+        "DEFAULT_VALUE": "2026-06-01",
+        "DATA_TYPE": "date",
+        "OPERATOR": ">=",
+        "BROADCAST_TO": [
+          "VIS_001", "VIS_002", "VIS_003", "VIS_004", "VIS_005",
+          "VIS_PIPELINE", "VIS_DISTRIBUTION", "VIS_TRACKER",
+          "VIS_VALIDATION", "VIS_AGING"
+        ]
+      },
+      {
+        "PARAM_NAME": "to_date",
+        "PROMPT_LABEL": "To Date (Initiated On)",
+        "DEFAULT_VALUE": "2026-06-30",
+        "DATA_TYPE": "date",
+        "OPERATOR": "<=",
+        "BROADCAST_TO": [
+          "VIS_001", "VIS_002", "VIS_003", "VIS_004", "VIS_005",
+          "VIS_PIPELINE", "VIS_DISTRIBUTION", "VIS_TRACKER",
+          "VIS_VALIDATION", "VIS_AGING"
+        ]
+      },
+      {
+        "PARAM_NAME": "design_code",
+        "PROMPT_LABEL": "Designation",
+        "DEFAULT_VALUE": "",
+        "DATA_TYPE": "string",
+        "OPERATOR": "=",
+        "BROADCAST_TO": [
+          "VIS_001", "VIS_002", "VIS_003", "VIS_004", "VIS_005",
+          "VIS_PIPELINE", "VIS_TRACKER"
+        ]
+      },
+      {
+        "PARAM_NAME": "initiated_by",
+        "PROMPT_LABEL": "Initiated By",
+        "DEFAULT_VALUE": "kandarp.baghar@proteustech.co",
+        "DATA_TYPE": "string",
+        "OPERATOR": "=",
+        "BROADCAST_TO": [
+          "VIS_001", "VIS_002", "VIS_003", "VIS_004", "VIS_005",
+          "VIS_PIPELINE", "VIS_DISTRIBUTION", "VIS_TRACKER",
+          "VIS_VALIDATION", "VIS_AGING"
+        ]
+      },
+      {
+        "PARAM_NAME": "status",
+        "PROMPT_LABEL": "Status",
+        "DEFAULT_VALUE": "",
+        "DATA_TYPE": "string",
+        "OPERATOR": "=",
+        "BROADCAST_TO": [
+          "VIS_001", "VIS_002", "VIS_003", "VIS_004", "VIS_005",
+          "VIS_TRACKER", "VIS_AGING"
+        ]
+      }
+    ],
+
+    "VISUALS": [
+      {
+        "VISUAL_ID": "VIS_001",
+        "VISUAL_NAME": "Total Candidates Initiated",
+        "POSITION": { "X": 0, "Y": 0, "WIDTH": 3, "HEIGHT": 2 },
+        "VISUAL_CONFIG_REF": "model_emponb_pipeline_by_status.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "design_code", "BIND_TYPE": "global", "GLOBAL_PARAM": "design_code" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "global", "GLOBAL_PARAM": "status" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_002",
+        "VISUAL_NAME": "Links Pending Action",
+        "POSITION": { "X": 3, "Y": 0, "WIDTH": 3, "HEIGHT": 2 },
+        "VISUAL_CONFIG_REF": "model_emponb_expired_pending_links.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "constant", "CONSTANT_VALUE": "Link Generated" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_003",
+        "VISUAL_NAME": "Data Submitted (Awaiting Review)",
+        "POSITION": { "X": 6, "Y": 0, "WIDTH": 3, "HEIGHT": 2 },
+        "VISUAL_CONFIG_REF": "model_emponb_status_distribution.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "constant", "CONSTANT_VALUE": "DataSubmitted" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_004",
+        "VISUAL_NAME": "Confirmed This Period",
+        "POSITION": { "X": 9, "Y": 0, "WIDTH": 3, "HEIGHT": 2 },
+        "VISUAL_CONFIG_REF": "model_emponb_status_distribution.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "constant", "CONSTANT_VALUE": "Confirmed" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_005",
+        "VISUAL_NAME": "Expired Links",
+        "POSITION": { "X": 0, "Y": 2, "WIDTH": 3, "HEIGHT": 2 },
+        "VISUAL_CONFIG_REF": "model_emponb_expired_pending_links.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_PIPELINE",
+        "VISUAL_NAME": "Onboarding Pipeline by Status",
+        "POSITION": { "X": 3, "Y": 2, "WIDTH": 9, "HEIGHT": 4 },
+        "VISUAL_CONFIG_REF": "model_emponb_pipeline_by_status.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "design_code", "BIND_TYPE": "global", "GLOBAL_PARAM": "design_code" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "global", "GLOBAL_PARAM": "status" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_DISTRIBUTION",
+        "VISUAL_NAME": "Candidate Status Distribution",
+        "POSITION": { "X": 0, "Y": 6, "WIDTH": 6, "HEIGHT": 4 },
+        "VISUAL_CONFIG_REF": "model_emponb_status_distribution.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_VALIDATION",
+        "VISUAL_NAME": "Validation Outcome Summary",
+        "POSITION": { "X": 6, "Y": 6, "WIDTH": 6, "HEIGHT": 4 },
+        "VISUAL_CONFIG_REF": "model_emponb_validation_outcome.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_AGING",
+        "VISUAL_NAME": "Onboarding Aging",
+        "POSITION": { "X": 0, "Y": 10, "WIDTH": 12, "HEIGHT": 4 },
+        "VISUAL_CONFIG_REF": "model_emponb_onboarding_aging.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "global", "GLOBAL_PARAM": "status" }
+        ]
+      },
+      {
+        "VISUAL_ID": "VIS_TRACKER",
+        "VISUAL_NAME": "Onboarding Tracker",
+        "POSITION": { "X": 0, "Y": 14, "WIDTH": 12, "HEIGHT": 6 },
+        "VISUAL_CONFIG_REF": "model_emponb_onboarding_tracker.json",
+        "CRITERIA_BINDINGS": [
+          { "VISUAL_PARAM": "from_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "from_date" },
+          { "VISUAL_PARAM": "to_date", "BIND_TYPE": "global", "GLOBAL_PARAM": "to_date" },
+          { "VISUAL_PARAM": "design_code", "BIND_TYPE": "global", "GLOBAL_PARAM": "design_code" },
+          { "VISUAL_PARAM": "initiated_by", "BIND_TYPE": "global", "GLOBAL_PARAM": "initiated_by" },
+          { "VISUAL_PARAM": "status", "BIND_TYPE": "global", "GLOBAL_PARAM": "status" }
+        ]
+      }
+    ],
+
+    "DRILL_THROUGH": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "dd7fc9bf-f29c-4cc6-9923-8ab751b56d49",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "guide what option should I start with",
+  "kind": "modify",
+  "status": "completed",
+  "description": "guide what option should I start with",
+  "created_at": 1782547587.8436437,
+  "updated_at": 1782547604.9538376,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "guide what option should I start with",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "11fab216-afef-4d4d-8985-e94dc223424c"
+  },
+  "depends_on": []
+}

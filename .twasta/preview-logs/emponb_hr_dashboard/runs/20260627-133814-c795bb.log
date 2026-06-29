@@ -1,0 +1,37 @@
+=== preview run 20260627-133814-c795bb ===
+kind=dashboard action=render user=7014e11e-1c26-4e50-b546-2c38c876bee0
+started=2026-06-27T13:38:14
+project=Employee_onboarding
+obj=emponb_hr_dashboard
+  • visual emponb_pipeline_by_status: needs input missing=DESIGN_CODE,COUNTRY_CODE
+  ┌─ SOURCE SQL — emponb_expired_pending_links
+      SELECT candidate_name AS CANDIDATE_NAME, email_id AS EMAIL_ID, link_sent_on AS LINK_SENT_ON, key_expiry_datetime AS KEY_EXPIRY_DATETIME, (CURRENT_DATE - link_sent_on::date) AS DAYS_PENDING, status AS STATUS, CASE WHEN key_expiry_datetime < NOW() THEN 'EXPIRED' ELSE 'ACTIVE' END AS EXPIRY_FLAG FROM emponb_candidate_record WHERE status IN ('Link Generated', 'Link Accessed') ORDER BY key_expiry_datetime
+  └─
+  • visual emponb_expired_pending_links: 0 row(s)
+  ┌─ SOURCE SQL — emponb_status_distribution
+      SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN :calendar_month_start AND :calendar_today GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC
+  └─
+  • tile emponb_status_distribution failed error=Query failed: A value is required for bind parameter 'calendar_month_start' (Background on this error at: https://sqlal…
+  ┌─ SOURCE SQL — emponb_status_distribution
+      SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN :calendar_month_start AND :calendar_today GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC
+  └─
+  • tile emponb_status_distribution failed error=Query failed: A value is required for bind parameter 'calendar_month_start' (Background on this error at: https://sqlal…
+  ┌─ SOURCE SQL — emponb_expired_pending_links
+      SELECT candidate_name AS CANDIDATE_NAME, email_id AS EMAIL_ID, link_sent_on AS LINK_SENT_ON, key_expiry_datetime AS KEY_EXPIRY_DATETIME, (CURRENT_DATE - link_sent_on::date) AS DAYS_PENDING, status AS STATUS, CASE WHEN key_expiry_datetime < NOW() THEN 'EXPIRED' ELSE 'ACTIVE' END AS EXPIRY_FLAG FROM emponb_candidate_record WHERE status IN ('Link Generated', 'Link Accessed') ORDER BY key_expiry_datetime
+  └─
+  • visual emponb_expired_pending_links: 0 row(s)
+  • visual emponb_pipeline_by_status: needs input missing=DESIGN_CODE,COUNTRY_CODE
+  ┌─ SOURCE SQL — emponb_status_distribution
+      SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN :calendar_month_start AND :calendar_today GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC
+  └─
+  • tile emponb_status_distribution failed error=Query failed: A value is required for bind parameter 'calendar_month_start' (Background on this error at: https://sqlal…
+  ┌─ SOURCE SQL — emponb_validation_outcome
+      SELECT 'PAN' AS DOC_TYPE, COUNT(*) FILTER (WHERE PAN_VALIDATED = 'Y') AS VALIDATED_COUNT, COUNT(*) FILTER (WHERE COALESCE(PAN_VALIDATED,'N') = 'N' AND COALESCE(PAN_ATTEMPTS,0) > 0 AND COALESCE(PAN_ATTEMPTS,0) < 3) AS FAILED_COUNT, COUNT(*) FILTER (WHERE COALESCE(PAN_VALIDATED,'N') = 'N' AND COALESCE(PAN_ATTEMPTS,0) >= 3) AS EXHAUSTED_COUNT FROM EMPONB_CANDIDATE_RECORD UNION ALL SELECT 'AADHAR' AS DOC_TYPE, COUNT(*) FILTER (WHERE AADHAR_VALIDATED = 'Y') AS VALIDATED_COUNT, COUNT(*) FILTER (WHERE COALESCE(AADHAR_VALIDATED,'N') = 'N' AND COALESCE(AADHAR_ATTEMPTS,0) > 0 AND COALESCE(AADHAR_ATTEMPTS,0) < 3) AS FAILED_COUNT, COUNT(*) FILTER (WHERE COALESCE(AADHAR_VALIDATED,'N') = 'N' AND COALESCE(AADHAR_ATTEMPTS,0) >= 3) AS EXHAUSTED_COUNT FROM EMPONB_CANDIDATE_RECORD UNION ALL SELECT 'BANK' AS DOC_TYPE, COUNT(*) FILTER (WHERE BANK_VALIDATED = 'Y') AS VALIDATED_COUNT, COUNT(*) FILTER (WHERE COALESCE(BANK_VALIDATED,'N') = 'N' AND COALESCE(BANK_ATTEMPTS,0) > 0 AND COALESCE(BANK_ATTEMPTS,0) < 3) AS FAILED_COUNT, COUNT(*) FILTER (WHERE COALESCE(BANK_VALIDATED,'N') = 'N' AND COALESCE(BANK_ATTEMPTS,0) >= 3) AS EXHAUSTED_COUNT FROM EMPONB_CANDIDATE_RECORD
+  └─
+  • visual emponb_validation_outcome: 3 row(s)
+  ┌─ SOURCE SQL — emponb_onboarding_aging
+      SELECT EMPONB_CANDIDATE_RECORD.STATUS AS EMPONB_CANDIDATE_RECORD_STATUS, AVG((EMPONB_CANDIDATE_RECORD.STATUS_DATE::date - EMPONB_CANDIDATE_RECORD.INITIATED_ON::date)) AS AVG_DAYS_IN_STATUS FROM EMPONB_CANDIDATE_RECORD WHERE EMPONB_CANDIDATE_RECORD.STATUS_DATE IS NOT NULL AND EMPONB_CANDIDATE_RECORD.INITIATED_ON IS NOT NULL GROUP BY EMPONB_CANDIDATE_RECORD.STATUS ORDER BY AVG_DAYS_IN_STATUS DESC
+  └─
+  • visual emponb_onboarding_aging: 0 row(s)
+  • visual emponb_onboarding_tracker: needs input missing=STATUS,DESIGNATION
+finished=2026-06-27T13:38:14 status=WARN

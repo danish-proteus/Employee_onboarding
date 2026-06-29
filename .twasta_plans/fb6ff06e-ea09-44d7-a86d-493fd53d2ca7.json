@@ -1,0 +1,19 @@
+{
+  "id": "fb6ff06e-ea09-44d7-a86d-493fd53d2ca7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "inside (\u22ee) have only 'Audit Trail' and 'Delete'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "inside (\u22ee) have only 'Audit Trail' and 'Delete'",
+  "created_at": 1782549189.362213,
+  "updated_at": 1782549239.2488632,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "inside (\u22ee) have only 'Audit Trail' and 'Delete'",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "faa487ed-fa76-49b2-9558-06cc3487f9c4"
+  },
+  "depends_on": []
+}

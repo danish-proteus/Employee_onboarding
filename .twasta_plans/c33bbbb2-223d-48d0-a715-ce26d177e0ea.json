@@ -1,0 +1,19 @@
+{
+  "id": "c33bbbb2-223d-48d0-a715-ce26d177e0ea",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "'Candidate Onboarding Record' still do not have action to send link to candidate",
+  "kind": "modify",
+  "status": "completed",
+  "description": "'Candidate Onboarding Record' still do not have action to send link to candidate",
+  "created_at": 1782697156.2364357,
+  "updated_at": 1782697217.5099618,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "'Candidate Onboarding Record' still do not have action to send link to candidate",
+  "resume_ref": {
+    "session_id": "4bda4205-ed70-41ac-9559-b207e8990196",
+    "claude_session_id": "1bf382c9-27c0-4a7e-996f-56e4acea90eb"
+  },
+  "depends_on": []
+}

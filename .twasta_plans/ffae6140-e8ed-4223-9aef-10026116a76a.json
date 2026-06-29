@@ -1,0 +1,19 @@
+{
+  "id": "ffae6140-e8ed-4223-9aef-10026116a76a",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Prepare sample data in all",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Prepare sample data in all",
+  "created_at": 1782547233.7199664,
+  "updated_at": 1782547531.673239,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Prepare sample data in all",
+  "resume_ref": {
+    "session_id": "55f1d2c8-54d3-4403-87b2-161971671427",
+    "claude_session_id": "d255398d-694f-430e-8f9d-28b3e16f0c18"
+  },
+  "depends_on": []
+}
