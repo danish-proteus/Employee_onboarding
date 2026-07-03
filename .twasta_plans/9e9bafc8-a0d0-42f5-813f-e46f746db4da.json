@@ -1,0 +1,19 @@
+{
+  "id": "9e9bafc8-a0d0-42f5-813f-e46f746db4da",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "its still not working",
+  "kind": "modify",
+  "status": "completed",
+  "description": "its still not working",
+  "created_at": 1782797585.4698648,
+  "updated_at": 1782797709.4043343,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "its still not working",
+  "resume_ref": {
+    "session_id": "674213f6-273f-4482-944c-b169eeaa70d3",
+    "claude_session_id": "99ea778e-69a5-4008-83d4-0f02e09dd8d9"
+  },
+  "depends_on": []
+}

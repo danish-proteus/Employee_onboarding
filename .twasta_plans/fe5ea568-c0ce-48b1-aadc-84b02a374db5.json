@@ -1,0 +1,19 @@
+{
+  "id": "fe5ea568-c0ce-48b1-aadc-84b02a374db5",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "'Submit button' is not need but HR person should be able to select that option a",
+  "kind": "modify",
+  "status": "completed",
+  "description": "'Submit button' is not need but HR person should be able to select that option a",
+  "created_at": 1782804136.5457807,
+  "updated_at": 1782804271.806506,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "'Submit button' is not need but HR person should be able to select that option at form level, if 'Link Not Generated'",
+  "resume_ref": {
+    "session_id": "c8f6358d-3ef9-45ad-846a-b9058d8f2c76",
+    "claude_session_id": "2188806c-ae91-4286-82e5-9931f467f705"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,18 @@
+{
+  "id": "3c0e3ef7-2748-4e75-99b0-fbf9361b91e5",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On this screen on change of country_code, it should set country_name",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On this screen on change of country_code, it should set country_name",
+  "created_at": 1782717823.333963,
+  "updated_at": 1782717823.572463,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On this screen on change of country_code, it should set country_name",
+  "resume_ref": {
+    "session_id": "2bd2c458-2ee8-4c42-84b9-f1363bf888b0"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "001a6a60-de1d-479d-ba5c-b89881beca1e",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Showing \"AttributeError: 'NoneType' object has no attribute 'rstrip' \"\n\nError",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Showing \"AttributeError: 'NoneType' object has no attribute 'rstrip' \"\n\nError",
+  "created_at": 1782796461.6688514,
+  "updated_at": 1782796486.2082589,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Showing \"AttributeError: 'NoneType' object has no attribute 'rstrip' \"\n\nError",
+  "resume_ref": {
+    "session_id": "674213f6-273f-4482-944c-b169eeaa70d3",
+    "claude_session_id": "a22c0278-e459-4e08-9751-20805c5be560"
+  },
+  "depends_on": []
+}

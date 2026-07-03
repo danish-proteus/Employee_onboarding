@@ -1,0 +1,19 @@
+{
+  "id": "627a24f0-27ac-4c19-8c4a-e4fe6a56bbf9",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Its showing 'Candidate id is required.' onclick of Send/Resend Link",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Its showing 'Candidate id is required.' onclick of Send/Resend Link",
+  "created_at": 1782964083.818173,
+  "updated_at": 1782964386.2066965,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Its showing 'Candidate id is required.' onclick of Send/Resend Link",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "31fe474d-d9be-497f-a6e9-ddf1b504b400"
+  },
+  "depends_on": []
+}

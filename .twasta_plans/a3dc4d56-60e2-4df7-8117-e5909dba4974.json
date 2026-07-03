@@ -1,0 +1,18 @@
+{
+  "id": "a3dc4d56-60e2-4df7-8117-e5909dba4974",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On this screen if we change design_code, is should set designation",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On this screen if we change design_code, is should set designation",
+  "created_at": 1782715408.6687875,
+  "updated_at": 1782715408.891098,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On this screen if we change design_code, is should set designation",
+  "resume_ref": {
+    "session_id": "816d011e-e16b-4625-96fe-fe929e0e4641"
+  },
+  "depends_on": []
+}

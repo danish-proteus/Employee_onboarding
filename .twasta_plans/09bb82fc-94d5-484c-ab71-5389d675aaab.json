@@ -1,0 +1,19 @@
+{
+  "id": "09bb82fc-94d5-484c-ab71-5389d675aaab",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On click of Send/Resend Link, invoke ioflow ioflow emponb_candidate_sendLink eve",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On click of Send/Resend Link, invoke ioflow ioflow emponb_candidate_sendLink eve",
+  "created_at": 1782915726.9862778,
+  "updated_at": 1782915945.2912936,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On click of Send/Resend Link, invoke ioflow ioflow emponb_candidate_sendLink event",
+  "resume_ref": {
+    "session_id": "572cc7a6-b733-4ba0-be3c-2e558a85486a",
+    "claude_session_id": "6da57579-3e29-4408-a8c6-74441eacf131"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "b0b7cd7c-aa7c-4c4d-af6e-60a105103955",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Also remove HR Onboarding Dashboard content",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Also remove HR Onboarding Dashboard content",
+  "created_at": 1782894345.3719745,
+  "updated_at": 1782894404.3578386,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Also remove HR Onboarding Dashboard content",
+  "resume_ref": {
+    "session_id": "4c41aba0-0a6f-4936-8900-096aeac35a1c",
+    "claude_session_id": "941bb93e-237d-4479-a39a-21d9d67c6bac"
+  },
+  "depends_on": []
+}

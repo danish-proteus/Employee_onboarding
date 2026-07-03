@@ -1,0 +1,19 @@
+{
+  "id": "ec11afce-0faf-458f-b264-a4c583f4d4b5",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "form_url still not functionaing properly url must be like 'http://dev.platform.t",
+  "kind": "modify",
+  "status": "completed",
+  "description": "form_url still not functionaing properly url must be like 'http://dev.platform.t",
+  "created_at": 1782974321.257109,
+  "updated_at": 1782974381.8937252,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "form_url still not functionaing properly url must be like 'http://dev.platform.twasta.ai:7077/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/onboarding' so if this get open, candidate must be able to feed rest of his pending information",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "af17fc7e-c036-4294-8cf2-568f824a9a16"
+  },
+  "depends_on": []
+}

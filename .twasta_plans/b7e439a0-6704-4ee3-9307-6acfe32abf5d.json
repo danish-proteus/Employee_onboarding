@@ -1,0 +1,19 @@
+{
+  "id": "b7e439a0-6704-4ee3-9307-6acfe32abf5d",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Implement 'Generate Key' action instead of 'submit' action. 'Generate Key' shoul",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Implement 'Generate Key' action instead of 'submit' action. 'Generate Key' shoul",
+  "created_at": 1782977362.3083928,
+  "updated_at": 1782977623.6147187,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Implement 'Generate Key' action instead of 'submit' action. 'Generate Key' should create new access_key update all relevant columns. 'Send/ResendKey' should only send the access_key, candidate_id and form_url to ioflow",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "6c44d1e1-b13e-4dda-b51b-e0cb765b6eac"
+  },
+  "depends_on": []
+}

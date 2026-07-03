@@ -1,0 +1,19 @@
+{
+  "id": "71d1ea97-4fa2-4f02-a156-0c1ce2e6cce5",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Couldnt find 'Deploy logic' on 'Candidate Onboarding Form'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Couldnt find 'Deploy logic' on 'Candidate Onboarding Form'",
+  "created_at": 1782979604.2823448,
+  "updated_at": 1782979675.1753347,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Couldnt find 'Deploy logic' on 'Candidate Onboarding Form'",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "0582f5af-3c2a-4b79-aed0-e275bbbd65d0"
+  },
+  "depends_on": []
+}

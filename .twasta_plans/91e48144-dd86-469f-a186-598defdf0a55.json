@@ -1,0 +1,19 @@
+{
+  "id": "91e48144-dd86-469f-a186-598defdf0a55",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On this screen 'Send/Resend Link' should call 'SMTP Email' application of 'https",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On this screen 'Send/Resend Link' should call 'SMTP Email' application of 'https",
+  "created_at": 1782894979.0702903,
+  "updated_at": 1782895204.760687,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On this screen 'Send/Resend Link' should call 'SMTP Email' application of 'https://dev.ioflow.twasta.ai/applications' and send email with link to candidate's email ID. Body should contain the link.",
+  "resume_ref": {
+    "session_id": "7e02ad53-da23-41f6-ac92-c920a7813bcb",
+    "claude_session_id": "64320e87-dee1-45b3-b2a5-bd6c889abe06"
+  },
+  "depends_on": []
+}

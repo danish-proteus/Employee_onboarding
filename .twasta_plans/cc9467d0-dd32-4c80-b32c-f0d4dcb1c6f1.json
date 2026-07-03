@@ -1,0 +1,19 @@
+{
+  "id": "cc9467d0-dd32-4c80-b32c-f0d4dcb1c6f1",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It looks like its sending old values and not the one getting generated. Value re",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It looks like its sending old values and not the one getting generated. Value re",
+  "created_at": 1782976404.9946222,
+  "updated_at": 1782976556.9678102,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It looks like its sending old values and not the one getting generated. Value received in ioflow for candidate_id =3 is '183f515cf6b5ecfad200fe54083f7a30' where as at form its shows 'ed095a5e3f5b67c323bd65314344a5cf' in access_key",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "e5ab20e1-87eb-494e-9f5f-4a3adfeb670a"
+  },
+  "depends_on": []
+}

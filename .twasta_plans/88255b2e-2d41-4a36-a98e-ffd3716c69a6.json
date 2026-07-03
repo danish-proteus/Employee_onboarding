@@ -1,0 +1,19 @@
+{
+  "id": "88255b2e-2d41-4a36-a98e-ffd3716c69a6",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "its showing blank black page. It should ideally open the portal",
+  "kind": "modify",
+  "status": "completed",
+  "description": "its showing blank black page. It should ideally open the portal",
+  "created_at": 1782796695.8604472,
+  "updated_at": 1782796758.164227,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "its showing blank black page. It should ideally open the portal",
+  "resume_ref": {
+    "session_id": "674213f6-273f-4482-944c-b169eeaa70d3",
+    "claude_session_id": "4ed8c2aa-158b-4147-a5b5-3247343dbaf2"
+  },
+  "depends_on": []
+}

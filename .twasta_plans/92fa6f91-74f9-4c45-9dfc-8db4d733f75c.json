@@ -1,0 +1,19 @@
+{
+  "id": "92fa6f91-74f9-4c45-9dfc-8db4d733f75c",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Delete records other than 'India' from sample data as well",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Delete records other than 'India' from sample data as well",
+  "created_at": 1782807892.4020035,
+  "updated_at": 1782807984.2740464,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Delete records other than 'India' from sample data as well",
+  "resume_ref": {
+    "session_id": "c6c3659e-4614-4bb8-b452-42b45f83058c",
+    "claude_session_id": "7fd3b1e6-8a2d-4044-893c-3bf36b5dcf39"
+  },
+  "depends_on": []
+}

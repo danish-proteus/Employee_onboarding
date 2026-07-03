@@ -1,0 +1,19 @@
+{
+  "id": "eff8e804-8f68-4181-8894-8ac1880d38f8",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Remove  'country_code' and 'country_name' from this screen",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Remove  'country_code' and 'country_name' from this screen",
+  "created_at": 1782809382.507675,
+  "updated_at": 1782809459.608708,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Remove  'country_code' and 'country_name' from this screen",
+  "resume_ref": {
+    "session_id": "c6c3659e-4614-4bb8-b452-42b45f83058c",
+    "claude_session_id": "48b7bb63-4516-49e4-b7cc-7b60ecfc6ace"
+  },
+  "depends_on": []
+}

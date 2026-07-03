@@ -1,0 +1,19 @@
+{
+  "id": "e448b3ef-eaf1-4390-bb25-056d74f10131",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Deploy the Candidate Onboarding Form for me (I'll run the deployment)",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Deploy the Candidate Onboarding Form for me (I'll run the deployment)",
+  "created_at": 1782979819.499003,
+  "updated_at": 1782979936.292068,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Deploy the Candidate Onboarding Form for me (I'll run the deployment)",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "1f148005-fa8b-47b0-9fc1-bb2af3273a92"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "cb98a1f8-ebd1-4e00-a7e7-7c845f88e06b",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Its not working. Status is not editable at form level. Even action not working s",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Its not working. Status is not editable at form level. Even action not working s",
+  "created_at": 1782804405.7838545,
+  "updated_at": 1782804512.6859663,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Its not working. Status is not editable at form level. Even action not working showing 'HR Submit is allowed only when a candidate link has not been generated (status Initiated).' Whereas if form showing blank status",
+  "resume_ref": {
+    "session_id": "c8f6358d-3ef9-45ad-846a-b9058d8f2c76",
+    "claude_session_id": "c232fe70-cf82-4224-91db-d2e15758e678"
+  },
+  "depends_on": []
+}

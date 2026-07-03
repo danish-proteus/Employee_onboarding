@@ -1,0 +1,19 @@
+{
+  "id": "d0112293-8ee9-4ceb-8475-90080cac42dc",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Its not working, on click of 'Send/Resend Link' Its not generating access key, n",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Its not working, on click of 'Send/Resend Link' Its not generating access key, n",
+  "created_at": 1782963334.271925,
+  "updated_at": 1782963651.5675566,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Its not working, on click of 'Send/Resend Link' Its not generating access key, not updating the same in emponb_candidate_record. Event called also doesnt have the data in except candidate_id",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "e699169f-90c0-4e08-b2f1-185c8e1ab2c7"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "e88302bd-90e6-4f5c-8f92-976cbe949f33",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "I think this is the host url from where the action is getting called, you can bu",
+  "kind": "modify",
+  "status": "completed",
+  "description": "I think this is the host url from where the action is getting called, you can bu",
+  "created_at": 1782974528.4075804,
+  "updated_at": 1782974686.4260764,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "I think this is the host url from where the action is getting called, you can build this dynamically",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "1710558a-ad6c-4114-8e4f-3fe58ec83897"
+  },
+  "depends_on": []
+}

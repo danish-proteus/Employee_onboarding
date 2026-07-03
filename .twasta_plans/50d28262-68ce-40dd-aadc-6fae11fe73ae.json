@@ -1,0 +1,19 @@
+{
+  "id": "50d28262-68ce-40dd-aadc-6fae11fe73ae",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Still showing blank black page and 'Open Link' also does not work",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Still showing blank black page and 'Open Link' also does not work",
+  "created_at": 1782796908.0796852,
+  "updated_at": 1782797149.0371418,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Still showing blank black page and 'Open Link' also does not work",
+  "resume_ref": {
+    "session_id": "674213f6-273f-4482-944c-b169eeaa70d3",
+    "claude_session_id": "47579090-b6e1-40d5-89ab-29687ca8d6e0"
+  },
+  "depends_on": []
+}

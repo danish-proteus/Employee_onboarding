@@ -1,0 +1,19 @@
+{
+  "id": "45f0349d-3179-4680-8ee8-743b3e48014a",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "on click of 'Send/Resend Link', it should generate access_key and key_expiry_dat",
+  "kind": "modify",
+  "status": "completed",
+  "description": "on click of 'Send/Resend Link', it should generate access_key and key_expiry_dat",
+  "created_at": 1782962855.0499632,
+  "updated_at": 1782963051.5635161,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "on click of 'Send/Resend Link', it should generate access_key and key_expiry_datetime, same should get updated in 'Candidate Onboarding Record' along with key_generated_on.",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "b1bd9747-1039-4693-8e53-de5875f8598a"
+  },
+  "depends_on": []
+}

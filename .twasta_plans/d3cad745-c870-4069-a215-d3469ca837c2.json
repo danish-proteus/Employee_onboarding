@@ -1,0 +1,19 @@
+{
+  "id": "d3cad745-c870-4069-a215-d3469ca837c2",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On 'Send/ResendLink' show the link in an alert, also open it new window.",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On 'Send/ResendLink' show the link in an alert, also open it new window.",
+  "created_at": 1782796223.057644,
+  "updated_at": 1782796348.9827814,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On 'Send/ResendLink' show the link in an alert, also open it new window.",
+  "resume_ref": {
+    "session_id": "674213f6-273f-4482-944c-b169eeaa70d3",
+    "claude_session_id": "5aea8516-d9ef-4380-bfba-16c7fe56f7d9"
+  },
+  "depends_on": []
+}

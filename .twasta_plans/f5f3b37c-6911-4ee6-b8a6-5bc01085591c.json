@@ -1,0 +1,19 @@
+{
+  "id": "f5f3b37c-6911-4ee6-b8a6-5bc01085591c",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "OnLoad of 'Candidate Onboarding Portal' should validate the access_key (key) rec",
+  "kind": "modify",
+  "status": "completed",
+  "description": "OnLoad of 'Candidate Onboarding Portal' should validate the access_key (key) rec",
+  "created_at": 1782977870.9708846,
+  "updated_at": 1782978174.6952338,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "OnLoad of 'Candidate Onboarding Portal' should validate the access_key (key) received. If valid should allow candidate to fill rest of the form details. It should also bring the details as per candidate_id available and set on the form",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "0dad2667-d8f7-4d52-85f6-0ae89db2f15d"
+  },
+  "depends_on": []
+}

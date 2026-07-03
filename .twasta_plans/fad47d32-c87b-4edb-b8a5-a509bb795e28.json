@@ -1,0 +1,19 @@
+{
+  "id": "fad47d32-c87b-4edb-b8a5-a509bb795e28",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Still showing same error",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Still showing same error",
+  "created_at": 1782964686.7217128,
+  "updated_at": 1782964966.2442982,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Still showing same error",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "7f4afd7e-3f9d-431d-a264-6bd7afa9ec15"
+  },
+  "depends_on": []
+}

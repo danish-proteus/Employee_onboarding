@@ -1,0 +1,19 @@
+{
+  "id": "077885bb-ec1e-40dc-a7bc-5babd36d9c06",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "base url should be same as the 'Empoyee Onboarding application' in run mode",
+  "kind": "modify",
+  "status": "completed",
+  "description": "base url should be same as the 'Empoyee Onboarding application' in run mode",
+  "created_at": 1782969423.402442,
+  "updated_at": 1782969553.6108134,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "base url should be same as the 'Empoyee Onboarding application' in run mode",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "2a803a25-0322-4103-83cb-038638a42885"
+  },
+  "depends_on": []
+}

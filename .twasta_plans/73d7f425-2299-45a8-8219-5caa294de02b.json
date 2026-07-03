@@ -1,0 +1,19 @@
+{
+  "id": "73d7f425-2299-45a8-8219-5caa294de02b",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "showing 'Candidate id is required.' and an additional Dialog is coming which is ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "showing 'Candidate id is required.' and an additional Dialog is coming which is ",
+  "created_at": 1782804800.1786425,
+  "updated_at": 1782804992.7304602,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "showing 'Candidate id is required.' and an additional Dialog is coming which is not required. Link generation action will happen after submit is done.",
+  "resume_ref": {
+    "session_id": "c8f6358d-3ef9-45ad-846a-b9058d8f2c76",
+    "claude_session_id": "8392e28b-7420-495e-8688-d4872be67b17"
+  },
+  "depends_on": []
+}

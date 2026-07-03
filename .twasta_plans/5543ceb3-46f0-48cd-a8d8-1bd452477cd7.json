@@ -1,0 +1,19 @@
+{
+  "id": "5543ceb3-46f0-48cd-a8d8-1bd452477cd7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Remove 'HR Onboarding Dashboard' link",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Remove 'HR Onboarding Dashboard' link",
+  "created_at": 1782960269.9850264,
+  "updated_at": 1782960295.430648,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Remove 'HR Onboarding Dashboard' link",
+  "resume_ref": {
+    "session_id": "915c5b1f-af1c-4aef-aced-cc9c013de4f0",
+    "claude_session_id": "c871712e-f648-45bf-bc22-511ea8f541cf"
+  },
+  "depends_on": []
+}

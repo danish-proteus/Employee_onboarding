@@ -1,0 +1,19 @@
+{
+  "id": "a719723e-d863-4e19-aa53-f8d5522faa05",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "design_code should set design_name",
+  "kind": "modify",
+  "status": "completed",
+  "description": "design_code should set design_name",
+  "created_at": 1782721365.0924757,
+  "updated_at": 1782721387.1545794,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "design_code should set design_name",
+  "resume_ref": {
+    "session_id": "4bea49f3-3c0a-45da-995e-f96b28cd4241",
+    "claude_session_id": "bb520e22-ae7a-45d4-888f-470fc8db8c4e"
+  },
+  "depends_on": []
+}

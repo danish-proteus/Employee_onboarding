@@ -1,0 +1,19 @@
+{
+  "id": "c331cf9b-818c-4532-9a1d-3394d9caa4ca",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Can you remove all Reports and Visuals as of now. As would like to do it once ap",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Can you remove all Reports and Visuals as of now. As would like to do it once ap",
+  "created_at": 1782894028.0569265,
+  "updated_at": 1782894153.064519,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Can you remove all Reports and Visuals as of now. As would like to do it once application is fully functional",
+  "resume_ref": {
+    "session_id": "4c41aba0-0a6f-4936-8900-096aeac35a1c",
+    "claude_session_id": "6372ec4b-5851-4750-ba51-f12d350c71ad"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "0e6624d1-b7c0-4b9a-87be-c51cc3e2be37",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "seems its not working 'http://dev.platform.twasta.ai:7077/site/7014e11e-1c26-4e5",
+  "kind": "modify",
+  "status": "completed",
+  "description": "seems its not working 'http://dev.platform.twasta.ai:7077/site/7014e11e-1c26-4e5",
+  "created_at": 1782978931.8545165,
+  "updated_at": 1782979224.6808484,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "seems its not working 'http://dev.platform.twasta.ai:7077/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/onboarding?key=4864ed2279fbf9b339e8f7ac00f86fe7' accessed above its showing error. This is generated for candidate_id = 6, and validity is thr but not working",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "3cf202cf-02cd-4205-91e2-e677b80dd8f6"
+  },
+  "depends_on": []
+}

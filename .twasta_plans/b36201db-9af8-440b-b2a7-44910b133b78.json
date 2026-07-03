@@ -1,0 +1,19 @@
+{
+  "id": "b36201db-9af8-440b-b2a7-44910b133b78",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Still ioflow not getting the link and access_key, only candidate_id is getting p",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Still ioflow not getting the link and access_key, only candidate_id is getting p",
+  "created_at": 1782967287.348893,
+  "updated_at": 1782967519.221246,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Still ioflow not getting the link and access_key, only candidate_id is getting passed",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "88889dc7-12d6-45b6-a1d4-533f006dd2b7"
+  },
+  "depends_on": []
+}

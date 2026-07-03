@@ -53,48 +53,6 @@
       "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
     },
     {
-      "obj_name": "emponb_pipeline_by_status",
-      "obj_type": "V",
-      "title": "Onboarding Pipeline by Status",
-      "description": "Count of candidates per STATUS per period."
-    },
-    {
-      "obj_name": "emponb_status_distribution",
-      "obj_type": "V",
-      "title": "Candidate Status Distribution",
-      "description": "STATUS vs candidate count."
-    },
-    {
-      "obj_name": "emponb_onboarding_tracker",
-      "obj_type": "V",
-      "title": "Onboarding Tracker",
-      "description": "Candidate-wise current status with hyperlink to the record."
-    },
-    {
-      "obj_name": "emponb_expired_pending_links",
-      "obj_type": "V",
-      "title": "Expired / Pending Links",
-      "description": "Links awaiting candidate action with expiry highlighting."
-    },
-    {
-      "obj_name": "emponb_validation_outcome",
-      "obj_type": "V",
-      "title": "Validation Outcome Summary",
-      "description": "PAN/AADHAR/BANK validated vs failed vs attempts-exhausted."
-    },
-    {
-      "obj_name": "emponb_onboarding_aging",
-      "obj_type": "V",
-      "title": "Onboarding Aging",
-      "description": "Average days in each status / candidate-wise aging buckets."
-    },
-    {
-      "obj_name": "emponb_candidate_data_sheet",
-      "obj_type": "R",
-      "title": "Candidate Profile Data Sheet",
-      "description": "Pixel-perfect printable consolidation of a candidate for the personnel file."
-    },
-    {
       "obj_name": "emponb_hr_dashboard",
       "obj_type": "D",
       "title": "HR Onboarding Dashboard",

@@ -111,63 +111,6 @@
             },
             {
               "column": {
-                "name": "country_code",
-                "db_name": "COUNTRY_CODE",
-                "group_name": "Basic",
-                "col_type": "CHAR",
-                "heading": "Country",
-                "descr": "Country reference",
-                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
-                "must_exist_in": "EMPONB_COUNTRY_MASTER",
-                "x": "40",
-                "y": "40",
-                "col_id": "4",
-                "table_name": "EMPONB_CANDIDATE_RECORD",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "10",
-                "width": 100,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "protect": "",
-                "validations": ""
-              }
-            },
-            {
-              "column": {
-                "name": "country_name",
-                "db_name": "COUNTRY_NAME",
-                "table_name": "EMPONB_COUNTRY_MASTER",
-                "group_name": "Basic",
-                "col_type": "VARCHAR",
-                "heading": "Country Name",
-                "descr": "Country name from master",
-                "protect": "1",
-                "x": "50",
-                "y": "50",
-                "col_id": "5",
-                "table_display_name": "Country master",
-                "db_size": "100",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
                 "name": "design_code",
                 "db_name": "DESIGN_CODE",
                 "group_name": "Basic",
@@ -176,6 +119,17 @@
                 "descr": "Designation reference at initiation",
                 "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)",
                 "must_exist_in": "EMPONB_DESIG_DEPT_MASTER",
+                "item_change": {
+                  "mode": "rule",
+                  "source_table": "EMPONB_DESIG_DEPT_MASTER",
+                  "match_table_col": "DESIGN_CODE",
+                  "fill": [
+                    {
+                      "form_col": "design_name",
+                      "table_col": "DESIGNATION_NAME"
+                    }
+                  ]
+                },
                 "x": "60",
                 "y": "60",
                 "col_id": "6",
@@ -3080,15 +3034,6 @@
                   "table_descr": "Candidate onboarding record (main table)"
                 },
                 {
-                  "table": "EMPONB_COUNTRY_MASTER",
-                  "main_table": false,
-                  "table_descr": "Country master",
-                  "column": "COUNTRY_CODE",
-                  "join_table": "EMPONB_CANDIDATE_RECORD",
-                  "join_column": "COUNTRY_CODE",
-                  "join_type": "left"
-                },
-                {
                   "table": "EMPONB_DESIG_DEPT_MASTER",
                   "main_table": false,
                   "table_descr": "Designation & department master",
@@ -3110,16 +3055,51 @@
           ],
           "actions": [
             {
+              "name": "Generate Key",
+              "handler": "message",
+              "scope": "row",
+              "confirmation": {
+                "mode": "reconfirm",
+                "message": "Generate a new access key for {form.candidate_name}? Any previously generated link will stop working."
+              },
+              "business_logic": {
+                "method": "generate_access_key",
+                "description": "Generate a new access key and update all related columns",
+                "spec": "Generate a new unique ACCESS_KEY, set KEY_GENERATED_ON = now() and KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + KEY_VALIDITY_DAYS days (from EMPONB_ONBOARDING_SETTINGS), set KEY_VALID_FLAG='Y', build FORM_URL as the full absolute URL of the public candidate onboarding portal (external site slug 'onboarding') with the generated key appended, set STATUS='Link Generated', stamp STATUS_DATE. PERSIST all of these on the candidate record. Return a confirmation message with the generated link. This action only generates/regenerates the key; it does NOT raise the send-link event.",
+                "language": "plpgsql"
+              },
+              "validations": [
+                {
+                  "type": "expression",
+                  "name": "Email required",
+                  "message": "A valid email is required before generating a key.",
+                  "expression": "not_empty({form.email_id})"
+                },
+                {
+                  "type": "expression",
+                  "name": "Not confirmed",
+                  "message": "Cannot generate a key for a confirmed or cancelled candidate.",
+                  "expression": "not in_list({form.status}, \"Confirmed,Cancelled\")"
+                }
+              ]
+            },
+            {
               "name": "Send/Resend Link",
               "handler": "message",
               "scope": "row",
               "business_logic": {
                 "method": "send_candidate_link",
-                "description": "Generate access key and email the candidate link",
-                "spec": "Generate a unique ACCESS_KEY, set KEY_GENERATED_ON = now() and KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days days, set KEY_VALID_FLAG='Y', build FORM_URL (external candidate form + key), set STATUS='Link Generated', stamp STATUS_DATE and LINK_SENT_ON, then send-email the candidate the link using the configured template. Return a confirmation message.",
-                "language": "python"
+                "description": "Send the already-generated access link to the candidate via IOFlow",
+                "spec": "Do NOT generate a key. Validate that an ACCESS_KEY has already been generated. Stamp LINK_SENT_ON = now() and set STATUS='Link Generated'. The Send/Resend Link event carries only the already-persisted CANDIDATE_ID, ACCESS_KEY and FORM_URL to IOFlow. Return a confirmation message.",
+                "language": "plpgsql"
               },
               "validations": [
+                {
+                  "type": "expression",
+                  "name": "Key generated",
+                  "message": "Generate the access key first before sending the link.",
+                  "expression": "not_empty({form.access_key})"
+                },
                 {
                   "type": "expression",
                   "name": "Email required",
@@ -3218,12 +3198,6 @@
                 "mode": "reconfirm",
                 "message": "Confirm and push candidate {form.candidate_name} to IOFLOW as an employee?"
               },
-              "business_logic": {
-                "method": "confirm_candidate",
-                "description": "Push to IOFLOW Employee and confirm",
-                "spec": "Trigger the IOFLOW Employee-creation API with the consolidated payload (personal + finalization + pay-structure rows where UPD_PAYSTRU='Y'); store EMPLOYEE_PUSHED_FLAG='Y' and EMPLOYEE_PUSH_REF from the response; set STATUS='Confirmed' and stamp STATUS_DATE; send a notification email to the INITIATED_BY HR user. Roll back with an error if the IOFLOW call fails.",
-                "language": "plpgsql"
-              },
               "validations": [
                 {
                   "type": "expression",
@@ -3249,7 +3223,13 @@
                   "message": "Gross must be greater than or equal to Basic before Confirm.",
                   "expression": "{form.gross} >= {form.basic}"
                 }
-              ]
+              ],
+              "rest_api": {
+                "url": "",
+                "method": "POST",
+                "on_error": "allow",
+                "params": []
+              }
             },
             {
               "name": "Cancel",

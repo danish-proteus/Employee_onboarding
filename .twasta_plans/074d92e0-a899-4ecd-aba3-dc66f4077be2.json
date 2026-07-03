@@ -1,0 +1,19 @@
+{
+  "id": "074d92e0-a899-4ecd-aba3-dc66f4077be2",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Remove 'Country Master', Country should be 'India'. \n\nReplace all references to ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Remove 'Country Master', Country should be 'India'. \n\nReplace all references to ",
+  "created_at": 1782807020.9990447,
+  "updated_at": 1782807307.0277016,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Remove 'Country Master', Country should be 'India'. \n\nReplace all references to fixed value as 'India' - In 'State' show fixed indian states in dropdown.",
+  "resume_ref": {
+    "session_id": "014ed242-543f-4805-9739-0cbbf5ca4ac1",
+    "claude_session_id": "a91ba67c-10a0-4cd8-a64b-f9e9474e4bd2"
+  },
+  "depends_on": []
+}

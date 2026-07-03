@@ -1,0 +1,19 @@
+{
+  "id": "31c6b81f-715e-4526-bf7f-2cdfbd425385",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Still received below in ioflow on click of 'Send/Resend Link' \n{\n      \"candidat",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Still received below in ioflow on click of 'Send/Resend Link' \n{\n      \"candidat",
+  "created_at": 1782975514.837117,
+  "updated_at": 1782975875.6651993,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Still received below in ioflow on click of 'Send/Resend Link' \n{\n      \"candidate_id\": \"7         \",\n      \"access_key\": null,\n      \"form_url\": null\n    }",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "704c282e-d73f-4b77-9efd-b7bb1a71bfbb"
+  },
+  "depends_on": []
+}

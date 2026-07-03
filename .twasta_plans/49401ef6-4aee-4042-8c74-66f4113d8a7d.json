@@ -1,0 +1,19 @@
+{
+  "id": "49401ef6-4aee-4042-8c74-66f4113d8a7d",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Keep it hardcoded as-is for now",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Keep it hardcoded as-is for now",
+  "created_at": 1782975383.8325338,
+  "updated_at": 1782975393.9157634,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Keep it hardcoded as-is for now",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "f5b273c3-30f6-476a-a6af-04ec7f254840"
+  },
+  "depends_on": []
+}

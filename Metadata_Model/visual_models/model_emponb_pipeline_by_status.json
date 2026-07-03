@@ -176,22 +176,6 @@
             "promptName": "design_code",
             "value": "",
             "chipValue": []
-          },
-          {
-            "id": "Criteria_4",
-            "field": "EMPONB_CANDIDATE_RECORD.COUNTRY_CODE",
-            "DBNAME": "COUNTRY_CODE",
-            "tableName": "EMPONB_CANDIDATE_RECORD",
-            "COLTYPE": "string",
-            "currentFieldType": "string",
-            "operator": "=",
-            "queryOption": "P",
-            "prevOption": "P",
-            "customValue": "FixedValue",
-            "promptLabel": "Country Code",
-            "promptName": "country_code",
-            "value": "",
-            "chipValue": []
           }
         ],
         "condition": "and"
@@ -388,5 +372,5 @@
     },
     "layoutdata": {}
   },
-  "SOURCE_SQL": "SELECT DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date AS PERIOD, emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.initiated_on >= ?.from_date AND emponb_candidate_record.initiated_on <= ?.to_date AND (?.design_code IS NULL OR emponb_candidate_record.design_code = ?.design_code) AND (?.country_code IS NULL OR emponb_candidate_record.country_code = ?.country_code) GROUP BY DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date, emponb_candidate_record.status ORDER BY PERIOD, STATUS"
+  "SOURCE_SQL": "SELECT DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date AS PERIOD, emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.initiated_on >= ?.from_date AND emponb_candidate_record.initiated_on <= ?.to_date AND (?.design_code IS NULL OR emponb_candidate_record.design_code = ?.design_code) GROUP BY DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date, emponb_candidate_record.status ORDER BY PERIOD, STATUS"
 }

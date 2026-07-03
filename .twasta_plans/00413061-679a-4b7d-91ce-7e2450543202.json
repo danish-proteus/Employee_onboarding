@@ -1,0 +1,19 @@
+{
+  "id": "00413061-679a-4b7d-91ce-7e2450543202",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It's an already-saved record (e.g. Arjun Mehta) opened from the list \u2014 and it ST",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It's an already-saved record (e.g. Arjun Mehta) opened from the list \u2014 and it ST",
+  "created_at": 1782964414.8979075,
+  "updated_at": 1782964583.1814208,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It's an already-saved record (e.g. Arjun Mehta) opened from the list \u2014 and it STILL errors",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "62eb3ebc-789c-4598-858f-dd983e243dc3"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "c60cf766-4304-4afd-a037-10f129d4a5a3",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Do ioflow integration in this project and create an Event when 'Send/Resend Link",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Do ioflow integration in this project and create an Event when 'Send/Resend Link",
+  "created_at": 1782897119.6070936,
+  "updated_at": 1782897285.0034995,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Do ioflow integration in this project and create an Event when 'Send/Resend Link' button is called",
+  "resume_ref": {
+    "session_id": "7e02ad53-da23-41f6-ac92-c920a7813bcb",
+    "claude_session_id": "55b8c2bf-aa43-4854-a83b-30f8f998f0ea"
+  },
+  "depends_on": []
+}

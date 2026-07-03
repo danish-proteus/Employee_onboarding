@@ -1,0 +1,19 @@
+{
+  "id": "f59f7056-8639-464d-8de3-7d11426d94fc",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Remove 'Onboarding Settings' as ioflow will be fixed with current setup as per e",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Remove 'Onboarding Settings' as ioflow will be fixed with current setup as per e",
+  "created_at": 1782811919.4942858,
+  "updated_at": 1782812039.0551078,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Remove 'Onboarding Settings' as ioflow will be fixed with current setup as per environment",
+  "resume_ref": {
+    "session_id": "ed7f96c2-d753-468c-885f-63f514ea6f1b",
+    "claude_session_id": "70b15636-2203-4e2e-a57f-20258902920e"
+  },
+  "depends_on": []
+}

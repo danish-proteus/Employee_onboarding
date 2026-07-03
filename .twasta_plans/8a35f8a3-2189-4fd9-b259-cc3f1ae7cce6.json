@@ -1,0 +1,19 @@
+{
+  "id": "8a35f8a3-2189-4fd9-b259-cc3f1ae7cce6",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Ensure on click of 'Send/Resend Link' it generates the link updates the relevant",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Ensure on click of 'Send/Resend Link' it generates the link updates the relevant",
+  "created_at": 1782966856.8181639,
+  "updated_at": 1782967019.4779027,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Ensure on click of 'Send/Resend Link' it generates the link updates the relevant columns and calls the ioflow with updated fields data",
+  "resume_ref": {
+    "session_id": "c8ae8417-9788-44fa-b679-d75033624421",
+    "claude_session_id": "66a9b97b-6546-4486-b9a9-15023bded6c8"
+  },
+  "depends_on": []
+}

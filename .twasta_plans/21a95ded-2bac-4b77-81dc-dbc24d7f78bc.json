@@ -1,0 +1,19 @@
+{
+  "id": "21a95ded-2bac-4b77-81dc-dbc24d7f78bc",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "can you share this projects'id in which name folder must have created in project",
+  "kind": "modify",
+  "status": "completed",
+  "description": "can you share this projects'id in which name folder must have created in project",
+  "created_at": 1782896428.2252576,
+  "updated_at": 1782896438.4717429,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "can you share this projects'id in which name folder must have created in project folder",
+  "resume_ref": {
+    "session_id": "7e02ad53-da23-41f6-ac92-c920a7813bcb",
+    "claude_session_id": "8efea5c2-5f17-4985-9ff5-3b2e33671606"
+  },
+  "depends_on": []
+}
