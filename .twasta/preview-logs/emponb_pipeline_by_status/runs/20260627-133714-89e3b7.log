@@ -1,7 +1,0 @@
-=== preview run 20260627-133714-89e3b7 ===
-kind=visual action=render user=7014e11e-1c26-4e50-b546-2c38c876bee0
-started=2026-06-27T13:37:14
-project=Employee_onboarding
-obj=emponb_pipeline_by_status
-  • visual emponb_pipeline_by_status: needs input missing=DESIGN_CODE,COUNTRY_CODE
-finished=2026-06-27T13:37:14 status=OK

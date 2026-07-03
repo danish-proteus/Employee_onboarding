@@ -1,8 +1,0 @@
-=== preview run 20260627-135247-0009c6 ===
-kind=execute_batch action=save_batch user=7014e11e-1c26-4e50-b546-2c38c876bee0
-started=2026-06-27T13:52:47
-project=Employee_onboarding
-obj=emponb_candidate_record
-payload_keys=
-  • batch saved pk=9 child_forms=0
-finished=2026-06-27T13:52:47 status=OK
