@@ -1,0 +1,19 @@
+{
+  "id": "7c25c0ae-50c7-4780-b9d4-3495938a9fe5",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Make all fields editable on 'Candidate Self' as expected to be filled by Candida",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Make all fields editable on 'Candidate Self' as expected to be filled by Candida",
+  "created_at": 1783353900.9118454,
+  "updated_at": 1783353939.3972704,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Make all fields editable on 'Candidate Self' as expected to be filled by Candidate himself",
+  "resume_ref": {
+    "session_id": "2046788b-49f7-4604-bc43-38cd371b1d46",
+    "claude_session_id": "d6215e94-24ad-4407-bbb5-e7dbc11c7dc5"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "4cf5d8f1-2a2b-4202-bbe5-1b8ec1fe200c",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "'Candidate Self', on change of candidate_id, it should bring all data from 'Cand",
+  "kind": "modify",
+  "status": "completed",
+  "description": "'Candidate Self', on change of candidate_id, it should bring all data from 'Cand",
+  "created_at": 1783353331.978608,
+  "updated_at": 1783353512.4341996,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "'Candidate Self', on change of candidate_id, it should bring all data from 'Candidate Onboarding Record' for the given candidate_id and set on the screen.",
+  "resume_ref": {
+    "session_id": "2046788b-49f7-4604-bc43-38cd371b1d46",
+    "claude_session_id": "4b2a744a-2fbe-4c91-b892-28f5ad62ca95"
+  },
+  "depends_on": []
+}

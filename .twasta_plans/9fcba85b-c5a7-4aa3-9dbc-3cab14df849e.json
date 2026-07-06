@@ -1,0 +1,19 @@
+{
+  "id": "9fcba85b-c5a7-4aa3-9dbc-3cab14df849e",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Only the fields a candidate fills in (Personal, Contact & Address, Statutory & F",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Only the fields a candidate fills in (Personal, Contact & Address, Statutory & F",
+  "created_at": 1783354353.4065273,
+  "updated_at": 1783354636.469531,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Only the fields a candidate fills in (Personal, Contact & Address, Statutory & Financial, documents) \u2014 keep status, keys, timestamps, KYC results and employment/HR fields locked",
+  "resume_ref": {
+    "session_id": "2046788b-49f7-4604-bc43-38cd371b1d46",
+    "claude_session_id": "2c2ec033-d2a7-461d-8dc4-0794ef3c4090"
+  },
+  "depends_on": []
+}
