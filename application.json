@@ -15,7 +15,8 @@
       "defaultRoles": [
         "member"
       ]
-    }
+    },
+    "folder_name": "Employee_onboarding"
   },
   "auth": {
     "providers": [
@@ -130,70 +131,15 @@
       "functional_specs": "Header + four detail tables (Past Experience, Educational Qualification, Family, Candidate Pay). STATUS lifecycle Link Generated -> Link Accessed -> DataSubmitted -> Review -> Confirmed with STATUS_DATE stamped on each transition. Header fields: HR capture (CANDIDATE_ID, CANDIDATE_NAME, GENDER, COUNTRY_CODE, DESIGN_CODE, EMAIL_ID, STATUS, STATUS_DATE, INITIATED_BY, INITIATED_ON), access key (ACCESS_KEY, KEY_GENERATED_ON, KEY_EXPIRY_DATETIME, KEY_VALID_FLAG, FORM_URL, LINK_SENT_ON, LINK_ACCESSED_ON, SUBMITTED_ON), candidate personal/contact/statutory/financial, validation status (PAN/AADHAR/BANK *_VALIDATED, *_VALIDATED_NAME, *_ATTEMPTS), attachments (PAN_DOC, AADHAR_DOC, BANK_DOC), HR finalization (EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF). Field validations: PAN AAAAA9999A, AADHAR 12 digits, IFSC 11-char, MOBILE 10 digits, PIN 6 digits, valid emails; validation attempts capped at :max_validation_attempts; KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days; EMP_CODE unique & DATE_JOIN mandatory & GROSS>=BASIC before Confirm; Confirm only when STATUS=Review. Actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while Link Generated and not accessed), Send/Resend Link, Re-validate PAN/AADHAR/Bank (IOFLOW), Review, Confirm (Push to IOFLOW Employee), Cancel. Triggers: send-email candidate link on Send Link, IOFLOW validation on Re-validate, set STATUS=Review on Review, IOFLOW Employee-creation API + store EMPLOYEE_PUSHED_FLAG/EMPLOYEE_PUSH_REF + send-notification to HR on Confirm, set STATUS=DataSubmitted + invalidate key + notify on candidate Submit."
     },
     {
-      "id": "emponb.6",
-      "title": "Candidate Onboarding Portal",
-      "parent_id": "",
-      "icon_image": "language",
-      "description": "Public anonymous external site hosting the key-validated candidate onboarding form.",
-      "obj_name": "emponb_onboarding_portal",
-      "obj_type": "X",
-      "menu_path": "emponb.6",
-      "functional_specs": "{\"slug\":\"onboarding\",\"title\":\"Employee Onboarding\",\"is_primary\":true,\"theme\":{\"preset\":\"corporate\"},\"custom_domains\":[],\"header_page_obj_name\":\"emponb_site_header\",\"footer_page_obj_name\":\"emponb_site_footer\"}"
-    },
-    {
-      "id": "emponb.6.1",
-      "title": "Header",
-      "parent_id": "emponb.6",
-      "icon_image": "web_asset",
-      "description": "Shared site header rendered on every portal page.",
-      "obj_name": "emponb_site_header",
-      "obj_type": "S",
-      "menu_path": "emponb.6.1",
-      "functional_specs": "External chrome header: tenant logo (left), portal title 'Employee Onboarding' (center), help/contact-HR link (right). No login control (anonymous site)."
-    },
-    {
-      "id": "emponb.6.2",
-      "title": "Footer",
-      "parent_id": "emponb.6",
-      "icon_image": "web_asset",
-      "description": "Shared site footer rendered on every portal page.",
-      "obj_name": "emponb_site_footer",
-      "obj_type": "S",
-      "menu_path": "emponb.6.2",
-      "functional_specs": "External chrome footer: copyright line, privacy/data-use note, contact line (HR email/phone), optional secondary link group (Privacy, Terms)."
-    },
-    {
-      "id": "emponb.6.3",
-      "title": "Candidate Onboarding Form",
-      "parent_id": "emponb.6",
-      "icon_image": "assignment_ind",
-      "description": "Public, key-validated intake form the candidate opens from the emailed link.",
-      "obj_name": "emponb_candidate_form",
-      "obj_type": "S",
-      "menu_path": "emponb.6.3",
-      "functional_specs": "External anonymous Smart Page reached at /onboard?key=<ACCESS_KEY>. Key-validation gate via GET /api/onboard/validate-key: if invalid/expired/already-submitted render callout and hide inputs; on first successful open set STATUS=Link Accessed and stamp LINK_ACCESSED_ON. Hero with branding and candidate name. Sections: Personal Details (NAME_PREFIX, EMP_FNAME, EMP_MNAME, EMP_LNAME, GENDER, BIRTHDATE, NATIONALITY, MARITAL_STATUS, MARRIAGE_ANNIVERSARY, BLOOD_GROUP, RELIGION, CAST_CATEGORY, MOTHER_TONGUE, PHYSICAL_HANDICAP, HOBBY1, HOBBY2, TOTAL_EXPERIENCE); Address & Contact (current/permanent address, MOBILE, ALTERNATE_TELEPHONE, emergency contact, optional same-as-current copy); Statutory & Financial with inline Validate PAN/Aadhaar/Bank buttons showing validated status, returned name and remaining attempts; Document upload (PAN_DOC, AADHAR_DOC, BANK_DOC); repeater grids for Past Experience, Educational Qualification, Family. Actions/CTAs: Validate PAN/Aadhaar/Bank (POST /api/onboard/validate/{type}), Upload (POST /api/onboard/upload), Save draft (POST /api/onboard/save, keeps editable), Submit (POST /api/onboard/submit -> final validation, lock, STATUS=DataSubmitted, email candidate summary, notify HR). Validation capped at :max_validation_attempts; attachments image/PDF with size limit; BANK_DOC must be cancelled cheque/passbook. Loads via GET /api/onboard/draft and master lookups /api/masters/countries, /api/masters/qualifications, /api/masters/lookups."
-    },
-    {
-      "id": "emponb.6.4",
-      "title": "Onboarding Confirmation",
-      "parent_id": "emponb.6",
-      "icon_image": "task_alt",
-      "description": "Thank-you page shown to the candidate after Submit.",
-      "obj_name": "emponb_confirmation_page",
-      "obj_type": "S",
-      "menu_path": "emponb.6.4",
-      "functional_specs": "External anonymous Smart Page. Hero confirmation banner, callout summarizing details received and a copy emailed, contact-HR line. No inputs."
-    },
-    {
-      "id": "emponb.6.5",
-      "title": "Invalid / Expired Link",
-      "parent_id": "emponb.6",
-      "icon_image": "link_off",
-      "description": "Page explaining the onboarding link is no longer valid.",
-      "obj_name": "emponb_invalid_link_page",
-      "obj_type": "S",
-      "menu_path": "emponb.6.5",
-      "functional_specs": "External anonymous Smart Page. Hero + callout explaining the link is expired/invalid/already submitted and to contact HR. No inputs."
+      "id": "emponb.3.2",
+      "title": "Candidate Self",
+      "parent_id": "emponb.3",
+      "icon_image": "person_add",
+      "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee.",
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "menu_path": "emponb.3.2",
+      "functional_specs": "Candidate self-service onboarding record. Header capturing candidate identity, access key, personal/contact/statutory/financial details and validation status. CANDIDATE_ID is the key and must exist in the Candidate Onboarding Record. Search, Add, Edit, Delete."
     }
   ]
 }

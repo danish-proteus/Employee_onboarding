@@ -1,0 +1,19 @@
+{
+  "id": "18c4a27e-8308-4be2-b730-fda3ceea36d0",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Independent copy \u2014 its own new tables, starts empty, separate from Candidate Onb",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Independent copy \u2014 its own new tables, starts empty, separate from Candidate Onb",
+  "created_at": 1783308681.6881866,
+  "updated_at": 1783308932.993565,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Independent copy \u2014 its own new tables, starts empty, separate from Candidate Onboarding Record",
+  "resume_ref": {
+    "session_id": "9b90886a-5835-421c-9847-d203f3818dc0",
+    "claude_session_id": "9641add6-ac79-4f39-9136-10e7278c770c"
+  },
+  "depends_on": []
+}

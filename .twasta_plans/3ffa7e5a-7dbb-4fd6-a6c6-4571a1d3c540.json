@@ -1,0 +1,19 @@
+{
+  "id": "3ffa7e5a-7dbb-4fd6-a6c6-4571a1d3c540",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Make a separate copy of tables and form, no action and workflow needed",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Make a separate copy of tables and form, no action and workflow needed",
+  "created_at": 1783344614.4647887,
+  "updated_at": 1783344872.0706131,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Make a separate copy of tables and form, no action and workflow needed",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "5688f125-158b-442e-9d8a-d1c81d425e13"
+  },
+  "depends_on": []
+}

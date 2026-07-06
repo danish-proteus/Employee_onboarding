@@ -1,0 +1,19 @@
+{
+  "id": "c6854f6b-91ad-40dd-a72f-a25f6a8082a8",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Delete 'Candidate Self Entry Page'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Delete 'Candidate Self Entry Page'",
+  "created_at": 1783343151.765544,
+  "updated_at": 1783343232.6496763,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Delete 'Candidate Self Entry Page'",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "6aded019-a115-4095-98d1-8851ae5cc31b"
+  },
+  "depends_on": []
+}

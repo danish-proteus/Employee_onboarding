@@ -1,0 +1,19 @@
+{
+  "id": "c3f48d17-6cec-44e6-a07b-7a6cb69c7687",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Full Copy same header and all 4 detail tables, without actions and lifecycle, ju",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Full Copy same header and all 4 detail tables, without actions and lifecycle, ju",
+  "created_at": 1783343740.2526448,
+  "updated_at": 1783343978.863377,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Full Copy same header and all 4 detail tables, without actions and lifecycle, just on its own table",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "3c70a7f9-1464-4954-938e-684eb1956206"
+  },
+  "depends_on": []
+}

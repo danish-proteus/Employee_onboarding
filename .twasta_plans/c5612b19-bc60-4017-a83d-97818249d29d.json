@@ -1,0 +1,19 @@
+{
+  "id": "c5612b19-bc60-4017-a83d-97818249d29d",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "make 'candidate_id' at 'emponb_candidate_self' editable and validate it should b",
+  "kind": "modify",
+  "status": "completed",
+  "description": "make 'candidate_id' at 'emponb_candidate_self' editable and validate it should b",
+  "created_at": 1783352506.4861588,
+  "updated_at": 1783352548.298673,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "make 'candidate_id' at 'emponb_candidate_self' editable and validate it should be avaible in 'candidate_id' of 'emponb_candidate_record'.",
+  "resume_ref": {
+    "session_id": "2046788b-49f7-4604-bc43-38cd371b1d46",
+    "claude_session_id": "54b9f700-0a80-436d-8774-1a89df771846"
+  },
+  "depends_on": []
+}

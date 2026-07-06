@@ -1,0 +1,19 @@
+{
+  "id": "08f1b150-2424-4d02-8a15-49df9146afe0",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "something gone wrong here, I had added emponb_candidate_self as transaction obje",
+  "kind": "modify",
+  "status": "completed",
+  "description": "something gone wrong here, I had added emponb_candidate_self as transaction obje",
+  "created_at": 1783353022.4269762,
+  "updated_at": 1783353069.4692667,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "something gone wrong here, I had added emponb_candidate_self as transaction object, similar to emponb_candidate_record.",
+  "resume_ref": {
+    "session_id": "2046788b-49f7-4604-bc43-38cd371b1d46",
+    "claude_session_id": "3e8791ae-7bca-4c92-ae1e-1750c4741310"
+  },
+  "depends_on": []
+}

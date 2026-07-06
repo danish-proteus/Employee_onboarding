@@ -1,0 +1,19 @@
+{
+  "id": "0db02615-a0b4-49e9-853d-b3ac6d63b9d7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "This screen must have same model as 'emponb_candidate_record'",
+  "kind": "modify",
+  "status": "paused",
+  "description": "This screen must have same model as 'emponb_candidate_record'",
+  "created_at": 1783330020.3438969,
+  "updated_at": 1783330037.956148,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "This screen must have same model as 'emponb_candidate_record'",
+  "resume_ref": {
+    "session_id": "f61e674b-620a-48f1-b883-e83fe6b98dc6",
+    "claude_session_id": "7cc32473-5b09-43aa-ac7c-9698b1fa406b"
+  },
+  "depends_on": []
+}

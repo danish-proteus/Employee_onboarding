@@ -1,0 +1,19 @@
+{
+  "id": "813feda8-a963-47c2-b797-3b5316ca5d53",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "User server model to create similar model as for 'emponb_candidate_record'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "User server model to create similar model as for 'emponb_candidate_record'",
+  "created_at": 1783343525.0748043,
+  "updated_at": 1783343609.1543949,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "User server model to create similar model as for 'emponb_candidate_record'",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "23cf399a-6cef-48dd-b3ed-8fcd4d7692af"
+  },
+  "depends_on": []
+}

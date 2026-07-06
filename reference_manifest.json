@@ -1,15 +1,9 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-06-27T09:29:26.685261+00:00",
+  "generated_at": "2026-07-03T06:02:25.916165+00:00",
   "owner_user_id": "",
   "navigation_summary": [
-    {
-      "obj_name": "emponb_country_master",
-      "obj_type": "T",
-      "title": "Country Master",
-      "description": "Maintain countries used for nationality, address and detail-line country codes."
-    },
     {
       "obj_name": "emponb_designation_dept_master",
       "obj_type": "T",
@@ -41,58 +35,16 @@
       "description": "Maintain lookup values for Religion, Caste, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Rel"
     },
     {
-      "obj_name": "emponb_onboarding_settings",
-      "obj_type": "T",
-      "title": "Onboarding Settings",
-      "description": "Single-record configuration governing access-key life, retry limits and IOFLOW connectivity."
-    },
-    {
       "obj_name": "emponb_candidate_record",
       "obj_type": "T",
       "title": "Candidate Onboarding Record",
       "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
     },
     {
-      "obj_name": "emponb_hr_dashboard",
-      "obj_type": "D",
-      "title": "HR Onboarding Dashboard",
-      "description": "Consolidated onboarding metrics and visuals for HR / Onboarding Coordinator."
-    },
-    {
-      "obj_name": "emponb_onboarding_portal",
-      "obj_type": "X",
-      "title": "Candidate Onboarding Portal",
-      "description": "Public anonymous external site hosting the key-validated candidate onboarding form."
-    },
-    {
-      "obj_name": "emponb_site_header",
+      "obj_name": "emp_self_entry_page",
       "obj_type": "S",
-      "title": "Header",
-      "description": "Shared site header rendered on every portal page."
-    },
-    {
-      "obj_name": "emponb_site_footer",
-      "obj_type": "S",
-      "title": "Footer",
-      "description": "Shared site footer rendered on every portal page."
-    },
-    {
-      "obj_name": "emponb_candidate_form",
-      "obj_type": "S",
-      "title": "Candidate Onboarding Form",
-      "description": "Public, key-validated intake form the candidate opens from the emailed link."
-    },
-    {
-      "obj_name": "emponb_confirmation_page",
-      "obj_type": "S",
-      "title": "Onboarding Confirmation",
-      "description": "Thank-you page shown to the candidate after Submit."
-    },
-    {
-      "obj_name": "emponb_invalid_link_page",
-      "obj_type": "S",
-      "title": "Invalid / Expired Link",
-      "description": "Page explaining the onboarding link is no longer valid."
+      "title": "Candidate Self Entry Page",
+      "description": "Candidate Self Entry Page - Site"
     }
   ],
   "tables": [

@@ -1,0 +1,19 @@
+{
+  "id": "2b8dd4e1-f9d8-43ab-a133-3001d6fa1aba",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Need to have same forms as in 'Candidate Onboarding Record'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Need to have same forms as in 'Candidate Onboarding Record'",
+  "created_at": 1783342732.9508626,
+  "updated_at": 1783342922.1250162,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Need to have same forms as in 'Candidate Onboarding Record'",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "14322366-6dfb-431c-b589-57d617cedcc6"
+  },
+  "depends_on": []
+}

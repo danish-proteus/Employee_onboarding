@@ -1,0 +1,19 @@
+{
+  "id": "fefcd775-de32-4930-917f-cb76972983c3",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Delete 'Candidate Onboarding Portal'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Delete 'Candidate Onboarding Portal'",
+  "created_at": 1783341898.8989747,
+  "updated_at": 1783341924.8320417,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Delete 'Candidate Onboarding Portal'",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "4a9ab353-c20b-4103-ab7f-5017266a2ac9"
+  },
+  "depends_on": []
+}

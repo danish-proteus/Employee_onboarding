@@ -1,0 +1,19 @@
+{
+  "id": "a347cd23-a51c-447e-8ac2-e3b77ee8a64a",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "you need to user server coponent to copy model. No need to share same informatio",
+  "kind": "modify",
+  "status": "completed",
+  "description": "you need to user server coponent to copy model. No need to share same informatio",
+  "created_at": 1783344326.956323,
+  "updated_at": 1783344466.614081,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "you need to user server coponent to copy model. No need to share same information which is already availabel.",
+  "resume_ref": {
+    "session_id": "c9f91bb7-d0df-4c53-ac27-a2456fc23bce",
+    "claude_session_id": "f198c1c3-1daf-4022-b182-d44b346e5114"
+  },
+  "depends_on": []
+}

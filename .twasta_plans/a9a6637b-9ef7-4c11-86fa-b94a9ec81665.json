@@ -1,0 +1,19 @@
+{
+  "id": "a9a6637b-9ef7-4c11-86fa-b94a9ec81665",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Create a copy of 'Candidate Onboarding Record' as 'Candidate Self Entry'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Create a copy of 'Candidate Onboarding Record' as 'Candidate Self Entry'",
+  "created_at": 1783308578.544311,
+  "updated_at": 1783308644.7846034,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Create a copy of 'Candidate Onboarding Record' as 'Candidate Self Entry'",
+  "resume_ref": {
+    "session_id": "9b90886a-5835-421c-9847-d203f3818dc0",
+    "claude_session_id": "4b51686f-56f5-488b-b002-8df7d957671b"
+  },
+  "depends_on": []
+}

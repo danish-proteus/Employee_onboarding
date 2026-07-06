@@ -1,0 +1,19 @@
+{
+  "id": "afe1af30-4da6-44d7-96bc-3303fe79851e",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "How come 'emponb_candidate_self' removed from menu ?",
+  "kind": "modify",
+  "status": "completed",
+  "description": "How come 'emponb_candidate_self' removed from menu ?",
+  "created_at": 1783352762.533409,
+  "updated_at": 1783352802.635845,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "How come 'emponb_candidate_self' removed from menu ?",
+  "resume_ref": {
+    "session_id": "2046788b-49f7-4604-bc43-38cd371b1d46",
+    "claude_session_id": "23d80bd3-be70-463b-a277-c97c4cb6db3e"
+  },
+  "depends_on": []
+}
