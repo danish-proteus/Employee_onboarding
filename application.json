@@ -140,6 +140,19 @@
       "obj_type": "T",
       "menu_path": "emponb.3.2",
       "functional_specs": "Candidate self-service onboarding record. Header capturing candidate identity, access key, personal/contact/statutory/financial details and validation status. CANDIDATE_ID is the key and must exist in the Candidate Onboarding Record. Search, Add, Edit, Delete."
+    },
+    {
+      "id": "node.3",
+      "title": "Candidate Page",
+      "parent_id": "",
+      "icon_image": "folder",
+      "description": "",
+      "obj_name": "candidate_page",
+      "obj_type": "S",
+      "menu_path": "",
+      "functional_specs": "",
+      "order": 2,
+      "page_kind": "external"
     }
   ]
 }

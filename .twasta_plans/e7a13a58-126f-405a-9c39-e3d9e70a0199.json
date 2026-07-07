@@ -1,0 +1,19 @@
+{
+  "id": "e7a13a58-126f-405a-9c39-e3d9e70a0199",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Pre populate dropdown for   'Marital Status' with 'Yes' / 'No',  'Marriage Anniv",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Pre populate dropdown for   'Marital Status' with 'Yes' / 'No',  'Marriage Anniv",
+  "created_at": 1783395270.98469,
+  "updated_at": 1783395490.549782,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Pre populate dropdown for   'Marital Status' with 'Yes' / 'No',  'Marriage Anniversary' should be editable only when 'Marital Status' is 'Yes' Otherwise it should be blank and non-editable",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "964c1f1a-4167-421a-a762-a173d4ae6e37"
+  },
+  "depends_on": []
+}

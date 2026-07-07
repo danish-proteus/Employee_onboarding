@@ -1,0 +1,19 @@
+{
+  "id": "9821a391-e70b-45ea-8c6b-787220f0c54f",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "No Candidate Onboarding Record exists for candidate 1 . Data cannot be submitted",
+  "kind": "modify",
+  "status": "completed",
+  "description": "No Candidate Onboarding Record exists for candidate 1 . Data cannot be submitted",
+  "created_at": 1783399728.6287963,
+  "updated_at": 1783399825.8190124,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "No Candidate Onboarding Record exists for candidate 1 . Data cannot be submitted. whereas this record exists in table",
+  "resume_ref": {
+    "session_id": "fe12556a-43ab-4981-80a0-58d554343cae",
+    "claude_session_id": "3e6bfd60-ea54-4248-874b-7b0821ae690d"
+  },
+  "depends_on": []
+}

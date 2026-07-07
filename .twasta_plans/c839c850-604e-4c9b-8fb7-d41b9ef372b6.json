@@ -1,0 +1,19 @@
+{
+  "id": "c839c850-604e-4c9b-8fb7-d41b9ef372b6",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Candidate Self, if record exists in 'emponb_candidate_self' and related tables f",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Candidate Self, if record exists in 'emponb_candidate_self' and related tables f",
+  "created_at": 1783401349.8212245,
+  "updated_at": 1783401518.5595863,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Candidate Self, if record exists in 'emponb_candidate_self' and related tables for the candidate id it must pick from thr. If not found then bring all related data from emponb_candidate_record",
+  "resume_ref": {
+    "session_id": "fe12556a-43ab-4981-80a0-58d554343cae",
+    "claude_session_id": "900c841f-e76d-478c-a98e-b1249f910851"
+  },
+  "depends_on": []
+}

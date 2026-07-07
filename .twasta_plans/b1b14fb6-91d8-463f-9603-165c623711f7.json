@@ -1,0 +1,19 @@
+{
+  "id": "b1b14fb6-91d8-463f-9603-165c623711f7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Pre populate dropdown for   'Name Prefix', 'Religion', 'Blood Group' with approp",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Pre populate dropdown for   'Name Prefix', 'Religion', 'Blood Group' with approp",
+  "created_at": 1783395072.3862991,
+  "updated_at": 1783395118.8102343,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Pre populate dropdown for   'Name Prefix', 'Religion', 'Blood Group' with appropriate option.",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "5a452f52-28f8-4c3b-9175-b443f0231833"
+  },
+  "depends_on": []
+}

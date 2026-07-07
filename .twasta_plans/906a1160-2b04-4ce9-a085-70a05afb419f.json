@@ -1,0 +1,19 @@
+{
+  "id": "906a1160-2b04-4ce9-a085-70a05afb419f",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Why its not clearing the filed 'marriage_anniversary' if marital_status is chang",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Why its not clearing the filed 'marriage_anniversary' if marital_status is chang",
+  "created_at": 1783396953.8324006,
+  "updated_at": 1783397143.796878,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Why its not clearing the filed 'marriage_anniversary' if marital_status is changed ?",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "178ade96-e39e-4ad8-9e2c-53b8b207d306"
+  },
+  "depends_on": []
+}

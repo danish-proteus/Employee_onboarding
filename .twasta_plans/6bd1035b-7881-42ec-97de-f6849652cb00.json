@@ -1,0 +1,19 @@
+{
+  "id": "6bd1035b-7881-42ec-97de-f6849652cb00",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Remove 'HR Finalization' section, its not required here",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Remove 'HR Finalization' section, its not required here",
+  "created_at": 1783394829.020003,
+  "updated_at": 1783395063.3640964,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Remove 'HR Finalization' section, its not required here",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "b9c369ce-3bef-492b-af2a-e11ce9b6a41e"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "a8d63965-0f76-4ab0-99d1-085f932fd804",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "All above must work in ADD and edit mode of 'Candidate Self'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "All above must work in ADD and edit mode of 'Candidate Self'",
+  "created_at": 1783396006.9635565,
+  "updated_at": 1783396113.9178243,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "All above must work in ADD and edit mode of 'Candidate Self'",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "2735150a-8d9f-4156-9795-3e4705034a88"
+  },
+  "depends_on": []
+}

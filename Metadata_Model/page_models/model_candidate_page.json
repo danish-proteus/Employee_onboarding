@@ -1,0 +1,37 @@
+{
+  "page": {
+    "obj_name": "candidate_page",
+    "title": "",
+    "description": "",
+    "inputs": [],
+    "pageSchemaVersion": 2,
+    "sections": [
+      {
+        "id": "sec_mra6hdyw_4",
+        "name": "Main",
+        "tag": "main",
+        "blocks": [
+          {
+            "id": "paragraph_1",
+            "type": "paragraph",
+            "text": ""
+          },
+          {
+            "id": "embed_1",
+            "type": "embed",
+            "embed": {
+              "obj_name": "emponb_candidate_self",
+              "obj_type": "T",
+              "mode": "add",
+              "filters": [],
+              "renderMode": "capture"
+            }
+          }
+        ]
+      }
+    ],
+    "kind": "external",
+    "pageMode": "web",
+    "blocks": []
+  }
+}

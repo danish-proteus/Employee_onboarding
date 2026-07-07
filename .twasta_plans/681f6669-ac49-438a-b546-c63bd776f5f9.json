@@ -1,0 +1,19 @@
+{
+  "id": "681f6669-ac49-438a-b546-c63bd776f5f9",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Rename the function so a fresh one deploys under the current role (bypasses the ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Rename the function so a fresh one deploys under the current role (bypasses the ",
+  "created_at": 1783397243.460858,
+  "updated_at": 1783397415.2398548,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Rename the function so a fresh one deploys under the current role (bypasses the locked old one)",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "18f3dd0b-1c49-486b-af5c-af4bac340bf2"
+  },
+  "depends_on": []
+}

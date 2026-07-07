@@ -1,0 +1,19 @@
+{
+  "id": "2e221746-2aac-4e7f-934b-85af132e32d4",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On 'Candidate Self' provide an action called 'Submit', once called it should upd",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On 'Candidate Self' provide an action called 'Submit', once called it should upd",
+  "created_at": 1783398509.7953763,
+  "updated_at": 1783398633.28467,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On 'Candidate Self' provide an action called 'Submit', once called it should update the respective row at 'Candidate Onboarding Record' for the given 'candidate_id', it should update all detail forms as well.",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "6aef649f-012b-4c85-8b29-b711c1379f65"
+  },
+  "depends_on": []
+}

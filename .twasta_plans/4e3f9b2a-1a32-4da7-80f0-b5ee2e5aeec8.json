@@ -1,0 +1,19 @@
+{
+  "id": "4e3f9b2a-1a32-4da7-80f0-b5ee2e5aeec8",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "business-logic function 'submit_to_candidate_record' is not deployed (no compile",
+  "kind": "modify",
+  "status": "completed",
+  "description": "business-logic function 'submit_to_candidate_record' is not deployed (no compile",
+  "created_at": 1783399432.3508937,
+  "updated_at": 1783399609.81189,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "business-logic function 'submit_to_candidate_record' is not deployed (no compiled function body found)",
+  "resume_ref": {
+    "session_id": "fe12556a-43ab-4981-80a0-58d554343cae",
+    "claude_session_id": "db0f76a2-5f35-4758-a8cb-ef82867f711d"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "81dfb448-be5c-4f46-abb1-d74cf4a5023c",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "In Add/Edit, 'marriage_anniversary' and 'marital_status' not in sync. Check prop",
+  "kind": "modify",
+  "status": "completed",
+  "description": "In Add/Edit, 'marriage_anniversary' and 'marital_status' not in sync. Check prop",
+  "created_at": 1783396356.6980095,
+  "updated_at": 1783396424.5047562,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "In Add/Edit, 'marriage_anniversary' and 'marital_status' not in sync. Check properly. Logic should be, if marital_status is Yes then only allow to put 'marriage_anniversary' otherwise it should be set to blank.",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "bd2d511e-7d74-4b65-8ccf-bcdb8538534a"
+  },
+  "depends_on": []
+}

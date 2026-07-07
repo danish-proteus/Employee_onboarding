@@ -1,0 +1,19 @@
+{
+  "id": "78b182c0-bb04-461a-beb0-310eb1e59260",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "if 'Marital Status' is 'No' it should blank the 'Marriage Anniversary'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "if 'Marital Status' is 'No' it should blank the 'Marriage Anniversary'",
+  "created_at": 1783395835.449261,
+  "updated_at": 1783395879.4352756,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "if 'Marital Status' is 'No' it should blank the 'Marriage Anniversary'",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "af4fc176-5498-4a27-939d-46f92cfe9aa2"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "4a1da84c-305e-40c6-a4a4-fe6972fafc92",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Gender should have a dropdown with pre filled option",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Gender should have a dropdown with pre filled option",
+  "created_at": 1783394658.5613248,
+  "updated_at": 1783394680.5739796,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Gender should have a dropdown with pre filled option",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "82a12e0f-ec05-42de-9e27-71b7f760b5f9"
+  },
+  "depends_on": []
+}

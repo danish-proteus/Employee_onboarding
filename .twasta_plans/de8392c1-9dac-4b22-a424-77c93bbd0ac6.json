@@ -1,0 +1,19 @@
+{
+  "id": "de8392c1-9dac-4b22-a424-77c93bbd0ac6",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Make all fields in 'Contact & Address' editable, pre-populate drodown for State ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Make all fields in 'Contact & Address' editable, pre-populate drodown for State ",
+  "created_at": 1783395501.9348433,
+  "updated_at": 1783395626.9775622,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Make all fields in 'Contact & Address' editable, pre-populate drodown for State fields will all indian states",
+  "resume_ref": {
+    "session_id": "0e0d3495-eeba-4d07-96e0-fd8e37f7c156",
+    "claude_session_id": "24639280-e620-4094-b240-fb03879649d4"
+  },
+  "depends_on": []
+}
