@@ -1,0 +1,19 @@
+{
+  "id": "03512ff2-f425-41dc-8763-ae424484c4ef",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On change of 'Candidate_id', it should replace all the values, it should set to ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On change of 'Candidate_id', it should replace all the values, it should set to ",
+  "created_at": 1783403380.8606029,
+  "updated_at": 1783403410.7630694,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On change of 'Candidate_id', it should replace all the values, it should set to blank/null/default when no data found for the field",
+  "resume_ref": {
+    "session_id": "fe12556a-43ab-4981-80a0-58d554343cae",
+    "claude_session_id": "784e9026-e851-4456-a662-f6c1c791f196"
+  },
+  "depends_on": []
+}

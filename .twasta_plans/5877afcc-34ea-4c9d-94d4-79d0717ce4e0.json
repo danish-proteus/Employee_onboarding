@@ -1,0 +1,19 @@
+{
+  "id": "5877afcc-34ea-4c9d-94d4-79d0717ce4e0",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Attachments for PAN, Adhaar, Passport, Driving License, Bank Account, ESIC and P",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Attachments for PAN, Adhaar, Passport, Driving License, Bank Account, ESIC and P",
+  "created_at": 1783421230.863905,
+  "updated_at": 1783421338.5215259,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Attachments for PAN, Adhaar, Passport, Driving License, Bank Account, ESIC and PFNo must be in 'Statutory & Financial' No separate 'Attachments' Section required.",
+  "resume_ref": {
+    "session_id": "9062f8eb-0b93-4ef7-99ef-55933ca265ea",
+    "claude_session_id": "22b2d0d4-a8a6-4e18-b3d2-4ac3f01f4c49"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "808f7511-9656-485c-90c4-adffb6423dbb",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Allow to add documents in 'Statutory & Financial'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Allow to add documents in 'Statutory & Financial'",
+  "created_at": 1783435447.1124575,
+  "updated_at": 1783435516.5627048,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Allow to add documents in 'Statutory & Financial'",
+  "resume_ref": {
+    "session_id": "e1a19d69-bf98-42c9-80ac-6a4370db758f",
+    "claude_session_id": "4dab22d7-1cc8-4234-af33-545be1368314"
+  },
+  "depends_on": []
+}

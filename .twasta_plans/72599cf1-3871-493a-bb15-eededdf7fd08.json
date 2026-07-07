@@ -1,0 +1,19 @@
+{
+  "id": "72599cf1-3871-493a-bb15-eededdf7fd08",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "item change on cadidate_id stopped working for 'Candidate Self'",
+  "kind": "modify",
+  "status": "completed",
+  "description": "item change on cadidate_id stopped working for 'Candidate Self'",
+  "created_at": 1783402638.8818874,
+  "updated_at": 1783402814.5576653,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "item change on cadidate_id stopped working for 'Candidate Self'",
+  "resume_ref": {
+    "session_id": "fe12556a-43ab-4981-80a0-58d554343cae",
+    "claude_session_id": "906ac1fa-f308-46b7-9de9-19bd45399645"
+  },
+  "depends_on": []
+}

@@ -1654,7 +1654,7 @@
                 "col_type": "CHAR",
                 "heading": "PAN No",
                 "descr": "PAN number (AAAAA9999A)",
-                "protect": "1",
+                "protect": "0",
                 "validations": [
                   {
                     "type": "expression",
@@ -1689,7 +1689,7 @@
                 "col_type": "CHAR",
                 "heading": "Aadhar No",
                 "descr": "Aadhaar number (12 digits)",
-                "protect": "1",
+                "protect": "0",
                 "validations": [
                   {
                     "type": "expression",
@@ -1724,7 +1724,7 @@
                 "col_type": "VARCHAR",
                 "heading": "Passport No",
                 "descr": "Passport number",
-                "protect": "1",
+                "protect": "0",
                 "x": "520",
                 "y": "520",
                 "col_id": "52",
@@ -1752,7 +1752,7 @@
                 "col_type": "VARCHAR",
                 "heading": "Driving License No",
                 "descr": "Driving license number",
-                "protect": "1",
+                "protect": "0",
                 "x": "530",
                 "y": "530",
                 "col_id": "53",
@@ -1780,7 +1780,7 @@
                 "col_type": "VARCHAR",
                 "heading": "PF No",
                 "descr": "Provident fund number",
-                "protect": "1",
+                "protect": "0",
                 "x": "540",
                 "y": "540",
                 "col_id": "54",
@@ -1808,7 +1808,7 @@
                 "col_type": "VARCHAR",
                 "heading": "ESIC No",
                 "descr": "ESIC number",
-                "protect": "1",
+                "protect": "0",
                 "x": "550",
                 "y": "550",
                 "col_id": "55",
@@ -1836,7 +1836,7 @@
                 "col_type": "VARCHAR",
                 "heading": "Bank Account No",
                 "descr": "Bank account number",
-                "protect": "1",
+                "protect": "0",
                 "x": "560",
                 "y": "560",
                 "col_id": "56",
@@ -1864,7 +1864,7 @@
                 "col_type": "CHAR",
                 "heading": "Bank IFSC Code",
                 "descr": "Bank IFSC code (11-char)",
-                "protect": "1",
+                "protect": "0",
                 "validations": [
                   {
                     "type": "expression",
@@ -1899,7 +1899,7 @@
                 "col_type": "VARCHAR",
                 "heading": "Bank Name",
                 "descr": "Bank name",
-                "protect": "1",
+                "protect": "0",
                 "x": "580",
                 "y": "580",
                 "col_id": "58",
@@ -2211,11 +2211,11 @@
               "column": {
                 "name": "pan_doc",
                 "db_name": "PAN_DOC",
-                "group_name": "Attachments",
+                "group_name": "Statutory & Financial",
                 "col_type": "VARCHAR",
                 "heading": "PAN Document",
                 "descr": "PAN document upload",
-                "protect": "1",
+                "protect": "0",
                 "edit_mask": {
                   "mask": "document"
                 },
@@ -2241,11 +2241,11 @@
               "column": {
                 "name": "aadhar_doc",
                 "db_name": "AADHAR_DOC",
-                "group_name": "Attachments",
+                "group_name": "Statutory & Financial",
                 "col_type": "VARCHAR",
                 "heading": "Aadhar Document",
                 "descr": "Aadhaar document upload",
-                "protect": "1",
+                "protect": "0",
                 "edit_mask": {
                   "mask": "document"
                 },
@@ -2269,19 +2269,139 @@
             },
             {
               "column": {
+                "name": "passport_doc",
+                "db_name": "PASSPORT_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Passport Document",
+                "descr": "Passport document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "710",
+                "y": "710",
+                "col_id": "71",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "driving_lic_doc",
+                "db_name": "DRIVING_LIC_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Driving License Document",
+                "descr": "Driving license document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "720",
+                "y": "720",
+                "col_id": "72",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
                 "name": "bank_doc",
                 "db_name": "BANK_DOC",
-                "group_name": "Attachments",
+                "group_name": "Statutory & Financial",
                 "col_type": "VARCHAR",
                 "heading": "Bank Document",
                 "descr": "Cancelled cheque / passbook image",
-                "protect": "1",
+                "protect": "0",
                 "edit_mask": {
                   "mask": "document"
                 },
                 "x": "700",
                 "y": "700",
                 "col_id": "70",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "esic_doc",
+                "db_name": "ESIC_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "ESIC Document",
+                "descr": "ESIC document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "730",
+                "y": "730",
+                "col_id": "73",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pf_doc",
+                "db_name": "PF_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "PF Document",
+                "descr": "Provident fund document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "740",
+                "y": "740",
+                "col_id": "74",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",

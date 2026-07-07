@@ -144,15 +144,27 @@
     {
       "id": "node.3",
       "title": "Candidate Page",
-      "parent_id": "",
+      "parent_id": "node.4",
       "icon_image": "folder",
       "description": "",
       "obj_name": "candidate_page",
       "obj_type": "S",
       "menu_path": "",
       "functional_specs": "",
-      "order": 2,
+      "order": 0,
       "page_kind": "external"
+    },
+    {
+      "id": "node.4",
+      "title": "CandidateWebsite",
+      "parent_id": "",
+      "icon_image": "folder",
+      "description": "",
+      "obj_name": "candidate_website",
+      "obj_type": "X",
+      "menu_path": "",
+      "functional_specs": "",
+      "order": 3
     }
   ]
 }

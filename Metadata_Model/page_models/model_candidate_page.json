@@ -7,6 +7,19 @@
     "pageSchemaVersion": 2,
     "sections": [
       {
+        "id": "sec_mraliduz_1",
+        "name": "Header",
+        "tag": "header",
+        "blocks": [
+          {
+            "id": "heading_1",
+            "type": "heading",
+            "level": 1,
+            "text": "Candidate Page"
+          }
+        ]
+      },
+      {
         "id": "sec_mra6hdyw_4",
         "name": "Main",
         "tag": "main",

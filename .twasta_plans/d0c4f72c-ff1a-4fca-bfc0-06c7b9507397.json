@@ -1,0 +1,19 @@
+{
+  "id": "d0c4f72c-ff1a-4fca-bfc0-06c7b9507397",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Make 'Statutory & Financial' editable",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Make 'Statutory & Financial' editable",
+  "created_at": 1783413402.5795653,
+  "updated_at": 1783413507.9984455,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Make 'Statutory & Financial' editable",
+  "resume_ref": {
+    "session_id": "a04310e0-ae20-4ba1-aa43-d2885e0eed38",
+    "claude_session_id": "67535260-ca55-4077-b77d-f66f4617611a"
+  },
+  "depends_on": []
+}

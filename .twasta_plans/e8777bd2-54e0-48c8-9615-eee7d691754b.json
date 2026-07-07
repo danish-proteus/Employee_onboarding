@@ -1,0 +1,19 @@
+{
+  "id": "e8777bd2-54e0-48c8-9615-eee7d691754b",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "what is projectid",
+  "kind": "modify",
+  "status": "completed",
+  "description": "what is projectid",
+  "created_at": 1783430079.59175,
+  "updated_at": 1783430099.5847807,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "what is projectid",
+  "resume_ref": {
+    "session_id": "a9adb9c7-3b22-4897-b65d-ec4f0ecc519a",
+    "claude_session_id": "aeee753a-825c-43bd-b078-7d8cc8482950"
+  },
+  "depends_on": []
+}
