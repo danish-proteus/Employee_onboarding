@@ -4,10 +4,10 @@
   "backend": "autoagent",
   "title": "Add EMAIL_ID to the IOFlow send-link event payload in the 'Send/Resend Link' act",
   "kind": "change",
-  "status": "completed",
+  "status": "paused",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick of 'Send/Resend Link' also send 'email_id' to IOFLOW event",
   "created_at": 1784118678.3365588,
-  "updated_at": 1784184720.5362642,
+  "updated_at": 1784187511.88646,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick of 'Send/Resend Link' also send 'email_id' to IOFLOW event",
   "resume_ref": {
-    "session_id": "8ea37d8c-9eb3-4160-9680-49fccfb8c9d3",
+    "session_id": "893da33b-982a-4e39-bb2e-45112264cb2b",
     "plan_id": "f47eec3d-a000-4368-9d29-5a097fa484c3",
     "scope": null
   },

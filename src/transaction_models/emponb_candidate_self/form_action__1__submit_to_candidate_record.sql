@@ -26,53 +26,74 @@ BEGIN
         RETURN jsonb_build_object('error', 'No candidate id supplied on the form.');
     END IF;
 
-    -- (1) Header: delete-then-insert. Data from the Candidate Website must fully
-    --     replace any existing header row, so remove the current EMPONB_CANDIDATE_RECORD
-    --     row for this candidate (if any) and insert a fresh one from EMPONB_CANDIDATE_SELF.
-    --     Only candidate-supplied columns that exist on BOTH tables are carried; the
-    --     HR-owned access-key/link/initiation and validation-status columns are left out
-    --     of the INSERT and default on their own.
-    DELETE FROM EMPONB_CANDIDATE_RECORD WHERE CANDIDATE_ID = v_candidate_id;
-
-    INSERT INTO EMPONB_CANDIDATE_RECORD
-        (CANDIDATE_ID,
-         NAME_PREFIX, EMP_FNAME, EMP_MNAME, EMP_LNAME, CANDIDATE_NAME, BIRTHDATE,
-         EMAIL_ID, GENDER, DESIGN_CODE,
-         MARITAL_STATUS, MARRIAGE_ANNIVERSARY, BLOOD_GROUP, RELIGION,
-         CAST_CATEGORY, MOTHER_TONGUE, PHYSICAL_HANDICAP, HOBBY1, HOBBY2,
-         TOTAL_EXPERIENCE,
-         CURRENT_ADDRESS, CURRENT_PIN, CURRENT_CITY, CURRENT_STATE,
-         PERMANENT_ADDRESS, PERMANENT_PIN, PERMANENT_CITY, PERMANENT_STATE,
-         MOBILE, ALTERNATE_TELEPHONE, CONTACT_PERSON, CONTACT_PERSON_MOBILE,
-         CONTACT_PERSON_EMAIL,
-         PAN_NO, AADHAR_NO, PASSPORT_NO, DRIVING_LIC_NO, PF_NO, ESIC_NO,
-         BANK_ACCOUNT_NO, BANK_IFSC_CODE, BANK_NAME,
-         -- document uploads
-         PAN_DOC, AADHAR_DOC, BANK_DOC, PASSPORT_DOC, DRIVING_LIC_DOC, PF_DOC, ESIC_DOC,
-         STATUS, STATUS_DATE, SUBMITTED_ON)
-    SELECT s.CANDIDATE_ID,
-           s.NAME_PREFIX, s.EMP_FNAME, s.EMP_MNAME, s.EMP_LNAME,
-           -- personal identity: derive the NOT-NULL CANDIDATE_NAME by joining first,
-           -- middle and last name with single spaces (skipping any blank/null part)
-           btrim(regexp_replace(concat_ws(' ', btrim(s.EMP_FNAME), btrim(s.EMP_MNAME), btrim(s.EMP_LNAME)), '\s+', ' ', 'g')),
-           s.BIRTHDATE,
-           -- candidate contact/classification: EMAIL_ID is NOT NULL on the record and
-           -- is always supplied (mandatory, email-format-validated on the self form)
-           s.EMAIL_ID, s.GENDER, s.DESIGN_CODE,
-           s.MARITAL_STATUS, s.MARRIAGE_ANNIVERSARY, s.BLOOD_GROUP, s.RELIGION,
-           s.CAST_CATEGORY, s.MOTHER_TONGUE, s.PHYSICAL_HANDICAP, s.HOBBY1, s.HOBBY2,
-           s.TOTAL_EXPERIENCE,
-           s.CURRENT_ADDRESS, s.CURRENT_PIN, s.CURRENT_CITY, s.CURRENT_STATE,
-           s.PERMANENT_ADDRESS, s.PERMANENT_PIN, s.PERMANENT_CITY, s.PERMANENT_STATE,
-           s.MOBILE, s.ALTERNATE_TELEPHONE, s.CONTACT_PERSON, s.CONTACT_PERSON_MOBILE,
-           s.CONTACT_PERSON_EMAIL,
-           s.PAN_NO, s.AADHAR_NO, s.PASSPORT_NO, s.DRIVING_LIC_NO, s.PF_NO, s.ESIC_NO,
-           s.BANK_ACCOUNT_NO, s.BANK_IFSC_CODE, s.BANK_NAME,
-           -- document uploads
-           s.PAN_DOC, s.AADHAR_DOC, s.BANK_DOC, s.PASSPORT_DOC, s.DRIVING_LIC_DOC, s.PF_DOC, s.ESIC_DOC,
-           'DataSubmitted', now(), now()
-    FROM EMPONB_CANDIDATE_SELF s
-    WHERE s.CANDIDATE_ID = v_candidate_id;
+    -- (1) Header: merge the candidate's self-service values into the existing
+    --     EMPONB_CANDIDATE_RECORD row for this candidate. Instead of blanket-
+    --     overwriting, apply ONLY the values the candidate actually supplied: every
+    --     common column falls back to its current record value via COALESCE, and
+    --     blank ('') text is treated as 'no change' via NULLIF so an empty field
+    --     never blanks out data already held. The HR-owned access-key/link/
+    --     initiation and validation-status columns are left untouched. The record
+    --     lifecycle stamps (STATUS / STATUS_DATE / SUBMITTED_ON) are ALWAYS refreshed.
+    UPDATE EMPONB_CANDIDATE_RECORD r
+       SET NAME_PREFIX           = COALESCE(NULLIF(s.NAME_PREFIX, ''), r.NAME_PREFIX),
+           EMP_FNAME             = COALESCE(NULLIF(s.EMP_FNAME, ''), r.EMP_FNAME),
+           EMP_MNAME             = COALESCE(NULLIF(s.EMP_MNAME, ''), r.EMP_MNAME),
+           EMP_LNAME             = COALESCE(NULLIF(s.EMP_LNAME, ''), r.EMP_LNAME),
+           -- keep CANDIDATE_NAME (NOT NULL) in sync when name parts are provided,
+           -- otherwise preserve the existing name
+           CANDIDATE_NAME        = COALESCE(NULLIF(btrim(regexp_replace(concat_ws(' ', btrim(s.EMP_FNAME), btrim(s.EMP_MNAME), btrim(s.EMP_LNAME)), '\s+', ' ', 'g')), ''), r.CANDIDATE_NAME),
+           BIRTHDATE             = COALESCE(s.BIRTHDATE, r.BIRTHDATE),
+           EMAIL_ID              = COALESCE(NULLIF(s.EMAIL_ID, ''), r.EMAIL_ID),
+           GENDER                = COALESCE(NULLIF(s.GENDER, ''), r.GENDER),
+           DESIGN_CODE           = COALESCE(NULLIF(s.DESIGN_CODE, ''), r.DESIGN_CODE),
+           NATIONALITY           = COALESCE(NULLIF(s.NATIONALITY, ''), r.NATIONALITY),
+           MARITAL_STATUS        = COALESCE(NULLIF(s.MARITAL_STATUS, ''), r.MARITAL_STATUS),
+           MARRIAGE_ANNIVERSARY  = COALESCE(s.MARRIAGE_ANNIVERSARY, r.MARRIAGE_ANNIVERSARY),
+           BLOOD_GROUP           = COALESCE(NULLIF(s.BLOOD_GROUP, ''), r.BLOOD_GROUP),
+           RELIGION              = COALESCE(NULLIF(s.RELIGION, ''), r.RELIGION),
+           CAST_CATEGORY         = COALESCE(NULLIF(s.CAST_CATEGORY, ''), r.CAST_CATEGORY),
+           MOTHER_TONGUE         = COALESCE(NULLIF(s.MOTHER_TONGUE, ''), r.MOTHER_TONGUE),
+           PHYSICAL_HANDICAP     = COALESCE(NULLIF(s.PHYSICAL_HANDICAP, ''), r.PHYSICAL_HANDICAP),
+           HOBBY1                = COALESCE(NULLIF(s.HOBBY1, ''), r.HOBBY1),
+           HOBBY2                = COALESCE(NULLIF(s.HOBBY2, ''), r.HOBBY2),
+           TOTAL_EXPERIENCE      = COALESCE(s.TOTAL_EXPERIENCE, r.TOTAL_EXPERIENCE),
+           CURRENT_ADDRESS       = COALESCE(NULLIF(s.CURRENT_ADDRESS, ''), r.CURRENT_ADDRESS),
+           CURRENT_PIN           = COALESCE(NULLIF(s.CURRENT_PIN, ''), r.CURRENT_PIN),
+           CURRENT_CITY          = COALESCE(NULLIF(s.CURRENT_CITY, ''), r.CURRENT_CITY),
+           CURRENT_STATE         = COALESCE(NULLIF(s.CURRENT_STATE, ''), r.CURRENT_STATE),
+           PERMANENT_ADDRESS     = COALESCE(NULLIF(s.PERMANENT_ADDRESS, ''), r.PERMANENT_ADDRESS),
+           PERMANENT_PIN         = COALESCE(NULLIF(s.PERMANENT_PIN, ''), r.PERMANENT_PIN),
+           PERMANENT_CITY        = COALESCE(NULLIF(s.PERMANENT_CITY, ''), r.PERMANENT_CITY),
+           PERMANENT_STATE       = COALESCE(NULLIF(s.PERMANENT_STATE, ''), r.PERMANENT_STATE),
+           MOBILE                = COALESCE(NULLIF(s.MOBILE, ''), r.MOBILE),
+           ALTERNATE_TELEPHONE   = COALESCE(NULLIF(s.ALTERNATE_TELEPHONE, ''), r.ALTERNATE_TELEPHONE),
+           CONTACT_PERSON        = COALESCE(NULLIF(s.CONTACT_PERSON, ''), r.CONTACT_PERSON),
+           CONTACT_PERSON_MOBILE = COALESCE(NULLIF(s.CONTACT_PERSON_MOBILE, ''), r.CONTACT_PERSON_MOBILE),
+           CONTACT_PERSON_EMAIL  = COALESCE(NULLIF(s.CONTACT_PERSON_EMAIL, ''), r.CONTACT_PERSON_EMAIL),
+           PAN_NO                = COALESCE(NULLIF(s.PAN_NO, ''), r.PAN_NO),
+           AADHAR_NO             = COALESCE(NULLIF(s.AADHAR_NO, ''), r.AADHAR_NO),
+           PASSPORT_NO           = COALESCE(NULLIF(s.PASSPORT_NO, ''), r.PASSPORT_NO),
+           DRIVING_LIC_NO        = COALESCE(NULLIF(s.DRIVING_LIC_NO, ''), r.DRIVING_LIC_NO),
+           PF_NO                 = COALESCE(NULLIF(s.PF_NO, ''), r.PF_NO),
+           ESIC_NO               = COALESCE(NULLIF(s.ESIC_NO, ''), r.ESIC_NO),
+           BANK_ACCOUNT_NO       = COALESCE(NULLIF(s.BANK_ACCOUNT_NO, ''), r.BANK_ACCOUNT_NO),
+           BANK_IFSC_CODE        = COALESCE(NULLIF(s.BANK_IFSC_CODE, ''), r.BANK_IFSC_CODE),
+           BANK_NAME             = COALESCE(NULLIF(s.BANK_NAME, ''), r.BANK_NAME),
+           -- document uploads: preserve existing docs when no new upload is supplied
+           PAN_DOC               = COALESCE(NULLIF(s.PAN_DOC, ''), r.PAN_DOC),
+           AADHAR_DOC            = COALESCE(NULLIF(s.AADHAR_DOC, ''), r.AADHAR_DOC),
+           BANK_DOC              = COALESCE(NULLIF(s.BANK_DOC, ''), r.BANK_DOC),
+           PASSPORT_DOC          = COALESCE(NULLIF(s.PASSPORT_DOC, ''), r.PASSPORT_DOC),
+           DRIVING_LIC_DOC       = COALESCE(NULLIF(s.DRIVING_LIC_DOC, ''), r.DRIVING_LIC_DOC),
+           PF_DOC                = COALESCE(NULLIF(s.PF_DOC, ''), r.PF_DOC),
+           ESIC_DOC              = COALESCE(NULLIF(s.ESIC_DOC, ''), r.ESIC_DOC),
+           -- lifecycle stamps are always applied, never conditional
+           STATUS                = 'DataSubmitted',
+           STATUS_DATE           = now(),
+           SUBMITTED_ON          = now()
+      FROM EMPONB_CANDIDATE_SELF s
+     WHERE s.CANDIDATE_ID = v_candidate_id
+       AND r.CANDIDATE_ID = v_candidate_id;
 
     -- (2) Refresh each detail table: clear the record-side rows for this candidate
     --     and re-insert one row per self-side row, preserving CANDIDATE_ID/LINE_NO.

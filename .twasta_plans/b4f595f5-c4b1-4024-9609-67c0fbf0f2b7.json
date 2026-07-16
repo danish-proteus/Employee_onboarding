@@ -1,0 +1,33 @@
+{
+  "id": "b4f595f5-c4b1-4024-9609-67c0fbf0f2b7",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Modify the existing Submit business-logic function on emponb_candidate_self so i",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOn 'Submit', it should update only the change to 'Candidate Onboarding Record' for the given candidate_id",
+  "created_at": 1784187312.1009805,
+  "updated_at": 1784187511.8920584,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Make Submit apply only changed values (preserve existing record fields)",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784187312.1107109,
+      "completed_at": 1784187511.7924683
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOn 'Submit', it should update only the change to 'Candidate Onboarding Record' for the given candidate_id",
+  "resume_ref": {
+    "session_id": "893da33b-982a-4e39-bb2e-45112264cb2b",
+    "plan_id": "b4f595f5-c4b1-4024-9609-67c0fbf0f2b7",
+    "scope": null
+  },
+  "depends_on": []
+}
