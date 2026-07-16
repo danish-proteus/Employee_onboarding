@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake candidate_id disable once value is set",
   "created_at": 1784125891.5126317,
-  "updated_at": 1784187511.889243,
+  "updated_at": 1784193928.6587782,
   "todos": [
     {
       "id": "change_1",

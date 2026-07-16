@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAccessed this URL http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/candidate_website?key=df3a2899a5fd642fe910d041c9511709&candidate_id=2\n\nbut candidate_id didnt get set",
   "created_at": 1784123763.9228134,
-  "updated_at": 1784187511.8887808,
+  "updated_at": 1784193928.6583278,
   "todos": [
     {
       "id": "change_1",

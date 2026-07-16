@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick 'Send/Resend Link' before calling the IOFLOW delete the existing data from 'Candidate Self' for the given candidate_id, show a confirm dialog as well.",
   "created_at": 1784122221.222039,
-  "updated_at": 1784187511.887919,
+  "updated_at": 1784193928.656914,
   "todos": [
     {
       "id": "change_1",
