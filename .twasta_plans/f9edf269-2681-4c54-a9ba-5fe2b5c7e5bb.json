@@ -1,0 +1,19 @@
+{
+  "id": "f9edf269-2681-4c54-a9ba-5fe2b5c7e5bb",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "'Send/Resend Link' triggering the IOFLOW event twise, it should only emit the IO",
+  "kind": "modify",
+  "status": "completed",
+  "description": "'Send/Resend Link' triggering the IOFLOW event twise, it should only emit the IO",
+  "created_at": 1783661190.3816483,
+  "updated_at": 1783661351.0686944,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "'Send/Resend Link' triggering the IOFLOW event twise, it should only emit the IOFLOW from business logic written in the button.",
+  "resume_ref": {
+    "session_id": "2f370ed9-e557-4ec4-8be2-3cd3da78bf2c",
+    "claude_session_id": "47a4ec09-8749-4e0f-8c38-f70edd30ccf5"
+  },
+  "depends_on": []
+}

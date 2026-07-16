@@ -1,0 +1,81 @@
+{
+  "table_name": "EMPONB_CAND_SELF_FAMILY",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Parent candidate id",
+      "sequence": 1
+    },
+    {
+      "column_name": "LINE_NO",
+      "data_type": "NUMBER",
+      "size": "5",
+      "key": true,
+      "description": "Auto-sequenced line number",
+      "sequence": 2
+    },
+    {
+      "column_name": "MEMBER_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Family member name",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "DATE_BIRTH",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Member date of birth",
+      "sequence": 4
+    },
+    {
+      "column_name": "GENDER",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Member gender",
+      "sequence": 5,
+      "allowed_values": [
+        {
+          "value": "M",
+          "label": "Male"
+        },
+        {
+          "value": "F",
+          "label": "Female"
+        },
+        {
+          "value": "O",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "column_name": "RELATION",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Relation to candidate",
+      "sequence": 6,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "FATH",
+          "label": "Father"
+        },
+        {
+          "value": "SPOU",
+          "label": "Spouse"
+        }
+      ]
+    }
+  ]
+}

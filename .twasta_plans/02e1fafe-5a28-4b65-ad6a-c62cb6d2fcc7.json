@@ -1,0 +1,19 @@
+{
+  "id": "02e1fafe-5a28-4b65-ad6a-c62cb6d2fcc7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Can you configure such that the 'action__send_candidate_link.py' calls the ioflo",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Can you configure such that the 'action__send_candidate_link.py' calls the ioflo",
+  "created_at": 1783658075.7019112,
+  "updated_at": 1783658151.156497,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Can you configure such that the 'action__send_candidate_link.py' calls the ioflow after it updates all the relevant rows",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "fdf33e92-bfe3-48b8-ac68-5fc15bfd124a"
+  },
+  "depends_on": []
+}

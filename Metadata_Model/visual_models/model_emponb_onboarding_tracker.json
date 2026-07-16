@@ -416,7 +416,45 @@
             "customValue": "FixedValue",
             "promptLabel": "Status",
             "value": "",
-            "chipValue": []
+            "chipValue": [
+              "Initiated",
+              "Link Generated",
+              "Link Accessed",
+              "DataSubmitted",
+              "Review",
+              "Confirmed",
+              "Cancelled"
+            ],
+            "options": [
+              {
+                "data": "Initiated",
+                "display": "Initiated"
+              },
+              {
+                "data": "Link Generated",
+                "display": "Link Generated"
+              },
+              {
+                "data": "Link Accessed",
+                "display": "Link Accessed"
+              },
+              {
+                "data": "DataSubmitted",
+                "display": "Data Submitted"
+              },
+              {
+                "data": "Review",
+                "display": "Review"
+              },
+              {
+                "data": "Confirmed",
+                "display": "Confirmed"
+              },
+              {
+                "data": "Cancelled",
+                "display": "Cancelled"
+              }
+            ]
           },
           {
             "id": "Criteria_2",
@@ -425,12 +463,12 @@
             "tableName": "EMPONB_CANDIDATE_RECORD",
             "COLTYPE": "string",
             "currentFieldType": "string",
-            "operator": "=",
+            "operator": "like",
             "queryOption": "P",
             "prevOption": "P",
             "customValue": "FixedValue",
             "promptLabel": "Initiated By",
-            "value": "",
+            "value": "%",
             "chipValue": []
           },
           {
@@ -470,12 +508,12 @@
             "tableName": "EMPONB_CANDIDATE_RECORD",
             "COLTYPE": "string",
             "currentFieldType": "string",
-            "operator": "=",
+            "operator": "like",
             "queryOption": "P",
             "prevOption": "P",
             "customValue": "FixedValue",
             "promptLabel": "Designation",
-            "value": "",
+            "value": "%",
             "chipValue": []
           }
         ],
@@ -1051,5 +1089,5 @@
     },
     "layoutdata": {}
   },
-  "SOURCE_SQL": "SELECT candidate_name AS CANDIDATE_NAME, email_id AS EMAIL_ID, designation AS DESIGNATION, status AS STATUS, status_date AS STATUS_DATE, link_sent_on AS LINK_SENT_ON, link_accessed_on AS LINK_ACCESSED_ON, submitted_on AS SUBMITTED_ON, key_expiry_datetime AS KEY_EXPIRY_DATETIME, initiated_by AS INITIATED_BY FROM emponb_candidate_record WHERE (?.status IS NULL OR status IN (?.status)) AND (?.initiated_by IS NULL OR initiated_by = ?.initiated_by) AND status_date::date BETWEEN ?.from_date AND ?.to_date AND (?.designation IS NULL OR designation = ?.designation) ORDER BY status_date DESC"
+  "SOURCE_SQL": "SELECT candidate_name AS CANDIDATE_NAME, email_id AS EMAIL_ID, designation AS DESIGNATION, status AS STATUS, status_date AS STATUS_DATE, link_sent_on AS LINK_SENT_ON, link_accessed_on AS LINK_ACCESSED_ON, submitted_on AS SUBMITTED_ON, key_expiry_datetime AS KEY_EXPIRY_DATETIME, initiated_by AS INITIATED_BY FROM emponb_candidate_record WHERE status IN ?.status AND initiated_by LIKE ?.initiated_by AND status_date::date BETWEEN ?.from_date AND ?.to_date AND designation LIKE ?.designation ORDER BY status_date DESC"
 }

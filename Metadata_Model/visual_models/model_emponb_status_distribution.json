@@ -102,6 +102,7 @@
             "prevOption": "P",
             "customValue": "FixedValue",
             "promptLabel": "From Date",
+            "promptName": "from_date",
             "value": ":calendar_month_start",
             "chipValue": []
           },
@@ -117,6 +118,7 @@
             "prevOption": "P",
             "customValue": "FixedValue",
             "promptLabel": "To Date",
+            "promptName": "to_date",
             "value": ":calendar_today",
             "chipValue": []
           }
@@ -275,5 +277,5 @@
     },
     "layoutdata": {}
   },
-  "SOURCE_SQL": "SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN :calendar_month_start AND :calendar_today GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC"
+  "SOURCE_SQL": "SELECT emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.status_date BETWEEN ?.from_date AND ?.to_date GROUP BY emponb_candidate_record.status ORDER BY CANDIDATE_COUNT DESC"
 }

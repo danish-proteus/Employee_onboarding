@@ -1,0 +1,1 @@
+[1] Pay Head Master: ad_code(V10), ad_name(V100), appl_mode(V20), amount_type(V20), res_formula(V500), default_frequency(V20), active_flag(V1), add_date(DT), add_user(V10), add_term(V15), chg_date(DT), chg_user(V10), chg_term(V15)

@@ -3,7 +3,27 @@
     "obj_name": "candidate_page",
     "title": "",
     "description": "",
-    "inputs": [],
+    "inputs": [
+      {
+        "name": "candidate_id",
+        "label": "Candidate ID",
+        "type": "text",
+        "isInput": true,
+        "default": "",
+        "disableWhenSet": true
+      },
+      {
+        "name": "candidate_record",
+        "label": "Existing Candidate Record",
+        "type": "json",
+        "display": true,
+        "api": {
+          "method": "GET",
+          "url": "/api/onboard/candidate-self?candidate_id={{candidate_id}}",
+          "triggerOn": "candidate_id"
+        }
+      }
+    ],
     "pageSchemaVersion": 2,
     "sections": [
       {
@@ -25,19 +45,30 @@
         "tag": "main",
         "blocks": [
           {
-            "id": "paragraph_1",
-            "type": "paragraph",
-            "text": ""
-          },
-          {
             "id": "embed_1",
             "type": "embed",
             "embed": {
               "obj_name": "emponb_candidate_self",
               "obj_type": "T",
-              "mode": "add",
+              "renderMode": "capture",
+              "recordVar": "candidate_id",
               "filters": [],
-              "renderMode": "capture"
+              "readOnlyFields": ["candidate_id"],
+              "args": [
+                {
+                  "id": "a_candidate_id",
+                  "target": "candidate_id",
+                  "source": {
+                    "source": "page_input",
+                    "name": "candidate_id"
+                  },
+                  "disableTarget": true,
+                  "triggerItemChange": true,
+                  "triggerOn": "candidate_id"
+                }
+              ],
+              "mode": "single_add",
+              "captureTemplate": "single-classic"
             }
           }
         ]
@@ -45,6 +76,15 @@
     ],
     "kind": "external",
     "pageMode": "web",
+    "beforeLoad": {
+      "enabled": true,
+      "mode": "business_logic",
+      "business_logic": {
+        "method": "validate_access_key",
+        "language": "plpgsql",
+        "description": "On load, validate the URL access key against the candidate record and block render if the key is invalid or inactive."
+      }
+    },
     "blocks": []
   }
 }

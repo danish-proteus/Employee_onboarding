@@ -1,0 +1,19 @@
+{
+  "id": "3b31274c-7923-4d61-8eff-84384d2eb704",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Detail me how are you building 'http://dev.platform.twasta.ai:7077/site/7014e11e",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Detail me how are you building 'http://dev.platform.twasta.ai:7077/site/7014e11e",
+  "created_at": 1783655191.5488896,
+  "updated_at": 1783655268.4093645,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Detail me how are you building 'http://dev.platform.twasta.ai:7077/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/onboarding' \n\nIt should be 'http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/candidate_website'",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "af1b0140-d4a9-438c-8eac-fb5e84e93bca"
+  },
+  "depends_on": []
+}

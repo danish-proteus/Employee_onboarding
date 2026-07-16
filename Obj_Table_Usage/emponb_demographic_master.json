@@ -3,15 +3,15 @@
   "tables": {
     "EMPONB_DEMOGRAPHIC_MASTER": [
       "ADD_TERM",
-      "ADD_DATE",
-      "LOOKUP_TYPE",
       "CHG_TERM",
-      "CHG_DATE",
+      "LOOKUP_CODE",
+      "CHG_USER",
       "LOOKUP_DESC",
       "ADD_USER",
-      "LOOKUP_CODE",
       "ACTIVE_FLAG",
-      "CHG_USER"
+      "CHG_DATE",
+      "ADD_DATE",
+      "LOOKUP_TYPE"
     ]
   }
 }

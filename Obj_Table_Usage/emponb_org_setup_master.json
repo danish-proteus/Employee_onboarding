@@ -3,21 +3,21 @@
   "tables": {
     "EMPONB_ORG_SETUP_MASTER": [
       "ADD_TERM",
-      "ADD_DATE",
+      "WORK_SHIFT",
       "PAY_SITE_NAME",
-      "PAY_SITE",
+      "SHIFT_TIMINGS",
       "CHG_TERM",
-      "CHG_DATE",
-      "SITE_NAME",
+      "PAY_SITE",
       "SHIFT_NAME",
-      "ADD_USER",
       "HOL_TBL_NAME",
       "EMP_SITE",
-      "ACTIVE_FLAG",
-      "SHIFT_TIMINGS",
       "CHG_USER",
-      "WORK_SHIFT",
-      "HOL_TBLNO"
+      "ADD_USER",
+      "SITE_NAME",
+      "ACTIVE_FLAG",
+      "CHG_DATE",
+      "HOL_TBLNO",
+      "ADD_DATE"
     ]
   }
 }

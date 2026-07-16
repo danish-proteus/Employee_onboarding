@@ -5,10 +5,10 @@
   "columns": [
     {
       "column_name": "DESIGN_CODE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Unique design code identifying the designation",
+      "description": "Unique designation code, mandatory and must be active to be selectable elsewhere",
       "sequence": 1,
       "mandatory": true
     },
@@ -23,10 +23,10 @@
     },
     {
       "column_name": "DEPT_CODE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Department code",
+      "description": "Department code, unique within master",
       "sequence": 3,
       "mandatory": true
     },
@@ -35,15 +35,15 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Department name",
+      "description": "Name of the department",
       "sequence": 4
     },
     {
       "column_name": "GRADE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Grade code",
+      "description": "Grade code, unique within master",
       "sequence": 5
     },
     {
@@ -51,15 +51,15 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Grade name",
+      "description": "Name of the grade",
       "sequence": 6
     },
     {
       "column_name": "CADRE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Cadre code",
+      "description": "Cadre code, unique within master",
       "sequence": 7
     },
     {
@@ -67,7 +67,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Cadre name",
+      "description": "Name of the cadre",
       "sequence": 8
     },
     {
@@ -75,15 +75,15 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Default joined-as value associated with this designation",
+      "description": "Designation/role used at joining",
       "sequence": 9
     },
     {
       "column_name": "ACTIVE_FLAG",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Active flag; only active and mandatory design codes are selectable",
+      "description": "Whether this row is active and selectable",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
@@ -102,15 +102,15 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record creation timestamp",
+      "description": "Audit: record creation timestamp",
       "sequence": 11
     },
     {
       "column_name": "ADD_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who created the record",
+      "description": "Audit: user who created the record",
       "sequence": 12
     },
     {
@@ -118,7 +118,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that created the record",
+      "description": "Audit: terminal/IP that created the record",
       "sequence": 13
     },
     {
@@ -126,15 +126,15 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last-change timestamp",
+      "description": "Audit: last change timestamp",
       "sequence": 14
     },
     {
       "column_name": "CHG_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last changed the record",
+      "description": "Audit: user who last changed the record",
       "sequence": 15
     },
     {
@@ -142,7 +142,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that last changed the record",
+      "description": "Audit: terminal/IP of last change",
       "sequence": 16
     }
   ]

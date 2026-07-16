@@ -1,0 +1,33 @@
+{
+  "id": "63c9fd93-2637-4cc6-bca2-ae186f6428a0",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Make the CANDIDATE_ID field read-only in the embedded candidate capture form whe",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ncandidate_id not yet disabled while accessed via website",
+  "created_at": 1784126103.9599504,
+  "updated_at": 1784184720.5427594,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Disable Candidate ID on the website-embedded capture form",
+      "status": "completed",
+      "error": null,
+      "obj_name": "candidate_page",
+      "obj_type": "S",
+      "phase_id": null,
+      "started_at": 1784126103.9716017,
+      "completed_at": 1784126126.2317498
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ncandidate_id not yet disabled while accessed via website",
+  "resume_ref": {
+    "session_id": "8ea37d8c-9eb3-4160-9680-49fccfb8c9d3",
+    "plan_id": "63c9fd93-2637-4cc6-bca2-ae186f6428a0",
+    "scope": null
+  },
+  "depends_on": []
+}

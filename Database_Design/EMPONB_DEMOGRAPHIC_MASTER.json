@@ -8,7 +8,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": true,
-      "description": "Category of demographic lookup value",
+      "description": "Category of the lookup value",
       "sequence": 1,
       "mandatory": true,
       "allowed_values": [
@@ -48,10 +48,10 @@
     },
     {
       "column_name": "LOOKUP_CODE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Unique code within the lookup type",
+      "description": "Code for this lookup value",
       "sequence": 2,
       "mandatory": true
     },
@@ -60,16 +60,16 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Display description shown in candidate drop-downs",
+      "description": "Display description of this lookup value",
       "sequence": 3,
       "mandatory": true
     },
     {
       "column_name": "ACTIVE_FLAG",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Only active values appear in candidate form drop-downs",
+      "description": "Only active values appear in candidate drop-downs",
       "sequence": 4,
       "mandatory": true,
       "allowed_values": [
@@ -93,7 +93,7 @@
     },
     {
       "column_name": "ADD_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "User who created the record",
@@ -112,15 +112,15 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Last modification timestamp",
+      "description": "Record last-change timestamp",
       "sequence": 8
     },
     {
       "column_name": "CHG_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last modified the record",
+      "description": "User who last changed the record",
       "sequence": 9
     },
     {
@@ -128,7 +128,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that last modified the record",
+      "description": "Terminal/IP that last changed the record",
       "sequence": 10
     }
   ]

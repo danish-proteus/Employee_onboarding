@@ -1,0 +1,1164 @@
+{
+  "table_name": "EMPONB_CANDIDATE_SELF",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "System-generated unique candidate identifier",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "CANDIDATE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Full name of the candidate captured by HR",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "GENDER",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Candidate gender",
+      "sequence": 3,
+      "allowed_values": [
+        {
+          "value": "M",
+          "label": "Male"
+        },
+        {
+          "value": "F",
+          "label": "Female"
+        },
+        {
+          "value": "O",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "column_name": "DESIGN_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Designation reference at initiation",
+      "sequence": 4,
+      "allowed_values": [
+        {
+          "value": "DSG001",
+          "label": "Chief Executive Officer"
+        },
+        {
+          "value": "DSG002",
+          "label": "Software Engineer"
+        },
+        {
+          "value": "DSG003",
+          "label": "Senior Software Engineer"
+        },
+        {
+          "value": "DSG004",
+          "label": "Engineering Manager"
+        },
+        {
+          "value": "DSG005",
+          "label": "HR Executive"
+        },
+        {
+          "value": "DSG006",
+          "label": "HR Manager"
+        },
+        {
+          "value": "DSG007",
+          "label": "Accountant"
+        },
+        {
+          "value": "DSG008",
+          "label": "Finance Manager"
+        },
+        {
+          "value": "DSG009",
+          "label": "Sales Executive"
+        },
+        {
+          "value": "DSG010",
+          "label": "Regional Sales Manager"
+        },
+        {
+          "value": "DSG011",
+          "label": "Marketing Specialist"
+        },
+        {
+          "value": "DSG012",
+          "label": "IT Support Analyst"
+        }
+      ]
+    },
+    {
+      "column_name": "EMAIL_ID",
+      "data_type": "VARCHAR",
+      "size": "120",
+      "key": false,
+      "description": "Candidate email; mandatory and valid before link generation",
+      "sequence": 5,
+      "mandatory": true
+    },
+    {
+      "column_name": "STATUS",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Lifecycle status of the candidate record",
+      "sequence": 6,
+      "allowed_values": [
+        {
+          "value": "Initiated",
+          "label": "Initiated"
+        },
+        {
+          "value": "Link Generated",
+          "label": "Link Generated"
+        },
+        {
+          "value": "Link Accessed",
+          "label": "Link Accessed"
+        },
+        {
+          "value": "DataSubmitted",
+          "label": "Data Submitted"
+        },
+        {
+          "value": "Review",
+          "label": "Review"
+        },
+        {
+          "value": "Confirmed",
+          "label": "Confirmed"
+        },
+        {
+          "value": "Cancelled",
+          "label": "Cancelled"
+        }
+      ]
+    },
+    {
+      "column_name": "STATUS_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Date stamped on each status transition",
+      "sequence": 7
+    },
+    {
+      "column_name": "INITIATED_BY",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "HR user who initiated the candidate",
+      "sequence": 8
+    },
+    {
+      "column_name": "INITIATED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Initiation timestamp",
+      "sequence": 9
+    },
+    {
+      "column_name": "ACCESS_KEY",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "System-generated unique access token",
+      "sequence": 10
+    },
+    {
+      "column_name": "KEY_GENERATED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Timestamp the access key was generated",
+      "sequence": 11
+    },
+    {
+      "column_name": "KEY_EXPIRY_DATETIME",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Key expiry = generated on + key validity days",
+      "sequence": 12
+    },
+    {
+      "column_name": "KEY_VALID_FLAG",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Whether the access key is currently valid",
+      "sequence": 13,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "FORM_URL",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "External candidate form URL carrying the key",
+      "sequence": 14
+    },
+    {
+      "column_name": "LINK_SENT_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the link was emailed",
+      "sequence": 15
+    },
+    {
+      "column_name": "LINK_ACCESSED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the candidate first opened the link",
+      "sequence": 16
+    },
+    {
+      "column_name": "SUBMITTED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the candidate submitted the form",
+      "sequence": 17
+    },
+    {
+      "column_name": "NAME_PREFIX",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Name prefix/title",
+      "sequence": 18,
+      "allowed_values": [
+        {
+          "value": "Mr.",
+          "label": "Mr."
+        },
+        {
+          "value": "Mrs.",
+          "label": "Mrs."
+        },
+        {
+          "value": "Ms.",
+          "label": "Ms."
+        },
+        {
+          "value": "Miss",
+          "label": "Miss"
+        },
+        {
+          "value": "Dr.",
+          "label": "Dr."
+        },
+        {
+          "value": "Prof.",
+          "label": "Prof."
+        }
+      ]
+    },
+    {
+      "column_name": "EMP_FNAME",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "First name (candidate self-service)",
+      "sequence": 19
+    },
+    {
+      "column_name": "EMP_MNAME",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Middle name",
+      "sequence": 20
+    },
+    {
+      "column_name": "EMP_LNAME",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Last name",
+      "sequence": 21
+    },
+    {
+      "column_name": "BIRTHDATE",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Date of birth",
+      "sequence": 22,
+      "mandatory": true
+    },
+    {
+      "column_name": "MARITAL_STATUS",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Marital status",
+      "sequence": 23,
+      "allowed_values": [
+        {
+          "value": "Yes",
+          "label": "Yes"
+        },
+        {
+          "value": "No",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "MARRIAGE_ANNIVERSARY",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Marriage anniversary date",
+      "sequence": 24
+    },
+    {
+      "column_name": "BLOOD_GROUP",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Blood group",
+      "sequence": 25,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "A+",
+          "label": "A+"
+        },
+        {
+          "value": "A-",
+          "label": "A-"
+        },
+        {
+          "value": "B+",
+          "label": "B+"
+        },
+        {
+          "value": "B-",
+          "label": "B-"
+        },
+        {
+          "value": "AB+",
+          "label": "AB+"
+        },
+        {
+          "value": "AB-",
+          "label": "AB-"
+        },
+        {
+          "value": "O+",
+          "label": "O+"
+        },
+        {
+          "value": "O-",
+          "label": "O-"
+        }
+      ]
+    },
+    {
+      "column_name": "RELIGION",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Religion",
+      "sequence": 26,
+      "allowed_values": [
+        {
+          "value": "Hindu",
+          "label": "Hindu"
+        },
+        {
+          "value": "Muslim",
+          "label": "Muslim"
+        },
+        {
+          "value": "Christian",
+          "label": "Christian"
+        },
+        {
+          "value": "Sikh",
+          "label": "Sikh"
+        },
+        {
+          "value": "Buddhist",
+          "label": "Buddhist"
+        },
+        {
+          "value": "Jain",
+          "label": "Jain"
+        },
+        {
+          "value": "Parsi",
+          "label": "Parsi"
+        },
+        {
+          "value": "Jewish",
+          "label": "Jewish"
+        },
+        {
+          "value": "Other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "column_name": "CAST_CATEGORY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Caste category",
+      "sequence": 27
+    },
+    {
+      "column_name": "MOTHER_TONGUE",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Mother tongue",
+      "sequence": 28
+    },
+    {
+      "column_name": "PHYSICAL_HANDICAP",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Physically handicapped flag",
+      "sequence": 29,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "HOBBY1",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Primary hobby",
+      "sequence": 30
+    },
+    {
+      "column_name": "HOBBY2",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Secondary hobby",
+      "sequence": 31
+    },
+    {
+      "column_name": "TOTAL_EXPERIENCE",
+      "data_type": "NUMBER",
+      "size": "5,2",
+      "key": false,
+      "description": "Total years of experience",
+      "sequence": 32
+    },
+    {
+      "column_name": "CURRENT_ADDRESS",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Current address",
+      "sequence": 33
+    },
+    {
+      "column_name": "CURRENT_PIN",
+      "data_type": "CHAR",
+      "size": "6",
+      "key": false,
+      "description": "Current PIN code (6 digits)",
+      "sequence": 34
+    },
+    {
+      "column_name": "CURRENT_CITY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Current city",
+      "sequence": 35
+    },
+    {
+      "column_name": "CURRENT_STATE",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Current state",
+      "sequence": 36,
+      "allowed_values": [
+        {
+          "value": "Andhra Pradesh",
+          "label": "Andhra Pradesh"
+        },
+        {
+          "value": "Arunachal Pradesh",
+          "label": "Arunachal Pradesh"
+        },
+        {
+          "value": "Assam",
+          "label": "Assam"
+        },
+        {
+          "value": "Bihar",
+          "label": "Bihar"
+        },
+        {
+          "value": "Chhattisgarh",
+          "label": "Chhattisgarh"
+        },
+        {
+          "value": "Goa",
+          "label": "Goa"
+        },
+        {
+          "value": "Gujarat",
+          "label": "Gujarat"
+        },
+        {
+          "value": "Haryana",
+          "label": "Haryana"
+        },
+        {
+          "value": "Himachal Pradesh",
+          "label": "Himachal Pradesh"
+        },
+        {
+          "value": "Jharkhand",
+          "label": "Jharkhand"
+        },
+        {
+          "value": "Karnataka",
+          "label": "Karnataka"
+        },
+        {
+          "value": "Kerala",
+          "label": "Kerala"
+        },
+        {
+          "value": "Madhya Pradesh",
+          "label": "Madhya Pradesh"
+        },
+        {
+          "value": "Maharashtra",
+          "label": "Maharashtra"
+        },
+        {
+          "value": "Manipur",
+          "label": "Manipur"
+        },
+        {
+          "value": "Meghalaya",
+          "label": "Meghalaya"
+        },
+        {
+          "value": "Mizoram",
+          "label": "Mizoram"
+        },
+        {
+          "value": "Nagaland",
+          "label": "Nagaland"
+        },
+        {
+          "value": "Odisha",
+          "label": "Odisha"
+        },
+        {
+          "value": "Punjab",
+          "label": "Punjab"
+        },
+        {
+          "value": "Rajasthan",
+          "label": "Rajasthan"
+        },
+        {
+          "value": "Sikkim",
+          "label": "Sikkim"
+        },
+        {
+          "value": "Tamil Nadu",
+          "label": "Tamil Nadu"
+        },
+        {
+          "value": "Telangana",
+          "label": "Telangana"
+        },
+        {
+          "value": "Tripura",
+          "label": "Tripura"
+        },
+        {
+          "value": "Uttar Pradesh",
+          "label": "Uttar Pradesh"
+        },
+        {
+          "value": "Uttarakhand",
+          "label": "Uttarakhand"
+        },
+        {
+          "value": "West Bengal",
+          "label": "West Bengal"
+        },
+        {
+          "value": "Andaman and Nicobar Islands",
+          "label": "Andaman and Nicobar Islands"
+        },
+        {
+          "value": "Chandigarh",
+          "label": "Chandigarh"
+        },
+        {
+          "value": "Dadra and Nagar Haveli and Daman and Diu",
+          "label": "Dadra and Nagar Haveli and Daman and Diu"
+        },
+        {
+          "value": "Delhi",
+          "label": "Delhi"
+        },
+        {
+          "value": "Jammu and Kashmir",
+          "label": "Jammu and Kashmir"
+        },
+        {
+          "value": "Ladakh",
+          "label": "Ladakh"
+        },
+        {
+          "value": "Lakshadweep",
+          "label": "Lakshadweep"
+        },
+        {
+          "value": "Puducherry",
+          "label": "Puducherry"
+        }
+      ]
+    },
+    {
+      "column_name": "PERMANENT_ADDRESS",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Permanent address",
+      "sequence": 37
+    },
+    {
+      "column_name": "PERMANENT_PIN",
+      "data_type": "CHAR",
+      "size": "6",
+      "key": false,
+      "description": "Permanent PIN code (6 digits)",
+      "sequence": 38
+    },
+    {
+      "column_name": "PERMANENT_CITY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Permanent city",
+      "sequence": 39
+    },
+    {
+      "column_name": "PERMANENT_STATE",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Permanent state",
+      "sequence": 40,
+      "allowed_values": [
+        {
+          "value": "Andhra Pradesh",
+          "label": "Andhra Pradesh"
+        },
+        {
+          "value": "Arunachal Pradesh",
+          "label": "Arunachal Pradesh"
+        },
+        {
+          "value": "Assam",
+          "label": "Assam"
+        },
+        {
+          "value": "Bihar",
+          "label": "Bihar"
+        },
+        {
+          "value": "Chhattisgarh",
+          "label": "Chhattisgarh"
+        },
+        {
+          "value": "Goa",
+          "label": "Goa"
+        },
+        {
+          "value": "Gujarat",
+          "label": "Gujarat"
+        },
+        {
+          "value": "Haryana",
+          "label": "Haryana"
+        },
+        {
+          "value": "Himachal Pradesh",
+          "label": "Himachal Pradesh"
+        },
+        {
+          "value": "Jharkhand",
+          "label": "Jharkhand"
+        },
+        {
+          "value": "Karnataka",
+          "label": "Karnataka"
+        },
+        {
+          "value": "Kerala",
+          "label": "Kerala"
+        },
+        {
+          "value": "Madhya Pradesh",
+          "label": "Madhya Pradesh"
+        },
+        {
+          "value": "Maharashtra",
+          "label": "Maharashtra"
+        },
+        {
+          "value": "Manipur",
+          "label": "Manipur"
+        },
+        {
+          "value": "Meghalaya",
+          "label": "Meghalaya"
+        },
+        {
+          "value": "Mizoram",
+          "label": "Mizoram"
+        },
+        {
+          "value": "Nagaland",
+          "label": "Nagaland"
+        },
+        {
+          "value": "Odisha",
+          "label": "Odisha"
+        },
+        {
+          "value": "Punjab",
+          "label": "Punjab"
+        },
+        {
+          "value": "Rajasthan",
+          "label": "Rajasthan"
+        },
+        {
+          "value": "Sikkim",
+          "label": "Sikkim"
+        },
+        {
+          "value": "Tamil Nadu",
+          "label": "Tamil Nadu"
+        },
+        {
+          "value": "Telangana",
+          "label": "Telangana"
+        },
+        {
+          "value": "Tripura",
+          "label": "Tripura"
+        },
+        {
+          "value": "Uttar Pradesh",
+          "label": "Uttar Pradesh"
+        },
+        {
+          "value": "Uttarakhand",
+          "label": "Uttarakhand"
+        },
+        {
+          "value": "West Bengal",
+          "label": "West Bengal"
+        },
+        {
+          "value": "Andaman and Nicobar Islands",
+          "label": "Andaman and Nicobar Islands"
+        },
+        {
+          "value": "Chandigarh",
+          "label": "Chandigarh"
+        },
+        {
+          "value": "Dadra and Nagar Haveli and Daman and Diu",
+          "label": "Dadra and Nagar Haveli and Daman and Diu"
+        },
+        {
+          "value": "Delhi",
+          "label": "Delhi"
+        },
+        {
+          "value": "Jammu and Kashmir",
+          "label": "Jammu and Kashmir"
+        },
+        {
+          "value": "Ladakh",
+          "label": "Ladakh"
+        },
+        {
+          "value": "Lakshadweep",
+          "label": "Lakshadweep"
+        },
+        {
+          "value": "Puducherry",
+          "label": "Puducherry"
+        }
+      ]
+    },
+    {
+      "column_name": "MOBILE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Mobile number (10 digits)",
+      "sequence": 41
+    },
+    {
+      "column_name": "ALTERNATE_TELEPHONE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Alternate telephone number",
+      "sequence": 42
+    },
+    {
+      "column_name": "CONTACT_PERSON",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Emergency contact person",
+      "sequence": 43
+    },
+    {
+      "column_name": "CONTACT_PERSON_MOBILE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Emergency contact mobile (10 digits)",
+      "sequence": 44
+    },
+    {
+      "column_name": "CONTACT_PERSON_EMAIL",
+      "data_type": "VARCHAR",
+      "size": "120",
+      "key": false,
+      "description": "Emergency contact email",
+      "sequence": 45
+    },
+    {
+      "column_name": "PAN_NO",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "PAN number (AAAAA9999A)",
+      "sequence": 46
+    },
+    {
+      "column_name": "PAN_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "PAN document upload",
+      "sequence": 47
+    },
+    {
+      "column_name": "AADHAR_NO",
+      "data_type": "CHAR",
+      "size": "12",
+      "key": false,
+      "description": "Aadhaar number (12 digits)",
+      "sequence": 48
+    },
+    {
+      "column_name": "AADHAR_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Aadhaar document upload",
+      "sequence": 49
+    },
+    {
+      "column_name": "PASSPORT_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Passport number",
+      "sequence": 50
+    },
+    {
+      "column_name": "PASSPORT_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Passport document upload",
+      "sequence": 51
+    },
+    {
+      "column_name": "DRIVING_LIC_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Driving license number",
+      "sequence": 52
+    },
+    {
+      "column_name": "DRIVING_LIC_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Driving license document upload",
+      "sequence": 53
+    },
+    {
+      "column_name": "PF_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Provident fund number",
+      "sequence": 54
+    },
+    {
+      "column_name": "PF_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Provident fund document upload",
+      "sequence": 55
+    },
+    {
+      "column_name": "ESIC_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "ESIC number",
+      "sequence": 56
+    },
+    {
+      "column_name": "ESIC_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "ESIC document upload",
+      "sequence": 57
+    },
+    {
+      "column_name": "BANK_ACCOUNT_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Bank account number",
+      "sequence": 58
+    },
+    {
+      "column_name": "BANK_IFSC_CODE",
+      "data_type": "CHAR",
+      "size": "11",
+      "key": false,
+      "description": "Bank IFSC code (11-char)",
+      "sequence": 59
+    },
+    {
+      "column_name": "BANK_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Bank name",
+      "sequence": 60
+    },
+    {
+      "column_name": "BANK_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Cancelled cheque / passbook image",
+      "sequence": 61
+    },
+    {
+      "column_name": "PAN_VALIDATED",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "PAN validation result",
+      "sequence": 62,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "PAN_VALIDATED_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name returned by PAN validation",
+      "sequence": 63
+    },
+    {
+      "column_name": "PAN_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "PAN validation attempts",
+      "sequence": 64
+    },
+    {
+      "column_name": "AADHAR_VALIDATED",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Aadhaar validation result",
+      "sequence": 65,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "AADHAR_VALIDATED_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name returned by Aadhaar validation",
+      "sequence": 66
+    },
+    {
+      "column_name": "AADHAR_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "Aadhaar validation attempts",
+      "sequence": 67
+    },
+    {
+      "column_name": "BANK_VALIDATED",
+      "data_type": "CHAR",
+      "size": "1",
+      "key": false,
+      "description": "Bank validation result",
+      "sequence": 68,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "BANK_VALIDATED_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name returned by bank validation",
+      "sequence": 69
+    },
+    {
+      "column_name": "BANK_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "Bank validation attempts",
+      "sequence": 70
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 71
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Record creator",
+      "sequence": 72
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Creation terminal",
+      "sequence": 73
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Last change timestamp",
+      "sequence": 74
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Last changer",
+      "sequence": 75
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Change terminal",
+      "sequence": 76
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "1a49021d-1af1-48c8-95c8-9616611bf5a6",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "But I am receiving 2 IOFLOW events with old data still coming",
+  "kind": "modify",
+  "status": "completed",
+  "description": "But I am receiving 2 IOFLOW events with old data still coming",
+  "created_at": 1783658948.9113388,
+  "updated_at": 1783659094.9731274,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "But I am receiving 2 IOFLOW events with old data still coming",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "c9a0b5b6-c18b-4bcb-9922-a34ad8d19198"
+  },
+  "depends_on": []
+}

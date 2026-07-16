@@ -1,0 +1,19 @@
+{
+  "id": "b9660a19-4661-46c7-8308-917791c1a17a",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Form url should be like 'http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Form url should be like 'http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4",
+  "created_at": 1783653989.8423204,
+  "updated_at": 1783654012.303502,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Form url should be like 'http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/candidate_website' its generating wrong",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "f580474b-f4fc-4e77-8830-979012ca2080"
+  },
+  "depends_on": []
+}

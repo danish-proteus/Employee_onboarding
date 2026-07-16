@@ -6,18 +6,31 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
-        "ADD_TERM",
         "QLF_TYPE",
-        "ADD_DATE",
+        "ADD_TERM",
         "CHG_TERM",
-        "QLF_NAME",
-        "CHG_DATE",
-        "ADD_USER",
-        "ACTIVE_FLAG",
+        "CHG_USER",
         "QLF_CODE",
+        "ACTIVE_FLAG",
         "COURSE_TYPE",
-        "CHG_USER"
+        "ADD_USER",
+        "CHG_DATE",
+        "QLF_NAME",
+        "ADD_DATE"
       ]
+    },
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "3",
+      "usage_type": "M",
+      "referred_columns": [
+        "QLF_CODE"
+      ],
+      "join_info": {
+        "column": "QLF_CODE",
+        "join_table": "EMPONB_CAND_SELF_EDUCATION",
+        "join_column": "QLF_CODE"
+      }
     },
     {
       "object_name": "emponb_candidate_record",

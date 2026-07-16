@@ -1,0 +1,19 @@
+{
+  "id": "870e5911-bee6-496d-ae29-06803a1d42ba",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It seem no new access key generated on 'Send/Resend Link', investigate properly",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It seem no new access key generated on 'Send/Resend Link', investigate properly",
+  "created_at": 1783582570.467933,
+  "updated_at": 1783582718.5420237,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It seem no new access key generated on 'Send/Resend Link', investigate properly",
+  "resume_ref": {
+    "session_id": "ba6eb99c-d1a7-4172-8979-31bc6b1cf292",
+    "claude_session_id": "b21bcd36-cdcc-4e40-a957-e5ef28780adf"
+  },
+  "depends_on": []
+}

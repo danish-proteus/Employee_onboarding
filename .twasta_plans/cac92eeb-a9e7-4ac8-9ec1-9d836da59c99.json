@@ -1,0 +1,117 @@
+{
+  "id": "cac92eeb-a9e7-4ac8-9ec1-9d836da59c99",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Remove the 'Generate Key' action/button and its business-logic implementation fr",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nremove 'Generate Key' button and implementation of the same, as this is already merged in 'Send/Resend Link'",
+  "created_at": 1784119418.6774366,
+  "updated_at": 1784184720.53698,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Remove 'Generate Key' action from the Candidate Record transaction model",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119418.686319,
+      "completed_at": 1784119441.7591612
+    },
+    {
+      "id": "change_2",
+      "step": "change",
+      "label": "Delete the Generate Key form-action business logic file",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119441.7731302,
+      "completed_at": 1784119504.7443438
+    },
+    {
+      "id": "change_3",
+      "step": "change",
+      "label": "Delete the Generate Key action business logic file",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119504.8232698,
+      "completed_at": 1784119517.009295
+    },
+    {
+      "id": "change_1-bl1",
+      "step": "change",
+      "label": "Write business logic 'cancel_candidate' for emponb_candidate_record",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119517.1014478,
+      "completed_at": 1784119541.190366
+    },
+    {
+      "id": "change_1-bl2",
+      "step": "change",
+      "label": "Write business logic 'mark_review' for emponb_candidate_record",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119541.294944,
+      "completed_at": 1784119558.8602495
+    },
+    {
+      "id": "change_1-bl3",
+      "step": "change",
+      "label": "Write business logic 'revalidate_aadhar' for emponb_candidate_record",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119558.9677432,
+      "completed_at": 1784119589.464224
+    },
+    {
+      "id": "change_1-bl4",
+      "step": "change",
+      "label": "Write business logic 'revalidate_bank' for emponb_candidate_record",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119589.576945,
+      "completed_at": 1784119630.2449982
+    },
+    {
+      "id": "change_1-bl5",
+      "step": "change",
+      "label": "Write business logic 'revalidate_pan' for emponb_candidate_record",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784119630.3649452,
+      "completed_at": 1784119671.5278058
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nremove 'Generate Key' button and implementation of the same, as this is already merged in 'Send/Resend Link'",
+  "resume_ref": {
+    "session_id": "8ea37d8c-9eb3-4160-9680-49fccfb8c9d3",
+    "plan_id": "cac92eeb-a9e7-4ac8-9ec1-9d836da59c99",
+    "scope": null
+  },
+  "depends_on": []
+}

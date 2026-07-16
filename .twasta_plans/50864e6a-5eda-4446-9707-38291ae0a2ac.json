@@ -1,0 +1,19 @@
+{
+  "id": "50864e6a-5eda-4446-9707-38291ae0a2ac",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "OnOclick of 'Send/Resend' action, using python function, it should ideally gener",
+  "kind": "modify",
+  "status": "completed",
+  "description": "OnOclick of 'Send/Resend' action, using python function, it should ideally gener",
+  "created_at": 1783584124.6229157,
+  "updated_at": 1783584309.4142144,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "OnOclick of 'Send/Resend' action, using python function, it should ideally generate new accesskey and update the [\"ACCESS_KEY\": access_key,\n        \"KEY_GENERATED_ON\": now,\n        \"KEY_EXPIRY_DATETIME\": expiry,\n        \"KEY_VALID_FLAG\": \"Y\",\n        \"FORM_URL\": form_url,\n        \"STATUS\": \"Link Generated\",\n        \"STATUS_DATE\": now,\n        \"LINK_SENT_ON\": now]\n in 'Candidate Onboarding Record' for the candidate_id. Then update formurl with the candidatewebsite url and call the ioflow with formurl,accesskey and candidateid \n\nplease verify if this does all above.",
+  "resume_ref": {
+    "session_id": "ba6eb99c-d1a7-4172-8979-31bc6b1cf292",
+    "claude_session_id": "4af7e130-d3aa-47ec-a4d8-cfc880ff5597"
+  },
+  "depends_on": []
+}

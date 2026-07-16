@@ -1,0 +1,1 @@
+[1] Org Setup Master: emp_site(V10), site_name(V100), pay_site(V10), pay_site_name(V100), work_shift(V10), shift_name(V100), shift_timings(V50), hol_tblno(V10), hol_tbl_name(V100), active_flag(V1), add_date(DT), add_user(V10), add_term(V15), chg_date(DT), chg_user(V10), chg_term(V15)

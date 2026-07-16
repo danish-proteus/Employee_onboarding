@@ -1,0 +1,19 @@
+{
+  "id": "a313daf9-aeb9-48ab-a964-6f51fb8db002",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "On 'Send/Resend Link' button click getting below error \n\n RuntimeError: IOFlow e",
+  "kind": "modify",
+  "status": "completed",
+  "description": "On 'Send/Resend Link' button click getting below error \n\n RuntimeError: IOFlow e",
+  "created_at": 1783659708.7631602,
+  "updated_at": 1783659803.917182,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "On 'Send/Resend Link' button click getting below error \n\n RuntimeError: IOFlow event 'emponb_candidate_sendLink' is not defined in this project's Integration Design \u2014 add it before emitting",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "e8190667-e4d2-4776-b76d-476673c50c0f"
+  },
+  "depends_on": []
+}

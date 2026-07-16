@@ -1,0 +1,19 @@
+{
+  "id": "ce67c102-4258-4744-8ebe-674ba5888974",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It should run the python method not the pl/sql ?",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It should run the python method not the pl/sql ?",
+  "created_at": 1783583011.4554398,
+  "updated_at": 1783583099.9635196,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It should run the python method not the pl/sql ?",
+  "resume_ref": {
+    "session_id": "ba6eb99c-d1a7-4172-8979-31bc6b1cf292",
+    "claude_session_id": "d785d7df-7280-490e-849e-4106f4436e84"
+  },
+  "depends_on": []
+}

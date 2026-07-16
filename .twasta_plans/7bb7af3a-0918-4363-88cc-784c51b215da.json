@@ -1,0 +1,19 @@
+{
+  "id": "7bb7af3a-0918-4363-88cc-784c51b215da",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "on Click of Send/Resend Link, its not sending the generated accessKey to IOFLOW ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "on Click of Send/Resend Link, its not sending the generated accessKey to IOFLOW ",
+  "created_at": 1783657520.3349953,
+  "updated_at": 1783657818.9078934,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "on Click of Send/Resend Link, its not sending the generated accessKey to IOFLOW values. Also Form_URL should get updated with 'http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/candidate_website?key=e6bf254f367d4ac1aaedef2c36a99abe'\n\nAnd must be send to ioflow",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "c02c7ec2-523f-44d9-99fe-e7e0e2c7bd37"
+  },
+  "depends_on": []
+}

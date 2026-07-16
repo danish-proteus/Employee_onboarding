@@ -1,0 +1,19 @@
+{
+  "id": "05026606-a38e-4415-854b-225f027ddbc3",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Getting error \n\nRuntimeError: IOFlow event 'emponb_candidate_sendLink' is not de",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Getting error \n\nRuntimeError: IOFlow event 'emponb_candidate_sendLink' is not de",
+  "created_at": 1783658584.0552356,
+  "updated_at": 1783658625.0956833,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Getting error \n\nRuntimeError: IOFlow event 'emponb_candidate_sendLink' is not defined in this project's Integration Design \u2014 add it before emitting",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "d71a472b-befd-4bba-9f26-0259c9817a6f"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,18 @@
+{
+  "table_name": "EMPONB_CAND_SELF_FAMILY",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "4",
+      "usage_type": "M",
+      "referred_columns": [
+        "DATE_BIRTH",
+        "MEMBER_NAME",
+        "GENDER",
+        "CANDIDATE_ID",
+        "LINE_NO",
+        "RELATION"
+      ]
+    }
+  ]
+}

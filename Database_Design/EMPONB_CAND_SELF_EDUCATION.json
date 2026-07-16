@@ -1,0 +1,166 @@
+{
+  "table_name": "EMPONB_CAND_SELF_EDUCATION",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": true,
+      "description": "Parent candidate id",
+      "sequence": 1
+    },
+    {
+      "column_name": "LINE_NO",
+      "data_type": "NUMBER",
+      "size": "5",
+      "key": true,
+      "description": "Auto-sequenced line number",
+      "sequence": 2
+    },
+    {
+      "column_name": "QLF_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Qualification code",
+      "sequence": 3,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "QLF001",
+          "label": "Bachelor of Science"
+        },
+        {
+          "value": "QLF002",
+          "label": "Master of Business Administration"
+        },
+        {
+          "value": "QLF003",
+          "label": "Bachelor of Commerce"
+        },
+        {
+          "value": "QLF004",
+          "label": "Chartered Accountant"
+        },
+        {
+          "value": "QLF005",
+          "label": "Company Secretary"
+        },
+        {
+          "value": "QLF006",
+          "label": "Cost and Management Accountant"
+        },
+        {
+          "value": "QLF007",
+          "label": "PMP Certification"
+        },
+        {
+          "value": "QLF008",
+          "label": "AWS Solutions Architect"
+        },
+        {
+          "value": "QLF009",
+          "label": "Six Sigma Green Belt"
+        },
+        {
+          "value": "QLF010",
+          "label": "Doctor of Philosophy"
+        },
+        {
+          "value": "QLF011",
+          "label": "Diploma in Mechanical Engineering"
+        },
+        {
+          "value": "QLF012",
+          "label": "CISSP Certification"
+        }
+      ]
+    },
+    {
+      "column_name": "QLF_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Qualification type",
+      "sequence": 4
+    },
+    {
+      "column_name": "INSTITUTE",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Institute name",
+      "sequence": 5
+    },
+    {
+      "column_name": "PASS_YEAR",
+      "data_type": "NUMBER",
+      "size": "4",
+      "key": false,
+      "description": "Year of passing",
+      "sequence": 6
+    },
+    {
+      "column_name": "CLASS",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Class / division",
+      "sequence": 7
+    },
+    {
+      "column_name": "PERCENTAGE",
+      "data_type": "NUMBER",
+      "size": "5,2",
+      "key": false,
+      "description": "Percentage scored",
+      "sequence": 8
+    },
+    {
+      "column_name": "COUNTRY_CODE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Country reference",
+      "sequence": 9,
+      "allowed_values": [
+        {
+          "value": "IN",
+          "label": "India"
+        }
+      ]
+    },
+    {
+      "column_name": "COURSE_TYPE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Course type",
+      "sequence": 10,
+      "allowed_values": [
+        {
+          "value": "Full-time",
+          "label": "Full-time"
+        },
+        {
+          "value": "Part-time",
+          "label": "Part-time"
+        },
+        {
+          "value": "Distance",
+          "label": "Distance"
+        }
+      ]
+    },
+    {
+      "column_name": "COURSE_DURATION",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Course duration",
+      "sequence": 11
+    }
+  ]
+}

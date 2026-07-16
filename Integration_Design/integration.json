@@ -4,18 +4,11 @@
     {
       "event_name": "emponb_candidate_sendLink",
       "display_name": "Candidate Send/Resend Link",
-      "description": "Raised when a user clicks the Send/Resend Link action on a candidate record, so an IOFlow flow can deliver the onboarding link to the candidate.",
+      "description": "Raised explicitly by the Send/Resend Link action's business logic on a candidate record (emponb_candidate_record), so an IOFlow flow can deliver the onboarding link to the candidate. Emitted only from code (api.emit_event) \u2014 the engine does NOT auto-raise it on the action.",
       "source": {
-        "type": "transaction",
-        "obj_name": "emponb_candidate_record",
-        "trigger": "action",
-        "action_name": "Send/Resend Link"
+        "type": "custom"
       },
-      "params": [
-        "CANDIDATE_ID",
-        "ACCESS_KEY",
-        "FORM_URL"
-      ],
+      "params": [],
       "active": true,
       "arguments": [],
       "payload_schema": {
@@ -159,7 +152,7 @@
   ],
   "ioflow": {
     "app_id": "f21cdff7-a82e-4fc5-8a46-514bebacc777",
-    "url": "https://dev.ioflow.twasta.ai",
+    "url": "http://localhost:7001",
     "event_ids": {
       "emponb_candidate_record_add": "0c99ab86-207d-457b-9ce5-ed19accb32e5",
       "emponb_candidate_sendLink": "0689975e-e0d6-4684-a44e-30ab2867d798"
@@ -182,6 +175,6 @@
       "api_api_onboard_save_06f4e4": "34419383-06e3-43a0-853b-a2c4620db433",
       "api_api_onboard_submit_225a6e": "d915beb0-0696-4fc5-920d-b4013040bc06"
     },
-    "last_synced_at": "2026-07-02T04:31:51.650916+00:00"
+    "last_synced_at": "2026-07-10T05:30:17.780563+00:00"
   }
 }

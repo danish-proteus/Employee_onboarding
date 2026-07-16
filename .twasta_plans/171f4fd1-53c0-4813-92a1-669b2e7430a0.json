@@ -1,0 +1,19 @@
+{
+  "id": "171f4fd1-53c0-4813-92a1-669b2e7430a0",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Revert this change, we do have any emponb_onboarding_settings",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Revert this change, we do have any emponb_onboarding_settings",
+  "created_at": 1783654941.84345,
+  "updated_at": 1783655040.4012966,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Revert this change, we do have any emponb_onboarding_settings",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "8187fd00-c2c3-4dd6-8678-85a3b0dd61c5"
+  },
+  "depends_on": []
+}

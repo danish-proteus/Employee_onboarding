@@ -1,0 +1,19 @@
+{
+  "id": "136d39ab-c78a-40db-b7b8-49c4b6df9041",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Its not updating the 'emponb_candidate_record' with accesskey and other related ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Its not updating the 'emponb_candidate_record' with accesskey and other related ",
+  "created_at": 1783601610.2615893,
+  "updated_at": 1783602033.1483707,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Its not updating the 'emponb_candidate_record' with accesskey and other related tables",
+  "resume_ref": {
+    "session_id": "9e64db5e-d131-45a6-b695-eb36c9a05c41",
+    "claude_session_id": "ecebb2ae-f869-40ff-8456-de306b582638"
+  },
+  "depends_on": []
+}

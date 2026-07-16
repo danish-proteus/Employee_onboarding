@@ -4,8 +4,8 @@
     "sql_models": [
       {
         "sql_model": {
-          "form_title": "Demographic Ref",
-          "form_descr": "Maintain lookup values for Religion, Caste Category, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Relation. (LOOKUP_TYPE, LOOKUP_CODE) unique; only active values appear in candidate form drop-downs.",
+          "form_title": "Demographic Master",
+          "form_descr": "Maintain lookup values for Religion, Caste, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Relation",
           "form_no": "1",
           "main_table": "EMPONB_DEMOGRAPHIC_MASTER",
           "columns": [
@@ -16,7 +16,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Lookup Type",
-                "descr": "Category of demographic lookup value",
+                "descr": "Category of the lookup value",
                 "key": true,
                 "mandatory": true,
                 "edit_mask": {
@@ -78,11 +78,31 @@
                 "name": "lookup_code",
                 "db_name": "LOOKUP_CODE",
                 "group_name": "Basic",
-                "col_type": "CHAR",
+                "col_type": "VARCHAR",
                 "heading": "Lookup Code",
-                "descr": "Unique code within the lookup type",
+                "descr": "Code for this lookup value",
                 "key": true,
                 "mandatory": true,
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Unique lookup value",
+                    "message": "This Lookup Code already exists for the selected Lookup Type.",
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "table": "EMPONB_DEMOGRAPHIC_MASTER",
+                      "match_column": "LOOKUP_CODE",
+                      "conditions": [
+                        {
+                          "column": "LOOKUP_TYPE",
+                          "op": "=",
+                          "source": "form",
+                          "value": "lookup_type"
+                        }
+                      ]
+                    }
+                  }
+                ],
                 "x": "20",
                 "y": "20",
                 "col_id": "2",
@@ -97,7 +117,6 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
-                "validations": "",
                 "lookup": ""
               }
             },
@@ -108,7 +127,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Description",
-                "descr": "Display description shown in candidate drop-downs",
+                "descr": "Display description of this lookup value",
                 "mandatory": true,
                 "x": "30",
                 "y": "30",
@@ -134,13 +153,13 @@
                 "name": "active_flag",
                 "db_name": "ACTIVE_FLAG",
                 "group_name": "Basic",
-                "col_type": "CHAR",
+                "col_type": "VARCHAR",
                 "heading": "Active",
-                "descr": "Only active values appear in candidate form drop-downs",
-                "mandatory": true,
+                "descr": "Only active values appear in candidate drop-downs",
                 "default_value": "Y",
+                "mandatory": true,
                 "edit_mask": {
-                  "mask": "bool_check",
+                  "mask": "ddlb",
                   "values": [
                     {
                       "data": "Y",
@@ -151,22 +170,6 @@
                       "display": "No"
                     }
                   ]
-                },
-                "display": {
-                  "type": "status_tag",
-                  "map": [
-                    {
-                      "when": "Y",
-                      "color": "green",
-                      "label": "Active"
-                    },
-                    {
-                      "when": "N",
-                      "color": "red",
-                      "label": "Inactive"
-                    }
-                  ],
-                  "defaultColor": "grey"
                 },
                 "x": "40",
                 "y": "40",
@@ -189,7 +192,7 @@
               "column": {
                 "name": "add_date",
                 "db_name": "ADD_DATE",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Added On",
                 "descr": "Record creation timestamp",
@@ -217,8 +220,8 @@
               "column": {
                 "name": "add_user",
                 "db_name": "ADD_USER",
-                "group_name": "Audit",
-                "col_type": "CHAR",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
                 "heading": "Added By",
                 "descr": "User who created the record",
                 "default_value": ":audit_add_user",
@@ -245,12 +248,13 @@
               "column": {
                 "name": "add_term",
                 "db_name": "ADD_TERM",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Added Terminal",
                 "descr": "Terminal/IP that created the record",
                 "default_value": ":audit_add_terminal",
                 "protect": "1",
+                "hidden": 1,
                 "x": "70",
                 "y": "70",
                 "col_id": "7",
@@ -260,7 +264,6 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -273,10 +276,10 @@
               "column": {
                 "name": "chg_date",
                 "db_name": "CHG_DATE",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Changed On",
-                "descr": "Last modification timestamp",
+                "descr": "Record last-change timestamp",
                 "default_value": ":audit_chg_date",
                 "protect": "1",
                 "x": "80",
@@ -301,10 +304,10 @@
               "column": {
                 "name": "chg_user",
                 "db_name": "CHG_USER",
-                "group_name": "Audit",
-                "col_type": "CHAR",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
                 "heading": "Changed By",
-                "descr": "User who last modified the record",
+                "descr": "User who last changed the record",
                 "default_value": ":audit_chg_user",
                 "protect": "1",
                 "x": "90",
@@ -329,12 +332,13 @@
               "column": {
                 "name": "chg_term",
                 "db_name": "CHG_TERM",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Changed Terminal",
-                "descr": "Terminal/IP that last modified the record",
+                "descr": "Terminal/IP that last changed the record",
                 "default_value": ":audit_chg_terminal",
                 "protect": "1",
+                "hidden": 1,
                 "x": "100",
                 "y": "100",
                 "col_id": "10",
@@ -344,33 +348,12 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
                 "edit_mask": "",
                 "validations": "",
                 "lookup": ""
-              }
-            }
-          ],
-          "validations": [
-            {
-              "type": "builtin",
-              "name": "Unique type+code",
-              "error_code": "DEMO_DUP",
-              "message": "Lookup code {form.lookup_code} already exists for type {form.lookup_type}.",
-              "builtin": {
-                "kind": "must_be_unique",
-                "match_column": "LOOKUP_CODE",
-                "conditions": [
-                  {
-                    "column": "LOOKUP_TYPE",
-                    "op": "=",
-                    "source": "form",
-                    "value": "lookup_type"
-                  }
-                ]
               }
             }
           ],
@@ -384,7 +367,8 @@
                 }
               ]
             }
-          }
+          },
+          "validations": []
         }
       }
     ],
@@ -392,7 +376,7 @@
     "cross_updates": [],
     "pre_commit": [],
     "post_commit": [],
-    "follow_up_actions": [],
-    "attach_docs": []
+    "attach_docs": [],
+    "follow_up_actions": []
   }
 }

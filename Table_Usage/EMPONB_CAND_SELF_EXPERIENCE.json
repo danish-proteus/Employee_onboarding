@@ -1,0 +1,26 @@
+{
+  "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "2",
+      "usage_type": "M",
+      "referred_columns": [
+        "CANDIDATE_ID",
+        "GROSS_AMT",
+        "CURRENCY_CODE",
+        "TO_DATE",
+        "COUNTRY_CODE",
+        "LINE_NO",
+        "FROM_DATE",
+        "DESIGNATION",
+        "ORGANISATION"
+      ],
+      "join_info": {
+        "column": "COUNTRY_CODE",
+        "join_table": "EMPONB_COUNTRY_MASTER",
+        "join_column": "COUNTRY_CODE"
+      }
+    }
+  ]
+}

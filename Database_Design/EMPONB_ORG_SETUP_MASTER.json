@@ -5,7 +5,7 @@
   "columns": [
     {
       "column_name": "EMP_SITE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": true,
       "description": "Unique employment site code",
@@ -17,13 +17,13 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the employment site",
+      "description": "Employment site name",
       "sequence": 2,
       "mandatory": true
     },
     {
       "column_name": "PAY_SITE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "Payroll site code",
@@ -34,12 +34,12 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the payroll site",
+      "description": "Payroll site name",
       "sequence": 4
     },
     {
       "column_name": "WORK_SHIFT",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "Work shift code",
@@ -50,7 +50,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the work shift",
+      "description": "Work shift name",
       "sequence": 6
     },
     {
@@ -58,12 +58,12 @@
       "data_type": "VARCHAR",
       "size": "50",
       "key": false,
-      "description": "Timings of the work shift (e.g. 09:00-18:00)",
+      "description": "Work shift timings",
       "sequence": 7
     },
     {
       "column_name": "HOL_TBLNO",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "Holiday table number",
@@ -74,15 +74,15 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the holiday table",
+      "description": "Holiday table name",
       "sequence": 9
     },
     {
       "column_name": "ACTIVE_FLAG",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Only active rows are selectable in finalization",
+      "description": "Only active rows are selectable during finalization",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
@@ -106,7 +106,7 @@
     },
     {
       "column_name": "ADD_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "User who created the record",
@@ -117,7 +117,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal where the record was created",
+      "description": "Terminal used at creation",
       "sequence": 13
     },
     {
@@ -125,12 +125,12 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Last change timestamp",
+      "description": "Record last-change timestamp",
       "sequence": 14
     },
     {
       "column_name": "CHG_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "User who last changed the record",
@@ -141,7 +141,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal where the record was last changed",
+      "description": "Terminal used at last change",
       "sequence": 16
     }
   ]

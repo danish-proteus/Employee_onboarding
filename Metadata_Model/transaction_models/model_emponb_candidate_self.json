@@ -8,6 +8,8 @@
           "form_descr": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee.",
           "form_no": "1",
           "main_table": "EMPONB_CANDIDATE_SELF",
+          "save_mode": "replace",
+          "allow_existing_key": true,
           "columns": [
             {
               "column": {
@@ -19,7 +21,7 @@
                 "descr": "System-generated unique candidate identifier",
                 "key": true,
                 "default_value": "",
-                "protect": "0",
+                "protect": "1",
                 "mandatory": true,
                 "x": "10",
                 "y": "10",
@@ -133,22 +135,62 @@
                 "col_type": "CHAR",
                 "heading": "Designation",
                 "descr": "Designation reference at initiation",
-                "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)",
-                "must_exist_in": "EMPONB_DESIG_DEPT_MASTER",
-                "item_change": {
-                  "mode": "rule",
-                  "source_table": "EMPONB_DESIG_DEPT_MASTER",
-                  "match_table_col": "DESIGN_CODE",
-                  "fill": [
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
                     {
-                      "form_col": "design_name",
-                      "table_col": "DESIGNATION_NAME"
+                      "data": "DSG001",
+                      "display": "Chief Executive Officer"
+                    },
+                    {
+                      "data": "DSG002",
+                      "display": "Software Engineer"
+                    },
+                    {
+                      "data": "DSG003",
+                      "display": "Senior Software Engineer"
+                    },
+                    {
+                      "data": "DSG004",
+                      "display": "Engineering Manager"
+                    },
+                    {
+                      "data": "DSG005",
+                      "display": "HR Executive"
+                    },
+                    {
+                      "data": "DSG006",
+                      "display": "HR Manager"
+                    },
+                    {
+                      "data": "DSG007",
+                      "display": "Accountant"
+                    },
+                    {
+                      "data": "DSG008",
+                      "display": "Finance Manager"
+                    },
+                    {
+                      "data": "DSG009",
+                      "display": "Sales Executive"
+                    },
+                    {
+                      "data": "DSG010",
+                      "display": "Regional Sales Manager"
+                    },
+                    {
+                      "data": "DSG011",
+                      "display": "Marketing Specialist"
+                    },
+                    {
+                      "data": "DSG012",
+                      "display": "IT Support Analyst"
                     }
                   ]
                 },
-                "x": "60",
-                "y": "60",
-                "col_id": "6",
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -160,35 +202,7 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
-                "protect": "",
-                "validations": ""
-              }
-            },
-            {
-              "column": {
-                "name": "design_name",
-                "db_name": "DESIGNATION_NAME",
-                "table_name": "EMPONB_DESIG_DEPT_MASTER",
-                "group_name": "Basic",
-                "col_type": "VARCHAR",
-                "heading": "Designation Name",
-                "descr": "Designation name from master",
                 "protect": "1",
-                "x": "70",
-                "y": "70",
-                "col_id": "7",
-                "table_display_name": "Designation & department master",
-                "db_size": "100",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
                 "validations": "",
                 "lookup": ""
               }
@@ -213,9 +227,9 @@
                     "expression": "match({form.email_id}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
                   }
                 ],
-                "x": "80",
-                "y": "80",
-                "col_id": "8",
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "120",
@@ -308,9 +322,9 @@
                   ],
                   "defaultColor": "grey"
                 },
-                "x": "90",
-                "y": "90",
-                "col_id": "9",
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
@@ -334,9 +348,9 @@
                 "heading": "Status Date",
                 "descr": "Date stamped on each status transition",
                 "protect": "1",
-                "x": "100",
-                "y": "100",
-                "col_id": "10",
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -363,9 +377,9 @@
                 "descr": "HR user who initiated the candidate",
                 "protect": "1",
                 "default_value": "logged_in_user()",
-                "x": "110",
-                "y": "110",
-                "col_id": "11",
+                "x": "80",
+                "y": "80",
+                "col_id": "8",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -391,9 +405,9 @@
                 "descr": "Initiation timestamp",
                 "protect": "1",
                 "default_value": "now()",
-                "x": "120",
-                "y": "120",
-                "col_id": "12",
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -418,9 +432,9 @@
                 "heading": "Access Key",
                 "descr": "System-generated unique access token",
                 "protect": "1",
-                "x": "130",
-                "y": "130",
-                "col_id": "13",
+                "x": "100",
+                "y": "100",
+                "col_id": "10",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -446,9 +460,9 @@
                 "heading": "Key Generated On",
                 "descr": "Timestamp the access key was generated",
                 "protect": "1",
-                "x": "140",
-                "y": "140",
-                "col_id": "14",
+                "x": "110",
+                "y": "110",
+                "col_id": "11",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -474,9 +488,9 @@
                 "heading": "Key Expiry",
                 "descr": "Key expiry = generated on + key validity days",
                 "protect": "1",
-                "x": "150",
-                "y": "150",
-                "col_id": "15",
+                "x": "120",
+                "y": "120",
+                "col_id": "12",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -515,9 +529,9 @@
                     }
                   ]
                 },
-                "x": "160",
-                "y": "160",
-                "col_id": "16",
+                "x": "130",
+                "y": "130",
+                "col_id": "13",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
@@ -545,9 +559,9 @@
                 "display": {
                   "type": "url"
                 },
-                "x": "170",
-                "y": "170",
-                "col_id": "17",
+                "x": "140",
+                "y": "140",
+                "col_id": "14",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
@@ -573,9 +587,9 @@
                 "heading": "Link Sent On",
                 "descr": "When the link was emailed",
                 "protect": "1",
-                "x": "180",
-                "y": "180",
-                "col_id": "18",
+                "x": "150",
+                "y": "150",
+                "col_id": "15",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -601,9 +615,9 @@
                 "heading": "Link Accessed On",
                 "descr": "When the candidate first opened the link",
                 "protect": "1",
-                "x": "190",
-                "y": "190",
-                "col_id": "19",
+                "x": "160",
+                "y": "160",
+                "col_id": "16",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -629,9 +643,9 @@
                 "heading": "Submitted On",
                 "descr": "When the candidate submitted the form",
                 "protect": "1",
-                "x": "200",
-                "y": "200",
-                "col_id": "20",
+                "x": "170",
+                "y": "170",
+                "col_id": "17",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -657,9 +671,9 @@
                 "heading": "Name Prefix",
                 "descr": "Name prefix/title",
                 "protect": "0",
-                "x": "210",
-                "y": "210",
-                "col_id": "21",
+                "x": "180",
+                "y": "180",
+                "col_id": "18",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -674,12 +688,30 @@
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
-                    {"data": "Mr.", "display": "Mr."},
-                    {"data": "Mrs.", "display": "Mrs."},
-                    {"data": "Ms.", "display": "Ms."},
-                    {"data": "Miss", "display": "Miss"},
-                    {"data": "Dr.", "display": "Dr."},
-                    {"data": "Prof.", "display": "Prof."}
+                    {
+                      "data": "Mr.",
+                      "display": "Mr."
+                    },
+                    {
+                      "data": "Mrs.",
+                      "display": "Mrs."
+                    },
+                    {
+                      "data": "Ms.",
+                      "display": "Ms."
+                    },
+                    {
+                      "data": "Miss",
+                      "display": "Miss"
+                    },
+                    {
+                      "data": "Dr.",
+                      "display": "Dr."
+                    },
+                    {
+                      "data": "Prof.",
+                      "display": "Prof."
+                    }
                   ]
                 },
                 "validations": "",
@@ -695,9 +727,9 @@
                 "heading": "First Name",
                 "descr": "First name (candidate self-service)",
                 "protect": "0",
-                "x": "220",
-                "y": "220",
-                "col_id": "22",
+                "x": "190",
+                "y": "190",
+                "col_id": "19",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -723,9 +755,9 @@
                 "heading": "Middle Name",
                 "descr": "Middle name",
                 "protect": "0",
-                "x": "230",
-                "y": "230",
-                "col_id": "23",
+                "x": "200",
+                "y": "200",
+                "col_id": "20",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -751,9 +783,9 @@
                 "heading": "Last Name",
                 "descr": "Last name",
                 "protect": "0",
-                "x": "240",
-                "y": "240",
-                "col_id": "24",
+                "x": "210",
+                "y": "210",
+                "col_id": "21",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -779,43 +811,15 @@
                 "heading": "Birth Date",
                 "descr": "Date of birth",
                 "protect": "0",
-                "x": "250",
-                "y": "250",
-                "col_id": "25",
+                "x": "220",
+                "y": "220",
+                "col_id": "22",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
                 "width": 50,
                 "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "nationality",
-                "db_name": "NATIONALITY",
-                "group_name": "Personal",
-                "col_type": "VARCHAR",
-                "heading": "Nationality",
-                "descr": "Nationality",
-                "protect": "0",
-                "x": "260",
-                "y": "260",
-                "col_id": "26",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "50",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
+                "mandatory": true,
                 "hidden": "",
                 "format": "",
                 "default_function": "",
@@ -835,9 +839,9 @@
                 "heading": "Marital Status",
                 "descr": "Marital status",
                 "protect": "0",
-                "x": "270",
-                "y": "270",
-                "col_id": "27",
+                "x": "230",
+                "y": "230",
+                "col_id": "23",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
@@ -852,8 +856,14 @@
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
-                    {"data": "Yes", "display": "Yes"},
-                    {"data": "No", "display": "No"}
+                    {
+                      "data": "Yes",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "No",
+                      "display": "No"
+                    }
                   ]
                 },
                 "item_change": {
@@ -873,9 +883,9 @@
                 "heading": "Marriage Anniversary",
                 "descr": "Marriage anniversary date",
                 "protect": "0",
-                "x": "280",
-                "y": "280",
-                "col_id": "28",
+                "x": "240",
+                "y": "240",
+                "col_id": "24",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -909,15 +919,15 @@
                 "heading": "Blood Group",
                 "descr": "Blood group",
                 "protect": "0",
-                "x": "290",
-                "y": "290",
-                "col_id": "29",
+                "x": "250",
+                "y": "250",
+                "col_id": "25",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
                 "width": 100,
                 "key": false,
-                "mandatory": false,
+                "mandatory": true,
                 "hidden": "",
                 "format": "",
                 "default_function": "",
@@ -926,14 +936,38 @@
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
-                    {"data": "A+", "display": "A+"},
-                    {"data": "A-", "display": "A-"},
-                    {"data": "B+", "display": "B+"},
-                    {"data": "B-", "display": "B-"},
-                    {"data": "AB+", "display": "AB+"},
-                    {"data": "AB-", "display": "AB-"},
-                    {"data": "O+", "display": "O+"},
-                    {"data": "O-", "display": "O-"}
+                    {
+                      "data": "A+",
+                      "display": "A+"
+                    },
+                    {
+                      "data": "A-",
+                      "display": "A-"
+                    },
+                    {
+                      "data": "B+",
+                      "display": "B+"
+                    },
+                    {
+                      "data": "B-",
+                      "display": "B-"
+                    },
+                    {
+                      "data": "AB+",
+                      "display": "AB+"
+                    },
+                    {
+                      "data": "AB-",
+                      "display": "AB-"
+                    },
+                    {
+                      "data": "O+",
+                      "display": "O+"
+                    },
+                    {
+                      "data": "O-",
+                      "display": "O-"
+                    }
                   ]
                 },
                 "validations": "",
@@ -949,9 +983,9 @@
                 "heading": "Religion",
                 "descr": "Religion",
                 "protect": "0",
-                "x": "300",
-                "y": "300",
-                "col_id": "30",
+                "x": "260",
+                "y": "260",
+                "col_id": "26",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -966,15 +1000,42 @@
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
-                    {"data": "Hindu", "display": "Hindu"},
-                    {"data": "Muslim", "display": "Muslim"},
-                    {"data": "Christian", "display": "Christian"},
-                    {"data": "Sikh", "display": "Sikh"},
-                    {"data": "Buddhist", "display": "Buddhist"},
-                    {"data": "Jain", "display": "Jain"},
-                    {"data": "Parsi", "display": "Parsi"},
-                    {"data": "Jewish", "display": "Jewish"},
-                    {"data": "Other", "display": "Other"}
+                    {
+                      "data": "Hindu",
+                      "display": "Hindu"
+                    },
+                    {
+                      "data": "Muslim",
+                      "display": "Muslim"
+                    },
+                    {
+                      "data": "Christian",
+                      "display": "Christian"
+                    },
+                    {
+                      "data": "Sikh",
+                      "display": "Sikh"
+                    },
+                    {
+                      "data": "Buddhist",
+                      "display": "Buddhist"
+                    },
+                    {
+                      "data": "Jain",
+                      "display": "Jain"
+                    },
+                    {
+                      "data": "Parsi",
+                      "display": "Parsi"
+                    },
+                    {
+                      "data": "Jewish",
+                      "display": "Jewish"
+                    },
+                    {
+                      "data": "Other",
+                      "display": "Other"
+                    }
                   ]
                 },
                 "validations": "",
@@ -990,9 +1051,9 @@
                 "heading": "Caste Category",
                 "descr": "Caste category",
                 "protect": "0",
-                "x": "310",
-                "y": "310",
-                "col_id": "31",
+                "x": "270",
+                "y": "270",
+                "col_id": "27",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -1018,9 +1079,9 @@
                 "heading": "Mother Tongue",
                 "descr": "Mother tongue",
                 "protect": "0",
-                "x": "320",
-                "y": "320",
-                "col_id": "32",
+                "x": "280",
+                "y": "280",
+                "col_id": "28",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -1059,9 +1120,9 @@
                     }
                   ]
                 },
-                "x": "330",
-                "y": "330",
-                "col_id": "33",
+                "x": "290",
+                "y": "290",
+                "col_id": "29",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
@@ -1086,9 +1147,9 @@
                 "heading": "Hobby 1",
                 "descr": "Primary hobby",
                 "protect": "0",
-                "x": "340",
-                "y": "340",
-                "col_id": "34",
+                "x": "300",
+                "y": "300",
+                "col_id": "30",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -1114,9 +1175,9 @@
                 "heading": "Hobby 2",
                 "descr": "Secondary hobby",
                 "protect": "0",
-                "x": "350",
-                "y": "350",
-                "col_id": "35",
+                "x": "310",
+                "y": "310",
+                "col_id": "31",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -1142,9 +1203,9 @@
                 "heading": "Total Experience",
                 "descr": "Total years of experience",
                 "protect": "0",
-                "x": "360",
-                "y": "360",
-                "col_id": "36",
+                "x": "320",
+                "y": "320",
+                "col_id": "32",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "5,2",
@@ -1170,9 +1231,9 @@
                 "heading": "Current Address",
                 "descr": "Current address",
                 "protect": "0",
-                "x": "370",
-                "y": "370",
-                "col_id": "37",
+                "x": "330",
+                "y": "330",
+                "col_id": "33",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
@@ -1206,9 +1267,9 @@
                     "expression": "is_empty({form.current_pin}) or match({form.current_pin}, \"^[0-9]{6}$\")"
                   }
                 ],
-                "x": "380",
-                "y": "380",
-                "col_id": "38",
+                "x": "340",
+                "y": "340",
+                "col_id": "34",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "6",
@@ -1233,9 +1294,9 @@
                 "heading": "Current City",
                 "descr": "Current city",
                 "protect": "0",
-                "x": "390",
-                "y": "390",
-                "col_id": "39",
+                "x": "350",
+                "y": "350",
+                "col_id": "35",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -1261,9 +1322,9 @@
                 "heading": "Current State",
                 "descr": "Current state",
                 "protect": "0",
-                "x": "400",
-                "y": "400",
-                "col_id": "40",
+                "x": "360",
+                "y": "360",
+                "col_id": "36",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -1278,42 +1339,150 @@
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
-                    {"data": "Andhra Pradesh", "display": "Andhra Pradesh"},
-                    {"data": "Arunachal Pradesh", "display": "Arunachal Pradesh"},
-                    {"data": "Assam", "display": "Assam"},
-                    {"data": "Bihar", "display": "Bihar"},
-                    {"data": "Chhattisgarh", "display": "Chhattisgarh"},
-                    {"data": "Goa", "display": "Goa"},
-                    {"data": "Gujarat", "display": "Gujarat"},
-                    {"data": "Haryana", "display": "Haryana"},
-                    {"data": "Himachal Pradesh", "display": "Himachal Pradesh"},
-                    {"data": "Jharkhand", "display": "Jharkhand"},
-                    {"data": "Karnataka", "display": "Karnataka"},
-                    {"data": "Kerala", "display": "Kerala"},
-                    {"data": "Madhya Pradesh", "display": "Madhya Pradesh"},
-                    {"data": "Maharashtra", "display": "Maharashtra"},
-                    {"data": "Manipur", "display": "Manipur"},
-                    {"data": "Meghalaya", "display": "Meghalaya"},
-                    {"data": "Mizoram", "display": "Mizoram"},
-                    {"data": "Nagaland", "display": "Nagaland"},
-                    {"data": "Odisha", "display": "Odisha"},
-                    {"data": "Punjab", "display": "Punjab"},
-                    {"data": "Rajasthan", "display": "Rajasthan"},
-                    {"data": "Sikkim", "display": "Sikkim"},
-                    {"data": "Tamil Nadu", "display": "Tamil Nadu"},
-                    {"data": "Telangana", "display": "Telangana"},
-                    {"data": "Tripura", "display": "Tripura"},
-                    {"data": "Uttar Pradesh", "display": "Uttar Pradesh"},
-                    {"data": "Uttarakhand", "display": "Uttarakhand"},
-                    {"data": "West Bengal", "display": "West Bengal"},
-                    {"data": "Andaman and Nicobar Islands", "display": "Andaman and Nicobar Islands"},
-                    {"data": "Chandigarh", "display": "Chandigarh"},
-                    {"data": "Dadra and Nagar Haveli and Daman and Diu", "display": "Dadra and Nagar Haveli and Daman and Diu"},
-                    {"data": "Delhi", "display": "Delhi"},
-                    {"data": "Jammu and Kashmir", "display": "Jammu and Kashmir"},
-                    {"data": "Ladakh", "display": "Ladakh"},
-                    {"data": "Lakshadweep", "display": "Lakshadweep"},
-                    {"data": "Puducherry", "display": "Puducherry"}
+                    {
+                      "data": "Andhra Pradesh",
+                      "display": "Andhra Pradesh"
+                    },
+                    {
+                      "data": "Arunachal Pradesh",
+                      "display": "Arunachal Pradesh"
+                    },
+                    {
+                      "data": "Assam",
+                      "display": "Assam"
+                    },
+                    {
+                      "data": "Bihar",
+                      "display": "Bihar"
+                    },
+                    {
+                      "data": "Chhattisgarh",
+                      "display": "Chhattisgarh"
+                    },
+                    {
+                      "data": "Goa",
+                      "display": "Goa"
+                    },
+                    {
+                      "data": "Gujarat",
+                      "display": "Gujarat"
+                    },
+                    {
+                      "data": "Haryana",
+                      "display": "Haryana"
+                    },
+                    {
+                      "data": "Himachal Pradesh",
+                      "display": "Himachal Pradesh"
+                    },
+                    {
+                      "data": "Jharkhand",
+                      "display": "Jharkhand"
+                    },
+                    {
+                      "data": "Karnataka",
+                      "display": "Karnataka"
+                    },
+                    {
+                      "data": "Kerala",
+                      "display": "Kerala"
+                    },
+                    {
+                      "data": "Madhya Pradesh",
+                      "display": "Madhya Pradesh"
+                    },
+                    {
+                      "data": "Maharashtra",
+                      "display": "Maharashtra"
+                    },
+                    {
+                      "data": "Manipur",
+                      "display": "Manipur"
+                    },
+                    {
+                      "data": "Meghalaya",
+                      "display": "Meghalaya"
+                    },
+                    {
+                      "data": "Mizoram",
+                      "display": "Mizoram"
+                    },
+                    {
+                      "data": "Nagaland",
+                      "display": "Nagaland"
+                    },
+                    {
+                      "data": "Odisha",
+                      "display": "Odisha"
+                    },
+                    {
+                      "data": "Punjab",
+                      "display": "Punjab"
+                    },
+                    {
+                      "data": "Rajasthan",
+                      "display": "Rajasthan"
+                    },
+                    {
+                      "data": "Sikkim",
+                      "display": "Sikkim"
+                    },
+                    {
+                      "data": "Tamil Nadu",
+                      "display": "Tamil Nadu"
+                    },
+                    {
+                      "data": "Telangana",
+                      "display": "Telangana"
+                    },
+                    {
+                      "data": "Tripura",
+                      "display": "Tripura"
+                    },
+                    {
+                      "data": "Uttar Pradesh",
+                      "display": "Uttar Pradesh"
+                    },
+                    {
+                      "data": "Uttarakhand",
+                      "display": "Uttarakhand"
+                    },
+                    {
+                      "data": "West Bengal",
+                      "display": "West Bengal"
+                    },
+                    {
+                      "data": "Andaman and Nicobar Islands",
+                      "display": "Andaman and Nicobar Islands"
+                    },
+                    {
+                      "data": "Chandigarh",
+                      "display": "Chandigarh"
+                    },
+                    {
+                      "data": "Dadra and Nagar Haveli and Daman and Diu",
+                      "display": "Dadra and Nagar Haveli and Daman and Diu"
+                    },
+                    {
+                      "data": "Delhi",
+                      "display": "Delhi"
+                    },
+                    {
+                      "data": "Jammu and Kashmir",
+                      "display": "Jammu and Kashmir"
+                    },
+                    {
+                      "data": "Ladakh",
+                      "display": "Ladakh"
+                    },
+                    {
+                      "data": "Lakshadweep",
+                      "display": "Lakshadweep"
+                    },
+                    {
+                      "data": "Puducherry",
+                      "display": "Puducherry"
+                    }
                   ]
                 },
                 "validations": "",
@@ -1329,9 +1498,9 @@
                 "heading": "Permanent Address",
                 "descr": "Permanent address",
                 "protect": "0",
-                "x": "410",
-                "y": "410",
-                "col_id": "41",
+                "x": "370",
+                "y": "370",
+                "col_id": "37",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
@@ -1365,9 +1534,9 @@
                     "expression": "is_empty({form.permanent_pin}) or match({form.permanent_pin}, \"^[0-9]{6}$\")"
                   }
                 ],
-                "x": "420",
-                "y": "420",
-                "col_id": "42",
+                "x": "380",
+                "y": "380",
+                "col_id": "38",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "6",
@@ -1392,9 +1561,9 @@
                 "heading": "Permanent City",
                 "descr": "Permanent city",
                 "protect": "0",
-                "x": "430",
-                "y": "430",
-                "col_id": "43",
+                "x": "390",
+                "y": "390",
+                "col_id": "39",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -1420,9 +1589,9 @@
                 "heading": "Permanent State",
                 "descr": "Permanent state",
                 "protect": "0",
-                "x": "440",
-                "y": "440",
-                "col_id": "44",
+                "x": "400",
+                "y": "400",
+                "col_id": "40",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
@@ -1437,42 +1606,150 @@
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
-                    {"data": "Andhra Pradesh", "display": "Andhra Pradesh"},
-                    {"data": "Arunachal Pradesh", "display": "Arunachal Pradesh"},
-                    {"data": "Assam", "display": "Assam"},
-                    {"data": "Bihar", "display": "Bihar"},
-                    {"data": "Chhattisgarh", "display": "Chhattisgarh"},
-                    {"data": "Goa", "display": "Goa"},
-                    {"data": "Gujarat", "display": "Gujarat"},
-                    {"data": "Haryana", "display": "Haryana"},
-                    {"data": "Himachal Pradesh", "display": "Himachal Pradesh"},
-                    {"data": "Jharkhand", "display": "Jharkhand"},
-                    {"data": "Karnataka", "display": "Karnataka"},
-                    {"data": "Kerala", "display": "Kerala"},
-                    {"data": "Madhya Pradesh", "display": "Madhya Pradesh"},
-                    {"data": "Maharashtra", "display": "Maharashtra"},
-                    {"data": "Manipur", "display": "Manipur"},
-                    {"data": "Meghalaya", "display": "Meghalaya"},
-                    {"data": "Mizoram", "display": "Mizoram"},
-                    {"data": "Nagaland", "display": "Nagaland"},
-                    {"data": "Odisha", "display": "Odisha"},
-                    {"data": "Punjab", "display": "Punjab"},
-                    {"data": "Rajasthan", "display": "Rajasthan"},
-                    {"data": "Sikkim", "display": "Sikkim"},
-                    {"data": "Tamil Nadu", "display": "Tamil Nadu"},
-                    {"data": "Telangana", "display": "Telangana"},
-                    {"data": "Tripura", "display": "Tripura"},
-                    {"data": "Uttar Pradesh", "display": "Uttar Pradesh"},
-                    {"data": "Uttarakhand", "display": "Uttarakhand"},
-                    {"data": "West Bengal", "display": "West Bengal"},
-                    {"data": "Andaman and Nicobar Islands", "display": "Andaman and Nicobar Islands"},
-                    {"data": "Chandigarh", "display": "Chandigarh"},
-                    {"data": "Dadra and Nagar Haveli and Daman and Diu", "display": "Dadra and Nagar Haveli and Daman and Diu"},
-                    {"data": "Delhi", "display": "Delhi"},
-                    {"data": "Jammu and Kashmir", "display": "Jammu and Kashmir"},
-                    {"data": "Ladakh", "display": "Ladakh"},
-                    {"data": "Lakshadweep", "display": "Lakshadweep"},
-                    {"data": "Puducherry", "display": "Puducherry"}
+                    {
+                      "data": "Andhra Pradesh",
+                      "display": "Andhra Pradesh"
+                    },
+                    {
+                      "data": "Arunachal Pradesh",
+                      "display": "Arunachal Pradesh"
+                    },
+                    {
+                      "data": "Assam",
+                      "display": "Assam"
+                    },
+                    {
+                      "data": "Bihar",
+                      "display": "Bihar"
+                    },
+                    {
+                      "data": "Chhattisgarh",
+                      "display": "Chhattisgarh"
+                    },
+                    {
+                      "data": "Goa",
+                      "display": "Goa"
+                    },
+                    {
+                      "data": "Gujarat",
+                      "display": "Gujarat"
+                    },
+                    {
+                      "data": "Haryana",
+                      "display": "Haryana"
+                    },
+                    {
+                      "data": "Himachal Pradesh",
+                      "display": "Himachal Pradesh"
+                    },
+                    {
+                      "data": "Jharkhand",
+                      "display": "Jharkhand"
+                    },
+                    {
+                      "data": "Karnataka",
+                      "display": "Karnataka"
+                    },
+                    {
+                      "data": "Kerala",
+                      "display": "Kerala"
+                    },
+                    {
+                      "data": "Madhya Pradesh",
+                      "display": "Madhya Pradesh"
+                    },
+                    {
+                      "data": "Maharashtra",
+                      "display": "Maharashtra"
+                    },
+                    {
+                      "data": "Manipur",
+                      "display": "Manipur"
+                    },
+                    {
+                      "data": "Meghalaya",
+                      "display": "Meghalaya"
+                    },
+                    {
+                      "data": "Mizoram",
+                      "display": "Mizoram"
+                    },
+                    {
+                      "data": "Nagaland",
+                      "display": "Nagaland"
+                    },
+                    {
+                      "data": "Odisha",
+                      "display": "Odisha"
+                    },
+                    {
+                      "data": "Punjab",
+                      "display": "Punjab"
+                    },
+                    {
+                      "data": "Rajasthan",
+                      "display": "Rajasthan"
+                    },
+                    {
+                      "data": "Sikkim",
+                      "display": "Sikkim"
+                    },
+                    {
+                      "data": "Tamil Nadu",
+                      "display": "Tamil Nadu"
+                    },
+                    {
+                      "data": "Telangana",
+                      "display": "Telangana"
+                    },
+                    {
+                      "data": "Tripura",
+                      "display": "Tripura"
+                    },
+                    {
+                      "data": "Uttar Pradesh",
+                      "display": "Uttar Pradesh"
+                    },
+                    {
+                      "data": "Uttarakhand",
+                      "display": "Uttarakhand"
+                    },
+                    {
+                      "data": "West Bengal",
+                      "display": "West Bengal"
+                    },
+                    {
+                      "data": "Andaman and Nicobar Islands",
+                      "display": "Andaman and Nicobar Islands"
+                    },
+                    {
+                      "data": "Chandigarh",
+                      "display": "Chandigarh"
+                    },
+                    {
+                      "data": "Dadra and Nagar Haveli and Daman and Diu",
+                      "display": "Dadra and Nagar Haveli and Daman and Diu"
+                    },
+                    {
+                      "data": "Delhi",
+                      "display": "Delhi"
+                    },
+                    {
+                      "data": "Jammu and Kashmir",
+                      "display": "Jammu and Kashmir"
+                    },
+                    {
+                      "data": "Ladakh",
+                      "display": "Ladakh"
+                    },
+                    {
+                      "data": "Lakshadweep",
+                      "display": "Lakshadweep"
+                    },
+                    {
+                      "data": "Puducherry",
+                      "display": "Puducherry"
+                    }
                   ]
                 },
                 "validations": "",
@@ -1499,9 +1776,9 @@
                     "expression": "is_empty({form.mobile}) or match({form.mobile}, \"^[0-9]{10}$\")"
                   }
                 ],
-                "x": "450",
-                "y": "450",
-                "col_id": "45",
+                "x": "410",
+                "y": "410",
+                "col_id": "41",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -1526,9 +1803,9 @@
                 "heading": "Alternate Telephone",
                 "descr": "Alternate telephone number",
                 "protect": "0",
-                "x": "460",
-                "y": "460",
-                "col_id": "46",
+                "x": "420",
+                "y": "420",
+                "col_id": "42",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
@@ -1554,9 +1831,9 @@
                 "heading": "Contact Person",
                 "descr": "Emergency contact person",
                 "protect": "0",
-                "x": "470",
-                "y": "470",
-                "col_id": "47",
+                "x": "430",
+                "y": "430",
+                "col_id": "43",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -1590,9 +1867,9 @@
                     "expression": "is_empty({form.contact_person_mobile}) or match({form.contact_person_mobile}, \"^[0-9]{10}$\")"
                   }
                 ],
-                "x": "480",
-                "y": "480",
-                "col_id": "48",
+                "x": "440",
+                "y": "440",
+                "col_id": "44",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -1628,9 +1905,9 @@
                     "expression": "is_empty({form.contact_person_email}) or match({form.contact_person_email}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
                   }
                 ],
-                "x": "490",
-                "y": "490",
-                "col_id": "49",
+                "x": "450",
+                "y": "450",
+                "col_id": "45",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "120",
@@ -1663,9 +1940,9 @@
                     "expression": "is_empty({form.pan_no}) or match({form.pan_no}, \"^[A-Z]{5}[0-9]{4}[A-Z]$\")"
                   }
                 ],
-                "x": "500",
-                "y": "500",
-                "col_id": "50",
+                "x": "460",
+                "y": "460",
+                "col_id": "46",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -1678,6 +1955,36 @@
                 "default_value": "",
                 "expression": "",
                 "edit_mask": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_doc",
+                "db_name": "PAN_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "PAN Document",
+                "descr": "PAN document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "470",
+                "y": "470",
+                "col_id": "47",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -1698,9 +2005,9 @@
                     "expression": "is_empty({form.aadhar_no}) or match({form.aadhar_no}, \"^[0-9]{12}$\")"
                   }
                 ],
-                "x": "510",
-                "y": "510",
-                "col_id": "51",
+                "x": "480",
+                "y": "480",
+                "col_id": "48",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "12",
@@ -1718,12 +2025,100 @@
             },
             {
               "column": {
+                "name": "aadhar_doc",
+                "db_name": "AADHAR_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Aadhar Document",
+                "descr": "Aadhaar document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "490",
+                "y": "490",
+                "col_id": "49",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
                 "name": "passport_no",
                 "db_name": "PASSPORT_NO",
                 "group_name": "Statutory & Financial",
                 "col_type": "VARCHAR",
                 "heading": "Passport No",
                 "descr": "Passport number",
+                "protect": "0",
+                "x": "500",
+                "y": "500",
+                "col_id": "50",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "passport_doc",
+                "db_name": "PASSPORT_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Passport Document",
+                "descr": "Passport document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "510",
+                "y": "510",
+                "col_id": "51",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "driving_lic_no",
+                "db_name": "DRIVING_LIC_NO",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Driving License No",
+                "descr": "Driving license number",
                 "protect": "0",
                 "x": "520",
                 "y": "520",
@@ -1746,20 +2141,23 @@
             },
             {
               "column": {
-                "name": "driving_lic_no",
-                "db_name": "DRIVING_LIC_NO",
+                "name": "driving_lic_doc",
+                "db_name": "DRIVING_LIC_DOC",
                 "group_name": "Statutory & Financial",
                 "col_type": "VARCHAR",
-                "heading": "Driving License No",
-                "descr": "Driving license number",
+                "heading": "Driving License Document",
+                "descr": "Driving license document upload",
                 "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
                 "x": "530",
                 "y": "530",
                 "col_id": "53",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "20",
-                "width": 200,
+                "db_size": "500",
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1767,7 +2165,6 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
                 "validations": "",
                 "lookup": ""
               }
@@ -1802,6 +2199,36 @@
             },
             {
               "column": {
+                "name": "pf_doc",
+                "db_name": "PF_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "PF Document",
+                "descr": "Provident fund document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "550",
+                "y": "550",
+                "col_id": "55",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
                 "name": "esic_no",
                 "db_name": "ESIC_NO",
                 "group_name": "Statutory & Financial",
@@ -1809,9 +2236,9 @@
                 "heading": "ESIC No",
                 "descr": "ESIC number",
                 "protect": "0",
-                "x": "550",
-                "y": "550",
-                "col_id": "55",
+                "x": "560",
+                "y": "560",
+                "col_id": "56",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
@@ -1830,6 +2257,36 @@
             },
             {
               "column": {
+                "name": "esic_doc",
+                "db_name": "ESIC_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "ESIC Document",
+                "descr": "ESIC document upload",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "570",
+                "y": "570",
+                "col_id": "57",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
                 "name": "bank_account_no",
                 "db_name": "BANK_ACCOUNT_NO",
                 "group_name": "Statutory & Financial",
@@ -1837,9 +2294,9 @@
                 "heading": "Bank Account No",
                 "descr": "Bank account number",
                 "protect": "0",
-                "x": "560",
-                "y": "560",
-                "col_id": "56",
+                "x": "580",
+                "y": "580",
+                "col_id": "58",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
@@ -1873,9 +2330,9 @@
                     "expression": "is_empty({form.bank_ifsc_code}) or match({form.bank_ifsc_code}, \"^[A-Z]{4}0[A-Z0-9]{6}$\")"
                   }
                 ],
-                "x": "570",
-                "y": "570",
-                "col_id": "57",
+                "x": "590",
+                "y": "590",
+                "col_id": "59",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "11",
@@ -1900,9 +2357,9 @@
                 "heading": "Bank Name",
                 "descr": "Bank name",
                 "protect": "0",
-                "x": "580",
-                "y": "580",
-                "col_id": "58",
+                "x": "600",
+                "y": "600",
+                "col_id": "60",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -1915,6 +2372,36 @@
                 "default_value": "",
                 "expression": "",
                 "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_doc",
+                "db_name": "BANK_DOC",
+                "group_name": "Statutory & Financial",
+                "col_type": "VARCHAR",
+                "heading": "Bank Document",
+                "descr": "Cancelled cheque / passbook image",
+                "protect": "0",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "610",
+                "y": "610",
+                "col_id": "61",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate onboarding record (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
                 "validations": "",
                 "lookup": ""
               }
@@ -1941,9 +2428,9 @@
                     }
                   ]
                 },
-                "x": "590",
-                "y": "590",
-                "col_id": "59",
+                "x": "620",
+                "y": "620",
+                "col_id": "62",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
@@ -1968,9 +2455,9 @@
                 "heading": "PAN Validated Name",
                 "descr": "Name returned by PAN validation",
                 "protect": "1",
-                "x": "600",
-                "y": "600",
-                "col_id": "60",
+                "x": "630",
+                "y": "630",
+                "col_id": "63",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -1996,9 +2483,9 @@
                 "heading": "PAN Attempts",
                 "descr": "PAN validation attempts",
                 "protect": "1",
-                "x": "610",
-                "y": "610",
-                "col_id": "61",
+                "x": "640",
+                "y": "640",
+                "col_id": "64",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "3",
@@ -2037,9 +2524,9 @@
                     }
                   ]
                 },
-                "x": "620",
-                "y": "620",
-                "col_id": "62",
+                "x": "650",
+                "y": "650",
+                "col_id": "65",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
@@ -2064,9 +2551,9 @@
                 "heading": "Aadhar Validated Name",
                 "descr": "Name returned by Aadhaar validation",
                 "protect": "1",
-                "x": "630",
-                "y": "630",
-                "col_id": "63",
+                "x": "660",
+                "y": "660",
+                "col_id": "66",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -2092,9 +2579,9 @@
                 "heading": "Aadhar Attempts",
                 "descr": "Aadhaar validation attempts",
                 "protect": "1",
-                "x": "640",
-                "y": "640",
-                "col_id": "64",
+                "x": "670",
+                "y": "670",
+                "col_id": "67",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "3",
@@ -2133,9 +2620,9 @@
                     }
                   ]
                 },
-                "x": "650",
-                "y": "650",
-                "col_id": "65",
+                "x": "680",
+                "y": "680",
+                "col_id": "68",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
@@ -2160,9 +2647,9 @@
                 "heading": "Bank Validated Name",
                 "descr": "Name returned by bank validation",
                 "protect": "1",
-                "x": "660",
-                "y": "660",
-                "col_id": "66",
+                "x": "690",
+                "y": "690",
+                "col_id": "69",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
@@ -2188,9 +2675,9 @@
                 "heading": "Bank Attempts",
                 "descr": "Bank validation attempts",
                 "protect": "1",
-                "x": "670",
-                "y": "670",
-                "col_id": "67",
+                "x": "700",
+                "y": "700",
+                "col_id": "70",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "3",
@@ -2209,216 +2696,6 @@
             },
             {
               "column": {
-                "name": "pan_doc",
-                "db_name": "PAN_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "PAN Document",
-                "descr": "PAN document upload",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "680",
-                "y": "680",
-                "col_id": "68",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "aadhar_doc",
-                "db_name": "AADHAR_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "Aadhar Document",
-                "descr": "Aadhaar document upload",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "690",
-                "y": "690",
-                "col_id": "69",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "passport_doc",
-                "db_name": "PASSPORT_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "Passport Document",
-                "descr": "Passport document upload",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "710",
-                "y": "710",
-                "col_id": "71",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "driving_lic_doc",
-                "db_name": "DRIVING_LIC_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "Driving License Document",
-                "descr": "Driving license document upload",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "720",
-                "y": "720",
-                "col_id": "72",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "bank_doc",
-                "db_name": "BANK_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "Bank Document",
-                "descr": "Cancelled cheque / passbook image",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "700",
-                "y": "700",
-                "col_id": "70",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "esic_doc",
-                "db_name": "ESIC_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "ESIC Document",
-                "descr": "ESIC document upload",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "730",
-                "y": "730",
-                "col_id": "73",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "pf_doc",
-                "db_name": "PF_DOC",
-                "group_name": "Statutory & Financial",
-                "col_type": "VARCHAR",
-                "heading": "PF Document",
-                "descr": "Provident fund document upload",
-                "protect": "0",
-                "edit_mask": {
-                  "mask": "document"
-                },
-                "x": "740",
-                "y": "740",
-                "col_id": "74",
-                "table_name": "EMPONB_CANDIDATE_SELF",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "500",
-                "width": 500,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
                 "name": "add_date",
                 "db_name": "ADD_DATE",
                 "group_name": "Audit",
@@ -2427,9 +2704,9 @@
                 "descr": "Record creation timestamp",
                 "protect": "1",
                 "default_value": ":audit_add_date",
-                "x": "950",
-                "y": "950",
-                "col_id": "95",
+                "x": "710",
+                "y": "710",
+                "col_id": "71",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -2455,9 +2732,9 @@
                 "descr": "Record creator",
                 "protect": "1",
                 "default_value": ":audit_add_user",
-                "x": "960",
-                "y": "960",
-                "col_id": "96",
+                "x": "720",
+                "y": "720",
+                "col_id": "72",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -2483,9 +2760,9 @@
                 "descr": "Creation terminal",
                 "protect": "1",
                 "default_value": ":audit_add_terminal",
-                "x": "970",
-                "y": "970",
-                "col_id": "97",
+                "x": "730",
+                "y": "730",
+                "col_id": "73",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "15",
@@ -2511,9 +2788,9 @@
                 "descr": "Last change timestamp",
                 "protect": "1",
                 "default_value": ":audit_chg_date",
-                "x": "980",
-                "y": "980",
-                "col_id": "98",
+                "x": "740",
+                "y": "740",
+                "col_id": "74",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
@@ -2539,9 +2816,9 @@
                 "descr": "Last changer",
                 "protect": "1",
                 "default_value": ":audit_chg_user",
-                "x": "990",
-                "y": "990",
-                "col_id": "99",
+                "x": "750",
+                "y": "750",
+                "col_id": "75",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
@@ -2567,9 +2844,9 @@
                 "descr": "Change terminal",
                 "protect": "1",
                 "default_value": ":audit_chg_terminal",
-                "x": "1000",
-                "y": "1000",
-                "col_id": "100",
+                "x": "760",
+                "y": "760",
+                "col_id": "76",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "15",
@@ -2593,15 +2870,6 @@
                   "table": "EMPONB_CANDIDATE_SELF",
                   "main_table": true,
                   "table_descr": "Candidate onboarding record (main table)"
-                },
-                {
-                  "table": "EMPONB_DESIG_DEPT_MASTER",
-                  "main_table": false,
-                  "table_descr": "Designation & department master",
-                  "column": "DESIGN_CODE",
-                  "join_table": "EMPONB_CANDIDATE_SELF",
-                  "join_column": "DESIGN_CODE",
-                  "join_type": "left"
                 }
               ]
             }
@@ -2617,7 +2885,7 @@
           "actions": [
             {
               "name": "Submit",
-              "handler": "message",
+              "handler": "toast",
               "scope": "row",
               "business_logic": {
                 "method": "submit_to_candidate_record",
@@ -2888,8 +3156,15 @@
                 "col_type": "CHAR",
                 "heading": "Country",
                 "descr": "Country reference",
-                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
-                "must_exist_in": "EMPONB_COUNTRY_MASTER",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "IN",
+                      "display": "India"
+                    }
+                  ]
+                },
                 "x": "70",
                 "y": "70",
                 "col_id": "9",
@@ -2904,9 +3179,9 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
                 "protect": "",
-                "validations": ""
+                "validations": "",
+                "lookup": ""
               }
             }
           ],
@@ -3007,8 +3282,6 @@
                 "heading": "Qualification",
                 "descr": "Qualification code",
                 "mandatory": true,
-                "lookup": "EMPONB_QUALIFICATION_MASTER(QLF_NAME, QLF_CODE)",
-                "must_exist_in": "EMPONB_QUALIFICATION_MASTER",
                 "item_change": {
                   "mode": "rule",
                   "source_table": "EMPONB_QUALIFICATION_MASTER",
@@ -3037,9 +3310,62 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "QLF001",
+                      "display": "Bachelor of Science"
+                    },
+                    {
+                      "data": "QLF002",
+                      "display": "Master of Business Administration"
+                    },
+                    {
+                      "data": "QLF003",
+                      "display": "Bachelor of Commerce"
+                    },
+                    {
+                      "data": "QLF004",
+                      "display": "Chartered Accountant"
+                    },
+                    {
+                      "data": "QLF005",
+                      "display": "Company Secretary"
+                    },
+                    {
+                      "data": "QLF006",
+                      "display": "Cost and Management Accountant"
+                    },
+                    {
+                      "data": "QLF007",
+                      "display": "PMP Certification"
+                    },
+                    {
+                      "data": "QLF008",
+                      "display": "AWS Solutions Architect"
+                    },
+                    {
+                      "data": "QLF009",
+                      "display": "Six Sigma Green Belt"
+                    },
+                    {
+                      "data": "QLF010",
+                      "display": "Doctor of Philosophy"
+                    },
+                    {
+                      "data": "QLF011",
+                      "display": "Diploma in Mechanical Engineering"
+                    },
+                    {
+                      "data": "QLF012",
+                      "display": "CISSP Certification"
+                    }
+                  ]
+                },
                 "protect": "",
-                "validations": ""
+                "validations": "",
+                "lookup": ""
               }
             },
             {
@@ -3204,8 +3530,6 @@
                 "col_type": "CHAR",
                 "heading": "Country",
                 "descr": "Country reference",
-                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
-                "must_exist_in": "EMPONB_COUNTRY_MASTER",
                 "x": "70",
                 "y": "70",
                 "col_id": "9",
@@ -3220,9 +3544,18 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "IN",
+                      "display": "India"
+                    }
+                  ]
+                },
                 "protect": "",
-                "validations": ""
+                "validations": "",
+                "lookup": ""
               }
             },
             {
@@ -3511,8 +3844,6 @@
                 "heading": "Relation",
                 "descr": "Relation to candidate",
                 "mandatory": true,
-                "lookup": "EMPONB_DEMOGRAPHIC_MASTER(LOOKUP_DESC, LOOKUP_CODE)",
-                "lookup_filter": "LOOKUP_TYPE = 'RELATION' AND ACTIVE_FLAG = 'Y'",
                 "x": "40",
                 "y": "40",
                 "col_id": "6",
@@ -3526,9 +3857,22 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "FATH",
+                      "display": "Father"
+                    },
+                    {
+                      "data": "SPOU",
+                      "display": "Spouse"
+                    }
+                  ]
+                },
                 "protect": "",
-                "validations": ""
+                "validations": "",
+                "lookup": ""
               }
             }
           ],
@@ -3620,8 +3964,6 @@
                 "heading": "Pay Head",
                 "descr": "Allowance/Deduction code",
                 "mandatory": true,
-                "lookup": "EMPONB_PAYHEAD_MASTER(AD_NAME, AD_CODE)",
-                "must_exist_in": "EMPONB_PAYHEAD_MASTER",
                 "item_change": {
                   "mode": "rule",
                   "source_table": "EMPONB_PAYHEAD_MASTER",
@@ -3658,9 +4000,58 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "BASIC",
+                      "display": "Basic Salary"
+                    },
+                    {
+                      "data": "BONUS",
+                      "display": "Annual Bonus"
+                    },
+                    {
+                      "data": "CONVEY",
+                      "display": "Conveyance Allowance"
+                    },
+                    {
+                      "data": "DA",
+                      "display": "Dearness Allowance"
+                    },
+                    {
+                      "data": "ESI",
+                      "display": "Employee State Insurance"
+                    },
+                    {
+                      "data": "HRA",
+                      "display": "House Rent Allowance"
+                    },
+                    {
+                      "data": "MEDALW",
+                      "display": "Medical Allowance"
+                    },
+                    {
+                      "data": "PF",
+                      "display": "Provident Fund"
+                    },
+                    {
+                      "data": "PTAX",
+                      "display": "Professional Tax"
+                    },
+                    {
+                      "data": "SPLALW",
+                      "display": "Special Allowance"
+                    },
+                    {
+                      "data": "TDS",
+                      "display": "Income Tax (TDS)"
+                    }
+                  ]
+                },
                 "protect": "",
-                "validations": ""
+                "validations": "",
+                "lookup": ""
               }
             },
             {

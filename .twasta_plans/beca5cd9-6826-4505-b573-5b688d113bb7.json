@@ -1,0 +1,19 @@
+{
+  "id": "beca5cd9-6826-4505-b573-5b688d113bb7",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "if python function not getting it, then it must be passed when click on the butt",
+  "kind": "modify",
+  "status": "completed",
+  "description": "if python function not getting it, then it must be passed when click on the butt",
+  "created_at": 1783654344.163699,
+  "updated_at": 1783654424.4628618,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "if python function not getting it, then it must be passed when click on the button",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "074545d7-1627-49ca-b1a4-3b098c64771d"
+  },
+  "depends_on": []
+}

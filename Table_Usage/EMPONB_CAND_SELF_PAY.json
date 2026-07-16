@@ -1,0 +1,27 @@
+{
+  "table_name": "EMPONB_CAND_SELF_PAY",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "5",
+      "usage_type": "M",
+      "referred_columns": [
+        "CANDIDATE_ID",
+        "UPD_PAYSTRU",
+        "AMOUNT_CALC",
+        "LINE_NO",
+        "AMOUNT_TYPE",
+        "AMOUNT",
+        "AD_CODE",
+        "APPL_MODE",
+        "FREQUENCY",
+        "RES_FORMULA"
+      ],
+      "join_info": {
+        "column": "AD_CODE",
+        "join_table": "EMPONB_PAYHEAD_MASTER",
+        "join_column": "AD_CODE"
+      }
+    }
+  ]
+}

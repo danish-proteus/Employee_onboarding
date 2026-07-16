@@ -298,7 +298,40 @@
             "customValue": "FixedValue",
             "promptLabel": "Status",
             "value": "",
-            "chipValue": ["Link Generated", "Link Accessed"]
+            "chipValue": [
+              "Link Generated",
+              "Link Accessed"
+            ],
+            "options": [
+              {
+                "data": "Initiated",
+                "display": "Initiated"
+              },
+              {
+                "data": "Link Generated",
+                "display": "Link Generated"
+              },
+              {
+                "data": "Link Accessed",
+                "display": "Link Accessed"
+              },
+              {
+                "data": "DataSubmitted",
+                "display": "Data Submitted"
+              },
+              {
+                "data": "Review",
+                "display": "Review"
+              },
+              {
+                "data": "Confirmed",
+                "display": "Confirmed"
+              },
+              {
+                "data": "Cancelled",
+                "display": "Cancelled"
+              }
+            ]
           }
         ],
         "condition": "and"
@@ -310,7 +343,10 @@
     "SCHEMA_TYPE": "S",
     "OUTPUT_TYPE": "JSON",
     "DATABASE_TYPE": "1",
-    "DATABASE_DETAIL": { "DATABASE_NAME": "PostgreSQL", "TYPE": 1 }
+    "DATABASE_DETAIL": {
+      "DATABASE_NAME": "PostgreSQL",
+      "TYPE": 1
+    }
   },
   "LAYOUT_DATA": {
     "visualLayout": {
@@ -323,20 +359,146 @@
       "linkOptions": "",
       "OutputType": "JSON",
       "options": [
-        { "optionId": "showGrandTotals", "optionName": "showGrandTotals", "optionHeading": "Show Grand Totals", "dataType": "string", "defaultValue": "off", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showTotals", "optionName": "showTotals", "optionHeading": "Show Totals", "dataType": "string", "defaultValue": "off", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "type", "optionName": "type", "optionHeading": "Type", "dataType": "string", "defaultValue": "flat", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "sortingColumns", "optionName": "sortingColumns", "optionHeading": "Sorting Columns", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "numberFormat", "optionName": "numberFormat", "optionHeading": "Number Format", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "configuratorButton", "optionName": "configuratorButton", "optionHeading": "Configurator Button", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showFilter", "optionName": "showFilter", "optionHeading": "Show Filter", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "toolbar", "optionName": "toolbar", "optionHeading": "Toolbar", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "multipleMeasures", "optionName": "multipleMeasures", "optionHeading": "Multiple Measures", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showHeaders", "optionName": "showHeaders", "optionHeading": "Show Headers", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "chartBackgroundColor", "optionName": "chartBackgroundColor", "optionHeading": "Background Color", "dataType": "string", "defaultValue": "Transparent", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showDataLabels", "optionName": "showDataLabels", "optionHeading": "Show Data Labels", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "columnEditing", "optionName": "columnEditing", "optionHeading": "Column Editing", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "MultiRowSelect", "optionName": "MultiRowSelect", "optionHeading": "Multi Row Select", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" }
+        {
+          "optionId": "showGrandTotals",
+          "optionName": "showGrandTotals",
+          "optionHeading": "Show Grand Totals",
+          "dataType": "string",
+          "defaultValue": "off",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showTotals",
+          "optionName": "showTotals",
+          "optionHeading": "Show Totals",
+          "dataType": "string",
+          "defaultValue": "off",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "type",
+          "optionName": "type",
+          "optionHeading": "Type",
+          "dataType": "string",
+          "defaultValue": "flat",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "sortingColumns",
+          "optionName": "sortingColumns",
+          "optionHeading": "Sorting Columns",
+          "dataType": "string",
+          "defaultValue": "",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "numberFormat",
+          "optionName": "numberFormat",
+          "optionHeading": "Number Format",
+          "dataType": "string",
+          "defaultValue": "",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "configuratorButton",
+          "optionName": "configuratorButton",
+          "optionHeading": "Configurator Button",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showFilter",
+          "optionName": "showFilter",
+          "optionHeading": "Show Filter",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "toolbar",
+          "optionName": "toolbar",
+          "optionHeading": "Toolbar",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "multipleMeasures",
+          "optionName": "multipleMeasures",
+          "optionHeading": "Multiple Measures",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showHeaders",
+          "optionName": "showHeaders",
+          "optionHeading": "Show Headers",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "chartBackgroundColor",
+          "optionName": "chartBackgroundColor",
+          "optionHeading": "Background Color",
+          "dataType": "string",
+          "defaultValue": "Transparent",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showDataLabels",
+          "optionName": "showDataLabels",
+          "optionHeading": "Show Data Labels",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "columnEditing",
+          "optionName": "columnEditing",
+          "optionHeading": "Column Editing",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "MultiRowSelect",
+          "optionName": "MultiRowSelect",
+          "optionHeading": "Multi Row Select",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        }
       ],
       "ColumnGroups": [
         {

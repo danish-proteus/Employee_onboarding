@@ -1,0 +1,19 @@
+{
+  "id": "bc8f94c6-0fc1-43f2-821e-3a695cf4c028",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Can't you take the base_url from browser and keep it somewhere, either at form l",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Can't you take the base_url from browser and keep it somewhere, either at form l",
+  "created_at": 1783654527.3563683,
+  "updated_at": 1783654717.5575552,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Can't you take the base_url from browser and keep it somewhere, either at form level or at payload and handle it",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "392e4344-dcbf-4165-bf0b-15603941e1d5"
+  },
+  "depends_on": []
+}

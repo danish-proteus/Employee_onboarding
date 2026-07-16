@@ -1,0 +1,33 @@
+{
+  "id": "bf976814-ca40-4c2d-a60b-5c4567539564",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Disable the Designation field on the Candidate Self transaction screen so it is ",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake 'Designation' disabled",
+  "created_at": 1784175732.126355,
+  "updated_at": 1784184720.5436616,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Disable the Designation field on the Candidate Self form",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784175732.1378803,
+      "completed_at": 1784175753.0352194
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake 'Designation' disabled",
+  "resume_ref": {
+    "session_id": "8ea37d8c-9eb3-4160-9680-49fccfb8c9d3",
+    "plan_id": "bf976814-ca40-4c2d-a60b-5c4567539564",
+    "scope": null
+  },
+  "depends_on": []
+}

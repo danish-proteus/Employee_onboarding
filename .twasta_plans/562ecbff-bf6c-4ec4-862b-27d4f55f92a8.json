@@ -1,0 +1,19 @@
+{
+  "id": "562ecbff-bf6c-4ec4-862b-27d4f55f92a8",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Do I need to 'delete' Event configured at Events&API (IOFLOW)",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Do I need to 'delete' Event configured at Events&API (IOFLOW)",
+  "created_at": 1783658873.3308003,
+  "updated_at": 1783658887.0349069,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Do I need to 'delete' Event configured at Events&API (IOFLOW)",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "98f7e3f2-603f-4ee1-bd9f-4afa579369e3"
+  },
+  "depends_on": []
+}

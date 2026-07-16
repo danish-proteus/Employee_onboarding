@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-07-03T06:02:25.916165+00:00",
+  "generated_at": "2026-07-16T06:35:40.158375+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -41,10 +41,22 @@
       "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
     },
     {
-      "obj_name": "emp_self_entry_page",
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "title": "Candidate Self",
+      "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
+    },
+    {
+      "obj_name": "candidate_page",
       "obj_type": "S",
-      "title": "Candidate Self Entry Page",
-      "description": "Candidate Self Entry Page - Site"
+      "title": "Candidate Page",
+      "description": ""
+    },
+    {
+      "obj_name": "candidate_website",
+      "obj_type": "X",
+      "title": "CandidateWebsite",
+      "description": ""
     }
   ],
   "tables": [
@@ -57,7 +69,6 @@
       "other_columns": [
         "CANDIDATE_NAME VARCHAR",
         "GENDER CHAR",
-        "COUNTRY_CODE CHAR",
         "DESIGN_CODE CHAR",
         "EMAIL_ID VARCHAR",
         "STATUS VARCHAR",
@@ -102,14 +113,21 @@
         "CONTACT_PERSON_MOBILE CHAR",
         "CONTACT_PERSON_EMAIL VARCHAR",
         "PAN_NO CHAR",
+        "PAN_DOC VARCHAR",
         "AADHAR_NO CHAR",
+        "AADHAR_DOC VARCHAR",
         "PASSPORT_NO VARCHAR",
+        "PASSPORT_DOC VARCHAR",
         "DRIVING_LIC_NO VARCHAR",
+        "DRIVING_LIC_DOC VARCHAR",
         "PF_NO VARCHAR",
+        "PF_DOC VARCHAR",
         "ESIC_NO VARCHAR",
+        "ESIC_DOC VARCHAR",
         "BANK_ACCOUNT_NO VARCHAR",
         "BANK_IFSC_CODE CHAR",
         "BANK_NAME VARCHAR",
+        "BANK_DOC VARCHAR",
         "PAN_VALIDATED CHAR",
         "PAN_VALIDATED_NAME VARCHAR",
         "PAN_ATTEMPTS NUMBER",
@@ -119,9 +137,6 @@
         "BANK_VALIDATED CHAR",
         "BANK_VALIDATED_NAME VARCHAR",
         "BANK_ATTEMPTS NUMBER",
-        "PAN_DOC VARCHAR",
-        "AADHAR_DOC VARCHAR",
-        "BANK_DOC VARCHAR",
         "EMP_CODE CHAR",
         "DESIGNATION VARCHAR",
         "DEPT_CODE CHAR",
@@ -146,6 +161,90 @@
         "REMARKS VARCHAR",
         "EMPLOYEE_PUSHED_FLAG CHAR",
         "EMPLOYEE_PUSH_REF VARCHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER CHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER CHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CANDIDATE_SELF",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR"
+      ],
+      "other_columns": [
+        "CANDIDATE_NAME VARCHAR",
+        "GENDER CHAR",
+        "DESIGN_CODE CHAR",
+        "EMAIL_ID VARCHAR",
+        "STATUS VARCHAR",
+        "STATUS_DATE DATETIME",
+        "INITIATED_BY CHAR",
+        "INITIATED_ON DATETIME",
+        "ACCESS_KEY VARCHAR",
+        "KEY_GENERATED_ON DATETIME",
+        "KEY_EXPIRY_DATETIME DATETIME",
+        "KEY_VALID_FLAG CHAR",
+        "FORM_URL VARCHAR",
+        "LINK_SENT_ON DATETIME",
+        "LINK_ACCESSED_ON DATETIME",
+        "SUBMITTED_ON DATETIME",
+        "NAME_PREFIX CHAR",
+        "EMP_FNAME VARCHAR",
+        "EMP_MNAME VARCHAR",
+        "EMP_LNAME VARCHAR",
+        "BIRTHDATE DATE",
+        "MARITAL_STATUS VARCHAR",
+        "MARRIAGE_ANNIVERSARY DATE",
+        "BLOOD_GROUP VARCHAR",
+        "RELIGION VARCHAR",
+        "CAST_CATEGORY VARCHAR",
+        "MOTHER_TONGUE VARCHAR",
+        "PHYSICAL_HANDICAP CHAR",
+        "HOBBY1 VARCHAR",
+        "HOBBY2 VARCHAR",
+        "TOTAL_EXPERIENCE NUMBER",
+        "CURRENT_ADDRESS VARCHAR",
+        "CURRENT_PIN CHAR",
+        "CURRENT_CITY VARCHAR",
+        "CURRENT_STATE VARCHAR",
+        "PERMANENT_ADDRESS VARCHAR",
+        "PERMANENT_PIN CHAR",
+        "PERMANENT_CITY VARCHAR",
+        "PERMANENT_STATE VARCHAR",
+        "MOBILE CHAR",
+        "ALTERNATE_TELEPHONE VARCHAR",
+        "CONTACT_PERSON VARCHAR",
+        "CONTACT_PERSON_MOBILE CHAR",
+        "CONTACT_PERSON_EMAIL VARCHAR",
+        "PAN_NO CHAR",
+        "PAN_DOC VARCHAR",
+        "AADHAR_NO CHAR",
+        "AADHAR_DOC VARCHAR",
+        "PASSPORT_NO VARCHAR",
+        "PASSPORT_DOC VARCHAR",
+        "DRIVING_LIC_NO VARCHAR",
+        "DRIVING_LIC_DOC VARCHAR",
+        "PF_NO VARCHAR",
+        "PF_DOC VARCHAR",
+        "ESIC_NO VARCHAR",
+        "ESIC_DOC VARCHAR",
+        "BANK_ACCOUNT_NO VARCHAR",
+        "BANK_IFSC_CODE CHAR",
+        "BANK_NAME VARCHAR",
+        "BANK_DOC VARCHAR",
+        "PAN_VALIDATED CHAR",
+        "PAN_VALIDATED_NAME VARCHAR",
+        "PAN_ATTEMPTS NUMBER",
+        "AADHAR_VALIDATED CHAR",
+        "AADHAR_VALIDATED_NAME VARCHAR",
+        "AADHAR_ATTEMPTS NUMBER",
+        "BANK_VALIDATED CHAR",
+        "BANK_VALIDATED_NAME VARCHAR",
+        "BANK_ATTEMPTS NUMBER",
         "ADD_DATE DATETIME",
         "ADD_USER CHAR",
         "ADD_TERM VARCHAR",
@@ -223,6 +322,74 @@
       ]
     },
     {
+      "table_name": "EMPONB_CAND_SELF_EDUCATION",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "QLF_CODE CHAR",
+        "QLF_TYPE VARCHAR",
+        "INSTITUTE VARCHAR",
+        "PASS_YEAR NUMBER",
+        "CLASS VARCHAR",
+        "PERCENTAGE NUMBER",
+        "COUNTRY_CODE CHAR",
+        "COURSE_TYPE VARCHAR",
+        "COURSE_DURATION VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "ORGANISATION VARCHAR",
+        "DESIGNATION VARCHAR",
+        "FROM_DATE DATE",
+        "TO_DATE DATE",
+        "GROSS_AMT NUMBER",
+        "CURRENCY_CODE CHAR",
+        "COUNTRY_CODE CHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_SELF_FAMILY",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "MEMBER_NAME VARCHAR",
+        "DATE_BIRTH DATE",
+        "GENDER CHAR",
+        "RELATION CHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_CAND_SELF_PAY",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "AD_CODE CHAR",
+        "AMOUNT NUMBER",
+        "AMOUNT_TYPE VARCHAR",
+        "FREQUENCY VARCHAR",
+        "RES_FORMULA VARCHAR",
+        "AMOUNT_CALC NUMBER",
+        "UPD_PAYSTRU CHAR",
+        "APPL_MODE VARCHAR"
+      ]
+    },
+    {
       "table_name": "EMPONB_COUNTRY_MASTER",
       "description": "",
       "key_columns": [
@@ -247,16 +414,16 @@
       "description": "",
       "key_columns": [
         "LOOKUP_TYPE VARCHAR",
-        "LOOKUP_CODE CHAR"
+        "LOOKUP_CODE VARCHAR"
       ],
       "other_columns": [
         "LOOKUP_DESC VARCHAR",
-        "ACTIVE_FLAG CHAR",
+        "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
-        "ADD_USER CHAR",
+        "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",
         "CHG_DATE DATETIME",
-        "CHG_USER CHAR",
+        "CHG_USER VARCHAR",
         "CHG_TERM VARCHAR"
       ]
     },
@@ -264,23 +431,23 @@
       "table_name": "EMPONB_DESIG_DEPT_MASTER",
       "description": "",
       "key_columns": [
-        "DESIGN_CODE CHAR"
+        "DESIGN_CODE VARCHAR"
       ],
       "other_columns": [
         "DESIGNATION_NAME VARCHAR",
-        "DEPT_CODE CHAR",
+        "DEPT_CODE VARCHAR",
         "DEPT_NAME VARCHAR",
-        "GRADE CHAR",
+        "GRADE VARCHAR",
         "GRADE_NAME VARCHAR",
-        "CADRE CHAR",
+        "CADRE VARCHAR",
         "CADRE_NAME VARCHAR",
         "JOINED_AS VARCHAR",
-        "ACTIVE_FLAG CHAR",
+        "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
-        "ADD_USER CHAR",
+        "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",
         "CHG_DATE DATETIME",
-        "CHG_USER CHAR",
+        "CHG_USER VARCHAR",
         "CHG_TERM VARCHAR"
       ]
     },
@@ -313,23 +480,23 @@
       "table_name": "EMPONB_ORG_SETUP_MASTER",
       "description": "",
       "key_columns": [
-        "EMP_SITE CHAR"
+        "EMP_SITE VARCHAR"
       ],
       "other_columns": [
         "SITE_NAME VARCHAR",
-        "PAY_SITE CHAR",
+        "PAY_SITE VARCHAR",
         "PAY_SITE_NAME VARCHAR",
-        "WORK_SHIFT CHAR",
+        "WORK_SHIFT VARCHAR",
         "SHIFT_NAME VARCHAR",
         "SHIFT_TIMINGS VARCHAR",
-        "HOL_TBLNO CHAR",
+        "HOL_TBLNO VARCHAR",
         "HOL_TBL_NAME VARCHAR",
-        "ACTIVE_FLAG CHAR",
+        "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
-        "ADD_USER CHAR",
+        "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",
         "CHG_DATE DATETIME",
-        "CHG_USER CHAR",
+        "CHG_USER VARCHAR",
         "CHG_TERM VARCHAR"
       ]
     },
@@ -341,16 +508,16 @@
       ],
       "other_columns": [
         "AD_NAME VARCHAR",
-        "AMOUNT_TYPE VARCHAR",
-        "DEFAULT_FREQUENCY VARCHAR",
         "APPL_MODE VARCHAR",
+        "AMOUNT_TYPE VARCHAR",
         "RES_FORMULA VARCHAR",
-        "ACTIVE_FLAG CHAR",
+        "DEFAULT_FREQUENCY VARCHAR",
+        "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
-        "ADD_USER CHAR",
+        "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",
         "CHG_DATE DATETIME",
-        "CHG_USER CHAR",
+        "CHG_USER VARCHAR",
         "CHG_TERM VARCHAR"
       ]
     },
@@ -364,12 +531,12 @@
         "QLF_NAME VARCHAR",
         "QLF_TYPE VARCHAR",
         "COURSE_TYPE VARCHAR",
-        "ACTIVE_FLAG CHAR",
+        "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
-        "ADD_USER CHAR",
+        "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",
         "CHG_DATE DATETIME",
-        "CHG_USER CHAR",
+        "CHG_USER VARCHAR",
         "CHG_TERM VARCHAR"
       ]
     }

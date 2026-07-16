@@ -17,7 +17,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Descriptive name of the qualification",
+      "description": "Name of the qualification",
       "sequence": 2,
       "mandatory": true
     },
@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Type of qualification",
+      "description": "Academic, Professional or Certification",
       "sequence": 3,
       "mandatory": true,
       "allowed_values": [
@@ -49,7 +49,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Mode of the course",
+      "description": "Full-time, Part-time or Distance",
       "sequence": 4,
       "allowed_values": [
         {
@@ -68,10 +68,10 @@
     },
     {
       "column_name": "ACTIVE_FLAG",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Active status flag",
+      "description": "Whether this qualification is active",
       "sequence": 5,
       "mandatory": true,
       "allowed_values": [
@@ -95,7 +95,7 @@
     },
     {
       "column_name": "ADD_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "User who created the record",
@@ -106,7 +106,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP where the record was created",
+      "description": "Terminal from which record was created",
       "sequence": 8
     },
     {
@@ -119,7 +119,7 @@
     },
     {
       "column_name": "CHG_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "User who last changed the record",
@@ -130,7 +130,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP where the record was last changed",
+      "description": "Terminal from which record was last changed",
       "sequence": 11
     }
   ]

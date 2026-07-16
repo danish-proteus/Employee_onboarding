@@ -1,0 +1,19 @@
+{
+  "id": "1251b8eb-4a5e-4863-bbaa-89de7295ec04",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "It should refer to the new python logic we just discuss to have\n\npython logic im",
+  "kind": "modify",
+  "status": "completed",
+  "description": "It should refer to the new python logic we just discuss to have\n\npython logic im",
+  "created_at": 1783583174.4350197,
+  "updated_at": 1783583201.5773141,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "It should refer to the new python logic we just discuss to have\n\npython logic implemented to fresh generate  key update relevant fields [ \"ACCESS_KEY\": access_key,\n        \"KEY_GENERATED_ON\": now,\n        \"KEY_EXPIRY_DATETIME\": expiry,\n        \"KEY_VALID_FLAG\": \"Y\",\n        \"FORM_URL\": form_url,\n        \"STATUS\": \"Link Generated\",\n        \"STATUS_DATE\": now,\n        \"LINK_SENT_ON\": now,] \n\nand call the ioflow event",
+  "resume_ref": {
+    "session_id": "ba6eb99c-d1a7-4172-8979-31bc6b1cf292",
+    "claude_session_id": "8341901e-fd4f-401d-a9b1-b2cd55f45539"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,45 @@
+{
+  "id": "f3ca8609-bc24-4265-a824-d4e3e2022780",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Add an on-load access-key validation gate to the Candidate Page (candidate_page,",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnload of 'Candidate Page' validate the key received in urlparam with the key in access_key of 'emponb_candidate_record' for the given candidate_id. Also validate if access_key is active.",
+  "created_at": 1784119936.5696247,
+  "updated_at": 1784184720.5379395,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Add before_load validation hook to Candidate Page model",
+      "status": "completed",
+      "error": null,
+      "obj_name": "candidate_page",
+      "obj_type": "S",
+      "phase_id": null,
+      "started_at": 1784119936.5802808,
+      "completed_at": 1784119962.2288735
+    },
+    {
+      "id": "change_2",
+      "step": "change",
+      "label": "Implement validate_access_key before_load function for Candidate Page",
+      "status": "completed",
+      "error": null,
+      "obj_name": "candidate_page",
+      "obj_type": "S",
+      "phase_id": null,
+      "started_at": 1784119962.2382848,
+      "completed_at": 1784120001.3596232
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnload of 'Candidate Page' validate the key received in urlparam with the key in access_key of 'emponb_candidate_record' for the given candidate_id. Also validate if access_key is active.",
+  "resume_ref": {
+    "session_id": "8ea37d8c-9eb3-4160-9680-49fccfb8c9d3",
+    "plan_id": "f3ca8609-bc24-4265-a824-d4e3e2022780",
+    "scope": null
+  },
+  "depends_on": []
+}

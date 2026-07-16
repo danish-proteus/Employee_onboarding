@@ -6,25 +6,38 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
-        "RES_FORMULA",
-        "DEFAULT_FREQUENCY",
         "ADD_TERM",
-        "ADD_DATE",
+        "RES_FORMULA",
         "CHG_TERM",
-        "AD_CODE",
-        "CHG_DATE",
-        "ACTIVE_FLAG",
-        "APPL_MODE",
-        "ADD_USER",
         "AMOUNT_TYPE",
         "AD_NAME",
-        "CHG_USER"
+        "CHG_USER",
+        "AD_CODE",
+        "DEFAULT_FREQUENCY",
+        "ADD_USER",
+        "ACTIVE_FLAG",
+        "APPL_MODE",
+        "CHG_DATE",
+        "ADD_DATE"
       ]
+    },
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "5",
+      "usage_type": "R",
+      "referred_columns": [
+        "AD_CODE"
+      ],
+      "join_info": {
+        "column": "AD_CODE",
+        "join_table": "EMPONB_CAND_SELF_PAY",
+        "join_column": "AD_CODE"
+      }
     },
     {
       "object_name": "emponb_candidate_record",
       "form_no": "5",
-      "usage_type": "M",
+      "usage_type": "R",
       "referred_columns": [
         "AD_CODE"
       ],

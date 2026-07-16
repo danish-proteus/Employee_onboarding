@@ -1,0 +1,19 @@
+{
+  "id": "14b402db-68de-4306-8b87-b788407a58a5",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "do not hardcode the port .. it must get it from the application url",
+  "kind": "modify",
+  "status": "completed",
+  "description": "do not hardcode the port .. it must get it from the application url",
+  "created_at": 1783654050.7072446,
+  "updated_at": 1783654185.7385607,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "do not hardcode the port .. it must get it from the application url",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "bc4a1d05-a7a6-4fae-bc59-716c7b71b790"
+  },
+  "depends_on": []
+}

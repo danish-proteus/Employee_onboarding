@@ -1,0 +1,19 @@
+{
+  "id": "f61a0040-9def-4d55-8431-defcb86b056a",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Leave it hardcoded for now",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Leave it hardcoded for now",
+  "created_at": 1783657134.3446023,
+  "updated_at": 1783657143.5652275,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Leave it hardcoded for now",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "f60f33ed-0910-4f89-9a66-ee8f49a2da64"
+  },
+  "depends_on": []
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "eb3a0e8a4682",
+    "name": "A_sample_of_Aadhaar_card.jpg",
+    "file": "d10f10b382182e6a.jpeg",
+    "path": "emponb_candidate_self_aadhar_doc/6/d10f10b382182e6a.jpeg",
+    "docType": "emponb_candidate_self_aadhar_doc",
+    "recordId": "6",
+    "mime": "image/jpeg",
+    "size": 69360,
+    "createdAt": 1784179251,
+    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=d10f10b382182e6a.jpeg&name=A_sample_of_Aadhaar_card.jpg&dt=emponb_candidate_self_aadhar_doc&rid=6"
+  },
+  {
+    "id": "f067a8bf7107",
+    "name": "A_sample_of_Aadhaar_card.jpg",
+    "file": "d10f10b382182e6a.jpg",
+    "path": "d10f10b382182e6a.jpg",
+    "docType": "",
+    "recordId": "",
+    "mime": "image/jpeg",
+    "size": 69360,
+    "createdAt": 1783662298,
+    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=d10f10b382182e6a.jpg&name=A_sample_of_Aadhaar_card.jpg"
+  },
+  {
+    "id": "ea57a10b1074",
+    "name": "pan-card.webp",
+    "file": "3d3ab6b6629d1e09.webp",
+    "path": "3d3ab6b6629d1e09.webp",
+    "docType": "",
+    "recordId": "",
+    "mime": "image/webp",
+    "size": 36508,
+    "createdAt": 1783662294,
+    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=3d3ab6b6629d1e09.webp&name=pan-card.webp"
+  },
+  {
+    "id": "5cba36c234c5",
+    "name": "A_sample_of_Aadhaar_card.jpg",
+    "file": "d10f10b382182e6a.jpg",
+    "path": "emponb_candidate_self_aadhar_doc/1/d10f10b382182e6a.jpg",
+    "docType": "emponb_candidate_self_aadhar_doc",
+    "recordId": "1",
+    "mime": "image/jpeg",
+    "size": 69360,
+    "createdAt": 1783435705,
+    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=d10f10b382182e6a.jpg&name=A_sample_of_Aadhaar_card.jpg&dt=emponb_candidate_self_aadhar_doc&rid=1"
+  },
+  {
+    "id": "bfd9bc21f880",
+    "name": "pan-card.webp",
+    "file": "3d3ab6b6629d1e09.webp",
+    "path": "emponb_candidate_self_pan_doc/1/3d3ab6b6629d1e09.webp",
+    "docType": "emponb_candidate_self_pan_doc",
+    "recordId": "1",
+    "mime": "image/webp",
+    "size": 36508,
+    "createdAt": 1783435695,
+    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=3d3ab6b6629d1e09.webp&name=pan-card.webp&dt=emponb_candidate_self_pan_doc&rid=1"
+  }
+]

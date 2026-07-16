@@ -1,0 +1,19 @@
+{
+  "id": "2317357e-7bfc-4b83-adff-c2814375f761",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "Can you not have a Javascript or similar component which will store the baseURL ",
+  "kind": "modify",
+  "status": "completed",
+  "description": "Can you not have a Javascript or similar component which will store the baseURL ",
+  "created_at": 1783657040.8672786,
+  "updated_at": 1783657091.686497,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "Can you not have a Javascript or similar component which will store the baseURL from browser when application starts and pass the same to action__send_candidate_link.py on method calling so it be a dynamic one than hardcoded.",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "b692dc2d-7e68-4993-badf-547d2f19c98a"
+  },
+  "depends_on": []
+}

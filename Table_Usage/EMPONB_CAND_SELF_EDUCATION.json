@@ -1,0 +1,28 @@
+{
+  "table_name": "EMPONB_CAND_SELF_EDUCATION",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "3",
+      "usage_type": "R",
+      "referred_columns": [
+        "COURSE_DURATION",
+        "CANDIDATE_ID",
+        "QLF_TYPE",
+        "COURSE_TYPE",
+        "PERCENTAGE",
+        "COUNTRY_CODE",
+        "LINE_NO",
+        "QLF_CODE",
+        "INSTITUTE",
+        "CLASS",
+        "PASS_YEAR"
+      ],
+      "join_info": {
+        "column": "COUNTRY_CODE",
+        "join_table": "EMPONB_COUNTRY_MASTER",
+        "join_column": "COUNTRY_CODE"
+      }
+    }
+  ]
+}

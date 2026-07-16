@@ -1,0 +1,19 @@
+{
+  "id": "c27e9fba-4640-48ad-a707-2e381db2acbb",
+  "project": "Employee_onboarding",
+  "backend": "claude",
+  "title": "yes",
+  "kind": "modify",
+  "status": "completed",
+  "description": "yes",
+  "created_at": 1783658417.8028593,
+  "updated_at": 1783658503.9292836,
+  "todos": [],
+  "phases": [],
+  "originating_prompt": "yes",
+  "resume_ref": {
+    "session_id": "7a405ff5-3f68-4f4f-b411-0a9f6f6157ab",
+    "claude_session_id": "920e68ed-6673-4eb9-b4f3-ddef9d20f900"
+  },
+  "depends_on": []
+}

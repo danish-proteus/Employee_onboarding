@@ -17,17 +17,36 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Descriptive name of the pay head.",
+      "description": "Descriptive name of the pay head",
       "sequence": 2,
       "mandatory": true
+    },
+    {
+      "column_name": "APPL_MODE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Whether this pay head is an earning or a deduction",
+      "sequence": 3,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Earning",
+          "label": "Earning"
+        },
+        {
+          "value": "Deduction",
+          "label": "Deduction"
+        }
+      ]
     },
     {
       "column_name": "AMOUNT_TYPE",
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "How the amount is computed: Fixed, Percentage or Formula.",
-      "sequence": 3,
+      "description": "How the amount for this pay head is determined",
+      "sequence": 4,
       "mandatory": true,
       "allowed_values": [
         {
@@ -45,12 +64,20 @@
       ]
     },
     {
+      "column_name": "RES_FORMULA",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Resolution formula; mandatory when Amount Type = Formula",
+      "sequence": 5
+    },
+    {
       "column_name": "DEFAULT_FREQUENCY",
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Default application frequency: Monthly, Annual or One-time.",
-      "sequence": 4,
+      "description": "Default payout frequency for this pay head",
+      "sequence": 6,
       "mandatory": true,
       "allowed_values": [
         {
@@ -68,48 +95,21 @@
       ]
     },
     {
-      "column_name": "APPL_MODE",
-      "data_type": "VARCHAR",
-      "size": "20",
-      "key": false,
-      "description": "Whether the pay head is an Earning or a Deduction.",
-      "sequence": 5,
-      "mandatory": true,
-      "allowed_values": [
-        {
-          "value": "Earning",
-          "label": "Earning"
-        },
-        {
-          "value": "Deduction",
-          "label": "Deduction"
-        }
-      ]
-    },
-    {
-      "column_name": "RES_FORMULA",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "Formula expression used to derive the amount. Mandatory when Amount Type is Formula.",
-      "sequence": 6
-    },
-    {
       "column_name": "ACTIVE_FLAG",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Active flag; only active pay heads are selectable.",
+      "description": "Whether this pay head is active and selectable",
       "sequence": 7,
       "mandatory": true,
       "allowed_values": [
         {
           "value": "Y",
-          "label": "Yes"
+          "label": "Active"
         },
         {
           "value": "N",
-          "label": "No"
+          "label": "Inactive"
         }
       ]
     },
@@ -118,15 +118,15 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record creation timestamp.",
+      "description": "Record creation timestamp",
       "sequence": 8
     },
     {
       "column_name": "ADD_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who created the record.",
+      "description": "User who created the record",
       "sequence": 9
     },
     {
@@ -134,7 +134,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP from which the record was created.",
+      "description": "Terminal/IP that created the record",
       "sequence": 10
     },
     {
@@ -142,15 +142,15 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Last modification timestamp.",
+      "description": "Record last-change timestamp",
       "sequence": 11
     },
     {
       "column_name": "CHG_USER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last modified the record.",
+      "description": "User who last changed the record",
       "sequence": 12
     },
     {
@@ -158,7 +158,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP from which the record was last modified.",
+      "description": "Terminal/IP that last changed the record",
       "sequence": 13
     }
   ]

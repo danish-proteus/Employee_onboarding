@@ -168,14 +168,15 @@
             "tableName": "EMPONB_CANDIDATE_RECORD",
             "COLTYPE": "string",
             "currentFieldType": "string",
-            "operator": "=",
+            "operator": "like",
             "queryOption": "P",
             "prevOption": "P",
             "customValue": "FixedValue",
             "promptLabel": "Designation Code",
             "promptName": "design_code",
-            "value": "",
-            "chipValue": []
+            "value": "%",
+            "chipValue": [],
+            "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)"
           }
         ],
         "condition": "and"
@@ -187,7 +188,10 @@
     "SCHEMA_TYPE": "S",
     "OUTPUT_TYPE": "JSON",
     "DATABASE_TYPE": "1",
-    "DATABASE_DETAIL": { "DATABASE_NAME": "PostgreSQL", "TYPE": 1 }
+    "DATABASE_DETAIL": {
+      "DATABASE_NAME": "PostgreSQL",
+      "TYPE": 1
+    }
   },
   "LAYOUT_DATA": {
     "visualLayout": {
@@ -200,25 +204,196 @@
       "linkOptions": "",
       "OutputType": "JSON",
       "options": [
-        { "optionId": "showGrandTotals", "optionName": "showGrandTotals", "optionHeading": "Show Grand Totals", "dataType": "string", "defaultValue": "off", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showTotals", "optionName": "showTotals", "optionHeading": "Show Totals", "dataType": "string", "defaultValue": "off", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showAggregationLabels", "optionName": "showAggregationLabels", "optionHeading": "Show Aggregation Labels", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "sortingColumns", "optionName": "sortingColumns", "optionHeading": "Sorting Columns", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "numberFormat", "optionName": "numberFormat", "optionHeading": "Number Format", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "configuratorButton", "optionName": "configuratorButton", "optionHeading": "Configurator Button", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showFilter", "optionName": "showFilter", "optionHeading": "Show Filter", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showAxisTitle", "optionName": "showAxisTitle", "optionHeading": "Show Axis Title", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "xAxisLabel", "optionName": "xAxisLabel", "optionHeading": "X Axis Label", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "yAxisLabel", "optionName": "yAxisLabel", "optionHeading": "Y Axis Label", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showLines", "optionName": "showLines", "optionHeading": "Show Lines", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showRange", "optionName": "showRange", "optionHeading": "Show Range", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "themeColor", "optionName": "themeColor", "optionHeading": "Theme Color", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "toolbar", "optionName": "toolbar", "optionHeading": "Toolbar", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "multipleMeasures", "optionName": "multipleMeasures", "optionHeading": "Multiple Measures", "dataType": "boolean", "defaultValue": "true", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "chartBackgroundColor", "optionName": "chartBackgroundColor", "optionHeading": "Chart Background Color", "dataType": "string", "defaultValue": "Transparent", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "axisTextColor", "optionName": "axisTextColor", "optionHeading": "Axis Text Color", "dataType": "string", "defaultValue": "black", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showMeasures", "optionName": "showMeasures", "optionHeading": "Show Measures", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
-        { "optionId": "showDataLabels", "optionName": "showDataLabels", "optionHeading": "Show Data Labels", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" }
+        {
+          "optionId": "showGrandTotals",
+          "optionName": "showGrandTotals",
+          "optionHeading": "Show Grand Totals",
+          "dataType": "string",
+          "defaultValue": "off",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showTotals",
+          "optionName": "showTotals",
+          "optionHeading": "Show Totals",
+          "dataType": "string",
+          "defaultValue": "off",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showAggregationLabels",
+          "optionName": "showAggregationLabels",
+          "optionHeading": "Show Aggregation Labels",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "sortingColumns",
+          "optionName": "sortingColumns",
+          "optionHeading": "Sorting Columns",
+          "dataType": "string",
+          "defaultValue": "",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "numberFormat",
+          "optionName": "numberFormat",
+          "optionHeading": "Number Format",
+          "dataType": "string",
+          "defaultValue": "",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "configuratorButton",
+          "optionName": "configuratorButton",
+          "optionHeading": "Configurator Button",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showFilter",
+          "optionName": "showFilter",
+          "optionHeading": "Show Filter",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showAxisTitle",
+          "optionName": "showAxisTitle",
+          "optionHeading": "Show Axis Title",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "xAxisLabel",
+          "optionName": "xAxisLabel",
+          "optionHeading": "X Axis Label",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "yAxisLabel",
+          "optionName": "yAxisLabel",
+          "optionHeading": "Y Axis Label",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showLines",
+          "optionName": "showLines",
+          "optionHeading": "Show Lines",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showRange",
+          "optionName": "showRange",
+          "optionHeading": "Show Range",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "themeColor",
+          "optionName": "themeColor",
+          "optionHeading": "Theme Color",
+          "dataType": "string",
+          "defaultValue": "",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "toolbar",
+          "optionName": "toolbar",
+          "optionHeading": "Toolbar",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "multipleMeasures",
+          "optionName": "multipleMeasures",
+          "optionHeading": "Multiple Measures",
+          "dataType": "boolean",
+          "defaultValue": "true",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "chartBackgroundColor",
+          "optionName": "chartBackgroundColor",
+          "optionHeading": "Chart Background Color",
+          "dataType": "string",
+          "defaultValue": "Transparent",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "axisTextColor",
+          "optionName": "axisTextColor",
+          "optionHeading": "Axis Text Color",
+          "dataType": "string",
+          "defaultValue": "black",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showMeasures",
+          "optionName": "showMeasures",
+          "optionHeading": "Show Measures",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        },
+        {
+          "optionId": "showDataLabels",
+          "optionName": "showDataLabels",
+          "optionHeading": "Show Data Labels",
+          "dataType": "boolean",
+          "defaultValue": "false",
+          "listOfValues": "",
+          "allowChange": "true",
+          "optionType": "inner"
+        }
       ],
       "ColumnGroups": [
         {
@@ -372,5 +547,5 @@
     },
     "layoutdata": {}
   },
-  "SOURCE_SQL": "SELECT DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date AS PERIOD, emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.initiated_on >= ?.from_date AND emponb_candidate_record.initiated_on <= ?.to_date AND (?.design_code IS NULL OR emponb_candidate_record.design_code = ?.design_code) GROUP BY DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date, emponb_candidate_record.status ORDER BY PERIOD, STATUS"
+  "SOURCE_SQL": "SELECT DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date AS PERIOD, emponb_candidate_record.status AS STATUS, COUNT(emponb_candidate_record.candidate_id) AS CANDIDATE_COUNT FROM emponb_candidate_record WHERE emponb_candidate_record.initiated_on >= ?.from_date AND emponb_candidate_record.initiated_on <= ?.to_date AND emponb_candidate_record.design_code LIKE ?.design_code GROUP BY DATE_TRUNC('day', emponb_candidate_record.initiated_on)::date, emponb_candidate_record.status ORDER BY PERIOD, STATUS"
 }

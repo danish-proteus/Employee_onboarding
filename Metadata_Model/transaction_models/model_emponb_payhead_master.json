@@ -5,7 +5,7 @@
       {
         "sql_model": {
           "form_title": "Pay Head Master",
-          "form_descr": "Maintain pay heads (allowances / deductions) referenced by the candidate pay structure via AD_CODE.",
+          "form_descr": "Maintain pay heads (allowance/deduction) referenced by the candidate pay structure",
           "form_no": "1",
           "main_table": "EMPONB_PAYHEAD_MASTER",
           "columns": [
@@ -14,17 +14,16 @@
                 "name": "ad_code",
                 "db_name": "AD_CODE",
                 "group_name": "Basic",
-                "col_type": "CHAR",
+                "col_type": "VARCHAR",
                 "heading": "Pay Head Code",
-                "descr": "Unique allowance/deduction (pay head) code.",
+                "descr": "Unique pay head code",
                 "key": true,
                 "mandatory": true,
                 "validations": [
                   {
                     "type": "builtin",
-                    "name": "Pay head code unique",
-                    "error_code": "AD_CODE_UNIQUE",
-                    "message": "Pay Head Code {form.ad_code} already exists.",
+                    "name": "AD_CODE unique",
+                    "message": "This pay head code already exists.",
                     "builtin": {
                       "kind": "must_be_unique"
                     }
@@ -34,7 +33,7 @@
                 "y": "10",
                 "col_id": "1",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "10",
                 "width": 100,
                 "hidden": "",
@@ -54,13 +53,13 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Pay Head Name",
-                "descr": "Descriptive name of the pay head.",
+                "descr": "Descriptive name of the pay head",
                 "mandatory": true,
                 "x": "20",
                 "y": "20",
                 "col_id": "2",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "100",
                 "width": 500,
                 "key": false,
@@ -77,14 +76,53 @@
             },
             {
               "column": {
-                "name": "amount_type",
-                "db_name": "AMOUNT_TYPE",
+                "name": "appl_mode",
+                "db_name": "APPL_MODE",
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Amount Type",
-                "descr": "How the amount is computed: Fixed, Percentage or Formula.",
+                "heading": "Applicability",
+                "descr": "Whether this pay head is an earning or a deduction",
                 "mandatory": true,
-                "default_value": "Fixed",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Earning",
+                      "display": "Earning"
+                    },
+                    {
+                      "data": "Deduction",
+                      "display": "Deduction"
+                    }
+                  ]
+                },
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_PAYHEAD_MASTER",
+                "table_display_name": "Pay head master",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount_type",
+                "db_name": "AMOUNT_TYPE",
+                "group_name": "Amount Configuration",
+                "col_type": "VARCHAR",
+                "heading": "Amount Type",
+                "descr": "How the amount for this pay head is determined",
+                "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
@@ -102,17 +140,33 @@
                     }
                   ]
                 },
-                "x": "30",
-                "y": "30",
-                "col_id": "3",
+                "item_change": {
+                  "mode": "rule",
+                  "fill": [
+                    {
+                      "form_col": "res_formula",
+                      "expr": "iif({form.amount_type} == \"Formula\", {form.res_formula}, \"\")"
+                    }
+                  ],
+                  "protect": [
+                    {
+                      "form_col": "res_formula",
+                      "when": "{form.amount_type} != \"Formula\""
+                    }
+                  ]
+                },
+                "x": "50",
+                "y": "50",
+                "col_id": "4",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "20",
                 "width": 200,
                 "key": false,
                 "hidden": "",
                 "format": "",
                 "default_function": "",
+                "default_value": "",
                 "expression": "",
                 "protect": "",
                 "validations": "",
@@ -121,14 +175,48 @@
             },
             {
               "column": {
+                "name": "res_formula",
+                "db_name": "RES_FORMULA",
+                "group_name": "Amount Configuration",
+                "col_type": "VARCHAR",
+                "heading": "Formula",
+                "descr": "Resolution formula; mandatory when Amount Type = Formula",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Formula required",
+                    "message": "Formula is mandatory when Amount Type is 'Formula'.",
+                    "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
+                  }
+                ],
+                "x": "60",
+                "y": "60",
+                "col_id": "5",
+                "table_name": "EMPONB_PAYHEAD_MASTER",
+                "table_display_name": "Pay head master",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
                 "name": "default_frequency",
                 "db_name": "DEFAULT_FREQUENCY",
-                "group_name": "Basic",
+                "group_name": "Amount Configuration",
                 "col_type": "VARCHAR",
                 "heading": "Default Frequency",
-                "descr": "Default application frequency: Monthly, Annual or One-time.",
+                "descr": "Default payout frequency for this pay head",
                 "mandatory": true,
-                "default_value": "Monthly",
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
@@ -146,110 +234,21 @@
                     }
                   ]
                 },
-                "x": "40",
-                "y": "40",
-                "col_id": "4",
-                "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
-                "db_size": "20",
-                "width": 200,
-                "key": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "expression": "",
-                "protect": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "appl_mode",
-                "db_name": "APPL_MODE",
-                "group_name": "Basic",
-                "col_type": "VARCHAR",
-                "heading": "Application Mode",
-                "descr": "Whether the pay head is an Earning or a Deduction.",
-                "mandatory": true,
-                "default_value": "Earning",
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "Earning",
-                      "display": "Earning"
-                    },
-                    {
-                      "data": "Deduction",
-                      "display": "Deduction"
-                    }
-                  ]
-                },
-                "display": {
-                  "type": "status_tag",
-                  "map": [
-                    {
-                      "when": "Earning",
-                      "color": "green"
-                    },
-                    {
-                      "when": "Deduction",
-                      "color": "red"
-                    }
-                  ],
-                  "defaultColor": "grey"
-                },
-                "x": "50",
-                "y": "50",
-                "col_id": "5",
-                "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
-                "db_size": "20",
-                "width": 200,
-                "key": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "expression": "",
-                "protect": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "res_formula",
-                "db_name": "RES_FORMULA",
-                "group_name": "Formula",
-                "col_type": "VARCHAR",
-                "heading": "Result Formula",
-                "descr": "Formula expression used to derive the amount. Mandatory when Amount Type is Formula.",
-                "validations": [
-                  {
-                    "type": "expression",
-                    "name": "Formula required for Formula type",
-                    "error_code": "RES_FORMULA_REQ",
-                    "message": "Result Formula is mandatory when Amount Type is 'Formula'.",
-                    "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
-                  }
-                ],
                 "x": "70",
                 "y": "70",
                 "col_id": "6",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
-                "db_size": "500",
-                "width": 500,
+                "table_display_name": "Pay head master",
+                "db_size": "20",
+                "width": 200,
                 "key": false,
-                "mandatory": false,
                 "hidden": "",
                 "format": "",
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -258,32 +257,29 @@
                 "name": "active_flag",
                 "db_name": "ACTIVE_FLAG",
                 "group_name": "Basic",
-                "col_type": "CHAR",
+                "col_type": "VARCHAR",
                 "heading": "Active",
-                "descr": "Active flag; only active pay heads are selectable.",
+                "descr": "Whether this pay head is active and selectable",
                 "mandatory": true,
                 "default_value": "Y",
                 "edit_mask": {
-                  "mask": "bool_check",
+                  "mask": "ddlb",
                   "values": [
                     {
                       "data": "Y",
-                      "display": "Yes"
+                      "display": "Active"
                     },
                     {
                       "data": "N",
-                      "display": "No"
+                      "display": "Inactive"
                     }
                   ]
                 },
-                "display": {
-                  "type": "boolean"
-                },
-                "x": "60",
-                "y": "60",
+                "x": "40",
+                "y": "40",
                 "col_id": "7",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "1",
                 "width": 50,
                 "key": false,
@@ -300,22 +296,22 @@
               "column": {
                 "name": "add_date",
                 "db_name": "ADD_DATE",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Added On",
-                "descr": "Record creation timestamp.",
+                "descr": "Record creation timestamp",
                 "protect": "1",
+                "hidden": 1,
                 "default_value": ":audit_add_date",
                 "x": "80",
                 "y": "80",
                 "col_id": "8",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "",
                 "width": 50,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -328,22 +324,22 @@
               "column": {
                 "name": "add_user",
                 "db_name": "ADD_USER",
-                "group_name": "Audit",
-                "col_type": "CHAR",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
                 "heading": "Added By",
-                "descr": "User who created the record.",
+                "descr": "User who created the record",
                 "protect": "1",
+                "hidden": 1,
                 "default_value": ":audit_add_user",
                 "x": "90",
                 "y": "90",
                 "col_id": "9",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "10",
                 "width": 100,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -356,22 +352,22 @@
               "column": {
                 "name": "add_term",
                 "db_name": "ADD_TERM",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Added Terminal",
-                "descr": "Terminal/IP from which the record was created.",
+                "descr": "Terminal/IP that created the record",
                 "protect": "1",
+                "hidden": 1,
                 "default_value": ":audit_add_terminal",
                 "x": "100",
                 "y": "100",
                 "col_id": "10",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "15",
                 "width": 150,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -384,22 +380,22 @@
               "column": {
                 "name": "chg_date",
                 "db_name": "CHG_DATE",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Changed On",
-                "descr": "Last modification timestamp.",
+                "descr": "Record last-change timestamp",
                 "protect": "1",
+                "hidden": 1,
                 "default_value": ":audit_chg_date",
                 "x": "110",
                 "y": "110",
                 "col_id": "11",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "",
                 "width": 50,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -412,22 +408,22 @@
               "column": {
                 "name": "chg_user",
                 "db_name": "CHG_USER",
-                "group_name": "Audit",
-                "col_type": "CHAR",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
                 "heading": "Changed By",
-                "descr": "User who last modified the record.",
+                "descr": "User who last changed the record",
                 "protect": "1",
+                "hidden": 1,
                 "default_value": ":audit_chg_user",
                 "x": "120",
                 "y": "120",
                 "col_id": "12",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "10",
                 "width": 100,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -440,22 +436,22 @@
               "column": {
                 "name": "chg_term",
                 "db_name": "CHG_TERM",
-                "group_name": "Audit",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Changed Terminal",
-                "descr": "Terminal/IP from which the record was last modified.",
+                "descr": "Terminal/IP that last changed the record",
                 "protect": "1",
+                "hidden": 1,
                 "default_value": ":audit_chg_terminal",
                 "x": "130",
                 "y": "130",
                 "col_id": "13",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Allowance / Deduction (pay head) master table.",
+                "table_display_name": "Pay head master",
                 "db_size": "15",
                 "width": 150,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -471,20 +467,12 @@
                 {
                   "table": "EMPONB_PAYHEAD_MASTER",
                   "main_table": true,
-                  "table_descr": "Allowance / Deduction (pay head) master table."
+                  "table_descr": "Pay head master"
                 }
               ]
             }
           },
-          "validations": [
-            {
-              "type": "expression",
-              "name": "Formula mandatory check",
-              "error_code": "FORM_RES_FORMULA",
-              "message": "Result Formula is required when Amount Type is 'Formula'.",
-              "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
-            }
-          ]
+          "validations": []
         }
       }
     ],
@@ -492,7 +480,7 @@
     "cross_updates": [],
     "pre_commit": [],
     "post_commit": [],
-    "attach_docs": [],
-    "follow_up_actions": []
+    "follow_up_actions": [],
+    "attach_docs": []
   }
 }
