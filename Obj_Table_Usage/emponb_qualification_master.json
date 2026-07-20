@@ -2,17 +2,17 @@
   "object_name": "emponb_qualification_master",
   "tables": {
     "EMPONB_QUALIFICATION_MASTER": [
-      "QLF_TYPE",
+      "ADD_DATE",
       "ADD_TERM",
-      "CHG_TERM",
-      "CHG_USER",
-      "QLF_CODE",
       "ACTIVE_FLAG",
-      "COURSE_TYPE",
       "ADD_USER",
       "CHG_DATE",
+      "CHG_USER",
       "QLF_NAME",
-      "ADD_DATE"
+      "COURSE_TYPE",
+      "QLF_CODE",
+      "QLF_TYPE",
+      "CHG_TERM"
     ]
   }
 }

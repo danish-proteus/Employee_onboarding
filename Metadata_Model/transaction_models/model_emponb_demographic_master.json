@@ -4,8 +4,8 @@
     "sql_models": [
       {
         "sql_model": {
-          "form_title": "Demographic Master",
-          "form_descr": "Maintain lookup values for Religion, Caste, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Relation",
+          "form_title": "Demographic Reference",
+          "form_descr": "Maintain lookup values for Religion, Caste Category, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Relation",
           "form_no": "1",
           "main_table": "EMPONB_DEMOGRAPHIC_MASTER",
           "columns": [
@@ -56,6 +56,24 @@
                     }
                   ]
                 },
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Lookup type+code unique",
+                    "message": "This Lookup Type and Lookup Code combination already exists.",
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "conditions": [
+                        {
+                          "column": "LOOKUP_CODE",
+                          "op": "=",
+                          "source": "form",
+                          "value": "lookup_code"
+                        }
+                      ]
+                    }
+                  }
+                ],
                 "x": "10",
                 "y": "10",
                 "col_id": "1",
@@ -69,7 +87,6 @@
                 "default_value": "",
                 "expression": "",
                 "protect": "",
-                "validations": "",
                 "lookup": ""
               }
             },
@@ -80,29 +97,9 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Lookup Code",
-                "descr": "Code for this lookup value",
+                "descr": "Unique code within the lookup type",
                 "key": true,
                 "mandatory": true,
-                "validations": [
-                  {
-                    "type": "builtin",
-                    "name": "Unique lookup value",
-                    "message": "This Lookup Code already exists for the selected Lookup Type.",
-                    "builtin": {
-                      "kind": "must_be_unique",
-                      "table": "EMPONB_DEMOGRAPHIC_MASTER",
-                      "match_column": "LOOKUP_CODE",
-                      "conditions": [
-                        {
-                          "column": "LOOKUP_TYPE",
-                          "op": "=",
-                          "source": "form",
-                          "value": "lookup_type"
-                        }
-                      ]
-                    }
-                  }
-                ],
                 "x": "20",
                 "y": "20",
                 "col_id": "2",
@@ -117,6 +114,7 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -127,7 +125,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Description",
-                "descr": "Display description of this lookup value",
+                "descr": "Display description of the lookup value",
                 "mandatory": true,
                 "x": "30",
                 "y": "30",
@@ -155,7 +153,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Active",
-                "descr": "Only active values appear in candidate drop-downs",
+                "descr": "Only active values appear in candidate form drop-downs",
                 "default_value": "Y",
                 "mandatory": true,
                 "edit_mask": {
@@ -198,6 +196,7 @@
                 "descr": "Record creation timestamp",
                 "default_value": ":audit_add_date",
                 "protect": "1",
+                "hidden": 1,
                 "x": "50",
                 "y": "50",
                 "col_id": "5",
@@ -207,7 +206,6 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -226,6 +224,7 @@
                 "descr": "User who created the record",
                 "default_value": ":audit_add_user",
                 "protect": "1",
+                "hidden": 1,
                 "x": "60",
                 "y": "60",
                 "col_id": "6",
@@ -235,7 +234,6 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -282,6 +280,7 @@
                 "descr": "Record last-change timestamp",
                 "default_value": ":audit_chg_date",
                 "protect": "1",
+                "hidden": 1,
                 "x": "80",
                 "y": "80",
                 "col_id": "8",
@@ -291,7 +290,6 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -310,6 +308,7 @@
                 "descr": "User who last changed the record",
                 "default_value": ":audit_chg_user",
                 "protect": "1",
+                "hidden": 1,
                 "x": "90",
                 "y": "90",
                 "col_id": "9",
@@ -319,7 +318,6 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -376,7 +374,7 @@
     "cross_updates": [],
     "pre_commit": [],
     "post_commit": [],
-    "attach_docs": [],
-    "follow_up_actions": []
+    "follow_up_actions": [],
+    "attach_docs": []
   }
 }

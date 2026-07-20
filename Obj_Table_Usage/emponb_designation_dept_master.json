@@ -2,22 +2,22 @@
   "object_name": "emponb_designation_dept_master",
   "tables": {
     "EMPONB_DESIG_DEPT_MASTER": [
+      "ADD_DATE",
       "ADD_TERM",
-      "GRADE_NAME",
-      "CHG_TERM",
-      "DEPT_CODE",
-      "JOINED_AS",
-      "CADRE_NAME",
       "DESIGNATION_NAME",
+      "GRADE",
+      "CADRE_NAME",
+      "ACTIVE_FLAG",
+      "DEPT_NAME",
+      "ADD_USER",
+      "CHG_DATE",
+      "JOINED_AS",
+      "DEPT_CODE",
+      "CHG_USER",
       "DESIGN_CODE",
       "CADRE",
-      "CHG_USER",
-      "ADD_USER",
-      "ACTIVE_FLAG",
-      "CHG_DATE",
-      "DEPT_NAME",
-      "ADD_DATE",
-      "GRADE"
+      "GRADE_NAME",
+      "CHG_TERM"
     ]
   }
 }

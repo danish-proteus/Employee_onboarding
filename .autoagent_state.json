@@ -1,190 +1,10 @@
 {
   "version": 2,
-  "id": "893da33b-982a-4e39-bb2e-45112264cb2b",
+  "id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
   "project": "Employee_onboarding",
   "description": "Process is as below\n1. HR team will fill initial information about the candidate like Name, Gender, Country, Designations, emailID, status like [Link Generate, Link Open, DataSubmitted, Review, Confirmed], status date. \n2. It should have a button to send link to candidate over email to candidate with a key. \n3. Key will have a life for say 1 day [Should be configurable]. \n4. Link will contain the URL of the form which will be embedded inside application. \n5. Stauts should be changed to \u2018Link Generated\u2019, Status date should be updated.\n6. Application will validate the key, if key is valid then only it should open the application. \n7. Status should be changed to \u2018Link Accessed\u2019, Status date should be updated.\n8. Candidate should fill the required fields like EMP_FNAME,EMP_MNAME,EMP_LNAME,NAME_PREFIX, Gender, Current Address, Current PIN, Current CITY, CURRENT STATE, Mobile, Alternate Telephone, Permanent Address, Permanent PIN, Permanent CITY, Permanent STATE, NATIONALITY, BIRTHDATE, MARITAL STATUS, MARRIAGE ANNIVERSARY, BLOOD GROUP, Contact Person, Contact Person Mobile, Contact person Email, Religion, Bank Account No, Bank IFSC Code, Bank Name, Total Experience, PF NO, ESIC NO, HOBBY1, HOBBY2, PASSPORT_NO, PAN_NO, AADHAR_NO, DRIVING LIC NO, PHYSICAL_HANDICAP, MOTHER_TONGUE, CAST_CATEGORY, \n9. Form Should have option to validate the PAN_NO, AADHAR_NO, BANK_DETAIL, It shoudl call IOFLOW API to validate, Allow only 3 try. It shoudl also store the status of these requests Validated True or False with Name returned\n10. It should also allow Candidate to attach Image/File for PAN_NO, AADHAR_NO, Bank Account No [Should attach image of crossed Cheque or Passbook].\n11. It Should have a detail table like form where Candidate can enter multiple rows for his 'Past Experince', it should have field like [LINE_NO, ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, GROSS_AMT, COUNTRY_CODE]\n12. It Should have a detail table like form where Candidate can enter multiple rows for his 'Educational Qualification', it should have field like [LINE_NO, QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION]\n13. It Should have a detail table like form where Candidate can enter multiple rows for his \u2018FAMILY', it should have field like [LINE_NO, MEMBER_NAME, DATE_BIRTH, GENDER, RELATION]\n14. Candidate Can have Save and Submit 2 options. \n15. Candidate Can edit the detail till he 'Submit\u2019. \n16. Once Submitted Candidate cannot open link. \n17. On Submission it should intimate the HR person who initiated the link. \n18. On Submission an email will be sent to Candidate with all informations Candidate filled on the form. \n19. Status should be changed to \u2018DataSubmitted\u2019, Status date should be updated.\n20. Now, HR Person Can Open the transaction and check the data submitted. Can Re-Check the AN_NO, AADHAR_NO, BANK_DETAIL via IOFLOW if needed.\n21. HR Person can further update following EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, \n22. HR PERSON Should have a detail table like form where can enter multiple rows for his \u2018CANDIDATE_PAY', it should have field like [LINE_NO, AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, RES_FORMULA, AMOUNT_CALC, UPD_PAYSTRU, APPL_MODE]\n23. ON CONFIRMATION IT SHOULD CALL IOFLOW API FOR EMPLOYEE",
-  "active_plan_id": "f47eec3d-a000-4368-9d29-5a097fa484c3",
+  "active_plan_id": "ad8f6122-dfc5-46d0-bf75-00339c86b6b4",
   "plans": [
-    {
-      "id": "f47eec3d-a000-4368-9d29-5a097fa484c3",
-      "title": "Add EMAIL_ID to the IOFlow send-link event payload in the 'Send/Resend Link' act",
-      "kind": "change",
-      "status": "paused",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick of 'Send/Resend Link' also send 'email_id' to IOFLOW event",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Send EMAIL_ID in the IOFlow send-link event payload",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784118678.3527172,
-          "completed_at": 1784118798.591273
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784118678.3338373,
-      "updated_at": 1784187155.315718,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "cac92eeb-a9e7-4ac8-9ec1-9d836da59c99",
-      "title": "Remove the 'Generate Key' action/button and its business-logic implementation fr",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nremove 'Generate Key' button and implementation of the same, as this is already merged in 'Send/Resend Link'",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Remove 'Generate Key' action from the Candidate Record transaction model",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119418.686319,
-          "completed_at": 1784119441.7591612
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Delete the Generate Key form-action business logic file",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119441.7731302,
-          "completed_at": 1784119504.7443438
-        },
-        {
-          "id": "change_3",
-          "step": "change",
-          "label": "Delete the Generate Key action business logic file",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119504.8232698,
-          "completed_at": 1784119517.009295
-        },
-        {
-          "id": "change_1-bl1",
-          "step": "change",
-          "label": "Write business logic 'cancel_candidate' for emponb_candidate_record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119517.1014478,
-          "completed_at": 1784119541.190366
-        },
-        {
-          "id": "change_1-bl2",
-          "step": "change",
-          "label": "Write business logic 'mark_review' for emponb_candidate_record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119541.294944,
-          "completed_at": 1784119558.8602495
-        },
-        {
-          "id": "change_1-bl3",
-          "step": "change",
-          "label": "Write business logic 'revalidate_aadhar' for emponb_candidate_record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119558.9677432,
-          "completed_at": 1784119589.464224
-        },
-        {
-          "id": "change_1-bl4",
-          "step": "change",
-          "label": "Write business logic 'revalidate_bank' for emponb_candidate_record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119589.576945,
-          "completed_at": 1784119630.2449982
-        },
-        {
-          "id": "change_1-bl5",
-          "step": "change",
-          "label": "Write business logic 'revalidate_pan' for emponb_candidate_record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784119630.3649452,
-          "completed_at": 1784119671.5278058
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784119418.675208,
-      "updated_at": 1784119807.9356651,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "f3ca8609-bc24-4265-a824-d4e3e2022780",
-      "title": "Add an on-load access-key validation gate to the Candidate Page (candidate_page,",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnload of 'Candidate Page' validate the key received in urlparam with the key in access_key of 'emponb_candidate_record' for the given candidate_id. Also validate if access_key is active.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Add before_load validation hook to Candidate Page model",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784119936.5802808,
-          "completed_at": 1784119962.2288735
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Implement validate_access_key before_load function for Candidate Page",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784119962.2382848,
-          "completed_at": 1784120001.3596232
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784119936.5664802,
-      "updated_at": 1784119936.5664804,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
     {
       "id": "ad8f6122-dfc5-46d0-bf75-00339c86b6b4",
       "title": "On the 'Send/Resend Link' action of the Candidate Onboarding Record (emponb_cand",
@@ -509,6 +329,198 @@
       "profile_id": null,
       "created_at": 1784187312.0942817,
       "updated_at": 1784187312.0942822,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "d22b1aa5-c5bd-4ccc-b070-0115ebd3440a",
+      "title": "Make the Relation field in the Family section of the Candidate Self form use the",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n1. All the 7 lookup relation options are showing for Relation field under the \"Family\" section \nof the \"Candidate Onboarding Record\" page but not the \"Candidate Self\" page, it should show same \nrelation options for both the fields.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Point Candidate Self \u2192 Family \u2192 Relation at the demographic-master lookup",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784265267.0196304,
+          "completed_at": 1784265287.7552729
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784265267.0011218,
+      "updated_at": 1784265786.5749354,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "b5c2295a-152e-4172-8238-ede9d9138fee",
+      "title": "Fix the blank-screen crash when a candidate adds a new row under the Family sect",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nWhen \"Candidate Self\" page link is sent to the user via mail from \"Candidate Onboarding Record\" page and user tries to add new record under \"Family\" section \nthen the pages crashes and shows blank screen because of this user is unable to add new family member details. Check this issue and fix it.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Fix Relation field in the Family detail form so adding a new family row no longer crashes the candidate self-service page",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784266019.7108972,
+          "completed_at": 1784266048.229747
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784266019.6947207,
+      "updated_at": 1784266265.4856377,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "c32e7deb-3ede-48eb-8fed-1d978f06f790",
+      "title": "Add a duplicate-prevention validation on the Education detail section of both th",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n3. In \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Education\" section, \nit should not allow records with similar 1. Qualification and 2. Pass Year, if one of them are same then it should show \nan appropriate validation message to the user.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Add duplicate Qualification+Pass Year validation on Education detail of Candidate Onboarding Record",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784266414.622462,
+          "completed_at": 1784266446.2311904
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Add duplicate Qualification+Pass Year validation on Education detail of Candidate Self",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784266446.2499511,
+          "completed_at": 1784266471.2116046
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784266414.604928,
+      "updated_at": 1784266798.5996292,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "012ec9b6-d516-4e1e-9d0b-b00762ac3338",
+      "title": "Align the Education \u2192 Qualification field on the Candidate Self form (emponb_can",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nEducation qualification still not applied for the \"Candidate Self\" form, it should work same as the form available for \"Candidate Onboarding Record\".",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Make Candidate Self Education qualification use the live Qualification Master lookup",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784277096.8165827,
+          "completed_at": 1784277166.2330525
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784277096.797655,
+      "updated_at": 1784277096.7976553,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "bce1b0ff-4939-49c2-b664-2e0cfe41dfbe",
+      "title": "Add a duplicate-qualification check on the Qualification (education) detail line",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Self\" page, while adding Qualification saving it, It should check whether the qualification is already\n exist and restrict duplicate qualification with appropriate message.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Block duplicate qualification codes on Candidate Self education detail",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784278669.1352174,
+          "completed_at": 1784278707.1574802
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784278669.1130676,
+      "updated_at": 1784278669.1130679,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "ceb6939d-a8a5-46c0-b9b6-042a8b9d30b8",
+      "title": "Restrict duplicate qualifications in the Candidate Self Education detail grid by",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt allows to add duplicate Education record with same qualification for existing records, it should restrict for these records as well.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Wire duplicate-qualification business-logic validation on Candidate Self Education QLF_CODE",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784279421.1399798,
+          "completed_at": 1784279442.8512528
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Implement check_duplicate_qualification for Candidate Self Education",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784279442.8717053,
+          "completed_at": 1784279508.7007687
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784279421.1196225,
+      "updated_at": 1784279421.1196232,
       "depends_on": [],
       "dependency_spec": null,
       "run_scope": null

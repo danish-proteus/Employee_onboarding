@@ -51,7 +51,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Code for this lookup value",
+      "description": "Unique code within the lookup type",
       "sequence": 2,
       "mandatory": true
     },
@@ -60,7 +60,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Display description of this lookup value",
+      "description": "Display description of the lookup value",
       "sequence": 3,
       "mandatory": true
     },
@@ -69,7 +69,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Only active values appear in candidate drop-downs",
+      "description": "Only active values appear in candidate form drop-downs",
       "sequence": 4,
       "mandatory": true,
       "allowed_values": [

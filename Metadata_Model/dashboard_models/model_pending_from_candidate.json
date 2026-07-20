@@ -1,0 +1,51 @@
+{
+  "DASHBOARD": {
+    "DASHBOARD_ID": "PENDING_FROM_CANDIDATE",
+    "DASHBOARD_TYPE": "S",
+    "DASHBOARD_NAME": "Pending From Candidate",
+    "DASHBOARD_DESCR": "Count and detail of candidates where the onboarding link was sent but no data has been received yet",
+    "CREATED_BY": "admin",
+    "CREATED_DATE": "2026-07-17",
+    "REFRESH_INTERVAL_SECONDS": 0,
+    "GLOBAL_CRITERIA": [],
+    "VISUALS": [
+      {
+        "VISUAL_ID": "VIS_001",
+        "VISUAL_NAME": "Link Sent, No Data Received",
+        "POSITION": {
+          "X": 0,
+          "Y": 0,
+          "WIDTH": 3,
+          "HEIGHT": 2
+        },
+        "VISUAL_CONFIG_REF": "model_emponb_pending_from_candidate_count.json",
+        "CRITERIA_BINDINGS": []
+      },
+      {
+        "VISUAL_ID": "VIS_002",
+        "VISUAL_NAME": "Expired / Pending Links",
+        "POSITION": {
+          "X": 0,
+          "Y": 2,
+          "WIDTH": 12,
+          "HEIGHT": 5
+        },
+        "VISUAL_CONFIG_REF": "model_emponb_expired_pending_links.json",
+        "CRITERIA_BINDINGS": []
+      },
+      {
+        "VISUAL_ID": "VIS_003",
+        "VISUAL_NAME": "New Tile",
+        "POSITION": {
+          "X": 0,
+          "Y": 7,
+          "WIDTH": 6,
+          "HEIGHT": 4
+        },
+        "VISUAL_CONFIG_REF": "",
+        "CRITERIA_BINDINGS": []
+      }
+    ],
+    "DRILL_THROUGH": []
+  }
+}

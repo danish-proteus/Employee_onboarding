@@ -1,0 +1,152 @@
+{
+  "DATA_SOURCE_MODE": "sql",
+  "SQLMODEL": {
+    "SQLModel": {
+      "COLUMNS": [
+        {
+          "COLUMN": [
+            {
+              "COLID": 1,
+              "NAME": "PENDING_COUNT",
+              "DBTABLE": "EMPONB_CANDIDATE_RECORD",
+              "DBNAME": "PENDING_COUNT",
+              "tableName": "EMPONB_CANDIDATE_RECORD",
+              "tableDisplayName": "Candidate Record",
+              "content": "Number",
+              "name": "Number",
+              "descr": "Count of candidates with link sent but no data received",
+              "type": "number",
+              "JAVATYPE": "java.lang.Integer",
+              "COLTYPE": "NUMBER",
+              "NATIVETYPE": "N",
+              "DBSIZE": 10,
+              "EXPRESSIONTYPE": "G",
+              "DEFAULTFUNCTION": "",
+              "FUNCTION": "COUNT",
+              "FEILD_TYPE": "TEXTBOX",
+              "ALIGNMENT": 2,
+              "alignment": "",
+              "WIDTH": 120,
+              "FONT": "TIMES NEW ROMAN",
+              "FONTSIZE": 12,
+              "FGCOLOR": "#000000",
+              "BGCOLOR": "",
+              "BOLD": 0,
+              "ITALIC": 0,
+              "UNDERLINE": 0,
+              "HIDDEN": "",
+              "KEY": false,
+              "CAPS": false,
+              "ADV_FORMAT": "",
+              "expression": "",
+              "value": "",
+              "groupName": "Center First Row",
+              "StandardName": "CenterFirstRow",
+              "checked": true
+            }
+          ]
+        }
+      ]
+    },
+    "CRITERIA": {
+      "query": {
+        "rules": [],
+        "condition": "and"
+      }
+    },
+    "VISUAL_NAME": "Card",
+    "SCHEMA_NAME": "EMPONB_PENDING_FROM_CANDIDATE_COUNT",
+    "SCHEMA_DESCR": "Count of candidates with link sent but no data received yet",
+    "SCHEMA_TYPE": "S",
+    "OUTPUT_TYPE": "JSON",
+    "DATABASE_TYPE": "1",
+    "DATABASE_DETAIL": {
+      "DATABASE_NAME": "PostgreSQL",
+      "TYPE": 1
+    }
+  },
+  "LAYOUT_DATA": {
+    "visualLayout": {
+      "ID": "cards",
+      "VisualName": "Card",
+      "VisualType": "Standard/UserDefined",
+      "VisualIcon": "Card.svg",
+      "DisplayOrder": "15",
+      "className": "InsightCards",
+      "linkOptions": "",
+      "OutputType": "JSON",
+      "options": [
+        { "optionId": "cardColorPallete", "optionName": "cardColorPallete", "optionHeading": "Card Color Palette", "dataType": "string", "defaultValue": "Blue-Orange-Violet-Green", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "chartBackgroundColor", "optionName": "chartBackgroundColor", "optionHeading": "Background Color", "dataType": "string", "defaultValue": "Transparent", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "autoRefreshSeconds", "optionName": "autoRefreshSeconds", "optionHeading": "Auto Refresh Seconds", "dataType": "string", "defaultValue": "0", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "microVisual", "optionName": "microVisual", "optionHeading": "Micro Visual", "dataType": "string", "defaultValue": "auto", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "toolbar", "optionName": "toolbar", "optionHeading": "Toolbar", "dataType": "boolean", "defaultValue": "false", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "cardMode", "optionName": "cardMode", "optionHeading": "Card Mode", "dataType": "string", "defaultValue": "auto", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "groupByColumns", "optionName": "groupByColumns", "optionHeading": "Group By Columns", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "headlineAgg", "optionName": "headlineAgg", "optionHeading": "Headline Aggregation", "dataType": "string", "defaultValue": "auto", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "trendValueColumn", "optionName": "trendValueColumn", "optionHeading": "Trend Value Column", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "trendOrderColumn", "optionName": "trendOrderColumn", "optionHeading": "Trend Order Column", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "breakdownColumn", "optionName": "breakdownColumn", "optionHeading": "Breakdown Column", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "breakdownValueColumn", "optionName": "breakdownValueColumn", "optionHeading": "Breakdown Value Column", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "maxSlices", "optionName": "maxSlices", "optionHeading": "Max Slices", "dataType": "string", "defaultValue": "6", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "gaugeValueColumn", "optionName": "gaugeValueColumn", "optionHeading": "Gauge Value Column", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "gaugeMin", "optionName": "gaugeMin", "optionHeading": "Gauge Min", "dataType": "string", "defaultValue": "0", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "gaugeMax", "optionName": "gaugeMax", "optionHeading": "Gauge Max", "dataType": "string", "defaultValue": "", "listOfValues": "", "allowChange": "true", "optionType": "inner" },
+        { "optionId": "graphicPosition", "optionName": "graphicPosition", "optionHeading": "Graphic Position", "dataType": "string", "defaultValue": "auto", "listOfValues": "", "allowChange": "true", "optionType": "inner" }
+      ],
+      "ColumnGroups": [
+        { "GroupID": 1, "GroupName": "Top Left", "StandardName": "TopLeft", "AllowedColumnTypes": "ANY", "MinColumns": 0, "MaxColumns": 0, "COLUMNS": [] },
+        { "GroupID": 2, "GroupName": "Top Right", "StandardName": "TopRight", "AllowedColumnTypes": "ANY", "MinColumns": 0, "MaxColumns": 0, "COLUMNS": [] },
+        {
+          "GroupID": 3, "GroupName": "Center First Row", "StandardName": "CenterFirstRow", "AllowedColumnTypes": "ANY", "MinColumns": 0, "MaxColumns": 0,
+          "COLUMNS": [
+            {
+              "COLID": 1,
+              "NAME": "PENDING_COUNT",
+              "DBTABLE": "EMPONB_CANDIDATE_RECORD",
+              "DBNAME": "PENDING_COUNT",
+              "tableName": "EMPONB_CANDIDATE_RECORD",
+              "tableDisplayName": "Candidate Record",
+              "content": "Number",
+              "name": "Number",
+              "descr": "Count of candidates with link sent but no data received",
+              "type": "number",
+              "JAVATYPE": "java.lang.Integer",
+              "COLTYPE": "NUMBER",
+              "NATIVETYPE": "N",
+              "DBSIZE": 10,
+              "EXPRESSIONTYPE": "G",
+              "DEFAULTFUNCTION": "",
+              "FUNCTION": "COUNT",
+              "FEILD_TYPE": "TEXTBOX",
+              "ALIGNMENT": 2,
+              "alignment": "",
+              "WIDTH": 120,
+              "FONT": "TIMES NEW ROMAN",
+              "FONTSIZE": 12,
+              "FGCOLOR": "#000000",
+              "BGCOLOR": "",
+              "BOLD": 0,
+              "ITALIC": 0,
+              "UNDERLINE": 0,
+              "HIDDEN": "",
+              "KEY": false,
+              "CAPS": false,
+              "ADV_FORMAT": "",
+              "expression": "",
+              "value": "",
+              "groupName": "Center First Row",
+              "StandardName": "CenterFirstRow",
+              "checked": true
+            }
+          ]
+        },
+        { "GroupID": 4, "GroupName": "Center Second Row", "StandardName": "CenterSecondRow", "AllowedColumnTypes": "ANY", "MinColumns": 0, "MaxColumns": 0, "COLUMNS": [] },
+        { "GroupID": 5, "GroupName": "Bottom Left", "StandardName": "BottomLeft", "AllowedColumnTypes": "ANY", "MinColumns": 0, "MaxColumns": 0, "COLUMNS": [] },
+        { "GroupID": 6, "GroupName": "Bottom Right", "StandardName": "BottomRight", "AllowedColumnTypes": "ANY", "MinColumns": 0, "MaxColumns": 0, "COLUMNS": [] }
+      ]
+    },
+    "layoutdata": {}
+  },
+  "SOURCE_SQL": "SELECT COUNT(*) AS PENDING_COUNT FROM emponb_candidate_record WHERE status IN ('Link Generated', 'Link Accessed')"
+}

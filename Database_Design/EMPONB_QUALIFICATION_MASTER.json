@@ -17,7 +17,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the qualification",
+      "description": "Descriptive name of the qualification",
       "sequence": 2,
       "mandatory": true
     },
@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Academic, Professional or Certification",
+      "description": "Category of qualification",
       "sequence": 3,
       "mandatory": true,
       "allowed_values": [
@@ -49,7 +49,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Full-time, Part-time or Distance",
+      "description": "Mode of course delivery",
       "sequence": 4,
       "allowed_values": [
         {
@@ -71,7 +71,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Whether this qualification is active",
+      "description": "Whether this qualification is active and selectable",
       "sequence": 5,
       "mandatory": true,
       "allowed_values": [
@@ -106,7 +106,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal from which record was created",
+      "description": "Terminal/IP that created the record",
       "sequence": 8
     },
     {
@@ -130,7 +130,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal from which record was last changed",
+      "description": "Terminal/IP that last changed the record",
       "sequence": 11
     }
   ]

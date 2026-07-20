@@ -58,7 +58,7 @@
       "data_type": "VARCHAR",
       "size": "50",
       "key": false,
-      "description": "Work shift timings",
+      "description": "Shift start/end timings",
       "sequence": 7
     },
     {
@@ -66,7 +66,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Holiday table number",
+      "description": "Holiday table code",
       "sequence": 8
     },
     {
@@ -117,7 +117,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used at creation",
+      "description": "Terminal used to create the record",
       "sequence": 13
     },
     {
@@ -125,7 +125,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last-change timestamp",
+      "description": "Last change timestamp",
       "sequence": 14
     },
     {
@@ -141,7 +141,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used at last change",
+      "description": "Terminal used for the last change",
       "sequence": 16
     }
   ]

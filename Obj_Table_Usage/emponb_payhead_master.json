@@ -2,19 +2,19 @@
   "object_name": "emponb_payhead_master",
   "tables": {
     "EMPONB_PAYHEAD_MASTER": [
+      "ADD_DATE",
+      "AMOUNT_TYPE",
       "ADD_TERM",
       "RES_FORMULA",
-      "CHG_TERM",
-      "AMOUNT_TYPE",
-      "AD_NAME",
-      "CHG_USER",
-      "AD_CODE",
       "DEFAULT_FREQUENCY",
-      "ADD_USER",
       "ACTIVE_FLAG",
-      "APPL_MODE",
+      "ADD_USER",
       "CHG_DATE",
-      "ADD_DATE"
+      "CHG_USER",
+      "APPL_MODE",
+      "AD_NAME",
+      "AD_CODE",
+      "CHG_TERM"
     ]
   }
 }

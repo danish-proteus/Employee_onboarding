@@ -68,12 +68,48 @@
       "mandatory": true,
       "allowed_values": [
         {
-          "value": "FATH",
+          "value": "Father",
           "label": "Father"
         },
         {
-          "value": "SPOU",
+          "value": "Mother",
+          "label": "Mother"
+        },
+        {
+          "value": "Spouse",
           "label": "Spouse"
+        },
+        {
+          "value": "Husband",
+          "label": "Husband"
+        },
+        {
+          "value": "Wife",
+          "label": "Wife"
+        },
+        {
+          "value": "Son",
+          "label": "Son"
+        },
+        {
+          "value": "Daughter",
+          "label": "Daughter"
+        },
+        {
+          "value": "Brother",
+          "label": "Brother"
+        },
+        {
+          "value": "Sister",
+          "label": "Sister"
+        },
+        {
+          "value": "Guardian",
+          "label": "Guardian"
+        },
+        {
+          "value": "Other",
+          "label": "Other"
         }
       ]
     }

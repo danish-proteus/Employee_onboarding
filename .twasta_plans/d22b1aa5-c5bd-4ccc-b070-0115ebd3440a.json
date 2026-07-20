@@ -1,0 +1,33 @@
+{
+  "id": "d22b1aa5-c5bd-4ccc-b070-0115ebd3440a",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Make the Relation field in the Family section of the Candidate Self form use the",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n1. All the 7 lookup relation options are showing for Relation field under the \"Family\" section \nof the \"Candidate Onboarding Record\" page but not the \"Candidate Self\" page, it should show same \nrelation options for both the fields.",
+  "created_at": 1784265267.0087,
+  "updated_at": 1784520094.8467872,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Point Candidate Self \u2192 Family \u2192 Relation at the demographic-master lookup",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784265267.0196304,
+      "completed_at": 1784265287.7552729
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n1. All the 7 lookup relation options are showing for Relation field under the \"Family\" section \nof the \"Candidate Onboarding Record\" page but not the \"Candidate Self\" page, it should show same \nrelation options for both the fields.",
+  "resume_ref": {
+    "session_id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
+    "plan_id": "d22b1aa5-c5bd-4ccc-b070-0115ebd3440a",
+    "scope": null
+  },
+  "depends_on": []
+}

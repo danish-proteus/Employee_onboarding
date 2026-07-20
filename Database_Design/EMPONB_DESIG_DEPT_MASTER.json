@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Department code, unique within master",
+      "description": "Department code",
       "sequence": 3,
       "mandatory": true
     },
@@ -35,7 +35,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the department",
+      "description": "Department name",
       "sequence": 4
     },
     {
@@ -43,7 +43,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Grade code, unique within master",
+      "description": "Grade code",
       "sequence": 5
     },
     {
@@ -51,7 +51,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the grade",
+      "description": "Grade name",
       "sequence": 6
     },
     {
@@ -59,7 +59,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Cadre code, unique within master",
+      "description": "Cadre code",
       "sequence": 7
     },
     {
@@ -67,7 +67,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the cadre",
+      "description": "Cadre name",
       "sequence": 8
     },
     {
@@ -75,7 +75,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Designation/role used at joining",
+      "description": "Default joining designation/category",
       "sequence": 9
     },
     {
@@ -83,7 +83,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Whether this row is active and selectable",
+      "description": "Must be active to be selectable elsewhere",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
@@ -102,7 +102,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Audit: record creation timestamp",
+      "description": "Record creation timestamp",
       "sequence": 11
     },
     {
@@ -110,7 +110,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Audit: user who created the record",
+      "description": "User who created the record",
       "sequence": 12
     },
     {
@@ -118,7 +118,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Audit: terminal/IP that created the record",
+      "description": "Terminal used for record creation",
       "sequence": 13
     },
     {
@@ -126,7 +126,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Audit: last change timestamp",
+      "description": "Record last change timestamp",
       "sequence": 14
     },
     {
@@ -134,7 +134,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Audit: user who last changed the record",
+      "description": "User who last changed the record",
       "sequence": 15
     },
     {
@@ -142,7 +142,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Audit: terminal/IP of last change",
+      "description": "Terminal used for last change",
       "sequence": 16
     }
   ]

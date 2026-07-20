@@ -4,7 +4,7 @@
     "sql_models": [
       {
         "sql_model": {
-          "form_title": "Designation & Dept Master",
+          "form_title": "Designation & Dept",
           "form_descr": "Maintain designations, departments, grades, cadres and design codes used by HR",
           "form_no": "1",
           "main_table": "EMPONB_DESIG_DEPT_MASTER",
@@ -16,14 +16,14 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Design Code",
-                "descr": "Unique designation code, mandatory and must be active to be selectable elsewhere",
+                "descr": "Unique designation code",
                 "key": true,
                 "mandatory": true,
                 "validations": [
                   {
                     "type": "builtin",
                     "name": "Design code unique",
-                    "message": "Design code already exists.",
+                    "message": "Design code already exists",
                     "builtin": {
                       "kind": "must_be_unique"
                     }
@@ -81,13 +81,13 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Department Code",
-                "descr": "Department code, unique within master",
+                "descr": "Department code",
                 "mandatory": true,
                 "validations": [
                   {
                     "type": "builtin",
                     "name": "Dept code unique",
-                    "message": "Department code already exists.",
+                    "message": "Department code already exists",
                     "builtin": {
                       "kind": "must_be_unique"
                     }
@@ -118,7 +118,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Department Name",
-                "descr": "Name of the department",
+                "descr": "Department name",
                 "x": "40",
                 "y": "40",
                 "col_id": "4",
@@ -146,17 +146,7 @@
                 "group_name": "Grade & Cadre",
                 "col_type": "VARCHAR",
                 "heading": "Grade",
-                "descr": "Grade code, unique within master",
-                "validations": [
-                  {
-                    "type": "builtin",
-                    "name": "Grade unique",
-                    "message": "Grade code already exists.",
-                    "builtin": {
-                      "kind": "must_be_unique"
-                    }
-                  }
-                ],
+                "descr": "Grade code",
                 "x": "60",
                 "y": "60",
                 "col_id": "5",
@@ -173,6 +163,7 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -183,7 +174,7 @@
                 "group_name": "Grade & Cadre",
                 "col_type": "VARCHAR",
                 "heading": "Grade Name",
-                "descr": "Name of the grade",
+                "descr": "Grade name",
                 "x": "70",
                 "y": "70",
                 "col_id": "6",
@@ -211,17 +202,7 @@
                 "group_name": "Grade & Cadre",
                 "col_type": "VARCHAR",
                 "heading": "Cadre",
-                "descr": "Cadre code, unique within master",
-                "validations": [
-                  {
-                    "type": "builtin",
-                    "name": "Cadre unique",
-                    "message": "Cadre code already exists.",
-                    "builtin": {
-                      "kind": "must_be_unique"
-                    }
-                  }
-                ],
+                "descr": "Cadre code",
                 "x": "80",
                 "y": "80",
                 "col_id": "7",
@@ -238,6 +219,7 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -248,7 +230,7 @@
                 "group_name": "Grade & Cadre",
                 "col_type": "VARCHAR",
                 "heading": "Cadre Name",
-                "descr": "Name of the cadre",
+                "descr": "Cadre name",
                 "x": "90",
                 "y": "90",
                 "col_id": "8",
@@ -276,7 +258,7 @@
                 "group_name": "Grade & Cadre",
                 "col_type": "VARCHAR",
                 "heading": "Joined As",
-                "descr": "Designation/role used at joining",
+                "descr": "Default joining designation/category",
                 "x": "100",
                 "y": "100",
                 "col_id": "9",
@@ -304,7 +286,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Active",
-                "descr": "Whether this row is active and selectable",
+                "descr": "Must be active to be selectable elsewhere",
                 "default_value": "Y",
                 "mandatory": true,
                 "edit_mask": {
@@ -344,10 +326,9 @@
                 "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Added On",
-                "descr": "Audit: record creation timestamp",
+                "descr": "Record creation timestamp",
                 "default_value": ":audit_add_date",
                 "protect": "1",
-                "hidden": 1,
                 "x": "110",
                 "y": "110",
                 "col_id": "11",
@@ -357,6 +338,7 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -372,10 +354,9 @@
                 "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Added By",
-                "descr": "Audit: user who created the record",
+                "descr": "User who created the record",
                 "default_value": ":audit_add_user",
                 "protect": "1",
-                "hidden": 1,
                 "x": "120",
                 "y": "120",
                 "col_id": "12",
@@ -385,6 +366,7 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -400,10 +382,9 @@
                 "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Added Terminal",
-                "descr": "Audit: terminal/IP that created the record",
+                "descr": "Terminal used for record creation",
                 "default_value": ":audit_add_terminal",
                 "protect": "1",
-                "hidden": 1,
                 "x": "130",
                 "y": "130",
                 "col_id": "13",
@@ -413,6 +394,7 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -428,10 +410,9 @@
                 "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Changed On",
-                "descr": "Audit: last change timestamp",
+                "descr": "Record last change timestamp",
                 "default_value": ":audit_chg_date",
                 "protect": "1",
-                "hidden": 1,
                 "x": "140",
                 "y": "140",
                 "col_id": "14",
@@ -441,6 +422,7 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -456,10 +438,9 @@
                 "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Changed By",
-                "descr": "Audit: user who last changed the record",
+                "descr": "User who last changed the record",
                 "default_value": ":audit_chg_user",
                 "protect": "1",
-                "hidden": 1,
                 "x": "150",
                 "y": "150",
                 "col_id": "15",
@@ -469,6 +450,7 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -484,10 +466,9 @@
                 "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Changed Terminal",
-                "descr": "Audit: terminal/IP of last change",
+                "descr": "Terminal used for last change",
                 "default_value": ":audit_chg_terminal",
                 "protect": "1",
-                "hidden": 1,
                 "x": "160",
                 "y": "160",
                 "col_id": "16",
@@ -497,6 +478,7 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",

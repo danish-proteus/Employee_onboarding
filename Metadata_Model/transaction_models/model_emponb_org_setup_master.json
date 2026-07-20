@@ -13,17 +13,17 @@
               "column": {
                 "name": "emp_site",
                 "db_name": "EMP_SITE",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Employment Site",
                 "descr": "Unique employment site code",
-                "group_name": "Basic",
                 "key": true,
                 "mandatory": true,
                 "validations": [
                   {
                     "type": "builtin",
-                    "name": "Employment site unique",
-                    "message": "Employment Site code must be unique",
+                    "name": "Emp site unique",
+                    "message": "Employment site code already exists",
                     "builtin": {
                       "kind": "must_be_unique"
                     }
@@ -50,10 +50,10 @@
               "column": {
                 "name": "site_name",
                 "db_name": "SITE_NAME",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Site Name",
                 "descr": "Employment site name",
-                "group_name": "Basic",
                 "mandatory": true,
                 "x": "20",
                 "y": "20",
@@ -78,12 +78,22 @@
               "column": {
                 "name": "pay_site",
                 "db_name": "PAY_SITE",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Payroll Site",
+                "heading": "Pay Site",
                 "descr": "Payroll site code",
-                "group_name": "Payroll & Shift",
-                "x": "40",
-                "y": "40",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Pay site unique",
+                    "message": "Pay site code already exists",
+                    "builtin": {
+                      "kind": "must_be_unique"
+                    }
+                  }
+                ],
+                "x": "30",
+                "y": "30",
                 "col_id": "3",
                 "table_name": "EMPONB_ORG_SETUP_MASTER",
                 "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
@@ -98,7 +108,6 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
-                "validations": "",
                 "lookup": ""
               }
             },
@@ -106,12 +115,12 @@
               "column": {
                 "name": "pay_site_name",
                 "db_name": "PAY_SITE_NAME",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Payroll Site Name",
+                "heading": "Pay Site Name",
                 "descr": "Payroll site name",
-                "group_name": "Payroll & Shift",
-                "x": "50",
-                "y": "50",
+                "x": "40",
+                "y": "40",
                 "col_id": "4",
                 "table_name": "EMPONB_ORG_SETUP_MASTER",
                 "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
@@ -134,10 +143,20 @@
               "column": {
                 "name": "work_shift",
                 "db_name": "WORK_SHIFT",
+                "group_name": "Shift",
                 "col_type": "VARCHAR",
                 "heading": "Work Shift",
                 "descr": "Work shift code",
-                "group_name": "Payroll & Shift",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Work shift unique",
+                    "message": "Work shift code already exists",
+                    "builtin": {
+                      "kind": "must_be_unique"
+                    }
+                  }
+                ],
                 "x": "60",
                 "y": "60",
                 "col_id": "5",
@@ -154,7 +173,6 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
-                "validations": "",
                 "lookup": ""
               }
             },
@@ -162,10 +180,10 @@
               "column": {
                 "name": "shift_name",
                 "db_name": "SHIFT_NAME",
+                "group_name": "Shift",
                 "col_type": "VARCHAR",
                 "heading": "Shift Name",
                 "descr": "Work shift name",
-                "group_name": "Payroll & Shift",
                 "x": "70",
                 "y": "70",
                 "col_id": "6",
@@ -190,10 +208,10 @@
               "column": {
                 "name": "shift_timings",
                 "db_name": "SHIFT_TIMINGS",
+                "group_name": "Shift",
                 "col_type": "VARCHAR",
                 "heading": "Shift Timings",
-                "descr": "Work shift timings",
-                "group_name": "Payroll & Shift",
+                "descr": "Shift start/end timings",
                 "x": "80",
                 "y": "80",
                 "col_id": "7",
@@ -218,10 +236,20 @@
               "column": {
                 "name": "hol_tblno",
                 "db_name": "HOL_TBLNO",
+                "group_name": "Holiday",
                 "col_type": "VARCHAR",
                 "heading": "Holiday Table No",
-                "descr": "Holiday table number",
-                "group_name": "Holiday Table",
+                "descr": "Holiday table code",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Holiday table unique",
+                    "message": "Holiday table number already exists",
+                    "builtin": {
+                      "kind": "must_be_unique"
+                    }
+                  }
+                ],
                 "x": "90",
                 "y": "90",
                 "col_id": "8",
@@ -238,7 +266,6 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
-                "validations": "",
                 "lookup": ""
               }
             },
@@ -246,10 +273,10 @@
               "column": {
                 "name": "hol_tbl_name",
                 "db_name": "HOL_TBL_NAME",
+                "group_name": "Holiday",
                 "col_type": "VARCHAR",
                 "heading": "Holiday Table Name",
                 "descr": "Holiday table name",
-                "group_name": "Holiday Table",
                 "x": "100",
                 "y": "100",
                 "col_id": "9",
@@ -274,12 +301,12 @@
               "column": {
                 "name": "active_flag",
                 "db_name": "ACTIVE_FLAG",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Active",
                 "descr": "Only active rows are selectable during finalization",
-                "group_name": "Basic",
-                "mandatory": true,
                 "default_value": "Y",
+                "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
                   "values": [
@@ -293,8 +320,8 @@
                     }
                   ]
                 },
-                "x": "30",
-                "y": "30",
+                "x": "50",
+                "y": "50",
                 "col_id": "10",
                 "table_name": "EMPONB_ORG_SETUP_MASTER",
                 "table_display_name": "Organisation setup master (sites, shifts, holiday tables)",
@@ -314,13 +341,12 @@
               "column": {
                 "name": "add_date",
                 "db_name": "ADD_DATE",
+                "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Added On",
                 "descr": "Record creation timestamp",
-                "group_name": "Others",
-                "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_add_date",
+                "protect": "1",
                 "x": "110",
                 "y": "110",
                 "col_id": "11",
@@ -330,6 +356,7 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -342,13 +369,12 @@
               "column": {
                 "name": "add_user",
                 "db_name": "ADD_USER",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Added By",
                 "descr": "User who created the record",
-                "group_name": "Others",
-                "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_add_user",
+                "protect": "1",
                 "x": "120",
                 "y": "120",
                 "col_id": "12",
@@ -358,6 +384,7 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -370,13 +397,12 @@
               "column": {
                 "name": "add_term",
                 "db_name": "ADD_TERM",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Added Terminal",
-                "descr": "Terminal used at creation",
-                "group_name": "Others",
-                "protect": "1",
-                "hidden": 1,
+                "descr": "Terminal used to create the record",
                 "default_value": ":audit_add_terminal",
+                "protect": "1",
                 "x": "130",
                 "y": "130",
                 "col_id": "13",
@@ -386,6 +412,7 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -398,13 +425,12 @@
               "column": {
                 "name": "chg_date",
                 "db_name": "CHG_DATE",
+                "group_name": "Others",
                 "col_type": "DATETIME",
                 "heading": "Changed On",
-                "descr": "Record last-change timestamp",
-                "group_name": "Others",
-                "protect": "1",
-                "hidden": 1,
+                "descr": "Last change timestamp",
                 "default_value": ":audit_chg_date",
+                "protect": "1",
                 "x": "140",
                 "y": "140",
                 "col_id": "14",
@@ -414,6 +440,7 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -426,13 +453,12 @@
               "column": {
                 "name": "chg_user",
                 "db_name": "CHG_USER",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Changed By",
                 "descr": "User who last changed the record",
-                "group_name": "Others",
-                "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_chg_user",
+                "protect": "1",
                 "x": "150",
                 "y": "150",
                 "col_id": "15",
@@ -442,6 +468,7 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -454,13 +481,12 @@
               "column": {
                 "name": "chg_term",
                 "db_name": "CHG_TERM",
+                "group_name": "Others",
                 "col_type": "VARCHAR",
                 "heading": "Changed Terminal",
-                "descr": "Terminal used at last change",
-                "group_name": "Others",
-                "protect": "1",
-                "hidden": 1,
+                "descr": "Terminal used for the last change",
                 "default_value": ":audit_chg_terminal",
+                "protect": "1",
                 "x": "160",
                 "y": "160",
                 "col_id": "16",
@@ -470,6 +496,7 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -498,7 +525,7 @@
     "cross_updates": [],
     "pre_commit": [],
     "post_commit": [],
-    "attach_docs": [],
-    "follow_up_actions": []
+    "follow_up_actions": [],
+    "attach_docs": []
   }
 }

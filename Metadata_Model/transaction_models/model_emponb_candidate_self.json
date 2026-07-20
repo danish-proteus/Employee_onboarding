@@ -826,7 +826,18 @@
                 "default_value": "",
                 "expression": "",
                 "edit_mask": "",
-                "validations": "",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Birth Date not future",
+                    "error_code": "BIRTHDATE_NOT_FUTURE",
+                    "message": "Birth Date cannot be a future date. Please enter a date on or before today.",
+                    "expression": "is_empty({form.birthdate}) or {form.birthdate} <= today()"
+                  }
+                ],
+                "date_config": {
+                  "max_date": "today"
+                },
                 "lookup": ""
               }
             },
@@ -905,8 +916,18 @@
                     "error_code": "ANNIV_REQUIRES_MARRIED",
                     "message": "Marriage Anniversary can only be entered when Marital Status is Yes.",
                     "expression": "{form.marital_status} == \"Yes\" or is_empty({form.marriage_anniversary})"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "Marriage Anniversary not future",
+                    "error_code": "ANNIV_NOT_FUTURE",
+                    "message": "Marriage Anniversary cannot be a future date. Please enter a date on or before today.",
+                    "expression": "is_empty({form.marriage_anniversary}) or {form.marriage_anniversary} <= today()"
                   }
                 ],
+                "date_config": {
+                  "max_date": "today"
+                },
                 "lookup": ""
               }
             },
@@ -3310,62 +3331,24 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "QLF001",
-                      "display": "Bachelor of Science"
-                    },
-                    {
-                      "data": "QLF002",
-                      "display": "Master of Business Administration"
-                    },
-                    {
-                      "data": "QLF003",
-                      "display": "Bachelor of Commerce"
-                    },
-                    {
-                      "data": "QLF004",
-                      "display": "Chartered Accountant"
-                    },
-                    {
-                      "data": "QLF005",
-                      "display": "Company Secretary"
-                    },
-                    {
-                      "data": "QLF006",
-                      "display": "Cost and Management Accountant"
-                    },
-                    {
-                      "data": "QLF007",
-                      "display": "PMP Certification"
-                    },
-                    {
-                      "data": "QLF008",
-                      "display": "AWS Solutions Architect"
-                    },
-                    {
-                      "data": "QLF009",
-                      "display": "Six Sigma Green Belt"
-                    },
-                    {
-                      "data": "QLF010",
-                      "display": "Doctor of Philosophy"
-                    },
-                    {
-                      "data": "QLF011",
-                      "display": "Diploma in Mechanical Engineering"
-                    },
-                    {
-                      "data": "QLF012",
-                      "display": "CISSP Certification"
-                    }
-                  ]
-                },
+                "edit_mask": "",
+                "must_exist_in": "EMPONB_QUALIFICATION_MASTER",
                 "protect": "",
-                "validations": "",
-                "lookup": ""
+                "validations": [
+                  {
+                    "type": "business_logic",
+                    "name": "unique_qualification",
+                    "error_code": "EDU_QLF_DUP",
+                    "severity": "E",
+                    "message": "Duplicate qualification is not allowed. This qualification is already added for this candidate.",
+                    "business_logic": {
+                      "method": "check_duplicate_qualification",
+                      "description": "Block saving when the selected QLF_CODE is already present on another education line of the same candidate, checking both the unsaved sibling rows in the current transaction grid and the persisted EMPONB_CAND_SELF_EDUCATION rows.",
+                      "language": "plpgsql"
+                    }
+                  }
+                ],
+                "lookup": "EMPONB_QUALIFICATION_MASTER(QLF_NAME, QLF_CODE)"
               }
             },
             {
@@ -3438,6 +3421,25 @@
                     "name": "Pass year <= current",
                     "message": "Pass year cannot be in the future.",
                     "expression": "is_empty({form.pass_year}) or {form.pass_year} <= int(lower(concat(today())))"
+                  },
+                  {
+                    "type": "builtin",
+                    "name": "unique_pass_year",
+                    "error_code": "EDU_YEAR_DUP",
+                    "severity": "E",
+                    "message": "An education record with this passing year already exists for this candidate.",
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "table": "EMPONB_CAND_SELF_EDUCATION",
+                      "match_column": "PASS_YEAR",
+                      "conditions": [
+                        {
+                          "column": "CANDIDATE_ID",
+                          "source": "header",
+                          "value_column": "CANDIDATE_ID"
+                        }
+                      ]
+                    }
                   }
                 ],
                 "x": "40",
@@ -3861,18 +3863,54 @@
                   "mask": "ddlb",
                   "values": [
                     {
-                      "data": "FATH",
+                      "data": "Father",
                       "display": "Father"
                     },
                     {
-                      "data": "SPOU",
+                      "data": "Mother",
+                      "display": "Mother"
+                    },
+                    {
+                      "data": "Spouse",
                       "display": "Spouse"
+                    },
+                    {
+                      "data": "Husband",
+                      "display": "Husband"
+                    },
+                    {
+                      "data": "Wife",
+                      "display": "Wife"
+                    },
+                    {
+                      "data": "Son",
+                      "display": "Son"
+                    },
+                    {
+                      "data": "Daughter",
+                      "display": "Daughter"
+                    },
+                    {
+                      "data": "Brother",
+                      "display": "Brother"
+                    },
+                    {
+                      "data": "Sister",
+                      "display": "Sister"
+                    },
+                    {
+                      "data": "Guardian",
+                      "display": "Guardian"
+                    },
+                    {
+                      "data": "Other",
+                      "display": "Other"
                     }
                   ]
                 },
+                "lookup": "",
                 "protect": "",
-                "validations": "",
-                "lookup": ""
+                "validations": ""
               }
             }
           ],

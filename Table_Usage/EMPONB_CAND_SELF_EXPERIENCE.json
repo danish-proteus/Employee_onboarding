@@ -6,15 +6,15 @@
       "form_no": "2",
       "usage_type": "M",
       "referred_columns": [
+        "ORGANISATION",
+        "DESIGNATION",
+        "LINE_NO",
         "CANDIDATE_ID",
         "GROSS_AMT",
         "CURRENCY_CODE",
         "TO_DATE",
         "COUNTRY_CODE",
-        "LINE_NO",
-        "FROM_DATE",
-        "DESIGNATION",
-        "ORGANISATION"
+        "FROM_DATE"
       ],
       "join_info": {
         "column": "COUNTRY_CODE",

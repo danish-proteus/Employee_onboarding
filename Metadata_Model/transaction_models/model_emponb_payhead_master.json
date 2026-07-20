@@ -5,7 +5,7 @@
       {
         "sql_model": {
           "form_title": "Pay Head Master",
-          "form_descr": "Maintain pay heads (allowance/deduction) referenced by the candidate pay structure",
+          "form_descr": "Maintain pay heads referenced by the candidate pay structure (AD_CODE).",
           "form_no": "1",
           "main_table": "EMPONB_PAYHEAD_MASTER",
           "columns": [
@@ -22,8 +22,8 @@
                 "validations": [
                   {
                     "type": "builtin",
-                    "name": "AD_CODE unique",
-                    "message": "This pay head code already exists.",
+                    "name": "AD Code unique",
+                    "message": "Pay head code already exists.",
                     "builtin": {
                       "kind": "must_be_unique"
                     }
@@ -80,8 +80,8 @@
                 "db_name": "APPL_MODE",
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Applicability",
-                "descr": "Whether this pay head is an earning or a deduction",
+                "heading": "Applicability Mode",
+                "descr": "Whether the pay head is an earning or a deduction",
                 "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
@@ -118,10 +118,10 @@
               "column": {
                 "name": "amount_type",
                 "db_name": "AMOUNT_TYPE",
-                "group_name": "Amount Configuration",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Amount Type",
-                "descr": "How the amount for this pay head is determined",
+                "descr": "Fixed, Percentage or Formula based amount",
                 "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
@@ -155,8 +155,8 @@
                     }
                   ]
                 },
-                "x": "50",
-                "y": "50",
+                "x": "40",
+                "y": "40",
                 "col_id": "4",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
                 "table_display_name": "Pay head master",
@@ -177,20 +177,20 @@
               "column": {
                 "name": "res_formula",
                 "db_name": "RES_FORMULA",
-                "group_name": "Amount Configuration",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Formula",
-                "descr": "Resolution formula; mandatory when Amount Type = Formula",
+                "heading": "Resolution Formula",
+                "descr": "Formula used to compute the amount; mandatory when Amount Type = Formula",
                 "validations": [
                   {
                     "type": "expression",
-                    "name": "Formula required",
-                    "message": "Formula is mandatory when Amount Type is 'Formula'.",
+                    "name": "Formula mandatory",
+                    "message": "Resolution formula is mandatory when Amount Type is Formula.",
                     "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
                   }
                 ],
-                "x": "60",
-                "y": "60",
+                "x": "50",
+                "y": "50",
                 "col_id": "5",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
                 "table_display_name": "Pay head master",
@@ -212,10 +212,10 @@
               "column": {
                 "name": "default_frequency",
                 "db_name": "DEFAULT_FREQUENCY",
-                "group_name": "Amount Configuration",
+                "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Default Frequency",
-                "descr": "Default payout frequency for this pay head",
+                "descr": "Default frequency at which this pay head applies",
                 "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
@@ -234,8 +234,8 @@
                     }
                   ]
                 },
-                "x": "70",
-                "y": "70",
+                "x": "60",
+                "y": "60",
                 "col_id": "6",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
                 "table_display_name": "Pay head master",
@@ -275,8 +275,8 @@
                     }
                   ]
                 },
-                "x": "40",
-                "y": "40",
+                "x": "70",
+                "y": "70",
                 "col_id": "7",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
                 "table_display_name": "Pay head master",
@@ -301,7 +301,6 @@
                 "heading": "Added On",
                 "descr": "Record creation timestamp",
                 "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_add_date",
                 "x": "80",
                 "y": "80",
@@ -312,6 +311,7 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -329,7 +329,6 @@
                 "heading": "Added By",
                 "descr": "User who created the record",
                 "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_add_user",
                 "x": "90",
                 "y": "90",
@@ -340,6 +339,7 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -357,7 +357,6 @@
                 "heading": "Added Terminal",
                 "descr": "Terminal/IP that created the record",
                 "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_add_terminal",
                 "x": "100",
                 "y": "100",
@@ -368,6 +367,7 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -385,7 +385,6 @@
                 "heading": "Changed On",
                 "descr": "Record last-change timestamp",
                 "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_chg_date",
                 "x": "110",
                 "y": "110",
@@ -396,6 +395,7 @@
                 "width": 50,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -413,7 +413,6 @@
                 "heading": "Changed By",
                 "descr": "User who last changed the record",
                 "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_chg_user",
                 "x": "120",
                 "y": "120",
@@ -424,6 +423,7 @@
                 "width": 100,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",
@@ -441,7 +441,6 @@
                 "heading": "Changed Terminal",
                 "descr": "Terminal/IP that last changed the record",
                 "protect": "1",
-                "hidden": 1,
                 "default_value": ":audit_chg_terminal",
                 "x": "130",
                 "y": "130",
@@ -452,6 +451,7 @@
                 "width": 150,
                 "key": false,
                 "mandatory": false,
+                "hidden": "",
                 "format": "",
                 "default_function": "",
                 "expression": "",

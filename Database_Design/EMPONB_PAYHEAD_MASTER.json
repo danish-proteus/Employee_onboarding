@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Whether this pay head is an earning or a deduction",
+      "description": "Whether the pay head is an earning or a deduction",
       "sequence": 3,
       "mandatory": true,
       "allowed_values": [
@@ -45,7 +45,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "How the amount for this pay head is determined",
+      "description": "Fixed, Percentage or Formula based amount",
       "sequence": 4,
       "mandatory": true,
       "allowed_values": [
@@ -68,7 +68,7 @@
       "data_type": "VARCHAR",
       "size": "500",
       "key": false,
-      "description": "Resolution formula; mandatory when Amount Type = Formula",
+      "description": "Formula used to compute the amount; mandatory when Amount Type = Formula",
       "sequence": 5
     },
     {
@@ -76,7 +76,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Default payout frequency for this pay head",
+      "description": "Default frequency at which this pay head applies",
       "sequence": 6,
       "mandatory": true,
       "allowed_values": [

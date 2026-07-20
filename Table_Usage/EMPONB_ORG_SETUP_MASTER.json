@@ -6,22 +6,22 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
-        "ADD_TERM",
-        "WORK_SHIFT",
-        "PAY_SITE_NAME",
+        "HOL_TBLNO",
         "SHIFT_TIMINGS",
-        "CHG_TERM",
-        "PAY_SITE",
+        "ADD_DATE",
+        "ADD_TERM",
+        "PAY_SITE_NAME",
+        "ACTIVE_FLAG",
+        "ADD_USER",
+        "CHG_DATE",
+        "CHG_USER",
+        "SITE_NAME",
         "SHIFT_NAME",
         "HOL_TBL_NAME",
+        "CHG_TERM",
+        "WORK_SHIFT",
         "EMP_SITE",
-        "CHG_USER",
-        "ADD_USER",
-        "SITE_NAME",
-        "ACTIVE_FLAG",
-        "CHG_DATE",
-        "HOL_TBLNO",
-        "ADD_DATE"
+        "PAY_SITE"
       ]
     }
   ]

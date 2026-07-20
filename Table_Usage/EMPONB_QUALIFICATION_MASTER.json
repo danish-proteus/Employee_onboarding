@@ -2,37 +2,6 @@
   "table_name": "EMPONB_QUALIFICATION_MASTER",
   "objects": [
     {
-      "object_name": "emponb_qualification_master",
-      "form_no": "1",
-      "usage_type": "M",
-      "referred_columns": [
-        "QLF_TYPE",
-        "ADD_TERM",
-        "CHG_TERM",
-        "CHG_USER",
-        "QLF_CODE",
-        "ACTIVE_FLAG",
-        "COURSE_TYPE",
-        "ADD_USER",
-        "CHG_DATE",
-        "QLF_NAME",
-        "ADD_DATE"
-      ]
-    },
-    {
-      "object_name": "emponb_candidate_self",
-      "form_no": "3",
-      "usage_type": "M",
-      "referred_columns": [
-        "QLF_CODE"
-      ],
-      "join_info": {
-        "column": "QLF_CODE",
-        "join_table": "EMPONB_CAND_SELF_EDUCATION",
-        "join_column": "QLF_CODE"
-      }
-    },
-    {
       "object_name": "emponb_candidate_record",
       "form_no": "3",
       "usage_type": "R",
@@ -42,6 +11,37 @@
       "join_info": {
         "column": "QLF_CODE",
         "join_table": "EMPONB_CAND_EDUCATION",
+        "join_column": "QLF_CODE"
+      }
+    },
+    {
+      "object_name": "emponb_qualification_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "ADD_DATE",
+        "ADD_TERM",
+        "ACTIVE_FLAG",
+        "ADD_USER",
+        "CHG_DATE",
+        "CHG_USER",
+        "QLF_NAME",
+        "COURSE_TYPE",
+        "QLF_CODE",
+        "QLF_TYPE",
+        "CHG_TERM"
+      ]
+    },
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "3",
+      "usage_type": "R",
+      "referred_columns": [
+        "QLF_CODE"
+      ],
+      "join_info": {
+        "column": "QLF_CODE",
+        "join_table": "EMPONB_CAND_SELF_EDUCATION",
         "join_column": "QLF_CODE"
       }
     }

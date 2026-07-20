@@ -1,0 +1,45 @@
+{
+  "id": "ceb6939d-a8a5-46c0-b9b6-042a8b9d30b8",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Restrict duplicate qualifications in the Candidate Self Education detail grid by",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt allows to add duplicate Education record with same qualification for existing records, it should restrict for these records as well.",
+  "created_at": 1784279421.1289349,
+  "updated_at": 1784520094.8491254,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Wire duplicate-qualification business-logic validation on Candidate Self Education QLF_CODE",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784279421.1399798,
+      "completed_at": 1784279442.8512528
+    },
+    {
+      "id": "change_2",
+      "step": "change",
+      "label": "Implement check_duplicate_qualification for Candidate Self Education",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784279442.8717053,
+      "completed_at": 1784279508.7007687
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt allows to add duplicate Education record with same qualification for existing records, it should restrict for these records as well.",
+  "resume_ref": {
+    "session_id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
+    "plan_id": "ceb6939d-a8a5-46c0-b9b6-042a8b9d30b8",
+    "scope": null
+  },
+  "depends_on": []
+}

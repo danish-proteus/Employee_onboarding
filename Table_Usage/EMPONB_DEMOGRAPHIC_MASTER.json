@@ -6,16 +6,16 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
+        "ADD_DATE",
         "ADD_TERM",
-        "CHG_TERM",
         "LOOKUP_CODE",
+        "LOOKUP_TYPE",
+        "ACTIVE_FLAG",
+        "ADD_USER",
+        "CHG_DATE",
         "CHG_USER",
         "LOOKUP_DESC",
-        "ADD_USER",
-        "ACTIVE_FLAG",
-        "CHG_DATE",
-        "ADD_DATE",
-        "LOOKUP_TYPE"
+        "CHG_TERM"
       ]
     }
   ]

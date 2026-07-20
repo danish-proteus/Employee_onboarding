@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake 'Designation' disabled",
   "created_at": 1784175732.126355,
-  "updated_at": 1784193928.6604793,
+  "updated_at": 1784520094.844548,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake 'Designation' disabled",
   "resume_ref": {
-    "session_id": "893da33b-982a-4e39-bb2e-45112264cb2b",
+    "session_id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
     "plan_id": "bf976814-ca40-4c2d-a60b-5c4567539564",
     "scope": null
   },

@@ -21,32 +21,6 @@
       ]
     },
     {
-      "object_name": "emponb_candidate_self",
-      "form_no": "2",
-      "usage_type": "R",
-      "referred_columns": [
-        "COUNTRY_CODE"
-      ],
-      "join_info": {
-        "column": "COUNTRY_CODE",
-        "join_table": "EMPONB_CAND_SELF_EXPERIENCE",
-        "join_column": "COUNTRY_CODE"
-      }
-    },
-    {
-      "object_name": "emponb_candidate_self",
-      "form_no": "3",
-      "usage_type": "R",
-      "referred_columns": [
-        "COUNTRY_CODE"
-      ],
-      "join_info": {
-        "column": "COUNTRY_CODE",
-        "join_table": "EMPONB_CAND_SELF_EDUCATION",
-        "join_column": "COUNTRY_CODE"
-      }
-    },
-    {
       "object_name": "emponb_candidate_record",
       "form_no": "2",
       "usage_type": "R",
@@ -69,6 +43,32 @@
       "join_info": {
         "column": "COUNTRY_CODE",
         "join_table": "EMPONB_CAND_EDUCATION",
+        "join_column": "COUNTRY_CODE"
+      }
+    },
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "2",
+      "usage_type": "R",
+      "referred_columns": [
+        "COUNTRY_CODE"
+      ],
+      "join_info": {
+        "column": "COUNTRY_CODE",
+        "join_table": "EMPONB_CAND_SELF_EXPERIENCE",
+        "join_column": "COUNTRY_CODE"
+      }
+    },
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "3",
+      "usage_type": "R",
+      "referred_columns": [
+        "COUNTRY_CODE"
+      ],
+      "join_info": {
+        "column": "COUNTRY_CODE",
+        "join_table": "EMPONB_CAND_SELF_EDUCATION",
         "join_column": "COUNTRY_CODE"
       }
     }

@@ -13,38 +13,6 @@
       "mandatory": true
     },
     {
-      "column_name": "PASSPORT_DOC",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "Passport document upload",
-      "sequence": 52
-    },
-    {
-      "column_name": "DRIVING_LIC_DOC",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "Driving license document upload",
-      "sequence": 54
-    },
-    {
-      "column_name": "PF_DOC",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "Provident fund document upload",
-      "sequence": 56
-    },
-    {
-      "column_name": "ESIC_DOC",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "ESIC document upload",
-      "sequence": 58
-    },
-    {
       "column_name": "CANDIDATE_NAME",
       "data_type": "VARCHAR",
       "size": "100",
@@ -516,12 +484,28 @@
       "sequence": 51
     },
     {
+      "column_name": "PASSPORT_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Passport document upload",
+      "sequence": 52
+    },
+    {
       "column_name": "DRIVING_LIC_NO",
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
       "description": "Driving license number",
       "sequence": 53
+    },
+    {
+      "column_name": "DRIVING_LIC_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Driving license document upload",
+      "sequence": 54
     },
     {
       "column_name": "PF_NO",
@@ -532,12 +516,28 @@
       "sequence": 55
     },
     {
+      "column_name": "PF_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Provident fund document upload",
+      "sequence": 56
+    },
+    {
       "column_name": "ESIC_NO",
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
       "description": "ESIC number",
       "sequence": 57
+    },
+    {
+      "column_name": "ESIC_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "ESIC document upload",
+      "sequence": 58
     },
     {
       "column_name": "BANK_ACCOUNT_NO",

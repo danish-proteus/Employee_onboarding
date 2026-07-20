@@ -27,56 +27,11 @@
       "description": "Qualification code",
       "sequence": 3,
       "mandatory": true,
-      "allowed_values": [
-        {
-          "value": "QLF001",
-          "label": "Bachelor of Science"
-        },
-        {
-          "value": "QLF002",
-          "label": "Master of Business Administration"
-        },
-        {
-          "value": "QLF003",
-          "label": "Bachelor of Commerce"
-        },
-        {
-          "value": "QLF004",
-          "label": "Chartered Accountant"
-        },
-        {
-          "value": "QLF005",
-          "label": "Company Secretary"
-        },
-        {
-          "value": "QLF006",
-          "label": "Cost and Management Accountant"
-        },
-        {
-          "value": "QLF007",
-          "label": "PMP Certification"
-        },
-        {
-          "value": "QLF008",
-          "label": "AWS Solutions Architect"
-        },
-        {
-          "value": "QLF009",
-          "label": "Six Sigma Green Belt"
-        },
-        {
-          "value": "QLF010",
-          "label": "Doctor of Philosophy"
-        },
-        {
-          "value": "QLF011",
-          "label": "Diploma in Mechanical Engineering"
-        },
-        {
-          "value": "QLF012",
-          "label": "CISSP Certification"
-        }
-      ]
+      "lookup": {
+        "table": "EMPONB_QUALIFICATION_MASTER",
+        "display_column": "QLF_NAME",
+        "value_column": "QLF_CODE"
+      }
     },
     {
       "column_name": "QLF_TYPE",
