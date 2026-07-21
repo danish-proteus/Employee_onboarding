@@ -59,28 +59,6 @@
       "key": false,
       "description": "Gross amount earned",
       "sequence": 7
-    },
-    {
-      "column_name": "CURRENCY_CODE",
-      "data_type": "CHAR",
-      "size": "3",
-      "key": false,
-      "description": "Currency code",
-      "sequence": 8
-    },
-    {
-      "column_name": "COUNTRY_CODE",
-      "data_type": "CHAR",
-      "size": "10",
-      "key": false,
-      "description": "Country reference",
-      "sequence": 9,
-      "allowed_values": [
-        {
-          "value": "IN",
-          "label": "India"
-        }
-      ]
     }
   ]
 }

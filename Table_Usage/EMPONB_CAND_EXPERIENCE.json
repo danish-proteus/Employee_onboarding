@@ -4,23 +4,16 @@
     {
       "object_name": "emponb_candidate_record",
       "form_no": "2",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "TO_DATE",
         "FROM_DATE",
         "LINE_NO",
-        "CURRENCY_CODE",
         "GROSS_AMT",
         "ORGANISATION",
-        "COUNTRY_CODE",
         "CANDIDATE_ID",
         "DESIGNATION"
-      ],
-      "join_info": {
-        "column": "COUNTRY_CODE",
-        "join_table": "EMPONB_COUNTRY_MASTER",
-        "join_column": "COUNTRY_CODE"
-      }
+      ]
     }
   ]
 }

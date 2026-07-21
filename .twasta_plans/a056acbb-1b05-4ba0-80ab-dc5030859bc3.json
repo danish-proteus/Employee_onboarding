@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick 'Validate PAN', 'Validate Aadhar', call IOFLOW event 'EmpOnboardingValidate' and pass 'ValidatePAN'/ 'ValidateAadhar', candidate_id, pan_no / aadhar_no for the candidate_id.",
   "created_at": 1784183704.0326908,
-  "updated_at": 1784631507.04226,
+  "updated_at": 1784632191.5654843,
   "todos": [
     {
       "id": "change_1",

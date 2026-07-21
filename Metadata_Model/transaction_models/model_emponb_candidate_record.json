@@ -3401,8 +3401,8 @@
                 "descr": "Parent candidate id",
                 "key": true,
                 "hidden": "1",
-                "x": "80",
-                "y": "80",
+                "x": "60",
+                "y": "60",
                 "col_id": "1",
                 "table_name": "EMPONB_CAND_EXPERIENCE",
                 "table_display_name": "Candidate past experience (main table)",
@@ -3430,8 +3430,8 @@
                 "key": true,
                 "default_value": "auto_generate_line_no()",
                 "protect": "1",
-                "x": "90",
-                "y": "90",
+                "x": "70",
+                "y": "70",
                 "col_id": "2",
                 "table_name": "EMPONB_CAND_EXPERIENCE",
                 "table_display_name": "Candidate past experience (main table)",
@@ -3600,63 +3600,6 @@
                 "protect": "",
                 "lookup": ""
               }
-            },
-            {
-              "column": {
-                "name": "currency_code",
-                "db_name": "CURRENCY_CODE",
-                "group_name": "Basic",
-                "col_type": "CHAR",
-                "heading": "Currency",
-                "descr": "Currency code",
-                "x": "60",
-                "y": "60",
-                "col_id": "8",
-                "table_name": "EMPONB_CAND_EXPERIENCE",
-                "table_display_name": "Candidate past experience (main table)",
-                "db_size": "3",
-                "width": 50,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "protect": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "country_code",
-                "db_name": "COUNTRY_CODE",
-                "group_name": "Basic",
-                "col_type": "CHAR",
-                "heading": "Country",
-                "descr": "Country reference",
-                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
-                "must_exist_in": "EMPONB_COUNTRY_MASTER",
-                "x": "70",
-                "y": "70",
-                "col_id": "9",
-                "table_name": "EMPONB_CAND_EXPERIENCE",
-                "table_display_name": "Candidate past experience (main table)",
-                "db_size": "10",
-                "width": 100,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "protect": "",
-                "validations": ""
-              }
             }
           ],
           "joins": {
@@ -3666,15 +3609,6 @@
                   "table": "EMPONB_CAND_EXPERIENCE",
                   "main_table": true,
                   "table_descr": "Candidate past experience (main table)"
-                },
-                {
-                  "table": "EMPONB_COUNTRY_MASTER",
-                  "main_table": false,
-                  "table_descr": "Country master",
-                  "column": "COUNTRY_CODE",
-                  "join_table": "EMPONB_CAND_EXPERIENCE",
-                  "join_column": "COUNTRY_CODE",
-                  "join_type": "left"
                 }
               ]
             }

@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Self\" page, while adding Qualification saving it, It should check whether the qualification is already\n exist and restrict duplicate qualification with appropriate message.",
   "created_at": 1784278669.123058,
-  "updated_at": 1784631507.0448482,
+  "updated_at": 1784632191.5679638,
   "todos": [
     {
       "id": "change_1",

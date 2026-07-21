@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-07-21T10:56:40.555100+00:00",
+  "generated_at": "2026-07-21T11:07:23.651529+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -290,9 +290,7 @@
         "DESIGNATION VARCHAR",
         "FROM_DATE DATE",
         "TO_DATE DATE",
-        "GROSS_AMT NUMBER",
-        "CURRENCY_CODE CHAR",
-        "COUNTRY_CODE CHAR"
+        "GROSS_AMT NUMBER"
       ]
     },
     {
@@ -358,9 +356,7 @@
         "DESIGNATION VARCHAR",
         "FROM_DATE DATE",
         "TO_DATE DATE",
-        "GROSS_AMT NUMBER",
-        "CURRENCY_CODE CHAR",
-        "COUNTRY_CODE CHAR"
+        "GROSS_AMT NUMBER"
       ]
     },
     {

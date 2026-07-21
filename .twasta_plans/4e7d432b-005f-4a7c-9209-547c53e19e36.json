@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAfter \"Candidate Self\" form link sent to the user, and user tries to add new record under \"Education\" section it is \ncrashing the form and showing blank screen, check this issue and fix it.",
   "created_at": 1784529068.176777,
-  "updated_at": 1784631507.0459266,
+  "updated_at": 1784632191.5688,
   "todos": [
     {
       "id": "change_1",

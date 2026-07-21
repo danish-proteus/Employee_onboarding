@@ -83,15 +83,10 @@
       "TO_DATE",
       "FROM_DATE",
       "LINE_NO",
-      "CURRENCY_CODE",
       "GROSS_AMT",
       "ORGANISATION",
-      "COUNTRY_CODE",
       "CANDIDATE_ID",
       "DESIGNATION"
-    ],
-    "EMPONB_COUNTRY_MASTER": [
-      "COUNTRY_CODE"
     ],
     "EMPONB_CAND_SELF_EDUCATION": [
       "CLASS",
@@ -108,6 +103,9 @@
     ],
     "EMPONB_QUALIFICATION_MASTER": [
       "QLF_CODE"
+    ],
+    "EMPONB_COUNTRY_MASTER": [
+      "COUNTRY_CODE"
     ],
     "EMPONB_CAND_SELF_FAMILY": [
       "GENDER",

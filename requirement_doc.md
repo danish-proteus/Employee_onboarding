@@ -81,8 +81,8 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
 
 ### Past Experience (detail)
 - Description: Multiple prior-employment rows entered by the candidate, displayed/editable on the HR transaction.
-- Data points: LINE_NO, ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, CURRENCY_CODE, COUNTRY_CODE.
-- Business rules: TO_DATE ≥ FROM_DATE; GROSS_AMT ≥ 0; COUNTRY_CODE must exist in Country master; LINE_NO auto-sequenced.
+- Data points: LINE_NO, ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT.
+- Business rules: TO_DATE ≥ FROM_DATE; GROSS_AMT ≥ 0; LINE_NO auto-sequenced.
 - Business actions: Add row, Edit row, Delete row (subject to submission lock).
 
 ### Educational Qualification (detail)

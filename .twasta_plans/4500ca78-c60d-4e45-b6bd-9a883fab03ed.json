@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nin \"Candidate Onboarding Record\" page, make the following restrictions:\n1. When adding new family member in \"Family\" section, it should check all the existing family member names and restrict duplicate \"Member Name\" with a validation message on click of \"Save\" button.",
   "created_at": 1784614207.7325387,
-  "updated_at": 1784631507.0472329,
+  "updated_at": 1784632191.5700307,
   "todos": [
     {
       "id": "change_1",
