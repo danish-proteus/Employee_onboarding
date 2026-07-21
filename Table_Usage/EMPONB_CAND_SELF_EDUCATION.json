@@ -4,19 +4,19 @@
     {
       "object_name": "emponb_candidate_self",
       "form_no": "3",
-      "usage_type": "M",
+      "usage_type": "R",
       "referred_columns": [
-        "LINE_NO",
-        "CANDIDATE_ID",
         "CLASS",
-        "PERCENTAGE",
-        "QLF_CODE",
-        "COURSE_TYPE",
-        "QLF_TYPE",
         "COURSE_DURATION",
-        "COUNTRY_CODE",
+        "QLF_TYPE",
+        "COURSE_TYPE",
+        "QLF_CODE",
+        "PASS_YEAR",
+        "LINE_NO",
+        "PERCENTAGE",
         "INSTITUTE",
-        "PASS_YEAR"
+        "COUNTRY_CODE",
+        "CANDIDATE_ID"
       ],
       "join_info": {
         "column": "COUNTRY_CODE",

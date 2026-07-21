@@ -3307,6 +3307,7 @@
                   "mode": "rule",
                   "source_table": "EMPONB_QUALIFICATION_MASTER",
                   "match_table_col": "QLF_CODE",
+                  "on_no_match": "leave",
                   "fill": [
                     {
                       "form_col": "qlf_type",
@@ -3331,24 +3332,94 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
-                "must_exist_in": "EMPONB_QUALIFICATION_MASTER",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "QLF001",
+                      "display": "10th (SSC)"
+                    },
+                    {
+                      "data": "QLF002",
+                      "display": "12th (HSC)"
+                    },
+                    {
+                      "data": "QLF003",
+                      "display": "Diploma"
+                    },
+                    {
+                      "data": "QLF004",
+                      "display": "Bachelor of Arts"
+                    },
+                    {
+                      "data": "QLF005",
+                      "display": "Bachelor of Science"
+                    },
+                    {
+                      "data": "QLF006",
+                      "display": "Bachelor of Commerce"
+                    },
+                    {
+                      "data": "QLF007",
+                      "display": "Bachelor of Engineering"
+                    },
+                    {
+                      "data": "QLF008",
+                      "display": "Bachelor of Technology"
+                    },
+                    {
+                      "data": "QLF009",
+                      "display": "Master of Arts"
+                    },
+                    {
+                      "data": "QLF010",
+                      "display": "Master of Science"
+                    },
+                    {
+                      "data": "QLF011",
+                      "display": "Master of Commerce"
+                    },
+                    {
+                      "data": "QLF012",
+                      "display": "MBA"
+                    },
+                    {
+                      "data": "QLF013",
+                      "display": "M.Tech"
+                    },
+                    {
+                      "data": "QLF014",
+                      "display": "PhD"
+                    }
+                  ]
+                },
                 "protect": "",
                 "validations": [
                   {
+                    "type": "builtin",
+                    "name": "Qualification exists",
+                    "error_code": "QLF_CODE_EXISTS",
+                    "message": "Qualification {form.qlf_code} must exist in the Qualification Master.",
+                    "builtin": {
+                      "kind": "must_exist_in_master",
+                      "table": "EMPONB_QUALIFICATION_MASTER",
+                      "match_column": "QLF_CODE"
+                    }
+                  },
+                  {
                     "type": "business_logic",
-                    "name": "unique_qualification",
+                    "name": "No duplicate qualification",
                     "error_code": "EDU_QLF_DUP",
-                    "severity": "E",
                     "message": "Duplicate qualification is not allowed. This qualification is already added for this candidate.",
                     "business_logic": {
                       "method": "check_duplicate_qualification",
-                      "description": "Block saving when the selected QLF_CODE is already present on another education line of the same candidate, checking both the unsaved sibling rows in the current transaction grid and the persisted EMPONB_CAND_SELF_EDUCATION rows.",
+                      "description": "Block a duplicate QLF_CODE across the candidate's education lines",
+                      "spec": "Block saving when the selected QLF_CODE is already present on another education line of the same candidate, checking both the unsaved sibling rows in the current transaction grid and the persisted EMPONB_CAND_SELF_EDUCATION rows. Return NULL (valid) when QLF_CODE is empty so a brand-new blank row does not fire.",
                       "language": "plpgsql"
                     }
                   }
                 ],
-                "lookup": "EMPONB_QUALIFICATION_MASTER(QLF_NAME, QLF_CODE)"
+                "lookup": ""
               }
             },
             {
@@ -3420,26 +3491,7 @@
                     "type": "expression",
                     "name": "Pass year <= current",
                     "message": "Pass year cannot be in the future.",
-                    "expression": "is_empty({form.pass_year}) or {form.pass_year} <= int(lower(concat(today())))"
-                  },
-                  {
-                    "type": "builtin",
-                    "name": "unique_pass_year",
-                    "error_code": "EDU_YEAR_DUP",
-                    "severity": "E",
-                    "message": "An education record with this passing year already exists for this candidate.",
-                    "builtin": {
-                      "kind": "must_be_unique",
-                      "table": "EMPONB_CAND_SELF_EDUCATION",
-                      "match_column": "PASS_YEAR",
-                      "conditions": [
-                        {
-                          "column": "CANDIDATE_ID",
-                          "source": "header",
-                          "value_column": "CANDIDATE_ID"
-                        }
-                      ]
-                    }
+                    "expression": "is_empty({form.pass_year}) or {form.pass_year} <= year(today())"
                   }
                 ],
                 "x": "40",
@@ -3754,7 +3806,27 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
-                "validations": "",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "unique_family_member_name",
+                    "error_code": "DUP_FAMILY_MEMBER",
+                    "message": "A family member named \"{form.MEMBER_NAME}\" has already been added. Member Name must be unique within the Family list.",
+                    "severity": "E",
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "table": "EMPONB_CAND_SELF_FAMILY",
+                      "match_column": "MEMBER_NAME",
+                      "conditions": [
+                        {
+                          "column": "CANDIDATE_ID",
+                          "source": "header",
+                          "header_column": "CANDIDATE_ID"
+                        }
+                      ]
+                    }
+                  }
+                ],
                 "lookup": ""
               }
             },
@@ -3833,7 +3905,88 @@
                 "default_value": "",
                 "expression": "",
                 "protect": "",
-                "validations": "",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_brother_female",
+                    "error_code": "FAM_REL_GEN_01",
+                    "severity": "E",
+                    "message": "Brother cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Brother')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_father_female",
+                    "error_code": "FAM_REL_GEN_02",
+                    "severity": "E",
+                    "message": "Father cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Father')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_grandfather_female",
+                    "error_code": "FAM_REL_GEN_03",
+                    "severity": "E",
+                    "message": "GrandFather cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'GrandFather')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_son_female",
+                    "error_code": "FAM_REL_GEN_04",
+                    "severity": "E",
+                    "message": "Son cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Son')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_husband_female",
+                    "error_code": "FAM_REL_GEN_05",
+                    "severity": "E",
+                    "message": "Husband cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Husband')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_mother_male",
+                    "error_code": "FAM_REL_GEN_06",
+                    "severity": "E",
+                    "message": "Mother cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Mother')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_sister_male",
+                    "error_code": "FAM_REL_GEN_07",
+                    "severity": "E",
+                    "message": "Sister cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Sister')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_grandmother_male",
+                    "error_code": "FAM_REL_GEN_08",
+                    "severity": "E",
+                    "message": "GrandMother cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'GrandMother')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_wife_male",
+                    "error_code": "FAM_REL_GEN_09",
+                    "severity": "E",
+                    "message": "Wife cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Wife')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_daughter_male",
+                    "error_code": "FAM_REL_GEN_10",
+                    "severity": "E",
+                    "message": "Daughter cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Daughter')"
+                  }
+                ],
                 "lookup": ""
               }
             },
@@ -3905,12 +4058,101 @@
                     {
                       "data": "Other",
                       "display": "Other"
+                    },
+                    {
+                      "data": "GrandFather",
+                      "display": "GrandFather"
+                    },
+                    {
+                      "data": "GrandMother",
+                      "display": "GrandMother"
                     }
                   ]
                 },
                 "lookup": "",
                 "protect": "",
-                "validations": ""
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_brother_female",
+                    "error_code": "FAM_REL_GEN_01",
+                    "severity": "E",
+                    "message": "Brother cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Brother')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_father_female",
+                    "error_code": "FAM_REL_GEN_02",
+                    "severity": "E",
+                    "message": "Father cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Father')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_grandfather_female",
+                    "error_code": "FAM_REL_GEN_03",
+                    "severity": "E",
+                    "message": "GrandFather cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'GrandFather')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_son_female",
+                    "error_code": "FAM_REL_GEN_04",
+                    "severity": "E",
+                    "message": "Son cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Son')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_husband_female",
+                    "error_code": "FAM_REL_GEN_05",
+                    "severity": "E",
+                    "message": "Husband cannot be female.",
+                    "expression": "NOT({form.gender} = 'F' AND {form.relation} = 'Husband')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_mother_male",
+                    "error_code": "FAM_REL_GEN_06",
+                    "severity": "E",
+                    "message": "Mother cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Mother')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_sister_male",
+                    "error_code": "FAM_REL_GEN_07",
+                    "severity": "E",
+                    "message": "Sister cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Sister')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_grandmother_male",
+                    "error_code": "FAM_REL_GEN_08",
+                    "severity": "E",
+                    "message": "GrandMother cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'GrandMother')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_wife_male",
+                    "error_code": "FAM_REL_GEN_09",
+                    "severity": "E",
+                    "message": "Wife cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Wife')"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "relation_gender_daughter_male",
+                    "error_code": "FAM_REL_GEN_10",
+                    "severity": "E",
+                    "message": "Daughter cannot be male.",
+                    "expression": "NOT({form.gender} = 'M' AND {form.relation} = 'Daughter')"
+                  }
+                ]
               }
             }
           ],

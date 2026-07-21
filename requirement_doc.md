@@ -95,6 +95,8 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
 - Description: Multiple family-member rows entered by the candidate.
 - Data points: LINE_NO, MEMBER_NAME, DATE_BIRTH, GENDER, RELATION.
 - Business rules: MEMBER_NAME and RELATION mandatory; DATE_BIRTH ≤ today; RELATION from Demographic Reference master; LINE_NO auto-sequenced.
+- Family member GENDER and RELATION must be consistent. The following combinations are not allowed and are blocked with a message: Female+Brother ('Brother cannot be female.'), Female+Father ('Father cannot be female.'), Female+GrandFather ('GrandFather cannot be female.'), Female+Son ('Son cannot be female.'), Female+Husband ('Husband cannot be female.'), Male+Mother ('Mother cannot be male.'), Male+Sister ('Sister cannot be male.'), Male+GrandMother ('GrandMother cannot be male.'), Male+Wife ('Wife cannot be male.'), Male+Daughter ('Daughter cannot be male.'). The rule applies identically in the HR-maintained Candidate Onboarding Record and the candidate self-service form. The check is enforced when either GENDER or RELATION is entered/changed.
+- MEMBER_NAME must be unique within a candidate — the same family member name cannot be added twice in the Family section; a duplicate is blocked on Save with the message 'Family member <name> is already added. Duplicate member names are not allowed.'
 - Business actions: Add row, Edit row, Delete row.
 
 ### Candidate Pay Structure (detail — HR only)
@@ -118,6 +120,7 @@ Public, key-validated intake screen the candidate opens from the emailed link. I
 - Description: Candidate fills personal, contact, statutory, financial details plus the three detail tables, with inline document validation and attachments.
 - Data points: all candidate personal/contact/statutory/financial fields listed in the Candidate Onboarding Record; Past Experience, Educational Qualification and Family detail tables; PAN_DOC, AADHAR_DOC, BANK_DOC attachments.
 - Business rules: same field-level validations as the header; mandatory fields enforced on Submit (not on Save); PAN/AADHAR/BANK validation limited to :max_validation_attempts attempts each; attachments restricted to image/PDF with size limit; BANK_DOC must be a cancelled cheque or passbook image.
+- Family member Gender and Relation must be consistent. The following combinations are not allowed and are blocked with a message: Female+Brother ('Brother cannot be female.'), Female+Father ('Father cannot be female.'), Female+GrandFather ('GrandFather cannot be female.'), Female+Son ('Son cannot be female.'), Female+Husband ('Husband cannot be female.'), Male+Mother ('Mother cannot be male.'), Male+Sister ('Sister cannot be male.'), Male+GrandMother ('GrandMother cannot be male.'), Male+Wife ('Wife cannot be male.'), Male+Daughter ('Daughter cannot be male.'). The rule applies identically in the HR-maintained Candidate Onboarding Record and the candidate self-service form.
 - Business actions: **Validate PAN (IOFLOW)**, **Validate Aadhaar (IOFLOW)**, **Validate Bank (IOFLOW)**, Attach/Upload document, **Save** (draft, remains editable), **Submit** (final).
 - Additional data management:
   - Each validate call stores *_VALIDATED (True/False), *_VALIDATED_NAME (name returned), and increments *_ATTEMPTS; once the attempt cap is reached the validate button is disabled.

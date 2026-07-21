@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Whether the pay head is an earning or a deduction",
+      "description": "Whether this pay head is an Earning or Deduction",
       "sequence": 3,
       "mandatory": true,
       "allowed_values": [
@@ -45,7 +45,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Fixed, Percentage or Formula based amount",
+      "description": "How the pay head amount is determined",
       "sequence": 4,
       "mandatory": true,
       "allowed_values": [
@@ -64,20 +64,12 @@
       ]
     },
     {
-      "column_name": "RES_FORMULA",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "Formula used to compute the amount; mandatory when Amount Type = Formula",
-      "sequence": 5
-    },
-    {
       "column_name": "DEFAULT_FREQUENCY",
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Default frequency at which this pay head applies",
-      "sequence": 6,
+      "description": "Default payment frequency for this pay head",
+      "sequence": 5,
       "mandatory": true,
       "allowed_values": [
         {
@@ -95,11 +87,19 @@
       ]
     },
     {
+      "column_name": "RES_FORMULA",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Formula used to compute the amount when Amount Type is Formula",
+      "sequence": 6
+    },
+    {
       "column_name": "ACTIVE_FLAG",
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Whether this pay head is active and selectable",
+      "description": "Whether this pay head is active",
       "sequence": 7,
       "mandatory": true,
       "allowed_values": [

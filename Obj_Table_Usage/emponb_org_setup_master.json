@@ -2,22 +2,22 @@
   "object_name": "emponb_org_setup_master",
   "tables": {
     "EMPONB_ORG_SETUP_MASTER": [
-      "HOL_TBLNO",
-      "SHIFT_TIMINGS",
-      "ADD_TERM",
-      "ADD_DATE",
-      "PAY_SITE_NAME",
-      "ACTIVE_FLAG",
-      "ADD_USER",
-      "CHG_DATE",
-      "CHG_USER",
       "SITE_NAME",
-      "SHIFT_NAME",
+      "PAY_SITE_NAME",
+      "ADD_USER",
       "EMP_SITE",
       "WORK_SHIFT",
+      "ADD_TERM",
+      "CHG_TERM",
       "PAY_SITE",
+      "ACTIVE_FLAG",
       "HOL_TBL_NAME",
-      "CHG_TERM"
+      "CHG_DATE",
+      "CHG_USER",
+      "ADD_DATE",
+      "SHIFT_NAME",
+      "HOL_TBLNO",
+      "SHIFT_TIMINGS"
     ]
   }
 }

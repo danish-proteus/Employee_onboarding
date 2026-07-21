@@ -1,118 +1,10 @@
 {
   "version": 2,
-  "id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
+  "id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
   "project": "Employee_onboarding",
   "description": "Process is as below\n1. HR team will fill initial information about the candidate like Name, Gender, Country, Designations, emailID, status like [Link Generate, Link Open, DataSubmitted, Review, Confirmed], status date. \n2. It should have a button to send link to candidate over email to candidate with a key. \n3. Key will have a life for say 1 day [Should be configurable]. \n4. Link will contain the URL of the form which will be embedded inside application. \n5. Stauts should be changed to \u2018Link Generated\u2019, Status date should be updated.\n6. Application will validate the key, if key is valid then only it should open the application. \n7. Status should be changed to \u2018Link Accessed\u2019, Status date should be updated.\n8. Candidate should fill the required fields like EMP_FNAME,EMP_MNAME,EMP_LNAME,NAME_PREFIX, Gender, Current Address, Current PIN, Current CITY, CURRENT STATE, Mobile, Alternate Telephone, Permanent Address, Permanent PIN, Permanent CITY, Permanent STATE, NATIONALITY, BIRTHDATE, MARITAL STATUS, MARRIAGE ANNIVERSARY, BLOOD GROUP, Contact Person, Contact Person Mobile, Contact person Email, Religion, Bank Account No, Bank IFSC Code, Bank Name, Total Experience, PF NO, ESIC NO, HOBBY1, HOBBY2, PASSPORT_NO, PAN_NO, AADHAR_NO, DRIVING LIC NO, PHYSICAL_HANDICAP, MOTHER_TONGUE, CAST_CATEGORY, \n9. Form Should have option to validate the PAN_NO, AADHAR_NO, BANK_DETAIL, It shoudl call IOFLOW API to validate, Allow only 3 try. It shoudl also store the status of these requests Validated True or False with Name returned\n10. It should also allow Candidate to attach Image/File for PAN_NO, AADHAR_NO, Bank Account No [Should attach image of crossed Cheque or Passbook].\n11. It Should have a detail table like form where Candidate can enter multiple rows for his 'Past Experince', it should have field like [LINE_NO, ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, GROSS_AMT, COUNTRY_CODE]\n12. It Should have a detail table like form where Candidate can enter multiple rows for his 'Educational Qualification', it should have field like [LINE_NO, QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION]\n13. It Should have a detail table like form where Candidate can enter multiple rows for his \u2018FAMILY', it should have field like [LINE_NO, MEMBER_NAME, DATE_BIRTH, GENDER, RELATION]\n14. Candidate Can have Save and Submit 2 options. \n15. Candidate Can edit the detail till he 'Submit\u2019. \n16. Once Submitted Candidate cannot open link. \n17. On Submission it should intimate the HR person who initiated the link. \n18. On Submission an email will be sent to Candidate with all informations Candidate filled on the form. \n19. Status should be changed to \u2018DataSubmitted\u2019, Status date should be updated.\n20. Now, HR Person Can Open the transaction and check the data submitted. Can Re-Check the AN_NO, AADHAR_NO, BANK_DETAIL via IOFLOW if needed.\n21. HR Person can further update following EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, \n22. HR PERSON Should have a detail table like form where can enter multiple rows for his \u2018CANDIDATE_PAY', it should have field like [LINE_NO, AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, RES_FORMULA, AMOUNT_CALC, UPD_PAYSTRU, APPL_MODE]\n23. ON CONFIRMATION IT SHOULD CALL IOFLOW API FOR EMPLOYEE",
-  "active_plan_id": "ad8f6122-dfc5-46d0-bf75-00339c86b6b4",
+  "active_plan_id": "b1433f6b-7f48-44e7-b009-5ac2f91e8949",
   "plans": [
-    {
-      "id": "ad8f6122-dfc5-46d0-bf75-00339c86b6b4",
-      "title": "On the 'Send/Resend Link' action of the Candidate Onboarding Record (emponb_cand",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick 'Send/Resend Link' before calling the IOFLOW delete the existing data from 'Candidate Self' for the given candidate_id, show a confirm dialog as well.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Add confirmation dialog to the 'Send/Resend Link' action",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784122221.232725,
-          "completed_at": 1784122254.8642263
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Delete existing Candidate Self data before the IOFlow send-link event",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784122254.8755198,
-          "completed_at": 1784122287.7745633
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784122221.2185035,
-      "updated_at": 1784122947.392187,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "85d463f2-a452-4331-8f0f-6f168ddb563e",
-      "title": "Configure the Candidate Page (candidate_page, S) so the candidate_id input is se",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnload set the candidate_id as per the url argument. Call the itemchange on candidate_id as well",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Seed candidate_id from URL arg on load and trigger its item_change in the embed",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784122993.3198617,
-          "completed_at": 1784123022.3451886
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784122993.3045685,
-      "updated_at": 1784123613.9765038,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "1dc33e44-b108-4383-94c1-16ccde603bb4",
-      "title": "Fix candidate_id not populating on the Candidate Page (candidate_page, S) when o",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAccessed this URL http://dev.platform.twasta.ai:7079/site/7014e11e-1c26-4e50-b546-2c38c876bee0/Employee_onboarding/candidate_website?key=df3a2899a5fd642fe910d041c9511709&candidate_id=2\n\nbut candidate_id didnt get set",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Echo candidate_id from the candidate_page before_load gate",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784123763.934401,
-          "completed_at": 1784123785.9784887
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Bind candidate_page candidate_id input to the before_load var instead of url_arg",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784123786.0261803,
-          "completed_at": 1784123802.3431199
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784123763.9167383,
-      "updated_at": 1784125850.3975668,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
     {
       "id": "6f40031b-3ab4-4bc0-82ce-7f70683f9581",
       "title": "Make the Candidate ID input on the Candidate Page become non-editable once it ho",
@@ -136,35 +28,7 @@
       "phases": [],
       "profile_id": null,
       "created_at": 1784125891.507527,
-      "updated_at": 1784126047.4204211,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "63c9fd93-2637-4cc6-bca2-ae186f6428a0",
-      "title": "Make the CANDIDATE_ID field read-only in the embedded candidate capture form whe",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ncandidate_id not yet disabled while accessed via website",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Disable Candidate ID on the website-embedded capture form",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784126103.9716017,
-          "completed_at": 1784126126.2317498
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784126103.9540117,
-      "updated_at": 1784126103.954012,
+      "updated_at": 1784614707.855973,
       "depends_on": [],
       "dependency_spec": null,
       "run_scope": null
@@ -521,6 +385,342 @@
       "profile_id": null,
       "created_at": 1784279421.1196225,
       "updated_at": 1784279421.1196232,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "4e7d432b-005f-4a7c-9209-547c53e19e36",
+      "title": "Fix the crash when adding a new Education detail line on the Candidate Self form",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAfter \"Candidate Self\" form link sent to the user, and user tries to add new record under \"Education\" section it is \ncrashing the form and showing blank screen, check this issue and fix it.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Fix malformed Pass Year validation expression on the Education detail form",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784529068.187891,
+          "completed_at": 1784529085.3785057
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784529068.1681104,
+      "updated_at": 1784529068.1681104,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "9319ad12-40d8-46dd-84f6-2c26757f22ce",
+      "title": "Add a per-candidate uniqueness validation on the Family detail line's MEMBER_NAM",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Family\" section, \nit should not allow records with similar Member Name",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Block duplicate Family member names in Candidate Onboarding Record",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784537133.9589772,
+          "completed_at": 1784537166.687464
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Block duplicate Family member names in Candidate Self",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784537166.7032592,
+          "completed_at": 1784537214.978552
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784537133.9369578,
+      "updated_at": 1784537133.9369583,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "3dcf46d1-bc17-4d33-8680-3aaa4b52020a",
+      "title": "Add a per-candidate duplicate-check (must_be_unique) validation on the Family de",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Onboarding Record\" and \"Candidate Self\" pages, when adding new record under \"Family\" section, \nit should not allow records with duplicate Member Name and should show the validation message if duplicate member \nname is added.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Block duplicate Family member name in Candidate Onboarding Record",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784537771.7609675,
+          "completed_at": 1784537807.405122
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Block duplicate Family member name in Candidate Self",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784537807.4210637,
+          "completed_at": 1784537849.2345207
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784537771.7430282,
+      "updated_at": 1784540973.0073764,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "4500ca78-c60d-4e45-b6bd-9a883fab03ed",
+      "title": "Add a duplicate-name validation on MEMBER_NAME in the Family detail form of the ",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nin \"Candidate Onboarding Record\" page, make the following restrictions:\n1. When adding new family member in \"Family\" section, it should check all the existing family member names and restrict duplicate \"Member Name\" with a validation message on click of \"Save\" button.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Document family member name uniqueness rule in FRS",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784614207.7506962,
+          "completed_at": 1784614223.3874679
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Add duplicate Member Name validation on the Family detail form",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784614223.4005802,
+          "completed_at": 1784614275.5953038
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784614207.716737,
+      "updated_at": 1784614207.7167373,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "dfd06466-b7dd-4d6f-a4a7-12378500140f",
+      "title": "Change the family member name duplicate check on the Candidate Onboarding Record",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt should not validate family member names with DB records instead check existing records which have been added on the screen and compare with them.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Family detail: replace DB-based name uniqueness with in-form duplicate check",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784615055.797677,
+          "completed_at": 1784615076.336946
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Implement check_duplicate_family_member against on-screen rows",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784615076.3537366,
+          "completed_at": 1784615123.168283
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784615055.7771277,
+      "updated_at": 1784615381.8541203,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "15202b6c-cd31-4df5-b751-88920d48e33b",
+      "title": "Fix the \"Save blocked \u2014 AttributeError: 'str' object has no attribute 'get'\" err",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt shows \"Save blocked\nAttributeError: 'str' object has no attribute 'get'\" error while saving new family member details in \"Family\" section, can you check and resolve it.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Replace the crashing business_logic duplicate check on Family \u2192 Member Name with a builtin must_be_unique validation",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784615445.7273567,
+          "completed_at": 1784615464.8222134
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784615445.704933,
+      "updated_at": 1784615749.10404,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "4f604360-39c8-44d7-9976-4f65288db9af",
+      "title": "Change the Family detail duplicate check on the Candidate Onboarding Record so i",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ncheck only member name only and restrict users to same if it's already available at form level.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Point the Family duplicate validation at MEMBER_NAME only",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784615773.2834268,
+          "completed_at": 1784615794.7440755
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Rewrite the duplicate-member business logic to compare member name only, within the form",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784615794.7612355,
+          "completed_at": 1784615813.9368792
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784615773.261878,
+      "updated_at": 1784615958.6281173,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "d1e1673f-3cf6-4536-bbad-19631661ff4b",
+      "title": "Fix the malformed 'check_duplicate_family_member' validation on the MEMBER_NAME ",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nwhile saving family member in \"Family\" form, it shows \"Save blocked \u2014 1 validation error\nMember Name: Incorrect validation definition for 'check_duplicate_family_member': no function/method name set.\" error, check this and fix.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Fix the check_duplicate_family_member validation definition on MEMBER_NAME in the Family detail form",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784615977.1775467,
+          "completed_at": 1784616008.601018
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784615977.1580431,
+      "updated_at": 1784616202.899375,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "b1433f6b-7f48-44e7-b009-5ac2f91e8949",
+      "title": "Add gender/relation consistency validations to the Family detail section of both",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nWhen selecting \"Gender\" and \"Relation\" in \"Family\" section of both \"Candidate Onboarding Record\" and \"Candidate Self\" page, restrict user and show an appropriate message if the following combinations are selected; for both the fields: \nA. Combination: Female + Brother, Message: \"Brother cannot be female\".\nB. Combination: Female + Father, Message: \"Father cannot be female.\"\nC. Combination: Female + GrandFather, Message: \"GrandFather cannot be female.\"\nD. Combination: Male + Mother, Message: \"Mother cannot be male.\"\nE. Combination: Male + Sister, Message: \"Sister cannot be male.\"\nF. Combination: Male + GrandMother, Message: \"GrandMother cannot be male.\"\nG. Combination: Female + Son, Message: \"Son cannot be female\"\nH. Combination: Female + Husband, Message: \"Husband cannot be female\"\nI. Combination: Male + Wife, Message: \"Wife cannot be male\"\nJ. Combination: Male + Daughter, Message: \"Daughter cannot be male\"\n\nI have attached form screenshot for the reference, check it and do the changes accordingly.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Document the Gender/Relation consistency rule in the FRS",
+          "status": "completed",
+          "error": null,
+          "obj_name": null,
+          "obj_type": null,
+          "phase_id": null,
+          "started_at": 1784631225.111903,
+          "completed_at": 1784631252.7187133
+        },
+        {
+          "id": "change_2",
+          "step": "change",
+          "label": "Add Gender/Relation combination validations to the Family detail of Candidate Onboarding Record",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_record",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784631252.735295,
+          "completed_at": 1784631315.0930765
+        },
+        {
+          "id": "change_3",
+          "step": "change",
+          "label": "Add the same Gender/Relation combination validations to the Family detail of Candidate Self",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784631315.1127112,
+          "completed_at": 1784631400.559299
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784631225.0907536,
+      "updated_at": 1784631225.0907538,
       "depends_on": [],
       "dependency_spec": null,
       "run_scope": null

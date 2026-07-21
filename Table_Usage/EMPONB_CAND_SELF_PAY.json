@@ -4,17 +4,17 @@
     {
       "object_name": "emponb_candidate_self",
       "form_no": "5",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
+        "FREQUENCY",
+        "AMOUNT",
+        "LINE_NO",
+        "RES_FORMULA",
         "AMOUNT_CALC",
         "AMOUNT_TYPE",
-        "RES_FORMULA",
-        "LINE_NO",
-        "CANDIDATE_ID",
-        "AMOUNT",
-        "FREQUENCY",
         "UPD_PAYSTRU",
         "APPL_MODE",
+        "CANDIDATE_ID",
         "AD_CODE"
       ],
       "join_info": {

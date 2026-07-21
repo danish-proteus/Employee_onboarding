@@ -33,7 +33,7 @@
                 "y": "10",
                 "col_id": "1",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "10",
                 "width": 100,
                 "hidden": "",
@@ -59,7 +59,7 @@
                 "y": "20",
                 "col_id": "2",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "100",
                 "width": 500,
                 "key": false,
@@ -80,8 +80,8 @@
                 "db_name": "APPL_MODE",
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Applicability Mode",
-                "descr": "Whether the pay head is an earning or a deduction",
+                "heading": "Applicability",
+                "descr": "Whether this pay head is an Earning or Deduction",
                 "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
@@ -100,7 +100,7 @@
                 "y": "30",
                 "col_id": "3",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "20",
                 "width": 200,
                 "key": false,
@@ -121,7 +121,7 @@
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Amount Type",
-                "descr": "Fixed, Percentage or Formula based amount",
+                "descr": "How the pay head amount is determined",
                 "mandatory": true,
                 "edit_mask": {
                   "mask": "ddlb",
@@ -142,12 +142,7 @@
                 },
                 "item_change": {
                   "mode": "rule",
-                  "fill": [
-                    {
-                      "form_col": "res_formula",
-                      "expr": "iif({form.amount_type} == \"Formula\", {form.res_formula}, \"\")"
-                    }
-                  ],
+                  "fill": [],
                   "protect": [
                     {
                       "form_col": "res_formula",
@@ -159,7 +154,51 @@
                 "y": "40",
                 "col_id": "4",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "default_frequency",
+                "db_name": "DEFAULT_FREQUENCY",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Default Frequency",
+                "descr": "Default payment frequency for this pay head",
+                "mandatory": true,
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Monthly",
+                      "display": "Monthly"
+                    },
+                    {
+                      "data": "Annual",
+                      "display": "Annual"
+                    },
+                    {
+                      "data": "One-time",
+                      "display": "One-time"
+                    }
+                  ]
+                },
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_PAYHEAD_MASTER",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "20",
                 "width": 200,
                 "key": false,
@@ -179,21 +218,21 @@
                 "db_name": "RES_FORMULA",
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
-                "heading": "Resolution Formula",
-                "descr": "Formula used to compute the amount; mandatory when Amount Type = Formula",
+                "heading": "Resultant Formula",
+                "descr": "Formula used to compute the amount when Amount Type is Formula",
                 "validations": [
                   {
                     "type": "expression",
                     "name": "Formula mandatory",
-                    "message": "Resolution formula is mandatory when Amount Type is Formula.",
+                    "message": "Resultant formula is mandatory when Amount Type is Formula.",
                     "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
                   }
                 ],
-                "x": "50",
-                "y": "50",
-                "col_id": "5",
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "500",
                 "width": 500,
                 "key": false,
@@ -210,56 +249,12 @@
             },
             {
               "column": {
-                "name": "default_frequency",
-                "db_name": "DEFAULT_FREQUENCY",
-                "group_name": "Basic",
-                "col_type": "VARCHAR",
-                "heading": "Default Frequency",
-                "descr": "Default frequency at which this pay head applies",
-                "mandatory": true,
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "Monthly",
-                      "display": "Monthly"
-                    },
-                    {
-                      "data": "Annual",
-                      "display": "Annual"
-                    },
-                    {
-                      "data": "One-time",
-                      "display": "One-time"
-                    }
-                  ]
-                },
-                "x": "60",
-                "y": "60",
-                "col_id": "6",
-                "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
-                "db_size": "20",
-                "width": 200,
-                "key": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "protect": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
                 "name": "active_flag",
                 "db_name": "ACTIVE_FLAG",
                 "group_name": "Basic",
                 "col_type": "VARCHAR",
                 "heading": "Active",
-                "descr": "Whether this pay head is active and selectable",
+                "descr": "Whether this pay head is active",
                 "mandatory": true,
                 "default_value": "Y",
                 "edit_mask": {
@@ -279,7 +274,7 @@
                 "y": "70",
                 "col_id": "7",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "1",
                 "width": 50,
                 "key": false,
@@ -306,7 +301,7 @@
                 "y": "80",
                 "col_id": "8",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "",
                 "width": 50,
                 "key": false,
@@ -334,7 +329,7 @@
                 "y": "90",
                 "col_id": "9",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "10",
                 "width": 100,
                 "key": false,
@@ -362,7 +357,7 @@
                 "y": "100",
                 "col_id": "10",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "15",
                 "width": 150,
                 "key": false,
@@ -390,7 +385,7 @@
                 "y": "110",
                 "col_id": "11",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "",
                 "width": 50,
                 "key": false,
@@ -418,7 +413,7 @@
                 "y": "120",
                 "col_id": "12",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "10",
                 "width": 100,
                 "key": false,
@@ -446,7 +441,7 @@
                 "y": "130",
                 "col_id": "13",
                 "table_name": "EMPONB_PAYHEAD_MASTER",
-                "table_display_name": "Pay head master",
+                "table_display_name": "Pay Head master (main data table)",
                 "db_size": "15",
                 "width": 150,
                 "key": false,
@@ -467,7 +462,7 @@
                 {
                   "table": "EMPONB_PAYHEAD_MASTER",
                   "main_table": true,
-                  "table_descr": "Pay head master"
+                  "table_descr": "Pay Head master (main data table)"
                 }
               ]
             }

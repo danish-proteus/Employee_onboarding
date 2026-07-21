@@ -1,0 +1,45 @@
+{
+  "id": "4f604360-39c8-44d7-9976-4f65288db9af",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Change the Family detail duplicate check on the Candidate Onboarding Record so i",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ncheck only member name only and restrict users to same if it's already available at form level.",
+  "created_at": 1784615773.271922,
+  "updated_at": 1784631507.0489469,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Point the Family duplicate validation at MEMBER_NAME only",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784615773.2834268,
+      "completed_at": 1784615794.7440755
+    },
+    {
+      "id": "change_2",
+      "step": "change",
+      "label": "Rewrite the duplicate-member business logic to compare member name only, within the form",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784615794.7612355,
+      "completed_at": 1784615813.9368792
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ncheck only member name only and restrict users to same if it's already available at form level.",
+  "resume_ref": {
+    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
+    "plan_id": "4f604360-39c8-44d7-9976-4f65288db9af",
+    "scope": null
+  },
+  "depends_on": []
+}

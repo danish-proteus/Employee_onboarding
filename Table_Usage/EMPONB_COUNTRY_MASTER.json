@@ -23,7 +23,7 @@
     {
       "object_name": "emponb_candidate_record",
       "form_no": "2",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "COUNTRY_CODE"
       ],
@@ -36,7 +36,7 @@
     {
       "object_name": "emponb_candidate_record",
       "form_no": "3",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "COUNTRY_CODE"
       ],
@@ -49,7 +49,7 @@
     {
       "object_name": "emponb_candidate_self",
       "form_no": "2",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "COUNTRY_CODE"
       ],
@@ -62,7 +62,7 @@
     {
       "object_name": "emponb_candidate_self",
       "form_no": "3",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "COUNTRY_CODE"
       ],

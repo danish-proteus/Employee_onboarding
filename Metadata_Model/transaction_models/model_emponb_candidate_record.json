@@ -195,6 +195,18 @@
                     "name": "Valid email",
                     "message": "Enter a valid email address.",
                     "expression": "match({form.email_id}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
+                  },
+                  {
+                    "type": "builtin",
+                    "name": "unique_candidate_email",
+                    "error_code": "EMPONB_EMAIL_DUP",
+                    "severity": "E",
+                    "message": "Email ID {form.EMAIL_ID} already exists for another candidate. Please enter a unique email address.",
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "table": "EMPONB_CANDIDATE_RECORD",
+                      "match_column": "EMAIL_ID"
+                    }
                   }
                 ],
                 "x": "60",
@@ -3777,15 +3789,22 @@
                 "protect": "",
                 "validations": [
                   {
-                    "type": "business_logic",
+                    "type": "builtin",
                     "name": "unique_qualification",
                     "error_code": "EDU_QLF_DUP",
                     "severity": "E",
                     "message": "Duplicate qualification is not allowed. This qualification is already added for this candidate.",
-                    "business_logic": {
-                      "method": "check_duplicate_qualification",
-                      "description": "Block saving when the selected QLF_CODE is already present on another education line of the same candidate, checking both the unsaved sibling rows in the current transaction grid and the persisted EMPONB_CAND_EDUCATION rows.",
-                      "language": "plpgsql"
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "table": "EMPONB_CAND_EDUCATION",
+                      "match_column": "QLF_CODE",
+                      "conditions": [
+                        {
+                          "column": "CANDIDATE_ID",
+                          "source": "header",
+                          "value_column": "CANDIDATE_ID"
+                        }
+                      ]
                     }
                   }
                 ]
@@ -4186,7 +4205,40 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
-                "validations": "",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "unique_family_member_name",
+                    "error_code": "FAM_MEMBER_DUP",
+                    "severity": "E",
+                    "message": "Family member '{form.MEMBER_NAME}' is already entered for this candidate. Member Name must be unique.",
+                    "builtin": {
+                      "kind": "must_be_unique",
+                      "table": "EMPONB_CAND_FAMILY",
+                      "match_column": "MEMBER_NAME",
+                      "conditions": [
+                        {
+                          "column": "CANDIDATE_ID",
+                          "source": "header",
+                          "value": "CANDIDATE_ID"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "business_logic",
+                    "name": "check_duplicate_family_member",
+                    "error_code": "FAM_DUP_MEMBER",
+                    "severity": "E",
+                    "message": "Family member '{form.MEMBER_NAME}' has already been entered for this candidate.",
+                    "business_logic": {
+                      "method": "check_duplicate_family_member",
+                      "description": "Block duplicate family member names for the same candidate",
+                      "spec": "Read the Family detail rows of the current candidate (EMPONB_CAND_FAMILY, keyed by CANDIDATE_ID) and return an error when another row already has the same MEMBER_NAME, excluding the row currently being edited.",
+                      "language": "plpgsql"
+                    }
+                  }
+                ],
                 "lookup": ""
               }
             },
@@ -4265,7 +4317,88 @@
                 "default_value": "",
                 "expression": "",
                 "protect": "",
-                "validations": "",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_brother_female",
+                    "error_code": "FAM_REL_GEN_01",
+                    "severity": "E",
+                    "message": "Brother cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Brother\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_father_female",
+                    "error_code": "FAM_REL_GEN_02",
+                    "severity": "E",
+                    "message": "Father cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Father\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_grandfather_female",
+                    "error_code": "FAM_REL_GEN_03",
+                    "severity": "E",
+                    "message": "GrandFather cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"GrandFather\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_son_female",
+                    "error_code": "FAM_REL_GEN_04",
+                    "severity": "E",
+                    "message": "Son cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Son\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_husband_female",
+                    "error_code": "FAM_REL_GEN_05",
+                    "severity": "E",
+                    "message": "Husband cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Husband\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_mother_male",
+                    "error_code": "FAM_REL_GEN_06",
+                    "severity": "E",
+                    "message": "Mother cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Mother\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_sister_male",
+                    "error_code": "FAM_REL_GEN_07",
+                    "severity": "E",
+                    "message": "Sister cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Sister\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_grandmother_male",
+                    "error_code": "FAM_REL_GEN_08",
+                    "severity": "E",
+                    "message": "GrandMother cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"GrandMother\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_wife_male",
+                    "error_code": "FAM_REL_GEN_09",
+                    "severity": "E",
+                    "message": "Wife cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Wife\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_daughter_male",
+                    "error_code": "FAM_REL_GEN_10",
+                    "severity": "E",
+                    "message": "Daughter cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Daughter\")"
+                  }
+                ],
                 "lookup": ""
               }
             },
@@ -4278,8 +4411,6 @@
                 "heading": "Relation",
                 "descr": "Relation to candidate",
                 "mandatory": true,
-                "lookup": "EMPONB_DEMOGRAPHIC_MASTER(LOOKUP_DESC, LOOKUP_CODE)",
-                "lookup_filter": "LOOKUP_TYPE = 'RELATION' AND ACTIVE_FLAG = 'Y'",
                 "x": "40",
                 "y": "40",
                 "col_id": "6",
@@ -4293,9 +4424,189 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Father",
+                      "display": "Father"
+                    },
+                    {
+                      "data": "Mother",
+                      "display": "Mother"
+                    },
+                    {
+                      "data": "Spouse",
+                      "display": "Spouse"
+                    },
+                    {
+                      "data": "Husband",
+                      "display": "Husband"
+                    },
+                    {
+                      "data": "Wife",
+                      "display": "Wife"
+                    },
+                    {
+                      "data": "Son",
+                      "display": "Son"
+                    },
+                    {
+                      "data": "Daughter",
+                      "display": "Daughter"
+                    },
+                    {
+                      "data": "Brother",
+                      "display": "Brother"
+                    },
+                    {
+                      "data": "Sister",
+                      "display": "Sister"
+                    },
+                    {
+                      "data": "Guardian",
+                      "display": "Guardian"
+                    },
+                    {
+                      "data": "Other",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "display": {
+                  "type": "status_tag",
+                  "map": [
+                    {
+                      "when": "Father",
+                      "label": "Father"
+                    },
+                    {
+                      "when": "Mother",
+                      "label": "Mother"
+                    },
+                    {
+                      "when": "Spouse",
+                      "label": "Spouse"
+                    },
+                    {
+                      "when": "Husband",
+                      "label": "Husband"
+                    },
+                    {
+                      "when": "Wife",
+                      "label": "Wife"
+                    },
+                    {
+                      "when": "Son",
+                      "label": "Son"
+                    },
+                    {
+                      "when": "Daughter",
+                      "label": "Daughter"
+                    },
+                    {
+                      "when": "Brother",
+                      "label": "Brother"
+                    },
+                    {
+                      "when": "Sister",
+                      "label": "Sister"
+                    },
+                    {
+                      "when": "Guardian",
+                      "label": "Guardian"
+                    },
+                    {
+                      "when": "Other",
+                      "label": "Other"
+                    }
+                  ],
+                  "defaultColor": "grey"
+                },
+                "lookup": "",
                 "protect": "",
-                "validations": ""
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_brother_female",
+                    "error_code": "FAM_REL_GEN_01",
+                    "severity": "E",
+                    "message": "Brother cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Brother\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_father_female",
+                    "error_code": "FAM_REL_GEN_02",
+                    "severity": "E",
+                    "message": "Father cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Father\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_grandfather_female",
+                    "error_code": "FAM_REL_GEN_03",
+                    "severity": "E",
+                    "message": "GrandFather cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"GrandFather\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_son_female",
+                    "error_code": "FAM_REL_GEN_04",
+                    "severity": "E",
+                    "message": "Son cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Son\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_husband_female",
+                    "error_code": "FAM_REL_GEN_05",
+                    "severity": "E",
+                    "message": "Husband cannot be female.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"F\" and {form.relation} == \"Husband\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_mother_male",
+                    "error_code": "FAM_REL_GEN_06",
+                    "severity": "E",
+                    "message": "Mother cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Mother\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_sister_male",
+                    "error_code": "FAM_REL_GEN_07",
+                    "severity": "E",
+                    "message": "Sister cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Sister\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_grandmother_male",
+                    "error_code": "FAM_REL_GEN_08",
+                    "severity": "E",
+                    "message": "GrandMother cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"GrandMother\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_wife_male",
+                    "error_code": "FAM_REL_GEN_09",
+                    "severity": "E",
+                    "message": "Wife cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Wife\")"
+                  },
+                  {
+                    "type": "expression",
+                    "name": "rel_gender_daughter_male",
+                    "error_code": "FAM_REL_GEN_10",
+                    "severity": "E",
+                    "message": "Daughter cannot be male.",
+                    "expression": "is_empty({form.gender}) or is_empty({form.relation}) or not ({form.gender} == \"M\" and {form.relation} == \"Daughter\")"
+                  }
+                ]
               }
             }
           ],

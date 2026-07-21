@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-07-17T09:10:42.844145+00:00",
+  "generated_at": "2026-07-21T10:56:40.555100+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -56,6 +56,12 @@
       "obj_name": "candidate_website",
       "obj_type": "X",
       "title": "CandidateWebsite",
+      "description": ""
+    },
+    {
+      "obj_name": "pending_from_candidate",
+      "obj_type": "D",
+      "title": "Pending From Candidate",
       "description": ""
     }
   ],
@@ -510,8 +516,8 @@
         "AD_NAME VARCHAR",
         "APPL_MODE VARCHAR",
         "AMOUNT_TYPE VARCHAR",
-        "RES_FORMULA VARCHAR",
         "DEFAULT_FREQUENCY VARCHAR",
+        "RES_FORMULA VARCHAR",
         "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
         "ADD_USER VARCHAR",

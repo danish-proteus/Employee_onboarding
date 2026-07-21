@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt allows to add duplicate Education record with same qualification for existing records, it should restrict for these records as well.",
   "created_at": 1784279421.1289349,
-  "updated_at": 1784520094.8491254,
+  "updated_at": 1784631507.045222,
   "todos": [
     {
       "id": "change_1",
@@ -37,7 +37,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt allows to add duplicate Education record with same qualification for existing records, it should restrict for these records as well.",
   "resume_ref": {
-    "session_id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
+    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
     "plan_id": "ceb6939d-a8a5-46c0-b9b6-042a8b9d30b8",
     "scope": null
   },

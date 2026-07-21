@@ -110,6 +110,14 @@
         {
           "value": "Other",
           "label": "Other"
+        },
+        {
+          "value": "GrandFather",
+          "label": "GrandFather"
+        },
+        {
+          "value": "GrandMother",
+          "label": "GrandMother"
         }
       ]
     }

@@ -58,7 +58,7 @@
       "data_type": "VARCHAR",
       "size": "50",
       "key": false,
-      "description": "Shift start/end timings",
+      "description": "Shift timing range, e.g. 09:00-18:00",
       "sequence": 7
     },
     {
@@ -82,7 +82,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Only active rows are selectable during finalization",
+      "description": "Only active rows are selectable in finalization",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
@@ -117,7 +117,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used to create the record",
+      "description": "Terminal/IP that created the record",
       "sequence": 13
     },
     {
@@ -125,7 +125,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Last change timestamp",
+      "description": "Record last-change timestamp",
       "sequence": 14
     },
     {
@@ -141,7 +141,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used for the last change",
+      "description": "Terminal/IP of the last change",
       "sequence": 16
     }
   ]

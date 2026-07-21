@@ -2,41 +2,41 @@
   "table_name": "EMPONB_DESIG_DEPT_MASTER",
   "objects": [
     {
+      "object_name": "emponb_designation_dept_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "CADRE_NAME",
+        "GRADE_NAME",
+        "ADD_USER",
+        "CADRE",
+        "ADD_TERM",
+        "DEPT_NAME",
+        "DESIGN_CODE",
+        "CHG_TERM",
+        "DEPT_CODE",
+        "ACTIVE_FLAG",
+        "CHG_DATE",
+        "CHG_USER",
+        "JOINED_AS",
+        "ADD_DATE",
+        "DESIGNATION_NAME",
+        "GRADE"
+      ]
+    },
+    {
       "object_name": "emponb_candidate_record",
       "form_no": "1",
       "usage_type": "R",
       "referred_columns": [
-        "DESIGNATION_NAME",
-        "DESIGN_CODE"
+        "DESIGN_CODE",
+        "DESIGNATION_NAME"
       ],
       "join_info": {
         "column": "DESIGN_CODE",
         "join_table": "EMPONB_CANDIDATE_RECORD",
         "join_column": "DESIGN_CODE"
       }
-    },
-    {
-      "object_name": "emponb_designation_dept_master",
-      "form_no": "1",
-      "usage_type": "M",
-      "referred_columns": [
-        "ADD_DATE",
-        "ADD_TERM",
-        "DESIGNATION_NAME",
-        "GRADE",
-        "ACTIVE_FLAG",
-        "DEPT_NAME",
-        "ADD_USER",
-        "CHG_DATE",
-        "JOINED_AS",
-        "DEPT_CODE",
-        "CHG_USER",
-        "CHG_TERM",
-        "DESIGN_CODE",
-        "CADRE",
-        "GRADE_NAME",
-        "CADRE_NAME"
-      ]
     }
   ]
 }

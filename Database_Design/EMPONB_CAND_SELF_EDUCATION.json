@@ -27,11 +27,64 @@
       "description": "Qualification code",
       "sequence": 3,
       "mandatory": true,
-      "lookup": {
-        "table": "EMPONB_QUALIFICATION_MASTER",
-        "display_column": "QLF_NAME",
-        "value_column": "QLF_CODE"
-      }
+      "allowed_values": [
+        {
+          "value": "QLF001",
+          "label": "10th (SSC)"
+        },
+        {
+          "value": "QLF002",
+          "label": "12th (HSC)"
+        },
+        {
+          "value": "QLF003",
+          "label": "Diploma"
+        },
+        {
+          "value": "QLF004",
+          "label": "Bachelor of Arts"
+        },
+        {
+          "value": "QLF005",
+          "label": "Bachelor of Science"
+        },
+        {
+          "value": "QLF006",
+          "label": "Bachelor of Commerce"
+        },
+        {
+          "value": "QLF007",
+          "label": "Bachelor of Engineering"
+        },
+        {
+          "value": "QLF008",
+          "label": "Bachelor of Technology"
+        },
+        {
+          "value": "QLF009",
+          "label": "Master of Arts"
+        },
+        {
+          "value": "QLF010",
+          "label": "Master of Science"
+        },
+        {
+          "value": "QLF011",
+          "label": "Master of Commerce"
+        },
+        {
+          "value": "QLF012",
+          "label": "MBA"
+        },
+        {
+          "value": "QLF013",
+          "label": "M.Tech"
+        },
+        {
+          "value": "QLF014",
+          "label": "PhD"
+        }
+      ]
     },
     {
       "column_name": "QLF_TYPE",

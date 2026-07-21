@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOn 'Submit', it should update only the change to 'Candidate Onboarding Record' for the given candidate_id",
   "created_at": 1784187312.1009805,
-  "updated_at": 1784520094.84625,
+  "updated_at": 1784631507.0427022,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOn 'Submit', it should update only the change to 'Candidate Onboarding Record' for the given candidate_id",
   "resume_ref": {
-    "session_id": "1a0daaa9-c307-4086-abe0-950b4d538b7c",
+    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
     "plan_id": "b4f595f5-c4b1-4024-9609-67c0fbf0f2b7",
     "scope": null
   },

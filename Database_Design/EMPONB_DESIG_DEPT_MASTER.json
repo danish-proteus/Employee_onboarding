@@ -75,7 +75,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Default joining designation/category",
+      "description": "Default joining role for this designation",
       "sequence": 9
     },
     {
@@ -83,7 +83,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Must be active to be selectable elsewhere",
+      "description": "Only active designations are selectable",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
@@ -118,7 +118,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used for record creation",
+      "description": "Terminal used to create the record",
       "sequence": 13
     },
     {
@@ -126,7 +126,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last change timestamp",
+      "description": "Last change timestamp",
       "sequence": 14
     },
     {
@@ -142,7 +142,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used for last change",
+      "description": "Terminal used for the last change",
       "sequence": 16
     }
   ]

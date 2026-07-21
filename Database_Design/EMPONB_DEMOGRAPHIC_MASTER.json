@@ -8,7 +8,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": true,
-      "description": "Category of the lookup value",
+      "description": "Category of lookup value",
       "sequence": 1,
       "mandatory": true,
       "allowed_values": [
@@ -60,7 +60,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Display description of the lookup value",
+      "description": "Display text shown in candidate drop-downs",
       "sequence": 3,
       "mandatory": true
     },
