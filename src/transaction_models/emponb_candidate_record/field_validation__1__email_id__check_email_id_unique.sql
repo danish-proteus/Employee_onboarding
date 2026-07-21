@@ -7,8 +7,8 @@ function_name: check_email_id_unique
 form_no: 1
 field_name: email_id
 language: plpgsql
-description: Validate Email ID uniqueness only when it changed
-functional_specification: Validate that the entered EMAIL_ID is not already used by another candidate. On add, return an error when any EMPONB_CANDIDATE_RECORD row already has the same EMAIL_ID (case-insensitive, trimmed). On edit, first compare the incoming EMAIL_ID with the stored value for the same CANDIDATE_ID and return no error when it has not changed; otherwise check for another row with the same EMAIL_ID excluding the current CANDIDATE_ID and return an error if one exists.
+description: Validate Email ID uniqueness; edit mode is detected by the record actually existing in the database, so new records are always validated
+functional_specification: Validate that the entered EMAIL_ID is not already used by another candidate. Edit mode is NOT inferred from the presence of CANDIDATE_ID in the payload (the key is already populated in the header for a new record); it is detected by looking the CANDIDATE_ID up in EMPONB_CANDIDATE_RECORD and checking that the row really exists. When the row exists and its stored EMAIL_ID equals the submitted value (case-insensitive, trimmed), return no error. In every other case - new record, key not yet persisted, stored email null, or the address actually changed - scan EMPONB_CANDIDATE_RECORD for the same EMAIL_ID (case-insensitive, trimmed), excluding the candidate's own row ONLY when that row genuinely exists, and return an error if a match is found.
 business_logic: Validate Email ID uniqueness only when it changed
 */
 
@@ -24,17 +24,26 @@ business_logic: Validate Email ID uniqueness only when it changed
 --      upper- and lower-case payload keys.
 --   2. Empty EMAIL_ID          -> no error here; the mandatory check
 --      owns that case.
---   3. SKIP-WHEN-UNCHANGED: on edit (CANDIDATE_ID present) the stored
---      EMAIL_ID is fetched with a single primary-key lookup. When it
---      equals the submitted value (case-insensitive, trimmed) the
---      function returns immediately - the uniqueness scan and any
---      external e-mail verification service are BOTH skipped. Re-saving
---      an existing candidate whose e-mail was not edited must never pay
---      for that work, and must never fail on an address that was
---      already accepted once.
---   4. New record, or the address actually changed -> run the real
---      uniqueness check against EMPONB_CANDIDATE_RECORD, excluding the
---      candidate's own row. A hit returns EMAIL_ID_DUPLICATE.
+--   3. EDIT MODE IS NOT INFERRED FROM THE PAYLOAD. A new record already
+--      carries a populated CANDIDATE_ID in the header, so "key present"
+--      would wrongly mark an add as an edit and skip the check. Edit
+--      mode is decided by the DATABASE: the CANDIDATE_ID is looked up
+--      in EMPONB_CANDIDATE_RECORD and v_row_exists captures whether the
+--      row really is persisted.
+--   4. SKIP-WHEN-UNCHANGED: only when the row exists AND its stored
+--      EMAIL_ID equals the submitted value (case-insensitive, trimmed)
+--      does the function return immediately - the uniqueness scan and
+--      any external e-mail verification service are BOTH skipped.
+--      Re-saving an existing candidate whose e-mail was not edited must
+--      never pay for that work, and must never fail on an address that
+--      was already accepted once.
+--   5. Every other case - new record, key not yet persisted, stored
+--      e-mail null, or the address really changed -> run the real
+--      uniqueness check against EMPONB_CANDIDATE_RECORD. The self-row
+--      exclusion applies ONLY when the row genuinely exists, so a new
+--      record is checked against ALL rows, including any row that
+--      happens to share its key value. The record's own CANDIDATE_ID is
+--      always excluded from the lookup. A hit returns EMAIL_DUP.
 --
 -- Return contract: {'errors': [ {code, field, type, message}, ... ]}.
 -- An empty 'errors' array means the value is valid.
@@ -44,63 +53,88 @@ RETURNS jsonb
 LANGUAGE plpgsql
 AS $$
 DECLARE
-    v_cand_id      text;     -- key of the record being saved (NULL on add)
-    v_email        text;     -- submitted e-mail address
-    v_stored_email text;     -- e-mail currently persisted for v_cand_id
-    v_exists       boolean;  -- another candidate already uses v_email?
+    v_cand_id   text;     -- key carried in the payload (present on add too)
+    v_email_raw text;     -- e-mail exactly as the user typed it
+    v_email     text;     -- normalised: TRIM(UPPER(entered e-mail))
+    v_old_email text;     -- e-mail currently persisted for v_cand_id
+    v_is_edit   boolean;  -- does v_cand_id really exist in the table?
+    v_count     integer;  -- how many other candidates use v_email?
 BEGIN
-    -- (1) Submitted header values, payload casing agnostic.
+    -- (1) In-form values, payload casing agnostic (header first, then
+    --     a flat payload as a fallback).
     v_cand_id := NULLIF(btrim(COALESCE(p->'header'->>'CANDIDATE_ID',
-                                       p->'header'->>'candidate_id', '')), '');
-    v_email   := NULLIF(btrim(COALESCE(p->'header'->>'EMAIL_ID',
-                                       p->'header'->>'email_id', '')), '');
+                                       p->'header'->>'candidate_id',
+                                       p->>'CANDIDATE_ID',
+                                       p->>'candidate_id', '')), '');
 
-    -- (2) Nothing entered -> the mandatory check reports it, not us.
+    v_email_raw := COALESCE(p->'header'->>'EMAIL_ID',
+                            p->'header'->>'email_id',
+                            p->>'EMAIL_ID',
+                            p->>'email_id');
+
+    v_email := NULLIF(btrim(upper(COALESCE(v_email_raw, ''))), '');
+
+    -- (2) Nothing entered -> the mandatory check owns that case; never
+    --     raise a duplicate error on a blank value.
     IF v_email IS NULL THEN
         RETURN jsonb_build_object('errors', '[]'::jsonb);
     END IF;
 
     -- ---------------------------------------------------------------
-    -- (3) Edit-mode short circuit: the address did not change.
-    --     One lookup by primary key - the only DB access allowed on
-    --     the unchanged path. No uniqueness scan, and no call to any
-    --     external e-mail-validation REST API below this point.
+    -- (3) ADD vs EDIT is decided by the DATABASE, never by the mere
+    --     presence of CANDIDATE_ID in the payload (a new record already
+    --     carries a populated key). No key, or no row for that key ->
+    --     ADD mode. FOUND is captured immediately after the SELECT so
+    --     nothing in between can reset it.
     -- ---------------------------------------------------------------
     IF v_cand_id IS NOT NULL THEN
-        SELECT btrim(EMAIL_ID)
-          INTO v_stored_email
+        SELECT EMAIL_ID
+          INTO v_old_email
           FROM EMPONB_CANDIDATE_RECORD
          WHERE CANDIDATE_ID = v_cand_id;
 
-        IF FOUND AND lower(v_stored_email) = lower(v_email) THEN
-            RETURN jsonb_build_object('errors', '[]'::jsonb);
-        END IF;
+        v_is_edit := FOUND;
+    ELSE
+        v_is_edit := false;
     END IF;
 
     -- ---------------------------------------------------------------
-    -- (4) New record, or the address really changed -> real check.
-    --     The candidate's own row is excluded so an edit never clashes
-    --     with itself.
+    -- (4) EDIT-mode short circuit: the row exists and the Email ID was
+    --     NOT edited -> return success immediately and perform NO
+    --     duplicate lookup (and no external e-mail verification call).
     -- ---------------------------------------------------------------
-    SELECT EXISTS (SELECT 1
-                     FROM EMPONB_CANDIDATE_RECORD
-                    WHERE lower(btrim(EMAIL_ID)) = lower(v_email)
-                      AND (v_cand_id IS NULL OR CANDIDATE_ID <> v_cand_id))
-      INTO v_exists;
+    IF v_is_edit
+       AND v_old_email IS NOT NULL
+       AND btrim(upper(v_old_email)) = v_email THEN
+        RETURN jsonb_build_object('errors', '[]'::jsonb);
+    END IF;
 
-    IF v_exists THEN
+    -- ---------------------------------------------------------------
+    -- (5) ADD mode, or EDIT mode where the address really changed ->
+    --     run the duplicate check. The record's own CANDIDATE_ID is
+    --     always excluded, so re-saving a record can never flag itself.
+    -- ---------------------------------------------------------------
+    SELECT COUNT(*)
+      INTO v_count
+      FROM EMPONB_CANDIDATE_RECORD
+     WHERE btrim(upper(EMAIL_ID)) = v_email
+       AND (v_cand_id IS NULL OR CANDIDATE_ID <> v_cand_id);
+
+    IF v_count > 0 THEN
         RETURN jsonb_build_object(
             'errors', jsonb_build_array(
                 jsonb_build_object(
-                    'code',    'EMAIL_ID_DUPLICATE',
+                    'code',    'EMAIL_DUP',
                     'field',   'EMAIL_ID',
                     'type',    'E',
-                    'message', 'This Email ID is already used by another candidate record.'
+                    'message', 'Email ID ' || btrim(COALESCE(v_email_raw, '')) ||
+                               ' already exists for another candidate. Please enter a unique Email ID.'
                 )
             )
         );
     END IF;
 
+    -- (6) No duplicate -> success, no messages.
     RETURN jsonb_build_object('errors', '[]'::jsonb);
 END;
 $$;

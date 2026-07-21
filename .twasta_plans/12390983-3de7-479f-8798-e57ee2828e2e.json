@@ -1,0 +1,45 @@
+{
+  "id": "12390983-3de7-479f-8798-e57ee2828e2e",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Re-apply the Email ID uniqueness validation on the Candidate Onboarding Record s",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ndo it again: Update the \"Candidate Onboarding Record\" model/form, and validate \"Email ID\" field value in add and edit mode but there \nis a condition for edit mode, it should validate \"Email ID\" value only when it is edited else skip it.",
+  "created_at": 1784638706.1063573,
+  "updated_at": 1784639303.414783,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Ensure EMAIL_ID field-level business_logic validation is declared on the candidate header form",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784638706.117045,
+      "completed_at": 1784638728.9638937
+    },
+    {
+      "id": "change_2",
+      "step": "change",
+      "label": "Implement check_email_id_unique: always validate on Add, validate on Edit only when EMAIL_ID changed",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784638728.981598,
+      "completed_at": 1784638774.1491475
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ndo it again: Update the \"Candidate Onboarding Record\" model/form, and validate \"Email ID\" field value in add and edit mode but there \nis a condition for edit mode, it should validate \"Email ID\" value only when it is edited else skip it.",
+  "resume_ref": {
+    "session_id": "86c46f73-5d93-457b-b240-8bbb954d481d",
+    "plan_id": "12390983-3de7-479f-8798-e57ee2828e2e",
+    "scope": null
+  },
+  "depends_on": []
+}

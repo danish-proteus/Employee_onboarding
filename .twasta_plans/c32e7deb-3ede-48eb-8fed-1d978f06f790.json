@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n3. In \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Education\" section, \nit should not allow records with similar 1. Qualification and 2. Pass Year, if one of them are same then it should show \nan appropriate validation message to the user.",
   "created_at": 1784266414.611785,
-  "updated_at": 1784636914.321823,
+  "updated_at": 1784639303.4093628,
   "todos": [
     {
       "id": "change_1",

@@ -192,21 +192,15 @@
                 },
                 "validations": [
                   {
-                    "type": "expression",
-                    "name": "Valid email",
-                    "message": "Enter a valid email address.",
-                    "expression": "match({form.email_id}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
-                  },
-                  {
                     "type": "business_logic",
-                    "name": "email_id_unique",
-                    "error_code": "EMAIL_ID_DUPLICATE",
+                    "name": "check_email_id_unique",
+                    "error_code": "EMAIL_DUP",
                     "severity": "E",
-                    "message": "This Email ID is already used by another candidate record.",
+                    "message": "Email ID {form.EMAIL_ID} already exists for another candidate.",
                     "business_logic": {
                       "method": "check_email_id_unique",
-                      "description": "Validate Email ID uniqueness only when it changed",
-                      "spec": "Validate that the entered EMAIL_ID is not already used by another candidate. On add, return an error when any EMPONB_CANDIDATE_RECORD row already has the same EMAIL_ID (case-insensitive, trimmed). On edit, first compare the incoming EMAIL_ID with the stored value for the same CANDIDATE_ID and return no error when it has not changed; otherwise check for another row with the same EMAIL_ID excluding the current CANDIDATE_ID and return an error if one exists.",
+                      "description": "Block duplicate candidate email ids",
+                      "spec": "Field-level validation on EMAIL_ID of the Candidate Record header. It is unconditional at the model level: the engine invokes it for BOTH new records (_action = 'add') and existing records (_action = 'edit'). Return an error when another EMPONB_CANDIDATE_RECORD row already holds the same EMAIL_ID. On add (_action = 'add') ALWAYS run the duplicate check against every existing EMPONB_CANDIDATE_RECORD row - there is no stored row to compare against and no exclusion applies. On edit (_action = 'edit') skip the check only when the incoming EMAIL_ID is unchanged from the stored value for the same CANDIDATE_ID, and always exclude the record being edited by CANDIDATE_ID from the duplicate search.",
                       "language": "plpgsql"
                     }
                   }

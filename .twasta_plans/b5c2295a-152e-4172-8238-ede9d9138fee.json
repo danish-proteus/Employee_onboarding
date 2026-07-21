@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nWhen \"Candidate Self\" page link is sent to the user via mail from \"Candidate Onboarding Record\" page and user tries to add new record under \"Family\" section \nthen the pages crashes and shows blank screen because of this user is unable to add new family member details. Check this issue and fix it.",
   "created_at": 1784266019.700961,
-  "updated_at": 1784636914.3213785,
+  "updated_at": 1784639303.408954,
   "todos": [
     {
       "id": "change_1",
