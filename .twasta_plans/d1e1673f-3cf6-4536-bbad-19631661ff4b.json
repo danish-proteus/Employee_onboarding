@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nwhile saving family member in \"Family\" form, it shows \"Save blocked \u2014 1 validation error\nMember Name: Incorrect validation definition for 'check_duplicate_family_member': no function/method name set.\" error, check this and fix.",
   "created_at": 1784615977.1679816,
-  "updated_at": 1784632191.5718544,
+  "updated_at": 1784636914.3272927,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nwhile saving family member in \"Family\" form, it shows \"Save blocked \u2014 1 validation error\nMember Name: Incorrect validation definition for 'check_duplicate_family_member': no function/method name set.\" error, check this and fix.",
   "resume_ref": {
-    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
+    "session_id": "86c46f73-5d93-457b-b240-8bbb954d481d",
     "plan_id": "d1e1673f-3cf6-4536-bbad-19631661ff4b",
     "scope": null
   },

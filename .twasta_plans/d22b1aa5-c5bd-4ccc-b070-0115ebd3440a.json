@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n1. All the 7 lookup relation options are showing for Relation field under the \"Family\" section \nof the \"Candidate Onboarding Record\" page but not the \"Candidate Self\" page, it should show same \nrelation options for both the fields.",
   "created_at": 1784265267.0087,
-  "updated_at": 1784632191.5663247,
+  "updated_at": 1784636914.3209417,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n1. All the 7 lookup relation options are showing for Relation field under the \"Family\" section \nof the \"Candidate Onboarding Record\" page but not the \"Candidate Self\" page, it should show same \nrelation options for both the fields.",
   "resume_ref": {
-    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
+    "session_id": "86c46f73-5d93-457b-b240-8bbb954d481d",
     "plan_id": "d22b1aa5-c5bd-4ccc-b070-0115ebd3440a",
     "scope": null
   },

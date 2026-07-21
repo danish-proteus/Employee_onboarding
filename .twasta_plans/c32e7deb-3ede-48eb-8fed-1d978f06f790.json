@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n3. In \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Education\" section, \nit should not allow records with similar 1. Qualification and 2. Pass Year, if one of them are same then it should show \nan appropriate validation message to the user.",
   "created_at": 1784266414.611785,
-  "updated_at": 1784632191.5671446,
+  "updated_at": 1784636914.321823,
   "todos": [
     {
       "id": "change_1",
@@ -37,7 +37,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n3. In \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Education\" section, \nit should not allow records with similar 1. Qualification and 2. Pass Year, if one of them are same then it should show \nan appropriate validation message to the user.",
   "resume_ref": {
-    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
+    "session_id": "86c46f73-5d93-457b-b240-8bbb954d481d",
     "plan_id": "c32e7deb-3ede-48eb-8fed-1d978f06f790",
     "scope": null
   },

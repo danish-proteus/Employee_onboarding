@@ -7,6 +7,7 @@
           "form_title": "Candidate Record",
           "form_descr": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee.",
           "form_no": "1",
+          "save_on_tab_change": false,
           "main_table": "EMPONB_CANDIDATE_RECORD",
           "columns": [
             {
@@ -197,15 +198,16 @@
                     "expression": "match({form.email_id}, \"^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$\")"
                   },
                   {
-                    "type": "builtin",
-                    "name": "unique_candidate_email",
-                    "error_code": "EMPONB_EMAIL_DUP",
+                    "type": "business_logic",
+                    "name": "email_id_unique",
+                    "error_code": "EMAIL_ID_DUPLICATE",
                     "severity": "E",
-                    "message": "Email ID {form.EMAIL_ID} already exists for another candidate. Please enter a unique email address.",
-                    "builtin": {
-                      "kind": "must_be_unique",
-                      "table": "EMPONB_CANDIDATE_RECORD",
-                      "match_column": "EMAIL_ID"
+                    "message": "This Email ID is already used by another candidate record.",
+                    "business_logic": {
+                      "method": "check_email_id_unique",
+                      "description": "Validate Email ID uniqueness only when it changed",
+                      "spec": "Validate that the entered EMAIL_ID is not already used by another candidate. On add, return an error when any EMPONB_CANDIDATE_RECORD row already has the same EMAIL_ID (case-insensitive, trimmed). On edit, first compare the incoming EMAIL_ID with the stored value for the same CANDIDATE_ID and return no error when it has not changed; otherwise check for another row with the same EMAIL_ID excluding the current CANDIDATE_ID and return an error if one exists.",
+                      "language": "plpgsql"
                     }
                   }
                 ],
@@ -3185,6 +3187,17 @@
               "expression": "not_empty({form.email_id})"
             }
           ],
+          "pre_commit": [
+            {
+              "mode": "business_logic",
+              "business_logic": {
+                "method": "skip_unchanged_save",
+                "description": "Block/skip save in edit mode when no field of the header or any detail line has been changed",
+                "spec": "Runs before COMMIT on the Candidate Record transaction. Only applies when the transaction action is an edit/update. Compare the incoming header values (EMPONB_CANDIDATE_RECORD) and every detail line (EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION, EMPONB_CAND_FAMILY, EMPONB_CAND_PAY) against the currently stored rows for the same CANDIDATE_ID, ignoring audit columns (ADD_DATE, ADD_USER, ADD_TERM, CHG_DATE, CHG_USER, CHG_TERM). If no header field differs and no detail line has been added, removed or modified, return an error so the save is skipped/rolled back with a message telling the user that there is nothing to save. Otherwise return no error so the save proceeds normally.",
+                "language": "plpgsql"
+              }
+            }
+          ],
           "actions": [
             {
               "name": "Send/Resend Link",
@@ -3220,6 +3233,8 @@
               "name": "Validate PAN",
               "handler": "message",
               "scope": "row",
+              "fire_on_change_only": true,
+              "condition": "iif({form.pan_validated} == \"Y\", 0, 1)",
               "business_logic": {
                 "method": "revalidate_pan",
                 "description": "Re-validate PAN via IOFLOW",
@@ -3240,6 +3255,8 @@
               "name": "Validate Aadhar",
               "handler": "message",
               "scope": "row",
+              "fire_on_change_only": true,
+              "condition": "iif({form.aadhar_validated} == \"Y\", 0, 1)",
               "business_logic": {
                 "method": "revalidate_aadhar",
                 "description": "Re-validate Aadhaar via IOFLOW",
@@ -3260,6 +3277,8 @@
               "name": "Validate PAN",
               "handler": "message",
               "scope": "row",
+              "fire_on_change_only": true,
+              "condition": "iif({form.pan_validated} == \"Y\", 0, 1)",
               "business_logic": {
                 "method": "validate_pan",
                 "description": "Call IOFLOW event EmpOnboardingValidate to validate the candidate PAN",
@@ -3271,6 +3290,8 @@
               "name": "Validate Aadhar",
               "handler": "message",
               "scope": "row",
+              "fire_on_change_only": true,
+              "condition": "iif({form.aadhar_validated} == \"Y\", 0, 1)",
               "business_logic": {
                 "method": "validate_aadhar",
                 "description": "Call IOFLOW event EmpOnboardingValidate to validate the candidate Aadhar",
@@ -3282,6 +3303,8 @@
               "name": "Validate Bank",
               "handler": "message",
               "scope": "row",
+              "fire_on_change_only": true,
+              "condition": "iif({form.bank_validated} == \"Y\", 0, 1)",
               "business_logic": {
                 "method": "revalidate_bank",
                 "description": "Re-validate bank via IOFLOW",
@@ -3389,6 +3412,7 @@
           "form_no": "2",
           "parent_form_no": "1",
           "parent_key_col": "CANDIDATE_ID",
+          "save_on_tab_change": false,
           "main_table": "EMPONB_CAND_EXPERIENCE",
           "columns": [
             {
@@ -3622,6 +3646,7 @@
           "form_no": "3",
           "parent_form_no": "1",
           "parent_key_col": "CANDIDATE_ID",
+          "save_on_tab_change": false,
           "main_table": "EMPONB_CAND_EDUCATION",
           "columns": [
             {
@@ -4057,6 +4082,7 @@
           "form_no": "4",
           "parent_form_no": "1",
           "parent_key_col": "CANDIDATE_ID",
+          "save_on_tab_change": false,
           "main_table": "EMPONB_CAND_FAMILY",
           "columns": [
             {
@@ -4564,6 +4590,7 @@
           "form_no": "5",
           "parent_form_no": "1",
           "parent_key_col": "CANDIDATE_ID",
+          "save_on_tab_change": false,
           "main_table": "EMPONB_CAND_PAY",
           "columns": [
             {

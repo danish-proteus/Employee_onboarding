@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Self\" page, while adding Qualification saving it, It should check whether the qualification is already\n exist and restrict duplicate qualification with appropriate message.",
   "created_at": 1784278669.123058,
-  "updated_at": 1784632191.5679638,
+  "updated_at": 1784636914.3227012,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Self\" page, while adding Qualification saving it, It should check whether the qualification is already\n exist and restrict duplicate qualification with appropriate message.",
   "resume_ref": {
-    "session_id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
+    "session_id": "86c46f73-5d93-457b-b240-8bbb954d481d",
     "plan_id": "bce1b0ff-4939-49c2-b664-2e0cfe41dfbe",
     "scope": null
   },

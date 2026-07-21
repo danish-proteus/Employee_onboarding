@@ -20,19 +20,6 @@
       ]
     },
     {
-      "object_name": "emponb_candidate_record",
-      "form_no": "3",
-      "usage_type": "R",
-      "referred_columns": [
-        "QLF_CODE"
-      ],
-      "join_info": {
-        "column": "QLF_CODE",
-        "join_table": "EMPONB_CAND_EDUCATION",
-        "join_column": "QLF_CODE"
-      }
-    },
-    {
       "object_name": "emponb_candidate_self",
       "form_no": "3",
       "usage_type": "R",
@@ -42,6 +29,19 @@
       "join_info": {
         "column": "QLF_CODE",
         "join_table": "EMPONB_CAND_SELF_EDUCATION",
+        "join_column": "QLF_CODE"
+      }
+    },
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "3",
+      "usage_type": "R",
+      "referred_columns": [
+        "QLF_CODE"
+      ],
+      "join_info": {
+        "column": "QLF_CODE",
+        "join_table": "EMPONB_CAND_EDUCATION",
         "join_column": "QLF_CODE"
       }
     }

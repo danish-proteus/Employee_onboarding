@@ -1,38 +1,10 @@
 {
   "version": 2,
-  "id": "5cf399f3-3202-4e43-89fb-1af61e7c4c84",
+  "id": "86c46f73-5d93-457b-b240-8bbb954d481d",
   "project": "Employee_onboarding",
   "description": "Process is as below\n1. HR team will fill initial information about the candidate like Name, Gender, Country, Designations, emailID, status like [Link Generate, Link Open, DataSubmitted, Review, Confirmed], status date. \n2. It should have a button to send link to candidate over email to candidate with a key. \n3. Key will have a life for say 1 day [Should be configurable]. \n4. Link will contain the URL of the form which will be embedded inside application. \n5. Stauts should be changed to \u2018Link Generated\u2019, Status date should be updated.\n6. Application will validate the key, if key is valid then only it should open the application. \n7. Status should be changed to \u2018Link Accessed\u2019, Status date should be updated.\n8. Candidate should fill the required fields like EMP_FNAME,EMP_MNAME,EMP_LNAME,NAME_PREFIX, Gender, Current Address, Current PIN, Current CITY, CURRENT STATE, Mobile, Alternate Telephone, Permanent Address, Permanent PIN, Permanent CITY, Permanent STATE, NATIONALITY, BIRTHDATE, MARITAL STATUS, MARRIAGE ANNIVERSARY, BLOOD GROUP, Contact Person, Contact Person Mobile, Contact person Email, Religion, Bank Account No, Bank IFSC Code, Bank Name, Total Experience, PF NO, ESIC NO, HOBBY1, HOBBY2, PASSPORT_NO, PAN_NO, AADHAR_NO, DRIVING LIC NO, PHYSICAL_HANDICAP, MOTHER_TONGUE, CAST_CATEGORY, \n9. Form Should have option to validate the PAN_NO, AADHAR_NO, BANK_DETAIL, It shoudl call IOFLOW API to validate, Allow only 3 try. It shoudl also store the status of these requests Validated True or False with Name returned\n10. It should also allow Candidate to attach Image/File for PAN_NO, AADHAR_NO, Bank Account No [Should attach image of crossed Cheque or Passbook].\n11. It Should have a detail table like form where Candidate can enter multiple rows for his 'Past Experince', it should have field like [LINE_NO, ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, GROSS_AMT, COUNTRY_CODE]\n12. It Should have a detail table like form where Candidate can enter multiple rows for his 'Educational Qualification', it should have field like [LINE_NO, QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION]\n13. It Should have a detail table like form where Candidate can enter multiple rows for his \u2018FAMILY', it should have field like [LINE_NO, MEMBER_NAME, DATE_BIRTH, GENDER, RELATION]\n14. Candidate Can have Save and Submit 2 options. \n15. Candidate Can edit the detail till he 'Submit\u2019. \n16. Once Submitted Candidate cannot open link. \n17. On Submission it should intimate the HR person who initiated the link. \n18. On Submission an email will be sent to Candidate with all informations Candidate filled on the form. \n19. Status should be changed to \u2018DataSubmitted\u2019, Status date should be updated.\n20. Now, HR Person Can Open the transaction and check the data submitted. Can Re-Check the AN_NO, AADHAR_NO, BANK_DETAIL via IOFLOW if needed.\n21. HR Person can further update following EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, \n22. HR PERSON Should have a detail table like form where can enter multiple rows for his \u2018CANDIDATE_PAY', it should have field like [LINE_NO, AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, RES_FORMULA, AMOUNT_CALC, UPD_PAYSTRU, APPL_MODE]\n23. ON CONFIRMATION IT SHOULD CALL IOFLOW API FOR EMPLOYEE",
-  "active_plan_id": "da7c481d-58a0-420c-9c15-72376f3e5250",
+  "active_plan_id": "d67ffee6-6ab4-4f37-b270-9df8b4f9e94a",
   "plans": [
-    {
-      "id": "6f40031b-3ab4-4bc0-82ce-7f70683f9581",
-      "title": "Make the Candidate ID input on the Candidate Page become non-editable once it ho",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Page\" screen open (object candidate_page, type S). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake candidate_id disable once value is set",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Disable Candidate ID input once it has a value on the Candidate Page",
-          "status": "completed",
-          "error": null,
-          "obj_name": "candidate_page",
-          "obj_type": "S",
-          "phase_id": null,
-          "started_at": 1784125891.5229273,
-          "completed_at": 1784125907.613245
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784125891.507527,
-      "updated_at": 1784614707.855973,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
     {
       "id": "6d888a41-14c1-40f2-a2bd-130699915154",
       "title": "Set the CANDIDATE_ID field to disabled (read-only) on the Candidate Self transac",
@@ -674,65 +646,41 @@
       "run_scope": null
     },
     {
-      "id": "da7c481d-58a0-420c-9c15-72376f3e5250",
-      "title": "Remove the Country and Currency fields from the Past Experience detail form in b",
+      "id": "d67ffee6-6ab4-4f37-b270-9df8b4f9e94a",
+      "title": "Make the Email ID duplicate/validation check on the Candidate Onboarding Record ",
       "kind": "change",
       "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nCheck the \"Past Experience\" form and remove \"Country\" and \"Currency\" fields/columns from the model and make sure this change is not affecting existing flow and functionality. I have attached the screenshot of the form for your reference, check the screenshot and make changes accordingly.",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nCheck the \"Candidate Onboarding Record\" model/screen, when user opens up any saved record from the \"Candidate Record\" \nlist in edit mode/for edit, check if \"Email ID\" is edited or not, if not then do not make API call or DB call to validate\n email id. check the attached screenshot of the form for the reference and make changes accordingly.",
       "todos": [
         {
           "id": "change_1",
           "step": "change",
-          "label": "FRS: drop Country and Currency from Past Experience data points",
-          "status": "completed",
-          "error": null,
-          "obj_name": null,
-          "obj_type": null,
-          "phase_id": null,
-          "started_at": 1784631956.4513996,
-          "completed_at": 1784631975.2114198
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "HR Candidate Record: remove Country & Currency from Past Experience form",
+          "label": "Route the Email ID duplicate check through a business-logic validation on emponb_candidate_record",
           "status": "completed",
           "error": null,
           "obj_name": "emponb_candidate_record",
           "obj_type": "T",
           "phase_id": null,
-          "started_at": 1784631975.2274246,
-          "completed_at": 1784632010.536807
+          "started_at": 1784636798.3494713,
+          "completed_at": 1784636816.6677668
         },
         {
-          "id": "change_3",
+          "id": "change_2",
           "step": "change",
-          "label": "Candidate self-service: remove Country & Currency from Past Experience form",
+          "label": "Implement check_email_id_unique \u2014 skip DB/API validation when Email ID is unchanged on edit",
           "status": "completed",
           "error": null,
-          "obj_name": "emponb_candidate_self",
+          "obj_name": "emponb_candidate_record",
           "obj_type": "T",
           "phase_id": null,
-          "started_at": 1784632010.555757,
-          "completed_at": 1784632043.6554046
-        },
-        {
-          "id": "change_4",
-          "step": "change",
-          "label": "Trim submit-to-candidate-record copy logic for the removed columns",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784632043.6739175,
-          "completed_at": 1784632057.3938332
+          "started_at": 1784636816.688618,
+          "completed_at": 1784636854.2326076
         }
       ],
       "phases": [],
       "profile_id": null,
-      "created_at": 1784631956.4280598,
-      "updated_at": 1784631956.4280605,
+      "created_at": 1784636798.3223572,
+      "updated_at": 1784636798.3223577,
       "depends_on": [],
       "dependency_spec": null,
       "run_scope": null

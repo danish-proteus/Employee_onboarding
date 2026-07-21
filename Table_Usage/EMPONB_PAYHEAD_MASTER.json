@@ -22,19 +22,6 @@
       ]
     },
     {
-      "object_name": "emponb_candidate_record",
-      "form_no": "5",
-      "usage_type": "M",
-      "referred_columns": [
-        "AD_CODE"
-      ],
-      "join_info": {
-        "column": "AD_CODE",
-        "join_table": "EMPONB_CAND_PAY",
-        "join_column": "AD_CODE"
-      }
-    },
-    {
       "object_name": "emponb_candidate_self",
       "form_no": "5",
       "usage_type": "R",
@@ -44,6 +31,19 @@
       "join_info": {
         "column": "AD_CODE",
         "join_table": "EMPONB_CAND_SELF_PAY",
+        "join_column": "AD_CODE"
+      }
+    },
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "5",
+      "usage_type": "M",
+      "referred_columns": [
+        "AD_CODE"
+      ],
+      "join_info": {
+        "column": "AD_CODE",
+        "join_table": "EMPONB_CAND_PAY",
         "join_column": "AD_CODE"
       }
     }
