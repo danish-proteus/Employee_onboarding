@@ -123,13 +123,13 @@
     "id": "ea57a10b1074",
     "name": "pan-card.webp",
     "file": "3d3ab6b6629d1e09.webp",
-    "path": "3d3ab6b6629d1e09.webp",
-    "docType": "",
-    "recordId": "",
+    "path": "emponb_candidate_self_pan_doc/11/3d3ab6b6629d1e09.webp",
+    "docType": "emponb_candidate_self_pan_doc",
+    "recordId": "11",
     "mime": "image/webp",
     "size": 36508,
     "createdAt": 1783662294,
-    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=3d3ab6b6629d1e09.webp&name=pan-card.webp"
+    "url": "/api/designers/documents/raw?project=Employee_onboarding&file=3d3ab6b6629d1e09.webp&name=pan-card.webp&dt=emponb_candidate_self_pan_doc&rid=11"
   },
   {
     "id": "5cba36c234c5",

@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
-  "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-07-24T07:28:10.911701+00:00",
+  "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
+  "generated_at": "2026-08-05T05:43:15.072959+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -38,7 +38,7 @@
       "obj_name": "emponb_candidate_record",
       "obj_type": "T",
       "title": "Candidate Onboarding Record",
-      "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
+      "description": "HR-facing candidate onboarding transaction: a header form on EMPONB_CANDIDATE_RECORD plus four detail forms - Past Exper"
     },
     {
       "obj_name": "emponb_candidate_self",

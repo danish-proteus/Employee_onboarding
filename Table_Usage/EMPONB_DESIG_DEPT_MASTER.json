@@ -2,20 +2,6 @@
   "table_name": "EMPONB_DESIG_DEPT_MASTER",
   "objects": [
     {
-      "object_name": "emponb_candidate_record",
-      "form_no": "1",
-      "usage_type": "R",
-      "referred_columns": [
-        "DESIGNATION_NAME",
-        "DESIGN_CODE"
-      ],
-      "join_info": {
-        "column": "DESIGN_CODE",
-        "join_table": "EMPONB_CANDIDATE_RECORD",
-        "join_column": "DESIGN_CODE"
-      }
-    },
-    {
       "object_name": "emponb_designation_dept_master",
       "form_no": "1",
       "usage_type": "M",
@@ -37,6 +23,20 @@
         "GRADE",
         "DEPT_CODE"
       ]
+    },
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "1",
+      "usage_type": "R",
+      "referred_columns": [
+        "DESIGNATION_NAME",
+        "DESIGN_CODE"
+      ],
+      "join_info": {
+        "column": "DESIGN_CODE",
+        "join_table": "EMPONB_CANDIDATE_RECORD",
+        "join_column": "DESIGN_CODE"
+      }
     },
     {
       "object_name": "emponb_candidate_self",

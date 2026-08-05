@@ -27,6 +27,60 @@
       "description": "Allowance/Deduction code",
       "sequence": 3,
       "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "AN5523",
+          "label": "Annual Insentive"
+        },
+        {
+          "value": "BASIC",
+          "label": "Basic Salary"
+        },
+        {
+          "value": "BONUS",
+          "label": "Annual Bonus"
+        },
+        {
+          "value": "CONVEY",
+          "label": "Conveyance Allowance"
+        },
+        {
+          "value": "DA",
+          "label": "Dearness Allowance"
+        },
+        {
+          "value": "ESI",
+          "label": "Employee State Insurance"
+        },
+        {
+          "value": "HRA",
+          "label": "House Rent Allowance"
+        },
+        {
+          "value": "LOAN",
+          "label": "Staff Loan Recovery"
+        },
+        {
+          "value": "MEDALW",
+          "label": "Medical Allowance"
+        },
+        {
+          "value": "PF",
+          "label": "Provident Fund"
+        },
+        {
+          "value": "PTAX",
+          "label": "Professional Tax"
+        },
+        {
+          "value": "SPLALW",
+          "label": "Special Allowance"
+        },
+        {
+          "value": "TDS",
+          "label": "Income Tax (TDS)"
+        }
+      ],
       "lookup": {
         "table": "EMPONB_PAYHEAD_MASTER",
         "display_column": "AD_NAME",

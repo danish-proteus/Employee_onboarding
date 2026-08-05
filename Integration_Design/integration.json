@@ -73,81 +73,63 @@
   ],
   "apis": [
     {
-      "api_name": "api_api_onboard_validate_key_6afd29",
-      "display_name": "Call /api/onboard/validate-key?key={{access_key}}",
-      "description": "Auto-migrated from raw URL call: /api/onboard/validate-key?key={{access_key}}",
+      "api_name": "validate_pan_vayana",
+      "display_name": "Validate PAN (Vayana API)",
+      "description": "Synchronous PAN verification for the Candidate Onboarding Record's 'Validate PAN' action button. The engine invokes this as a sync api_call event on the project's IOFlow application; the IOFlow flow behind it calls the connected IOFlow application 'Vayana API' (operation ValidatePAN) and shapes the reply into the item_change return contract below. The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form.",
       "category": "http",
-      "input_schema": null,
-      "output_schema": null,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "description": "CANDIDATE_ID of the record the button was clicked on"
+          },
+          "pan_no": {
+            "type": "string",
+            "description": "PAN to verify (already checked non-blank by the action)"
+          },
+          "candidate_name": {
+            "type": "string",
+            "description": "Name on record, for the name-match comparison"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "pan_no"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "description": "item_change return contract applied to the open form.",
+        "properties": {
+          "updates": {
+            "type": "object",
+            "properties": {
+              "PAN_VALIDATED": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N"
+                ],
+                "description": "'Y' when Vayana confirms the PAN, else 'N'"
+              },
+              "PAN_VALIDATED_NAME": {
+                "type": "string",
+                "description": "Registered name as returned by Vayana"
+              }
+            },
+            "required": [
+              "PAN_VALIDATED"
+            ]
+          },
+          "error": {
+            "type": "string",
+            "description": "Set instead of updates to fail the action with a message"
+          }
+        }
+      },
       "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/validate-key?key={{access_key}}"
-    },
-    {
-      "api_name": "api_api_onboard_draft_31bc88",
-      "display_name": "Call /api/onboard/draft?key={{access_key}}",
-      "description": "Auto-migrated from raw URL call: /api/onboard/draft?key={{access_key}}",
-      "category": "http",
-      "input_schema": null,
-      "output_schema": null,
-      "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/draft?key={{access_key}}"
-    },
-    {
-      "api_name": "api_api_onboard_validate_pan_b7378c",
-      "display_name": "Call /api/onboard/validate/pan",
-      "description": "Auto-migrated from raw URL call: /api/onboard/validate/pan",
-      "category": "http",
-      "input_schema": null,
-      "output_schema": null,
-      "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/validate/pan"
-    },
-    {
-      "api_name": "api_api_onboard_validate_aadhar_50098b",
-      "display_name": "Call /api/onboard/validate/aadhar",
-      "description": "Auto-migrated from raw URL call: /api/onboard/validate/aadhar",
-      "category": "http",
-      "input_schema": null,
-      "output_schema": null,
-      "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/validate/aadhar"
-    },
-    {
-      "api_name": "api_api_onboard_validate_bank_fb0c23",
-      "display_name": "Call /api/onboard/validate/bank",
-      "description": "Auto-migrated from raw URL call: /api/onboard/validate/bank",
-      "category": "http",
-      "input_schema": null,
-      "output_schema": null,
-      "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/validate/bank"
-    },
-    {
-      "api_name": "api_api_onboard_save_06f4e4",
-      "display_name": "Call /api/onboard/save",
-      "description": "Auto-migrated from raw URL call: /api/onboard/save",
-      "category": "http",
-      "input_schema": null,
-      "output_schema": null,
-      "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/save"
-    },
-    {
-      "api_name": "api_api_onboard_submit_225a6e",
-      "display_name": "Call /api/onboard/submit",
-      "description": "Auto-migrated from raw URL call: /api/onboard/submit",
-      "category": "http",
-      "input_schema": null,
-      "output_schema": null,
-      "sync": true,
-      "active": true,
-      "migrated_from": "/api/onboard/submit"
+      "active": true
     }
   ],
   "ioflow": {
@@ -164,7 +146,9 @@
       "api_api_onboard_validate_aadhar_50098b": "043564fe-9e4f-4616-b2c0-65889c49d681",
       "api_api_onboard_validate_bank_fb0c23": "c217048e-b00a-4ea7-a281-9ce7725ed30b",
       "api_api_onboard_save_06f4e4": "4483fb20-27ff-4aed-9728-a8c17298f99b",
-      "api_api_onboard_submit_225a6e": "fd25e7e8-8e73-47b4-ab42-5980d38440d5"
+      "api_api_onboard_submit_225a6e": "fd25e7e8-8e73-47b4-ab42-5980d38440d5",
+      "validate_pan_vayana": "3d4fea7c-a475-4bc6-a79a-a3acdf1386f8",
+      "api_api_onboard_candidate_self_ad05bd": "b4bb73a0-2865-4017-bdab-408a10d04e10"
     },
     "service_ids": {
       "api_api_onboard_validate_key_6afd29": "b62ae4c9-f3a6-47d9-be15-0180239f794b",
@@ -173,8 +157,9 @@
       "api_api_onboard_validate_aadhar_50098b": "d544d130-d643-4957-a417-cbe11a6f48a8",
       "api_api_onboard_validate_bank_fb0c23": "3d3e9308-56d9-492b-ad54-ede26c967fb5",
       "api_api_onboard_save_06f4e4": "34419383-06e3-43a0-853b-a2c4620db433",
-      "api_api_onboard_submit_225a6e": "d915beb0-0696-4fc5-920d-b4013040bc06"
+      "api_api_onboard_submit_225a6e": "d915beb0-0696-4fc5-920d-b4013040bc06",
+      "api_api_onboard_candidate_self_ad05bd": "7de1904c-d1b9-4669-993b-e9fd5f06b79c"
     },
-    "last_synced_at": "2026-07-10T05:30:17.780563+00:00"
+    "last_synced_at": "2026-08-04T03:48:57.217939+00:00"
   }
 }

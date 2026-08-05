@@ -3225,95 +3225,41 @@
             },
             {
               "name": "Validate PAN",
-              "handler": "message",
+              "handler": "item_change",
               "scope": "row",
-              "fire_on_change_only": true,
-              "condition": "iif({form.pan_validated} == \"Y\", 0, 1)",
-              "business_logic": {
-                "method": "revalidate_pan",
-                "description": "Re-validate PAN via IOFLOW",
-                "spec": "Invoke the IOFLOW PAN endpoint with PAN_NO; store PAN_VALIDATED and PAN_VALIDATED_NAME from the response and increment PAN_ATTEMPTS. Block the call and return an error if PAN_ATTEMPTS has already reached :max_validation_attempts. Return a result message.",
-                "language": "plpgsql"
-              },
+              "condition": "iif(not_empty({form.pan_no}), 1, 0)",
               "validations": [
                 {
                   "type": "expression",
-                  "name": "Attempts cap",
-                  "message": "PAN validation attempts exhausted.",
-                  "expression": "coalesce({form.pan_attempts}, 0) < {var.max_validation_attempts}"
+                  "name": "PAN required",
+                  "message": "PAN No must be entered before validation.",
+                  "expression": "not_empty({form.pan_no})"
                 }
               ],
+              "rest_api": {
+                "url": "",
+                "ioflow_api": "validate_pan_vayana",
+                "method": "POST",
+                "on_error": "block",
+                "params": [
+                  {
+                    "name": "candidate_id",
+                    "source": "form",
+                    "value": "candidate_id"
+                  },
+                  {
+                    "name": "pan_no",
+                    "source": "form",
+                    "value": "pan_no"
+                  },
+                  {
+                    "name": "candidate_name",
+                    "source": "form",
+                    "value": "candidate_name"
+                  }
+                ]
+              },
               "order": 2
-            },
-            {
-              "name": "Validate Aadhar",
-              "handler": "message",
-              "scope": "row",
-              "fire_on_change_only": true,
-              "condition": "iif({form.aadhar_validated} == \"Y\", 0, 1)",
-              "business_logic": {
-                "method": "revalidate_aadhar",
-                "description": "Re-validate Aadhaar via IOFLOW",
-                "spec": "Invoke the IOFLOW Aadhaar endpoint with AADHAR_NO; store AADHAR_VALIDATED and AADHAR_VALIDATED_NAME and increment AADHAR_ATTEMPTS. Block beyond :max_validation_attempts. Return a result message.",
-                "language": "plpgsql"
-              },
-              "validations": [
-                {
-                  "type": "expression",
-                  "name": "Attempts cap",
-                  "message": "Aadhaar validation attempts exhausted.",
-                  "expression": "coalesce({form.aadhar_attempts}, 0) < {var.max_validation_attempts}"
-                }
-              ],
-              "order": 3
-            },
-            {
-              "name": "Validate PAN",
-              "handler": "message",
-              "scope": "row",
-              "fire_on_change_only": true,
-              "condition": "iif({form.pan_validated} == \"Y\", 0, 1)",
-              "business_logic": {
-                "method": "validate_pan",
-                "description": "Call IOFLOW event EmpOnboardingValidate to validate the candidate PAN",
-                "spec": "On-record action for a single loaded candidate. Read CANDIDATE_ID, PAN_NO and AADHAR_NO from the loaded EMPONB_CANDIDATE_RECORD row. Call the IOFLOW event EmpOnboardingValidate to validate the candidate PAN. Return a result message.",
-                "language": "plpgsql"
-              }
-            },
-            {
-              "name": "Validate Aadhar",
-              "handler": "message",
-              "scope": "row",
-              "fire_on_change_only": true,
-              "condition": "iif({form.aadhar_validated} == \"Y\", 0, 1)",
-              "business_logic": {
-                "method": "validate_aadhar",
-                "description": "Call IOFLOW event EmpOnboardingValidate to validate the candidate Aadhar",
-                "spec": "On-record action for a single loaded candidate. Read CANDIDATE_ID, PAN_NO and AADHAR_NO from the loaded EMPONB_CANDIDATE_RECORD row. Call the IOFLOW event EmpOnboardingValidate to validate the candidate Aadhar. Return a result message.",
-                "language": "plpgsql"
-              }
-            },
-            {
-              "name": "Validate Bank",
-              "handler": "message",
-              "scope": "row",
-              "fire_on_change_only": true,
-              "condition": "iif({form.bank_validated} == \"Y\", 0, 1)",
-              "business_logic": {
-                "method": "revalidate_bank",
-                "description": "Re-validate bank via IOFLOW",
-                "spec": "Invoke the IOFLOW bank endpoint with BANK_ACCOUNT_NO and BANK_IFSC_CODE; store BANK_VALIDATED and BANK_VALIDATED_NAME and increment BANK_ATTEMPTS. Block beyond :max_validation_attempts. Return a result message.",
-                "language": "plpgsql"
-              },
-              "validations": [
-                {
-                  "type": "expression",
-                  "name": "Attempts cap",
-                  "message": "Bank validation attempts exhausted.",
-                  "expression": "coalesce({form.bank_attempts}, 0) < {var.max_validation_attempts}"
-                }
-              ],
-              "order": 4
             },
             {
               "name": "Confirm",
@@ -3355,7 +3301,7 @@
                 "on_error": "allow",
                 "params": []
               },
-              "order": 5
+              "order": 3
             },
             {
               "name": "Cancel",
@@ -3379,7 +3325,7 @@
                   "expression": "{form.status} != \"Confirmed\""
                 }
               ],
-              "order": 6
+              "order": 4
             },
             {
               "name": "Delete",
@@ -3394,7 +3340,7 @@
                   "expression": "in_list({form.status}, \"Initiated,Link Generated\") and is_empty({form.link_accessed_on})"
                 }
               ],
-              "order": 7
+              "order": 5
             }
           ]
         }

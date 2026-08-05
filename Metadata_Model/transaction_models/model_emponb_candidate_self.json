@@ -200,7 +200,67 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "DSG001",
+                      "display": "Chief Executive Officer"
+                    },
+                    {
+                      "data": "DSG002",
+                      "display": "Software Engineer"
+                    },
+                    {
+                      "data": "DSG003",
+                      "display": "Senior Software Engineer"
+                    },
+                    {
+                      "data": "DSG004",
+                      "display": "Engineering Manager"
+                    },
+                    {
+                      "data": "DSG005",
+                      "display": "HR Executive"
+                    },
+                    {
+                      "data": "DSG006",
+                      "display": "HR Manager"
+                    },
+                    {
+                      "data": "DSG007",
+                      "display": "Accountant"
+                    },
+                    {
+                      "data": "DSG008",
+                      "display": "Finance Manager"
+                    },
+                    {
+                      "data": "DSG009",
+                      "display": "Sales Executive"
+                    },
+                    {
+                      "data": "DSG010",
+                      "display": "Regional Sales Manager"
+                    },
+                    {
+                      "data": "DSG011",
+                      "display": "Marketing Specialist"
+                    },
+                    {
+                      "data": "DSG012",
+                      "display": "IT Support Analyst"
+                    },
+                    {
+                      "data": "DSG013",
+                      "display": "Flutter Developer"
+                    },
+                    {
+                      "data": "NP001",
+                      "display": "NP"
+                    }
+                  ]
+                },
                 "protect": "",
                 "validations": ""
               }
@@ -2579,7 +2639,8 @@
           },
           "actions": [
             {
-              "name": "submit_to_candidate_record",
+              "name": "Submit to HR",
+              "label": "Submit",
               "handler": "message",
               "scope": "row",
               "business_logic": {
@@ -2951,7 +3012,63 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "QLF001",
+                      "display": "Bachelor of Science"
+                    },
+                    {
+                      "data": "QLF002",
+                      "display": "Master of Business Administration"
+                    },
+                    {
+                      "data": "QLF003",
+                      "display": "Bachelor of Commerce"
+                    },
+                    {
+                      "data": "QLF004",
+                      "display": "Chartered Accountant"
+                    },
+                    {
+                      "data": "QLF005",
+                      "display": "Company Secretary"
+                    },
+                    {
+                      "data": "QLF006",
+                      "display": "Cost and Management Accountant"
+                    },
+                    {
+                      "data": "QLF007",
+                      "display": "PMP Certification"
+                    },
+                    {
+                      "data": "QLF008",
+                      "display": "AWS Solutions Architect"
+                    },
+                    {
+                      "data": "QLF009",
+                      "display": "Six Sigma Green Belt"
+                    },
+                    {
+                      "data": "QLF010",
+                      "display": "Doctor of Philosophy"
+                    },
+                    {
+                      "data": "QLF011",
+                      "display": "Diploma in Mechanical Engineering"
+                    },
+                    {
+                      "data": "QLF012",
+                      "display": "CISSP Certification"
+                    },
+                    {
+                      "data": "QLF013",
+                      "display": "Master of Computer Applications"
+                    }
+                  ]
+                },
                 "protect": ""
               }
             },
@@ -3159,7 +3276,15 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "IN",
+                      "display": "India"
+                    }
+                  ]
+                },
                 "protect": "",
                 "validations": ""
               }
@@ -3676,7 +3801,63 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "AN5523",
+                      "display": "Annual Insentive"
+                    },
+                    {
+                      "data": "BASIC",
+                      "display": "Basic Salary"
+                    },
+                    {
+                      "data": "BONUS",
+                      "display": "Annual Bonus"
+                    },
+                    {
+                      "data": "CONVEY",
+                      "display": "Conveyance Allowance"
+                    },
+                    {
+                      "data": "DA",
+                      "display": "Dearness Allowance"
+                    },
+                    {
+                      "data": "ESI",
+                      "display": "Employee State Insurance"
+                    },
+                    {
+                      "data": "HRA",
+                      "display": "House Rent Allowance"
+                    },
+                    {
+                      "data": "LOAN",
+                      "display": "Staff Loan Recovery"
+                    },
+                    {
+                      "data": "MEDALW",
+                      "display": "Medical Allowance"
+                    },
+                    {
+                      "data": "PF",
+                      "display": "Provident Fund"
+                    },
+                    {
+                      "data": "PTAX",
+                      "display": "Professional Tax"
+                    },
+                    {
+                      "data": "SPLALW",
+                      "display": "Special Allowance"
+                    },
+                    {
+                      "data": "TDS",
+                      "display": "Income Tax (TDS)"
+                    }
+                  ]
+                },
                 "protect": "",
                 "validations": ""
               }

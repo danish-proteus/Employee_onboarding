@@ -12,13 +12,6 @@
         "default": ""
       },
       {
-        "name": "max_validation_attempts",
-        "label": "Max Validation Attempts",
-        "type": "number",
-        "display": true,
-        "default": ":max_validation_attempts"
-      },
-      {
         "name": "key_status",
         "label": "Key Validation",
         "type": "json",
@@ -282,23 +275,11 @@
         "validations": [ { "rule": "regex", "arg": "^[A-Z]{5}[0-9]{4}[A-Z]$", "message": "PAN format AAAAA9999A" } ]
       },
       {
-        "name": "pan_result",
-        "label": "PAN Validation",
-        "type": "json",
-        "display": true
-      },
-      {
         "name": "aadhar_no",
         "label": "Aadhaar Number",
         "type": "text",
         "isInput": true,
         "validations": [ { "rule": "regex", "arg": "^[0-9]{12}$", "message": "Aadhaar must be 12 digits" } ]
-      },
-      {
-        "name": "aadhar_result",
-        "label": "Aadhaar Validation",
-        "type": "json",
-        "display": true
       },
       {
         "name": "passport_no",
@@ -342,12 +323,6 @@
         "label": "Bank Name",
         "type": "text",
         "isInput": true
-      },
-      {
-        "name": "bank_result",
-        "label": "Bank Validation",
-        "type": "json",
-        "display": true
       },
       {
         "name": "pan_doc_ref",
@@ -397,75 +372,6 @@
       }
     ],
     "actions": [
-      {
-        "id": "act_validate_pan",
-        "name": "validate_pan",
-        "description": "Validate PAN via IOFLOW proxy",
-        "steps": [
-          { "kind": "validate", "names": [ "pan_no" ], "on_fail_focus": true },
-          {
-            "kind": "call_api",
-            "method": "POST",
-            "url": "/api/onboard/validate/pan",
-            "body": { "key": "{{access_key}}", "value": "{{pan_no}}" },
-            "save_response_to": "pan_result",
-            "on_success": [
-              { "kind": "show_message", "level": "success", "text": "PAN check: {{pan_result.name_returned}} — {{pan_result.attempts_remaining}} attempts left" }
-            ],
-            "on_error": [
-              { "kind": "set_field_error", "name": "pan_no", "message": "{{pan_result.error}}" },
-              { "kind": "focus_input", "name": "pan_no" }
-            ],
-            "ioflow_api": "api_api_onboard_validate_pan_b7378c"
-          }
-        ]
-      },
-      {
-        "id": "act_validate_aadhar",
-        "name": "validate_aadhar",
-        "description": "Validate Aadhaar via IOFLOW proxy",
-        "steps": [
-          { "kind": "validate", "names": [ "aadhar_no" ], "on_fail_focus": true },
-          {
-            "kind": "call_api",
-            "method": "POST",
-            "url": "/api/onboard/validate/aadhar",
-            "body": { "key": "{{access_key}}", "value": "{{aadhar_no}}" },
-            "save_response_to": "aadhar_result",
-            "on_success": [
-              { "kind": "show_message", "level": "success", "text": "Aadhaar check: {{aadhar_result.name_returned}} — {{aadhar_result.attempts_remaining}} attempts left" }
-            ],
-            "on_error": [
-              { "kind": "set_field_error", "name": "aadhar_no", "message": "{{aadhar_result.error}}" },
-              { "kind": "focus_input", "name": "aadhar_no" }
-            ],
-            "ioflow_api": "api_api_onboard_validate_aadhar_50098b"
-          }
-        ]
-      },
-      {
-        "id": "act_validate_bank",
-        "name": "validate_bank",
-        "description": "Validate bank account via IOFLOW proxy",
-        "steps": [
-          { "kind": "validate", "names": [ "bank_account_no", "bank_ifsc_code" ], "on_fail_focus": true },
-          {
-            "kind": "call_api",
-            "method": "POST",
-            "url": "/api/onboard/validate/bank",
-            "body": { "key": "{{access_key}}", "value": "{{bank_account_no}}", "ifsc": "{{bank_ifsc_code}}" },
-            "save_response_to": "bank_result",
-            "on_success": [
-              { "kind": "show_message", "level": "success", "text": "Bank check: {{bank_result.name_returned}} — {{bank_result.attempts_remaining}} attempts left" }
-            ],
-            "on_error": [
-              { "kind": "set_field_error", "name": "bank_account_no", "message": "{{bank_result.error}}" },
-              { "kind": "focus_input", "name": "bank_account_no" }
-            ],
-            "ioflow_api": "api_api_onboard_validate_bank_fb0c23"
-          }
-        ]
-      },
       {
         "id": "act_copy_address",
         "name": "copy_address",
@@ -635,7 +541,6 @@
           },
           { "id": "div_2", "type": "divider" },
           { "id": "h_statutory", "type": "heading", "level": 2, "text": "Statutory & Financial" },
-          { "id": "p_attempts", "type": "paragraph", "text": "You may attempt each online validation up to {{max_validation_attempts}} times." },
           {
             "id": "form_statutory",
             "type": "form",
@@ -655,25 +560,6 @@
               { "id": "f_ifsc", "name": "bank_ifsc_code", "label": "IFSC Code", "type": "text", "required": true },
               { "id": "f_bankname", "name": "bank_name", "label": "Bank Name", "type": "text" }
             ]
-          },
-          {
-            "id": "bg_validate",
-            "type": "button_group",
-            "align": "left",
-            "gap": 8,
-            "buttons": [
-              { "id": "b_vpan", "label": "Validate PAN", "variant": "primary", "on_click": { "kind": "run_action", "actionName": "validate_pan" } },
-              { "id": "b_vaadhar", "label": "Validate Aadhaar", "variant": "primary", "on_click": { "kind": "run_action", "actionName": "validate_aadhar" } },
-              { "id": "b_vbank", "label": "Validate Bank", "variant": "primary", "on_click": { "kind": "run_action", "actionName": "validate_bank" } }
-            ]
-          },
-          {
-            "id": "callout_valstatus",
-            "type": "callout",
-            "variant": "info",
-            "title": "Validation status",
-            "body": "PAN: {{pan_result.validated}} ({{pan_result.name_returned}}, {{pan_result.attempts_remaining}} left) · Aadhaar: {{aadhar_result.validated}} ({{aadhar_result.name_returned}}, {{aadhar_result.attempts_remaining}} left) · Bank: {{bank_result.validated}} ({{bank_result.name_returned}}, {{bank_result.attempts_remaining}} left)",
-            "icon": "✅"
           },
           { "id": "div_3", "type": "divider" },
           { "id": "h_docs", "type": "heading", "level": 2, "text": "Document Uploads" },

@@ -6,17 +6,17 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
-        "QLF_CODE",
-        "ADD_USER",
-        "QLF_TYPE",
         "ADD_TERM",
-        "CHG_TERM",
+        "QLF_CODE",
+        "ADD_DATE",
         "QLF_NAME",
+        "CHG_USER",
+        "QLF_TYPE",
         "ACTIVE_FLAG",
         "CHG_DATE",
-        "CHG_USER",
-        "ADD_DATE",
-        "COURSE_TYPE"
+        "CHG_TERM",
+        "COURSE_TYPE",
+        "ADD_USER"
       ]
     },
     {

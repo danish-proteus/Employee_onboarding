@@ -20,7 +20,8 @@
         "api": {
           "method": "GET",
           "url": "/api/onboard/candidate-self?candidate_id={{candidate_id}}",
-          "triggerOn": "candidate_id"
+          "triggerOn": "candidate_id",
+          "ioflow_api": "api_api_onboard_candidate_self_ad05bd"
         }
       }
     ],

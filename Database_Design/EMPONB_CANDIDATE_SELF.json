@@ -59,6 +59,64 @@
       "key": false,
       "description": "Designation applied for",
       "sequence": 5,
+      "allowed_values": [
+        {
+          "value": "DSG001",
+          "label": "Chief Executive Officer"
+        },
+        {
+          "value": "DSG002",
+          "label": "Software Engineer"
+        },
+        {
+          "value": "DSG003",
+          "label": "Senior Software Engineer"
+        },
+        {
+          "value": "DSG004",
+          "label": "Engineering Manager"
+        },
+        {
+          "value": "DSG005",
+          "label": "HR Executive"
+        },
+        {
+          "value": "DSG006",
+          "label": "HR Manager"
+        },
+        {
+          "value": "DSG007",
+          "label": "Accountant"
+        },
+        {
+          "value": "DSG008",
+          "label": "Finance Manager"
+        },
+        {
+          "value": "DSG009",
+          "label": "Sales Executive"
+        },
+        {
+          "value": "DSG010",
+          "label": "Regional Sales Manager"
+        },
+        {
+          "value": "DSG011",
+          "label": "Marketing Specialist"
+        },
+        {
+          "value": "DSG012",
+          "label": "IT Support Analyst"
+        },
+        {
+          "value": "DSG013",
+          "label": "Flutter Developer"
+        },
+        {
+          "value": "NP001",
+          "label": "NP"
+        }
+      ],
       "lookup": {
         "table": "EMPONB_DESIG_DEPT_MASTER",
         "display_column": "DESIGNATION_NAME",

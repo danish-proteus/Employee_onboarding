@@ -4,18 +4,18 @@
     {
       "object_name": "emponb_candidate_record",
       "form_no": "5",
-      "usage_type": "M",
+      "usage_type": "R",
       "referred_columns": [
-        "AD_CODE",
-        "AMOUNT",
+        "CANDIDATE_ID",
         "AMOUNT_TYPE",
         "APPL_MODE",
-        "CANDIDATE_ID",
-        "FREQUENCY",
-        "RES_FORMULA",
+        "LINE_NO",
         "AMOUNT_CALC",
         "UPD_PAYSTRU",
-        "LINE_NO"
+        "AD_CODE",
+        "RES_FORMULA",
+        "AMOUNT",
+        "FREQUENCY"
       ],
       "join_info": {
         "column": "AD_CODE",

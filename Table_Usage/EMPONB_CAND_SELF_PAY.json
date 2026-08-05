@@ -6,16 +6,16 @@
       "form_no": "5",
       "usage_type": "M",
       "referred_columns": [
-        "AMOUNT",
-        "CANDIDATE_ID",
         "AMOUNT_TYPE",
+        "CANDIDATE_ID",
+        "AD_CODE",
         "FREQUENCY",
-        "RES_FORMULA",
-        "APPL_MODE",
-        "AMOUNT_CALC",
+        "AMOUNT",
         "LINE_NO",
+        "RES_FORMULA",
         "UPD_PAYSTRU",
-        "AD_CODE"
+        "AMOUNT_CALC",
+        "APPL_MODE"
       ]
     }
   ]
