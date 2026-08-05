@@ -25,6 +25,10 @@ DECLARE
     v_key    text;
     r        emponb_candidate_record%ROWTYPE;
     v_vars   jsonb;
+    v_exp    jsonb;
+    v_edu    jsonb;
+    v_fam    jsonb;
+    v_pay    jsonb;
 BEGIN
     -- Accept either ?key= or ?access_key= on the emailed onboarding link.
     v_key := btrim(COALESCE(v_params->>'key', v_params->>'access_key', ''));
@@ -51,6 +55,70 @@ BEGIN
             'set_vars', jsonb_build_object('access_key', v_key)
         );
     END IF;
+
+    -- Candidate row found: also pull this candidate's detail rows so the page's
+    -- detail tables can render them. Each array carries the columns shown by the
+    -- corresponding page table, in table-column order; empty array when no rows.
+    -- CHAR(n) code columns are rtrim()'d so trailing pad-spaces don't break the
+    -- select/lookup display; dates are ISO strings. Order by LINE_NO for stable rows.
+
+    -- Past Experience (form_no 2 -> EMPONB_CAND_EXPERIENCE)
+    SELECT COALESCE(jsonb_agg(jsonb_build_object(
+        'line_no',      x.LINE_NO,
+        'organisation', x.ORGANISATION,
+        'designation',  x.DESIGNATION,
+        'from_date',    to_char(x.FROM_DATE, 'YYYY-MM-DD'),
+        'to_date',      to_char(x.TO_DATE, 'YYYY-MM-DD'),
+        'gross_amt',    x.GROSS_AMT
+    ) ORDER BY x.LINE_NO), '[]'::jsonb)
+    INTO v_exp
+    FROM emponb_cand_experience x
+    WHERE x.CANDIDATE_ID = r.CANDIDATE_ID;
+
+    -- Education (form_no 3 -> EMPONB_CAND_EDUCATION)
+    SELECT COALESCE(jsonb_agg(jsonb_build_object(
+        'line_no',         x.LINE_NO,
+        'qlf_code',        NULLIF(rtrim(x.QLF_CODE), ''),
+        'qlf_type',        x.QLF_TYPE,
+        'institute',       x.INSTITUTE,
+        'pass_year',       x.PASS_YEAR,
+        'class',           x.CLASS,
+        'percentage',      x.PERCENTAGE,
+        'country_code',    NULLIF(rtrim(x.COUNTRY_CODE), ''),
+        'course_type',     x.COURSE_TYPE,
+        'course_duration', x.COURSE_DURATION
+    ) ORDER BY x.LINE_NO), '[]'::jsonb)
+    INTO v_edu
+    FROM emponb_cand_education x
+    WHERE x.CANDIDATE_ID = r.CANDIDATE_ID;
+
+    -- Family (form_no 4 -> EMPONB_CAND_FAMILY)
+    SELECT COALESCE(jsonb_agg(jsonb_build_object(
+        'line_no',     x.LINE_NO,
+        'member_name', x.MEMBER_NAME,
+        'date_birth',  to_char(x.DATE_BIRTH, 'YYYY-MM-DD'),
+        'gender',      NULLIF(rtrim(x.GENDER), ''),
+        'relation',    NULLIF(rtrim(x.RELATION), '')
+    ) ORDER BY x.LINE_NO), '[]'::jsonb)
+    INTO v_fam
+    FROM emponb_cand_family x
+    WHERE x.CANDIDATE_ID = r.CANDIDATE_ID;
+
+    -- Candidate Pay (form_no 5 -> EMPONB_CAND_PAY)
+    SELECT COALESCE(jsonb_agg(jsonb_build_object(
+        'line_no',     x.LINE_NO,
+        'ad_code',     NULLIF(rtrim(x.AD_CODE), ''),
+        'amount',      x.AMOUNT,
+        'amount_type', x.AMOUNT_TYPE,
+        'frequency',   x.FREQUENCY,
+        'res_formula', x.RES_FORMULA,
+        'amount_calc', x.AMOUNT_CALC,
+        'upd_paystru', NULLIF(rtrim(x.UPD_PAYSTRU), ''),
+        'appl_mode',   x.APPL_MODE
+    ) ORDER BY x.LINE_NO), '[]'::jsonb)
+    INTO v_pay
+    FROM emponb_cand_pay x
+    WHERE x.CANDIDATE_ID = r.CANDIDATE_ID;
 
     -- Build the pre-fill payload, dropping NULLs so they never overwrite a value,
     -- then guarantee access_key is always present.
@@ -102,7 +170,15 @@ BEGIN
     ));
 
     -- access_key must always be present, even if every other field was NULL.
-    v_vars := v_vars || jsonb_build_object('access_key', v_key);
+    -- Detail arrays are always emitted (each empty [] when the candidate has no
+    -- rows in that table) so the page's detail tables render deterministically.
+    v_vars := v_vars || jsonb_build_object(
+        'access_key', v_key,
+        'exp_rows',   COALESCE(v_exp, '[]'::jsonb),
+        'edu_rows',   COALESCE(v_edu, '[]'::jsonb),
+        'fam_rows',   COALESCE(v_fam, '[]'::jsonb),
+        'pay_rows',   COALESCE(v_pay, '[]'::jsonb)
+    );
 
     RETURN jsonb_build_object(
         'allowed', true,

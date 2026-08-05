@@ -52,8 +52,20 @@
               "obj_type": "T",
               "renderMode": "capture",
               "recordVar": "candidate_id",
-              "filters": [],
-              "readOnlyFields": ["candidate_id"],
+              "filters": [
+                {
+                  "id": "f_candidate_id",
+                  "column": "candidate_id",
+                  "op": "eq",
+                  "value": {
+                    "source": "page_input",
+                    "name": "candidate_id"
+                  }
+                }
+              ],
+              "readOnlyFields": [
+                "candidate_id"
+              ],
               "args": [
                 {
                   "id": "a_candidate_id",
@@ -67,8 +79,10 @@
                   "triggerOn": "candidate_id"
                 }
               ],
-              "mode": "single_add",
-              "captureTemplate": "single-classic"
+              "mode": "edit",
+              "captureTemplate": "single-classic",
+              "selectedIdVar": "candidate_id",
+              "selectedDataVar": "candidate_record"
             }
           }
         ]

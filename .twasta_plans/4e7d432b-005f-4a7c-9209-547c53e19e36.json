@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAfter \"Candidate Self\" form link sent to the user, and user tries to add new record under \"Education\" section it is \ncrashing the form and showing blank screen, check this issue and fix it.",
   "created_at": 1784529068.176777,
-  "updated_at": 1784639303.4112136,
+  "updated_at": 1785128388.7702453,
   "todos": [
     {
       "id": "change_1",
@@ -25,7 +25,7 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAfter \"Candidate Self\" form link sent to the user, and user tries to add new record under \"Education\" section it is \ncrashing the form and showing blank screen, check this issue and fix it.",
   "resume_ref": {
-    "session_id": "86c46f73-5d93-457b-b240-8bbb954d481d",
+    "session_id": "189feb17-8f25-427a-a337-6213406b0fa4",
     "plan_id": "4e7d432b-005f-4a7c-9209-547c53e19e36",
     "scope": null
   },

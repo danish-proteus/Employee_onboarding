@@ -62,22 +62,10 @@
         "type": "select",
         "isInput": true,
         "options": [
-          {
-            "label": "Mr.",
-            "value": "MR"
-          },
-          {
-            "label": "Mrs.",
-            "value": "MRS"
-          },
-          {
-            "label": "Ms.",
-            "value": "MS"
-          },
-          {
-            "label": "Dr.",
-            "value": "DR"
-          }
+          { "label": "Mr.", "value": "MR" },
+          { "label": "Mrs.", "value": "MRS" },
+          { "label": "Ms.", "value": "MS" },
+          { "label": "Dr.", "value": "DR" }
         ]
       },
       {
@@ -85,12 +73,7 @@
         "label": "First Name",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "required",
-            "message": "First name is required"
-          }
-        ]
+        "validations": [ { "rule": "required", "message": "First name is required" } ]
       },
       {
         "name": "emp_mname",
@@ -103,12 +86,7 @@
         "label": "Last Name",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "required",
-            "message": "Last name is required"
-          }
-        ]
+        "validations": [ { "rule": "required", "message": "Last name is required" } ]
       },
       {
         "name": "gender",
@@ -116,18 +94,9 @@
         "type": "select",
         "isInput": true,
         "options": [
-          {
-            "label": "Male",
-            "value": "M"
-          },
-          {
-            "label": "Female",
-            "value": "F"
-          },
-          {
-            "label": "Other",
-            "value": "O"
-          }
+          { "label": "Male", "value": "M" },
+          { "label": "Female", "value": "F" },
+          { "label": "Other", "value": "O" }
         ]
       },
       {
@@ -148,22 +117,10 @@
         "type": "select",
         "isInput": true,
         "options": [
-          {
-            "label": "Single",
-            "value": "SINGLE"
-          },
-          {
-            "label": "Married",
-            "value": "MARRIED"
-          },
-          {
-            "label": "Divorced",
-            "value": "DIVORCED"
-          },
-          {
-            "label": "Widowed",
-            "value": "WIDOWED"
-          }
+          { "label": "Single", "value": "SINGLE" },
+          { "label": "Married", "value": "MARRIED" },
+          { "label": "Divorced", "value": "DIVORCED" },
+          { "label": "Widowed", "value": "WIDOWED" }
         ]
       },
       {
@@ -178,38 +135,14 @@
         "type": "select",
         "isInput": true,
         "options": [
-          {
-            "label": "A+",
-            "value": "A+"
-          },
-          {
-            "label": "A-",
-            "value": "A-"
-          },
-          {
-            "label": "B+",
-            "value": "B+"
-          },
-          {
-            "label": "B-",
-            "value": "B-"
-          },
-          {
-            "label": "O+",
-            "value": "O+"
-          },
-          {
-            "label": "O-",
-            "value": "O-"
-          },
-          {
-            "label": "AB+",
-            "value": "AB+"
-          },
-          {
-            "label": "AB-",
-            "value": "AB-"
-          }
+          { "label": "A+", "value": "A+" },
+          { "label": "A-", "value": "A-" },
+          { "label": "B+", "value": "B+" },
+          { "label": "B-", "value": "B-" },
+          { "label": "O+", "value": "O+" },
+          { "label": "O-", "value": "O-" },
+          { "label": "AB+", "value": "AB+" },
+          { "label": "AB-", "value": "AB-" }
         ]
       },
       {
@@ -236,14 +169,8 @@
         "type": "select",
         "isInput": true,
         "options": [
-          {
-            "label": "No",
-            "value": "N"
-          },
-          {
-            "label": "Yes",
-            "value": "Y"
-          }
+          { "label": "No", "value": "N" },
+          { "label": "Yes", "value": "Y" }
         ]
       },
       {
@@ -275,13 +202,7 @@
         "label": "Current PIN",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[0-9]{6}$",
-            "message": "PIN must be 6 digits"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[0-9]{6}$", "message": "PIN must be 6 digits" } ]
       },
       {
         "name": "current_city",
@@ -306,13 +227,7 @@
         "label": "Permanent PIN",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[0-9]{6}$",
-            "message": "PIN must be 6 digits"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[0-9]{6}$", "message": "PIN must be 6 digits" } ]
       },
       {
         "name": "permanent_city",
@@ -331,13 +246,7 @@
         "label": "Mobile",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[0-9]{10}$",
-            "message": "Mobile must be 10 digits"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[0-9]{10}$", "message": "Mobile must be 10 digits" } ]
       },
       {
         "name": "alternate_telephone",
@@ -356,38 +265,21 @@
         "label": "Contact Person Mobile",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[0-9]{10}$",
-            "message": "Mobile must be 10 digits"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[0-9]{10}$", "message": "Mobile must be 10 digits" } ]
       },
       {
         "name": "contact_person_email",
         "label": "Contact Person Email",
         "type": "email",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "email",
-            "message": "Enter a valid email"
-          }
-        ]
+        "validations": [ { "rule": "email", "message": "Enter a valid email" } ]
       },
       {
         "name": "pan_no",
         "label": "PAN Number",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[A-Z]{5}[0-9]{4}[A-Z]$",
-            "message": "PAN format AAAAA9999A"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[A-Z]{5}[0-9]{4}[A-Z]$", "message": "PAN format AAAAA9999A" } ]
       },
       {
         "name": "pan_result",
@@ -400,13 +292,7 @@
         "label": "Aadhaar Number",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[0-9]{12}$",
-            "message": "Aadhaar must be 12 digits"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[0-9]{12}$", "message": "Aadhaar must be 12 digits" } ]
       },
       {
         "name": "aadhar_result",
@@ -449,13 +335,7 @@
         "label": "IFSC Code",
         "type": "text",
         "isInput": true,
-        "validations": [
-          {
-            "rule": "regex",
-            "arg": "^[A-Z]{4}0[A-Z0-9]{6}$",
-            "message": "Enter a valid 11-character IFSC"
-          }
-        ]
+        "validations": [ { "rule": "regex", "arg": "^[A-Z]{4}0[A-Z0-9]{6}$", "message": "Enter a valid 11-character IFSC" } ]
       },
       {
         "name": "bank_name",
@@ -486,6 +366,34 @@
         "label": "Bank Document",
         "type": "text",
         "display": true
+      },
+      {
+        "name": "exp_rows",
+        "label": "Past Experience Rows",
+        "type": "json",
+        "display": true,
+        "default": []
+      },
+      {
+        "name": "edu_rows",
+        "label": "Educational Qualification Rows",
+        "type": "json",
+        "display": true,
+        "default": []
+      },
+      {
+        "name": "fam_rows",
+        "label": "Family Details Rows",
+        "type": "json",
+        "display": true,
+        "default": []
+      },
+      {
+        "name": "pay_rows",
+        "label": "Candidate Pay Rows",
+        "type": "json",
+        "display": true,
+        "default": []
       }
     ],
     "actions": [
@@ -494,39 +402,19 @@
         "name": "validate_pan",
         "description": "Validate PAN via IOFLOW proxy",
         "steps": [
-          {
-            "kind": "validate",
-            "names": [
-              "pan_no"
-            ],
-            "on_fail_focus": true
-          },
+          { "kind": "validate", "names": [ "pan_no" ], "on_fail_focus": true },
           {
             "kind": "call_api",
             "method": "POST",
             "url": "/api/onboard/validate/pan",
-            "body": {
-              "key": "{{access_key}}",
-              "value": "{{pan_no}}"
-            },
+            "body": { "key": "{{access_key}}", "value": "{{pan_no}}" },
             "save_response_to": "pan_result",
             "on_success": [
-              {
-                "kind": "show_message",
-                "level": "success",
-                "text": "PAN check: {{pan_result.name_returned}} \u2014 {{pan_result.attempts_remaining}} attempts left"
-              }
+              { "kind": "show_message", "level": "success", "text": "PAN check: {{pan_result.name_returned}} — {{pan_result.attempts_remaining}} attempts left" }
             ],
             "on_error": [
-              {
-                "kind": "set_field_error",
-                "name": "pan_no",
-                "message": "{{pan_result.error}}"
-              },
-              {
-                "kind": "focus_input",
-                "name": "pan_no"
-              }
+              { "kind": "set_field_error", "name": "pan_no", "message": "{{pan_result.error}}" },
+              { "kind": "focus_input", "name": "pan_no" }
             ],
             "ioflow_api": "api_api_onboard_validate_pan_b7378c"
           }
@@ -537,39 +425,19 @@
         "name": "validate_aadhar",
         "description": "Validate Aadhaar via IOFLOW proxy",
         "steps": [
-          {
-            "kind": "validate",
-            "names": [
-              "aadhar_no"
-            ],
-            "on_fail_focus": true
-          },
+          { "kind": "validate", "names": [ "aadhar_no" ], "on_fail_focus": true },
           {
             "kind": "call_api",
             "method": "POST",
             "url": "/api/onboard/validate/aadhar",
-            "body": {
-              "key": "{{access_key}}",
-              "value": "{{aadhar_no}}"
-            },
+            "body": { "key": "{{access_key}}", "value": "{{aadhar_no}}" },
             "save_response_to": "aadhar_result",
             "on_success": [
-              {
-                "kind": "show_message",
-                "level": "success",
-                "text": "Aadhaar check: {{aadhar_result.name_returned}} \u2014 {{aadhar_result.attempts_remaining}} attempts left"
-              }
+              { "kind": "show_message", "level": "success", "text": "Aadhaar check: {{aadhar_result.name_returned}} — {{aadhar_result.attempts_remaining}} attempts left" }
             ],
             "on_error": [
-              {
-                "kind": "set_field_error",
-                "name": "aadhar_no",
-                "message": "{{aadhar_result.error}}"
-              },
-              {
-                "kind": "focus_input",
-                "name": "aadhar_no"
-              }
+              { "kind": "set_field_error", "name": "aadhar_no", "message": "{{aadhar_result.error}}" },
+              { "kind": "focus_input", "name": "aadhar_no" }
             ],
             "ioflow_api": "api_api_onboard_validate_aadhar_50098b"
           }
@@ -580,41 +448,19 @@
         "name": "validate_bank",
         "description": "Validate bank account via IOFLOW proxy",
         "steps": [
-          {
-            "kind": "validate",
-            "names": [
-              "bank_account_no",
-              "bank_ifsc_code"
-            ],
-            "on_fail_focus": true
-          },
+          { "kind": "validate", "names": [ "bank_account_no", "bank_ifsc_code" ], "on_fail_focus": true },
           {
             "kind": "call_api",
             "method": "POST",
             "url": "/api/onboard/validate/bank",
-            "body": {
-              "key": "{{access_key}}",
-              "value": "{{bank_account_no}}",
-              "ifsc": "{{bank_ifsc_code}}"
-            },
+            "body": { "key": "{{access_key}}", "value": "{{bank_account_no}}", "ifsc": "{{bank_ifsc_code}}" },
             "save_response_to": "bank_result",
             "on_success": [
-              {
-                "kind": "show_message",
-                "level": "success",
-                "text": "Bank check: {{bank_result.name_returned}} \u2014 {{bank_result.attempts_remaining}} attempts left"
-              }
+              { "kind": "show_message", "level": "success", "text": "Bank check: {{bank_result.name_returned}} — {{bank_result.attempts_remaining}} attempts left" }
             ],
             "on_error": [
-              {
-                "kind": "set_field_error",
-                "name": "bank_account_no",
-                "message": "{{bank_result.error}}"
-              },
-              {
-                "kind": "focus_input",
-                "name": "bank_account_no"
-              }
+              { "kind": "set_field_error", "name": "bank_account_no", "message": "{{bank_result.error}}" },
+              { "kind": "focus_input", "name": "bank_account_no" }
             ],
             "ioflow_api": "api_api_onboard_validate_bank_fb0c23"
           }
@@ -625,31 +471,11 @@
         "name": "copy_address",
         "description": "Copy current address to permanent",
         "steps": [
-          {
-            "kind": "set_input",
-            "name": "permanent_address",
-            "value": "{{current_address}}"
-          },
-          {
-            "kind": "set_input",
-            "name": "permanent_pin",
-            "value": "{{current_pin}}"
-          },
-          {
-            "kind": "set_input",
-            "name": "permanent_city",
-            "value": "{{current_city}}"
-          },
-          {
-            "kind": "set_input",
-            "name": "permanent_state",
-            "value": "{{current_state}}"
-          },
-          {
-            "kind": "show_message",
-            "level": "info",
-            "text": "Current address copied to permanent."
-          }
+          { "kind": "set_input", "name": "permanent_address", "value": "{{current_address}}" },
+          { "kind": "set_input", "name": "permanent_pin", "value": "{{current_pin}}" },
+          { "kind": "set_input", "name": "permanent_city", "value": "{{current_city}}" },
+          { "kind": "set_input", "name": "permanent_state", "value": "{{current_state}}" },
+          { "kind": "show_message", "level": "info", "text": "Current address copied to permanent." }
         ]
       },
       {
@@ -661,23 +487,13 @@
             "kind": "call_api",
             "method": "POST",
             "url": "/api/onboard/save",
-            "body": {
-              "key": "{{access_key}}"
-            },
+            "body": { "key": "{{access_key}}" },
             "save_response_to": "save_res",
             "on_success": [
-              {
-                "kind": "show_message",
-                "level": "success",
-                "text": "Draft saved. You can return to this link and continue later."
-              }
+              { "kind": "show_message", "level": "success", "text": "Draft saved. You can return to this link and continue later." }
             ],
             "on_error": [
-              {
-                "kind": "show_message",
-                "level": "error",
-                "text": "Could not save draft: {{save_res.error}}"
-              }
+              { "kind": "show_message", "level": "error", "text": "Could not save draft: {{save_res.error}}" }
             ],
             "ioflow_api": "api_api_onboard_save_06f4e4"
           }
@@ -688,39 +504,18 @@
         "name": "submit",
         "description": "Final submission of the onboarding form",
         "steps": [
-          {
-            "kind": "validate",
-            "names": [
-              "emp_fname",
-              "emp_lname",
-              "mobile",
-              "pan_no",
-              "aadhar_no",
-              "bank_ifsc_code"
-            ],
-            "on_fail_focus": true
-          },
+          { "kind": "validate", "names": [ "emp_fname", "emp_lname", "mobile", "pan_no", "aadhar_no", "bank_ifsc_code" ], "on_fail_focus": true },
           {
             "kind": "call_api",
             "method": "POST",
             "url": "/api/onboard/submit",
-            "body": {
-              "key": "{{access_key}}"
-            },
+            "body": { "key": "{{access_key}}" },
             "save_response_to": "submit_res",
             "on_success": [
-              {
-                "kind": "show_message",
-                "level": "success",
-                "text": "Thank you! Your details have been submitted. A summary has been emailed to you."
-              }
+              { "kind": "show_message", "level": "success", "text": "Thank you! Your details have been submitted. A summary has been emailed to you." }
             ],
             "on_error": [
-              {
-                "kind": "show_message",
-                "level": "error",
-                "text": "Submission failed: {{submit_res.error}}"
-              }
+              { "kind": "show_message", "level": "error", "text": "Submission failed: {{submit_res.error}}" }
             ],
             "ioflow_api": "api_api_onboard_submit_225a6e"
           }
@@ -741,12 +536,7 @@
             "subtitle": "Please complete your onboarding details below. You can save a draft and return any time using the same link until you submit.",
             "align": "center",
             "height": "compact",
-            "background": {
-              "kind": "gradient",
-              "gradientFrom": "#0f172a",
-              "gradientTo": "#1e3a8a",
-              "gradientAngle": 135
-            },
+            "background": { "kind": "gradient", "gradientFrom": "#0f172a", "gradientTo": "#1e3a8a", "gradientAngle": 135 },
             "textColor": "#ffffff"
           }
         ]
@@ -760,20 +550,16 @@
             "type": "callout",
             "variant": "error",
             "title": "Invalid or expired link",
-            "body": "This onboarding link is no longer valid \u2014 it may have expired, already been submitted, or been entered incorrectly. Please contact your HR team for assistance.",
-            "icon": "\u26a0\ufe0f",
-            "visibility": {
-              "condition": "{{key_valid}} != true"
-            }
+            "body": "This onboarding link is no longer valid — it may have expired, already been submitted, or been entered incorrectly. Please contact your HR team for assistance.",
+            "icon": "⚠️",
+            "visibility": { "condition": "{{key_valid}} != true" }
           }
         ]
       },
       {
         "id": "sec_form",
         "tag": "main",
-        "visibility": {
-          "condition": "{{key_valid}} == true"
-        },
+        "visibility": { "condition": "{{key_valid}} == true" },
         "blocks": [
           {
             "id": "h_personal",
@@ -790,230 +576,38 @@
             "submitLabel": "Save Draft",
             "submitAction": "save_draft",
             "fields": [
-              {
-                "id": "f_prefix",
-                "name": "name_prefix",
-                "label": "Prefix",
-                "type": "select",
-                "options": [
-                  {
-                    "label": "Mr.",
-                    "value": "MR"
-                  },
-                  {
-                    "label": "Mrs.",
-                    "value": "MRS"
-                  },
-                  {
-                    "label": "Ms.",
-                    "value": "MS"
-                  },
-                  {
-                    "label": "Dr.",
-                    "value": "DR"
-                  }
-                ]
-              },
-              {
-                "id": "f_fname",
-                "name": "emp_fname",
-                "label": "First Name",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "f_mname",
-                "name": "emp_mname",
-                "label": "Middle Name",
-                "type": "text"
-              },
-              {
-                "id": "f_lname",
-                "name": "emp_lname",
-                "label": "Last Name",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "f_gender",
-                "name": "gender",
-                "label": "Gender",
-                "type": "select",
-                "options": [
-                  {
-                    "label": "Male",
-                    "value": "M"
-                  },
-                  {
-                    "label": "Female",
-                    "value": "F"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "O"
-                  }
-                ]
-              },
-              {
-                "id": "f_dob",
-                "name": "birthdate",
-                "label": "Date of Birth",
-                "type": "date"
-              },
-              {
-                "id": "f_nat",
-                "name": "nationality",
-                "label": "Nationality",
-                "type": "text"
-              },
-              {
-                "id": "f_marital",
-                "name": "marital_status",
-                "label": "Marital Status",
-                "type": "select",
-                "options": [
-                  {
-                    "label": "Single",
-                    "value": "SINGLE"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "MARRIED"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "DIVORCED"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "WIDOWED"
-                  }
-                ]
-              },
-              {
-                "id": "f_anniv",
-                "name": "marriage_anniversary",
-                "label": "Marriage Anniversary",
-                "type": "date"
-              },
-              {
-                "id": "f_blood",
-                "name": "blood_group",
-                "label": "Blood Group",
-                "type": "select",
-                "options": [
-                  {
-                    "label": "A+",
-                    "value": "A+"
-                  },
-                  {
-                    "label": "A-",
-                    "value": "A-"
-                  },
-                  {
-                    "label": "B+",
-                    "value": "B+"
-                  },
-                  {
-                    "label": "B-",
-                    "value": "B-"
-                  },
-                  {
-                    "label": "O+",
-                    "value": "O+"
-                  },
-                  {
-                    "label": "O-",
-                    "value": "O-"
-                  },
-                  {
-                    "label": "AB+",
-                    "value": "AB+"
-                  },
-                  {
-                    "label": "AB-",
-                    "value": "AB-"
-                  }
-                ]
-              },
-              {
-                "id": "f_relig",
-                "name": "religion",
-                "label": "Religion",
-                "type": "text"
-              },
-              {
-                "id": "f_caste",
-                "name": "cast_category",
-                "label": "Caste Category",
-                "type": "text"
-              },
-              {
-                "id": "f_mtongue",
-                "name": "mother_tongue",
-                "label": "Mother Tongue",
-                "type": "text"
-              },
-              {
-                "id": "f_handicap",
-                "name": "physical_handicap",
-                "label": "Physically Handicapped",
-                "type": "select",
-                "options": [
-                  {
-                    "label": "No",
-                    "value": "N"
-                  },
-                  {
-                    "label": "Yes",
-                    "value": "Y"
-                  }
-                ]
-              },
-              {
-                "id": "f_hobby1",
-                "name": "hobby1",
-                "label": "Hobby 1",
-                "type": "text"
-              },
-              {
-                "id": "f_hobby2",
-                "name": "hobby2",
-                "label": "Hobby 2",
-                "type": "text"
-              },
-              {
-                "id": "f_totexp",
-                "name": "total_experience",
-                "label": "Total Experience (years)",
-                "type": "number"
-              }
+              { "id": "f_prefix", "name": "name_prefix", "label": "Prefix", "type": "select",
+                "options": [ { "label": "Mr.", "value": "MR" }, { "label": "Mrs.", "value": "MRS" }, { "label": "Ms.", "value": "MS" }, { "label": "Dr.", "value": "DR" } ] },
+              { "id": "f_fname", "name": "emp_fname", "label": "First Name", "type": "text", "required": true },
+              { "id": "f_mname", "name": "emp_mname", "label": "Middle Name", "type": "text" },
+              { "id": "f_lname", "name": "emp_lname", "label": "Last Name", "type": "text", "required": true },
+              { "id": "f_gender", "name": "gender", "label": "Gender", "type": "select",
+                "options": [ { "label": "Male", "value": "M" }, { "label": "Female", "value": "F" }, { "label": "Other", "value": "O" } ] },
+              { "id": "f_dob", "name": "birthdate", "label": "Date of Birth", "type": "date" },
+              { "id": "f_nat", "name": "nationality", "label": "Nationality", "type": "text" },
+              { "id": "f_marital", "name": "marital_status", "label": "Marital Status", "type": "select",
+                "options": [ { "label": "Single", "value": "SINGLE" }, { "label": "Married", "value": "MARRIED" }, { "label": "Divorced", "value": "DIVORCED" }, { "label": "Widowed", "value": "WIDOWED" } ] },
+              { "id": "f_anniv", "name": "marriage_anniversary", "label": "Marriage Anniversary", "type": "date" },
+              { "id": "f_blood", "name": "blood_group", "label": "Blood Group", "type": "select",
+                "options": [ { "label": "A+", "value": "A+" }, { "label": "A-", "value": "A-" }, { "label": "B+", "value": "B+" }, { "label": "B-", "value": "B-" }, { "label": "O+", "value": "O+" }, { "label": "O-", "value": "O-" }, { "label": "AB+", "value": "AB+" }, { "label": "AB-", "value": "AB-" } ] },
+              { "id": "f_relig", "name": "religion", "label": "Religion", "type": "text" },
+              { "id": "f_caste", "name": "cast_category", "label": "Caste Category", "type": "text" },
+              { "id": "f_mtongue", "name": "mother_tongue", "label": "Mother Tongue", "type": "text" },
+              { "id": "f_handicap", "name": "physical_handicap", "label": "Physically Handicapped", "type": "select",
+                "options": [ { "label": "No", "value": "N" }, { "label": "Yes", "value": "Y" } ] },
+              { "id": "f_hobby1", "name": "hobby1", "label": "Hobby 1", "type": "text" },
+              { "id": "f_hobby2", "name": "hobby2", "label": "Hobby 2", "type": "text" },
+              { "id": "f_totexp", "name": "total_experience", "label": "Total Experience (years)", "type": "number" }
             ]
           },
-          {
-            "id": "div_1",
-            "type": "divider"
-          },
-          {
-            "id": "h_address",
-            "type": "heading",
-            "level": 2,
-            "text": "Address & Contact"
-          },
+          { "id": "div_1", "type": "divider" },
+          { "id": "h_address", "type": "heading", "level": 2, "text": "Address & Contact" },
           {
             "id": "btn_copy_addr",
             "type": "button",
             "align": "right",
-            "button": {
-              "id": "b_copy",
-              "label": "Permanent same as current",
-              "variant": "outline",
-              "size": "sm",
-              "on_click": {
-                "kind": "run_action",
-                "actionName": "copy_address"
-              }
-            }
+            "button": { "id": "b_copy", "label": "Permanent same as current", "variant": "outline", "size": "sm",
+              "on_click": { "kind": "run_action", "actionName": "copy_address" } }
           },
           {
             "id": "form_address",
@@ -1024,102 +618,24 @@
             "submitLabel": "Save Draft",
             "submitAction": "save_draft",
             "fields": [
-              {
-                "id": "f_caddr",
-                "name": "current_address",
-                "label": "Current Address",
-                "type": "textarea"
-              },
-              {
-                "id": "f_cpin",
-                "name": "current_pin",
-                "label": "Current PIN",
-                "type": "text"
-              },
-              {
-                "id": "f_ccity",
-                "name": "current_city",
-                "label": "Current City",
-                "type": "text"
-              },
-              {
-                "id": "f_cstate",
-                "name": "current_state",
-                "label": "Current State",
-                "type": "text"
-              },
-              {
-                "id": "f_paddr",
-                "name": "permanent_address",
-                "label": "Permanent Address",
-                "type": "textarea"
-              },
-              {
-                "id": "f_ppin",
-                "name": "permanent_pin",
-                "label": "Permanent PIN",
-                "type": "text"
-              },
-              {
-                "id": "f_pcity",
-                "name": "permanent_city",
-                "label": "Permanent City",
-                "type": "text"
-              },
-              {
-                "id": "f_pstate",
-                "name": "permanent_state",
-                "label": "Permanent State",
-                "type": "text"
-              },
-              {
-                "id": "f_mobile",
-                "name": "mobile",
-                "label": "Mobile",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "f_alt",
-                "name": "alternate_telephone",
-                "label": "Alternate Telephone",
-                "type": "text"
-              },
-              {
-                "id": "f_cperson",
-                "name": "contact_person",
-                "label": "Emergency Contact Person",
-                "type": "text"
-              },
-              {
-                "id": "f_cpmob",
-                "name": "contact_person_mobile",
-                "label": "Contact Person Mobile",
-                "type": "text"
-              },
-              {
-                "id": "f_cpemail",
-                "name": "contact_person_email",
-                "label": "Contact Person Email",
-                "type": "email"
-              }
+              { "id": "f_caddr", "name": "current_address", "label": "Current Address", "type": "textarea" },
+              { "id": "f_cpin", "name": "current_pin", "label": "Current PIN", "type": "text" },
+              { "id": "f_ccity", "name": "current_city", "label": "Current City", "type": "text" },
+              { "id": "f_cstate", "name": "current_state", "label": "Current State", "type": "text" },
+              { "id": "f_paddr", "name": "permanent_address", "label": "Permanent Address", "type": "textarea" },
+              { "id": "f_ppin", "name": "permanent_pin", "label": "Permanent PIN", "type": "text" },
+              { "id": "f_pcity", "name": "permanent_city", "label": "Permanent City", "type": "text" },
+              { "id": "f_pstate", "name": "permanent_state", "label": "Permanent State", "type": "text" },
+              { "id": "f_mobile", "name": "mobile", "label": "Mobile", "type": "text", "required": true },
+              { "id": "f_alt", "name": "alternate_telephone", "label": "Alternate Telephone", "type": "text" },
+              { "id": "f_cperson", "name": "contact_person", "label": "Emergency Contact Person", "type": "text" },
+              { "id": "f_cpmob", "name": "contact_person_mobile", "label": "Contact Person Mobile", "type": "text" },
+              { "id": "f_cpemail", "name": "contact_person_email", "label": "Contact Person Email", "type": "email" }
             ]
           },
-          {
-            "id": "div_2",
-            "type": "divider"
-          },
-          {
-            "id": "h_statutory",
-            "type": "heading",
-            "level": 2,
-            "text": "Statutory & Financial"
-          },
-          {
-            "id": "p_attempts",
-            "type": "paragraph",
-            "text": "You may attempt each online validation up to {{max_validation_attempts}} times."
-          },
+          { "id": "div_2", "type": "divider" },
+          { "id": "h_statutory", "type": "heading", "level": 2, "text": "Statutory & Financial" },
+          { "id": "p_attempts", "type": "paragraph", "text": "You may attempt each online validation up to {{max_validation_attempts}} times." },
           {
             "id": "form_statutory",
             "type": "form",
@@ -1129,63 +645,15 @@
             "submitLabel": "Save Draft",
             "submitAction": "save_draft",
             "fields": [
-              {
-                "id": "f_pan",
-                "name": "pan_no",
-                "label": "PAN Number",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "f_aadhar",
-                "name": "aadhar_no",
-                "label": "Aadhaar Number",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "f_passport",
-                "name": "passport_no",
-                "label": "Passport Number",
-                "type": "text"
-              },
-              {
-                "id": "f_dl",
-                "name": "driving_lic_no",
-                "label": "Driving Licence Number",
-                "type": "text"
-              },
-              {
-                "id": "f_pf",
-                "name": "pf_no",
-                "label": "PF Number",
-                "type": "text"
-              },
-              {
-                "id": "f_esic",
-                "name": "esic_no",
-                "label": "ESIC Number",
-                "type": "text"
-              },
-              {
-                "id": "f_bankacc",
-                "name": "bank_account_no",
-                "label": "Bank Account Number",
-                "type": "text"
-              },
-              {
-                "id": "f_ifsc",
-                "name": "bank_ifsc_code",
-                "label": "IFSC Code",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "f_bankname",
-                "name": "bank_name",
-                "label": "Bank Name",
-                "type": "text"
-              }
+              { "id": "f_pan", "name": "pan_no", "label": "PAN Number", "type": "text", "required": true },
+              { "id": "f_aadhar", "name": "aadhar_no", "label": "Aadhaar Number", "type": "text", "required": true },
+              { "id": "f_passport", "name": "passport_no", "label": "Passport Number", "type": "text" },
+              { "id": "f_dl", "name": "driving_lic_no", "label": "Driving Licence Number", "type": "text" },
+              { "id": "f_pf", "name": "pf_no", "label": "PF Number", "type": "text" },
+              { "id": "f_esic", "name": "esic_no", "label": "ESIC Number", "type": "text" },
+              { "id": "f_bankacc", "name": "bank_account_no", "label": "Bank Account Number", "type": "text" },
+              { "id": "f_ifsc", "name": "bank_ifsc_code", "label": "IFSC Code", "type": "text", "required": true },
+              { "id": "f_bankname", "name": "bank_name", "label": "Bank Name", "type": "text" }
             ]
           },
           {
@@ -1194,33 +662,9 @@
             "align": "left",
             "gap": 8,
             "buttons": [
-              {
-                "id": "b_vpan",
-                "label": "Validate PAN",
-                "variant": "primary",
-                "on_click": {
-                  "kind": "run_action",
-                  "actionName": "validate_pan"
-                }
-              },
-              {
-                "id": "b_vaadhar",
-                "label": "Validate Aadhaar",
-                "variant": "primary",
-                "on_click": {
-                  "kind": "run_action",
-                  "actionName": "validate_aadhar"
-                }
-              },
-              {
-                "id": "b_vbank",
-                "label": "Validate Bank",
-                "variant": "primary",
-                "on_click": {
-                  "kind": "run_action",
-                  "actionName": "validate_bank"
-                }
-              }
+              { "id": "b_vpan", "label": "Validate PAN", "variant": "primary", "on_click": { "kind": "run_action", "actionName": "validate_pan" } },
+              { "id": "b_vaadhar", "label": "Validate Aadhaar", "variant": "primary", "on_click": { "kind": "run_action", "actionName": "validate_aadhar" } },
+              { "id": "b_vbank", "label": "Validate Bank", "variant": "primary", "on_click": { "kind": "run_action", "actionName": "validate_bank" } }
             ]
           },
           {
@@ -1228,24 +672,12 @@
             "type": "callout",
             "variant": "info",
             "title": "Validation status",
-            "body": "PAN: {{pan_result.validated}} ({{pan_result.name_returned}}, {{pan_result.attempts_remaining}} left) \u00b7 Aadhaar: {{aadhar_result.validated}} ({{aadhar_result.name_returned}}, {{aadhar_result.attempts_remaining}} left) \u00b7 Bank: {{bank_result.validated}} ({{bank_result.name_returned}}, {{bank_result.attempts_remaining}} left)",
-            "icon": "\u2705"
+            "body": "PAN: {{pan_result.validated}} ({{pan_result.name_returned}}, {{pan_result.attempts_remaining}} left) · Aadhaar: {{aadhar_result.validated}} ({{aadhar_result.name_returned}}, {{aadhar_result.attempts_remaining}} left) · Bank: {{bank_result.validated}} ({{bank_result.name_returned}}, {{bank_result.attempts_remaining}} left)",
+            "icon": "✅"
           },
-          {
-            "id": "div_3",
-            "type": "divider"
-          },
-          {
-            "id": "h_docs",
-            "type": "heading",
-            "level": 2,
-            "text": "Document Uploads"
-          },
-          {
-            "id": "p_docs",
-            "type": "paragraph",
-            "text": "Upload clear scans (image or PDF) of your PAN card, Aadhaar card, and a cancelled cheque or bank passbook page. File size limits apply."
-          },
+          { "id": "div_3", "type": "divider" },
+          { "id": "h_docs", "type": "heading", "level": 2, "text": "Document Uploads" },
+          { "id": "p_docs", "type": "paragraph", "text": "Upload clear scans (image or PDF) of your PAN card, Aadhaar card, and a cancelled cheque or bank passbook page. File size limits apply." },
           {
             "id": "form_docs",
             "type": "form",
@@ -1255,41 +687,14 @@
             "submitLabel": "Save Draft",
             "submitAction": "save_draft",
             "fields": [
-              {
-                "id": "f_pandoc",
-                "name": "pan_doc",
-                "label": "PAN Document (image/PDF)",
-                "type": "file"
-              },
-              {
-                "id": "f_aadhardoc",
-                "name": "aadhar_doc",
-                "label": "Aadhaar Document (image/PDF)",
-                "type": "file"
-              },
-              {
-                "id": "f_bankdoc",
-                "name": "bank_doc",
-                "label": "Bank Document \u2014 cancelled cheque or passbook (image/PDF)",
-                "type": "file"
-              }
+              { "id": "f_pandoc", "name": "pan_doc", "label": "PAN Document (image/PDF)", "type": "file" },
+              { "id": "f_aadhardoc", "name": "aadhar_doc", "label": "Aadhaar Document (image/PDF)", "type": "file" },
+              { "id": "f_bankdoc", "name": "bank_doc", "label": "Bank Document — cancelled cheque or passbook (image/PDF)", "type": "file" }
             ]
           },
-          {
-            "id": "div_4",
-            "type": "divider"
-          },
-          {
-            "id": "h_experience",
-            "type": "heading",
-            "level": 2,
-            "text": "Past Experience"
-          },
-          {
-            "id": "p_exp",
-            "type": "paragraph",
-            "text": "Add a row for each previous employer."
-          },
+          { "id": "div_4", "type": "divider" },
+          { "id": "h_experience", "type": "heading", "level": 2, "text": "Past Experience" },
+          { "id": "p_exp", "type": "paragraph", "text": "Add a row for each previous employer." },
           {
             "id": "embed_experience",
             "type": "table",
@@ -1297,55 +702,19 @@
             "striped": true,
             "align": "left",
             "columns": [
-              {
-                "id": "ec1",
-                "label": "Organisation",
-                "align": "left"
-              },
-              {
-                "id": "ec2",
-                "label": "Designation",
-                "align": "left"
-              },
-              {
-                "id": "ec3",
-                "label": "From Date",
-                "align": "left"
-              },
-              {
-                "id": "ec4",
-                "label": "To Date",
-                "align": "left"
-              },
-              {
-                "id": "ec5",
-                "label": "Gross Amount",
-                "align": "right"
-              },
-              {
-                "id": "ec6",
-                "label": "Currency",
-                "align": "left"
-              },
-              {
-                "id": "ec7",
-                "label": "Country",
-                "align": "left"
-              }
+              { "id": "ec1", "label": "Organisation", "align": "left" },
+              { "id": "ec2", "label": "Designation", "align": "left" },
+              { "id": "ec3", "label": "From Date", "align": "left" },
+              { "id": "ec4", "label": "To Date", "align": "left" },
+              { "id": "ec5", "label": "Gross Amount", "align": "right" },
+              { "id": "ec6", "label": "Currency", "align": "left" },
+              { "id": "ec7", "label": "Country", "align": "left" }
             ],
-            "rows": []
+            "rows": [],
+            "bindings": { "rows": { "source": "page_input", "name": "exp_rows", "fallback": [] } }
           },
-          {
-            "id": "h_education",
-            "type": "heading",
-            "level": 2,
-            "text": "Educational Qualification"
-          },
-          {
-            "id": "p_edu",
-            "type": "paragraph",
-            "text": "Add a row for each qualification."
-          },
+          { "id": "h_education", "type": "heading", "level": 2, "text": "Educational Qualification" },
+          { "id": "p_edu", "type": "paragraph", "text": "Add a row for each qualification." },
           {
             "id": "embed_education",
             "type": "table",
@@ -1353,65 +722,21 @@
             "striped": true,
             "align": "left",
             "columns": [
-              {
-                "id": "qc1",
-                "label": "Qualification",
-                "align": "left"
-              },
-              {
-                "id": "qc2",
-                "label": "Type",
-                "align": "left"
-              },
-              {
-                "id": "qc3",
-                "label": "Institute",
-                "align": "left"
-              },
-              {
-                "id": "qc4",
-                "label": "Pass Year",
-                "align": "left"
-              },
-              {
-                "id": "qc5",
-                "label": "Class",
-                "align": "left"
-              },
-              {
-                "id": "qc6",
-                "label": "Percentage",
-                "align": "right"
-              },
-              {
-                "id": "qc7",
-                "label": "Country",
-                "align": "left"
-              },
-              {
-                "id": "qc8",
-                "label": "Course Type",
-                "align": "left"
-              },
-              {
-                "id": "qc9",
-                "label": "Course Duration",
-                "align": "left"
-              }
+              { "id": "qc1", "label": "Qualification", "align": "left" },
+              { "id": "qc2", "label": "Type", "align": "left" },
+              { "id": "qc3", "label": "Institute", "align": "left" },
+              { "id": "qc4", "label": "Pass Year", "align": "left" },
+              { "id": "qc5", "label": "Class", "align": "left" },
+              { "id": "qc6", "label": "Percentage", "align": "right" },
+              { "id": "qc7", "label": "Country", "align": "left" },
+              { "id": "qc8", "label": "Course Type", "align": "left" },
+              { "id": "qc9", "label": "Course Duration", "align": "left" }
             ],
-            "rows": []
+            "rows": [],
+            "bindings": { "rows": { "source": "page_input", "name": "edu_rows", "fallback": [] } }
           },
-          {
-            "id": "h_family",
-            "type": "heading",
-            "level": 2,
-            "text": "Family Details"
-          },
-          {
-            "id": "p_fam",
-            "type": "paragraph",
-            "text": "Add a row for each family member."
-          },
+          { "id": "h_family", "type": "heading", "level": 2, "text": "Family Details" },
+          { "id": "p_fam", "type": "paragraph", "text": "Add a row for each family member." },
           {
             "id": "embed_family",
             "type": "table",
@@ -1419,66 +744,44 @@
             "striped": true,
             "align": "left",
             "columns": [
-              {
-                "id": "fc1",
-                "label": "Member Name",
-                "align": "left"
-              },
-              {
-                "id": "fc2",
-                "label": "Date of Birth",
-                "align": "left"
-              },
-              {
-                "id": "fc3",
-                "label": "Gender",
-                "align": "left"
-              },
-              {
-                "id": "fc4",
-                "label": "Relation",
-                "align": "left"
-              }
+              { "id": "fc1", "label": "Member Name", "align": "left" },
+              { "id": "fc2", "label": "Date of Birth", "align": "left" },
+              { "id": "fc3", "label": "Gender", "align": "left" },
+              { "id": "fc4", "label": "Relation", "align": "left" }
             ],
-            "rows": []
+            "rows": [],
+            "bindings": { "rows": { "source": "page_input", "name": "fam_rows", "fallback": [] } }
           },
+          { "id": "h_pay", "type": "heading", "level": 2, "text": "Candidate Pay" },
+          { "id": "p_pay", "type": "paragraph", "text": "Compensation structure set by HR for your onboarding record." },
           {
-            "id": "div_5",
-            "type": "divider"
+            "id": "embed_pay",
+            "type": "table",
+            "heading": "Candidate Pay",
+            "striped": true,
+            "align": "left",
+            "columns": [
+              { "id": "pc1", "label": "Pay Head", "align": "left" },
+              { "id": "pc2", "label": "Amount", "align": "right" },
+              { "id": "pc3", "label": "Amount Type", "align": "left" },
+              { "id": "pc4", "label": "Frequency", "align": "left" },
+              { "id": "pc5", "label": "Earning/Deduction", "align": "left" }
+            ],
+            "rows": [],
+            "bindings": { "rows": { "source": "page_input", "name": "pay_rows", "fallback": [] } }
           },
+          { "id": "div_5", "type": "divider" },
           {
             "id": "bg_actions",
             "type": "button_group",
             "align": "center",
             "gap": 12,
             "buttons": [
-              {
-                "id": "b_save",
-                "label": "Save Draft",
-                "variant": "outline",
-                "size": "lg",
-                "on_click": {
-                  "kind": "run_action",
-                  "actionName": "save_draft"
-                }
-              },
-              {
-                "id": "b_submit",
-                "label": "Submit",
-                "variant": "primary",
-                "size": "lg",
-                "on_click": {
-                  "kind": "run_action",
-                  "actionName": "submit"
-                }
-              }
+              { "id": "b_save", "label": "Save Draft", "variant": "outline", "size": "lg", "on_click": { "kind": "run_action", "actionName": "save_draft" } },
+              { "id": "b_submit", "label": "Submit", "variant": "primary", "size": "lg", "on_click": { "kind": "run_action", "actionName": "submit" } }
             ]
           },
-          {
-            "id": "p_submitnote",
-            "type": "paragraph",
-            "text": "Once you submit, the form is locked and this link can no longer be reopened. A full summary of your submitted details will be emailed to you and your HR team will be notified."
-          }
+          { "id": "p_submitnote", "type": "paragraph", "text": "Once you submit, the form is locked and this link can no longer be reopened. A full summary of your submitted details will be emailed to you and your HR team will be notified." }
         ]
       }
     ],
@@ -1498,8 +801,8 @@
       "business_logic": {
         "method": "seed_access_key",
         "language": "plpgsql",
-        "description": "Read the onboarding key from the URL and pre-populate the form with the candidate's on-file details for that key",
-        "spec": "On page load, read the candidate key from the page URL params (accept either ?key= or ?access_key=), trim it, and always return it via set_vars as access_key so the key-validation gate and API loaders can run. Do not deny access here (always return allowed=true); key validity, expiry and already-submitted checks are handled by the client-side validate-key API gate, which also renders the form only when the key is valid. If no key is present, return access_key as an empty string and set no other vars. When a non-empty key is present, look up the single emponb_candidate_record row whose ACCESS_KEY equals that trimmed key; if a matching candidate is found, additionally return via set_vars that candidate's identity and on-file onboarding details so the form is pre-filled with whatever has already been captured for this candidate_id (HR-captured values on first open, plus any previously saved values on a return visit). Map each candidate_record column to the matching page input variable of the same lowercased name: candidate_id (CANDIDATE_ID), candidate_name (CANDIDATE_NAME), name_prefix (NAME_PREFIX), emp_fname (EMP_FNAME), emp_mname (EMP_MNAME), emp_lname (EMP_LNAME), gender (GENDER), birthdate (BIRTHDATE), nationality (NATIONALITY), marital_status (MARITAL_STATUS), marriage_anniversary (MARRIAGE_ANNIVERSARY), blood_group (BLOOD_GROUP), religion (RELIGION), cast_category (CAST_CATEGORY), mother_tongue (MOTHER_TONGUE), physical_handicap (PHYSICAL_HANDICAP), hobby1 (HOBBY1), hobby2 (HOBBY2), total_experience (TOTAL_EXPERIENCE), current_address (CURRENT_ADDRESS), current_pin (CURRENT_PIN), current_city (CURRENT_CITY), current_state (CURRENT_STATE), permanent_address (PERMANENT_ADDRESS), permanent_pin (PERMANENT_PIN), permanent_city (PERMANENT_CITY), permanent_state (PERMANENT_STATE), mobile (MOBILE), alternate_telephone (ALTERNATE_TELEPHONE), contact_person (CONTACT_PERSON), contact_person_mobile (CONTACT_PERSON_MOBILE), contact_person_email (CONTACT_PERSON_EMAIL), pan_no (PAN_NO), aadhar_no (AADHAR_NO), passport_no (PASSPORT_NO), driving_lic_no (DRIVING_LIC_NO), pf_no (PF_NO), esic_no (ESIC_NO), bank_account_no (BANK_ACCOUNT_NO), bank_ifsc_code (BANK_IFSC_CODE), bank_name (BANK_NAME). Dates should be returned as ISO yyyy-mm-dd strings and NULL columns omitted or returned as empty so they do not overwrite anything. Always include access_key in set_vars. If no candidate row matches the key, return only access_key (still allowed=true) so the invalid-link callout can show."
+        "description": "Read the onboarding key from the URL and pre-populate the form with the candidate's on-file details, and detail rows, for that key",
+        "spec": "On page load, read the candidate key from the page URL params (accept either ?key= or ?access_key=), trim it, and always return it via set_vars as access_key so the key-validation gate and API loaders can run. Do not deny access here (always return allowed=true); key validity, expiry and already-submitted checks are handled by the client-side validate-key API gate, which also renders the form only when the key is valid. If no key is present, return access_key as an empty string and set no other vars. When a non-empty key is present, look up the single emponb_candidate_record row whose ACCESS_KEY equals that trimmed key; if a matching candidate is found, additionally return via set_vars that candidate's identity and on-file onboarding details so the form is pre-filled with whatever has already been captured for this candidate_id (HR-captured values on first open, plus any previously saved values on a return visit). Map each candidate_record column to the matching page input variable of the same lowercased name: candidate_id (CANDIDATE_ID), candidate_name (CANDIDATE_NAME), name_prefix (NAME_PREFIX), emp_fname (EMP_FNAME), emp_mname (EMP_MNAME), emp_lname (EMP_LNAME), gender (GENDER), birthdate (BIRTHDATE), nationality (NATIONALITY), marital_status (MARITAL_STATUS), marriage_anniversary (MARRIAGE_ANNIVERSARY), blood_group (BLOOD_GROUP), religion (RELIGION), cast_category (CAST_CATEGORY), mother_tongue (MOTHER_TONGUE), physical_handicap (PHYSICAL_HANDICAP), hobby1 (HOBBY1), hobby2 (HOBBY2), total_experience (TOTAL_EXPERIENCE), current_address (CURRENT_ADDRESS), current_pin (CURRENT_PIN), current_city (CURRENT_CITY), current_state (CURRENT_STATE), permanent_address (PERMANENT_ADDRESS), permanent_pin (PERMANENT_PIN), permanent_city (PERMANENT_CITY), permanent_state (PERMANENT_STATE), mobile (MOBILE), alternate_telephone (ALTERNATE_TELEPHONE), contact_person (CONTACT_PERSON), contact_person_mobile (CONTACT_PERSON_MOBILE), contact_person_email (CONTACT_PERSON_EMAIL), pan_no (PAN_NO), aadhar_no (AADHAR_NO), passport_no (PASSPORT_NO), driving_lic_no (DRIVING_LIC_NO), pf_no (PF_NO), esic_no (ESIC_NO), bank_account_no (BANK_ACCOUNT_NO), bank_ifsc_code (BANK_IFSC_CODE), bank_name (BANK_NAME). Dates should be returned as ISO yyyy-mm-dd strings and NULL columns omitted or returned as empty so they do not overwrite anything. Also, when a matching candidate is found, load that candidate's detail rows (by CANDIDATE_ID) from EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION, EMPONB_CAND_FAMILY and EMPONB_CAND_PAY, ordered by LINE_NO, and return each as an array-of-arrays via set_vars matching the page table columns in order: exp_rows = [[ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, '', ''] ...] (FROM_DATE/TO_DATE as ISO yyyy-mm-dd strings; the trailing two positions correspond to Currency/Country columns which EMPONB_CAND_EXPERIENCE does not store, so return empty strings there), edu_rows = [[QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION] ...], fam_rows = [[MEMBER_NAME, DATE_BIRTH, GENDER, RELATION] ...] (DATE_BIRTH as ISO yyyy-mm-dd), pay_rows = [[AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, APPL_MODE] ...] from EMPONB_CAND_PAY. If no rows exist for a table, return an empty array for that variable. If no candidate row matches the key, return only access_key (still allowed=true), with exp_rows/edu_rows/fam_rows/pay_rows left unset (empty), so the invalid-link callout can show."
       }
     },
     "blocks": []

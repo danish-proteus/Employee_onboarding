@@ -6,22 +6,17 @@
       "form_no": "5",
       "usage_type": "M",
       "referred_columns": [
-        "FREQUENCY",
         "AMOUNT",
-        "LINE_NO",
-        "RES_FORMULA",
-        "AMOUNT_CALC",
-        "AMOUNT_TYPE",
-        "UPD_PAYSTRU",
-        "APPL_MODE",
         "CANDIDATE_ID",
+        "AMOUNT_TYPE",
+        "FREQUENCY",
+        "RES_FORMULA",
+        "APPL_MODE",
+        "AMOUNT_CALC",
+        "LINE_NO",
+        "UPD_PAYSTRU",
         "AD_CODE"
-      ],
-      "join_info": {
-        "column": "AD_CODE",
-        "join_table": "EMPONB_PAYHEAD_MASTER",
-        "join_column": "AD_CODE"
-      }
+      ]
     }
   ]
 }

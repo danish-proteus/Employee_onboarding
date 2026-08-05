@@ -35,7 +35,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Department name",
+      "description": "Name of the department",
       "sequence": 4
     },
     {
@@ -51,7 +51,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Grade name",
+      "description": "Name of the grade",
       "sequence": 6
     },
     {
@@ -67,7 +67,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Cadre name",
+      "description": "Name of the cadre",
       "sequence": 8
     },
     {
@@ -75,7 +75,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Default joining role for this designation",
+      "description": "Designation title on joining",
       "sequence": 9
     },
     {
@@ -83,17 +83,17 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Only active designations are selectable",
+      "description": "Whether this design code is active and selectable",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
         {
           "value": "Y",
-          "label": "Yes"
+          "label": "Active"
         },
         {
           "value": "N",
-          "label": "No"
+          "label": "Inactive"
         }
       ]
     },
@@ -118,7 +118,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used to create the record",
+      "description": "Terminal/IP that created the record",
       "sequence": 13
     },
     {
@@ -142,7 +142,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal used for the last change",
+      "description": "Terminal/IP that last changed the record",
       "sequence": 16
     }
   ]

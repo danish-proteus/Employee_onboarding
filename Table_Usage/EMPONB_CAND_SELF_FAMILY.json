@@ -7,11 +7,11 @@
       "usage_type": "M",
       "referred_columns": [
         "GENDER",
-        "DATE_BIRTH",
-        "LINE_NO",
         "MEMBER_NAME",
         "CANDIDATE_ID",
-        "RELATION"
+        "RELATION",
+        "DATE_BIRTH",
+        "LINE_NO"
       ]
     }
   ]

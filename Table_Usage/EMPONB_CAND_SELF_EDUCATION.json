@@ -4,25 +4,20 @@
     {
       "object_name": "emponb_candidate_self",
       "form_no": "3",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
-        "CLASS",
-        "COURSE_DURATION",
-        "QLF_TYPE",
-        "COURSE_TYPE",
         "QLF_CODE",
-        "PASS_YEAR",
-        "LINE_NO",
-        "PERCENTAGE",
-        "INSTITUTE",
         "COUNTRY_CODE",
-        "CANDIDATE_ID"
-      ],
-      "join_info": {
-        "column": "COUNTRY_CODE",
-        "join_table": "EMPONB_COUNTRY_MASTER",
-        "join_column": "COUNTRY_CODE"
-      }
+        "COURSE_TYPE",
+        "CANDIDATE_ID",
+        "PASS_YEAR",
+        "PERCENTAGE",
+        "COURSE_DURATION",
+        "INSTITUTE",
+        "QLF_TYPE",
+        "LINE_NO",
+        "CLASS"
+      ]
     }
   ]
 }

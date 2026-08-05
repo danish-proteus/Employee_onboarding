@@ -130,6 +130,64 @@ def run(args):
             {"cid": candidate_id},
         )
 
+    # --- Seed the candidate's SELF record from HR's captured data --------------
+    # The purge above cleared this candidate's SELF capture. Recreate it from the
+    # HR candidate record so the self-service form opens PRE-FILLED with what HR
+    # entered. The SELF *header* is recreated FIRST: the detail tables carry a FK
+    # to emponb_candidate_self(candidate_id), so a header row must exist before any
+    # child row can be inserted, and it also makes the header's personal fields
+    # appear immediately. We copy ONLY the personal / contact / statutory /
+    # financial columns — the same vetted set the candidate_id item_change
+    # (load_candidate_self_header) seeds — and deliberately NOT the SELF-side
+    # workflow / validation columns (status, access_key, *_validated, key_*, …),
+    # which must start fresh for the candidate's own submission.
+    _self_header_cols = (
+        "candidate_id", "candidate_name", "gender", "design_code", "email_id",
+        "name_prefix", "emp_fname", "emp_mname", "emp_lname", "birthdate",
+        "nationality", "marital_status", "marriage_anniversary", "blood_group",
+        "religion", "cast_category", "mother_tongue", "physical_handicap",
+        "hobby1", "hobby2", "total_experience", "current_address", "current_pin",
+        "current_city", "current_state", "permanent_address", "permanent_pin",
+        "permanent_city", "permanent_state", "mobile", "alternate_telephone",
+        "contact_person", "contact_person_mobile", "contact_person_email",
+        "pan_no", "pan_doc", "aadhar_no", "aadhar_doc", "passport_no",
+        "passport_doc", "driving_lic_no", "driving_lic_doc", "pf_no", "pf_doc",
+        "esic_no", "esic_doc", "bank_account_no", "bank_ifsc_code", "bank_name",
+        "bank_doc",
+    )
+    _hdr_list = ", ".join(_self_header_cols)
+    db.execute(
+        "INSERT INTO " + db.t("emponb_candidate_self") + " (" + _hdr_list + ") "
+        + "SELECT " + _hdr_list + " FROM " + db.t("emponb_candidate_record")
+        + " WHERE candidate_id = :cid",
+        {"cid": candidate_id},
+    )
+
+    # Then copy the four detail grids (record side -> matching SELF child tables).
+    # The tables were just emptied above and the header now exists, so a straight
+    # INSERT ... SELECT is enough. Record and self child tables share identical
+    # columns, so the same list drives both sides.
+    for _rec_table, _self_table, _cols in (
+        ("emponb_cand_experience", "emponb_cand_self_experience",
+         ("organisation", "designation", "from_date", "to_date",
+          "gross_amt", "currency_code", "country_code")),
+        ("emponb_cand_education", "emponb_cand_self_education",
+         ("qlf_code", "qlf_type", "institute", "pass_year", "class",
+          "percentage", "country_code", "course_type", "course_duration")),
+        ("emponb_cand_family", "emponb_cand_self_family",
+         ("member_name", "date_birth", "gender", "relation")),
+        ("emponb_cand_pay", "emponb_cand_self_pay",
+         ("ad_code", "amount", "amount_type", "frequency", "res_formula",
+          "amount_calc", "upd_paystru", "appl_mode")),
+    ):
+        _col_list = ", ".join(("candidate_id", "line_no") + _cols)
+        db.execute(
+            "INSERT INTO " + db.t(_self_table) + " (" + _col_list + ") "
+            + "SELECT " + _col_list + " FROM " + db.t(_rec_table)
+            + " WHERE candidate_id = :cid",
+            {"cid": candidate_id},
+        )
+
     # --- Re-read the PERSISTED row so IOFlow gets the committed values ---------
     # All relevant columns are now written on the row. We read them back and emit
     # the IOFlow event FROM the persisted values (not the in-memory locals), so

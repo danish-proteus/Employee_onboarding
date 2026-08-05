@@ -15,14 +15,14 @@
                 "db_name": "DESIGN_CODE",
                 "col_type": "VARCHAR",
                 "heading": "Design Code",
-                "descr": "Unique designation code",
+                "descr": "Unique design code for this designation",
                 "group_name": "Basic",
                 "key": true,
                 "mandatory": true,
                 "validations": [
                   {
                     "type": "builtin",
-                    "name": "Unique design code",
+                    "name": "Design code unique",
                     "message": "Design code already exists.",
                     "builtin": {
                       "kind": "must_be_unique"
@@ -83,16 +83,6 @@
                 "descr": "Department code",
                 "group_name": "Basic",
                 "mandatory": true,
-                "validations": [
-                  {
-                    "type": "builtin",
-                    "name": "Unique dept code",
-                    "message": "Department code already exists.",
-                    "builtin": {
-                      "kind": "must_be_unique"
-                    }
-                  }
-                ],
                 "x": "30",
                 "y": "30",
                 "col_id": "3",
@@ -108,6 +98,7 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -116,8 +107,8 @@
                 "name": "dept_name",
                 "db_name": "DEPT_NAME",
                 "col_type": "VARCHAR",
-                "heading": "Dept Name",
-                "descr": "Department name",
+                "heading": "Department Name",
+                "descr": "Name of the department",
                 "group_name": "Basic",
                 "x": "40",
                 "y": "40",
@@ -147,16 +138,6 @@
                 "heading": "Grade",
                 "descr": "Grade code",
                 "group_name": "Grade & Cadre",
-                "validations": [
-                  {
-                    "type": "builtin",
-                    "name": "Unique grade code",
-                    "message": "Grade code already exists.",
-                    "builtin": {
-                      "kind": "must_be_unique"
-                    }
-                  }
-                ],
                 "x": "60",
                 "y": "60",
                 "col_id": "5",
@@ -173,6 +154,7 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -182,7 +164,7 @@
                 "db_name": "GRADE_NAME",
                 "col_type": "VARCHAR",
                 "heading": "Grade Name",
-                "descr": "Grade name",
+                "descr": "Name of the grade",
                 "group_name": "Grade & Cadre",
                 "x": "70",
                 "y": "70",
@@ -212,16 +194,6 @@
                 "heading": "Cadre",
                 "descr": "Cadre code",
                 "group_name": "Grade & Cadre",
-                "validations": [
-                  {
-                    "type": "builtin",
-                    "name": "Unique cadre code",
-                    "message": "Cadre code already exists.",
-                    "builtin": {
-                      "kind": "must_be_unique"
-                    }
-                  }
-                ],
                 "x": "80",
                 "y": "80",
                 "col_id": "7",
@@ -238,6 +210,7 @@
                 "expression": "",
                 "edit_mask": "",
                 "protect": "",
+                "validations": "",
                 "lookup": ""
               }
             },
@@ -247,7 +220,7 @@
                 "db_name": "CADRE_NAME",
                 "col_type": "VARCHAR",
                 "heading": "Cadre Name",
-                "descr": "Cadre name",
+                "descr": "Name of the cadre",
                 "group_name": "Grade & Cadre",
                 "x": "90",
                 "y": "90",
@@ -275,7 +248,7 @@
                 "db_name": "JOINED_AS",
                 "col_type": "VARCHAR",
                 "heading": "Joined As",
-                "descr": "Default joining role for this designation",
+                "descr": "Designation title on joining",
                 "group_name": "Grade & Cadre",
                 "x": "100",
                 "y": "100",
@@ -303,7 +276,7 @@
                 "db_name": "ACTIVE_FLAG",
                 "col_type": "VARCHAR",
                 "heading": "Active",
-                "descr": "Only active designations are selectable",
+                "descr": "Whether this design code is active and selectable",
                 "group_name": "Basic",
                 "mandatory": true,
                 "default_value": "Y",
@@ -312,11 +285,11 @@
                   "values": [
                     {
                       "data": "Y",
-                      "display": "Yes"
+                      "display": "Active"
                     },
                     {
                       "data": "N",
-                      "display": "No"
+                      "display": "Inactive"
                     }
                   ]
                 },
@@ -399,7 +372,7 @@
                 "db_name": "ADD_TERM",
                 "col_type": "VARCHAR",
                 "heading": "Added Terminal",
-                "descr": "Terminal used to create the record",
+                "descr": "Terminal/IP that created the record",
                 "group_name": "Others",
                 "protect": "1",
                 "default_value": ":audit_add_terminal",
@@ -483,7 +456,7 @@
                 "db_name": "CHG_TERM",
                 "col_type": "VARCHAR",
                 "heading": "Changed Terminal",
-                "descr": "Terminal used for the last change",
+                "descr": "Terminal/IP that last changed the record",
                 "group_name": "Others",
                 "protect": "1",
                 "default_value": ":audit_chg_terminal",

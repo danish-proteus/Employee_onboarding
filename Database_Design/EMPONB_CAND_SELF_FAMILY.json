@@ -5,10 +5,10 @@
   "columns": [
     {
       "column_name": "CANDIDATE_ID",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Parent candidate id",
+      "description": "Parent candidate reference",
       "sequence": 1
     },
     {
@@ -16,7 +16,7 @@
       "data_type": "NUMBER",
       "size": "5",
       "key": true,
-      "description": "Auto-sequenced line number",
+      "description": "Line sequence number",
       "sequence": 2
     },
     {
@@ -33,15 +33,15 @@
       "data_type": "DATE",
       "size": "",
       "key": false,
-      "description": "Member date of birth",
+      "description": "Family member date of birth",
       "sequence": 4
     },
     {
       "column_name": "GENDER",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Member gender",
+      "description": "Family member gender",
       "sequence": 5,
       "allowed_values": [
         {
@@ -60,7 +60,7 @@
     },
     {
       "column_name": "RELATION",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "Relation to candidate",
@@ -104,20 +104,20 @@
           "label": "Sister"
         },
         {
-          "value": "Guardian",
-          "label": "Guardian"
-        },
-        {
-          "value": "Other",
-          "label": "Other"
-        },
-        {
           "value": "GrandFather",
           "label": "GrandFather"
         },
         {
           "value": "GrandMother",
           "label": "GrandMother"
+        },
+        {
+          "value": "Guardian",
+          "label": "Guardian"
+        },
+        {
+          "value": "Other",
+          "label": "Other"
         }
       ]
     }

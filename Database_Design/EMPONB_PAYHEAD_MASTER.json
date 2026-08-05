@@ -17,7 +17,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Descriptive name of the pay head",
+      "description": "Name of the allowance/deduction",
       "sequence": 2,
       "mandatory": true
     },
@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Whether this pay head is an Earning or Deduction",
+      "description": "Whether this pay head is an earning or a deduction",
       "sequence": 3,
       "mandatory": true,
       "allowed_values": [
@@ -45,7 +45,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "How the pay head amount is determined",
+      "description": "How the amount is determined",
       "sequence": 4,
       "mandatory": true,
       "allowed_values": [
@@ -64,12 +64,20 @@
       ]
     },
     {
+      "column_name": "RES_FORMULA",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Resolution formula, mandatory when Amount Type is Formula",
+      "sequence": 5
+    },
+    {
       "column_name": "DEFAULT_FREQUENCY",
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Default payment frequency for this pay head",
-      "sequence": 5,
+      "description": "Default frequency at which the pay head is applied",
+      "sequence": 6,
       "mandatory": true,
       "allowed_values": [
         {
@@ -87,19 +95,11 @@
       ]
     },
     {
-      "column_name": "RES_FORMULA",
-      "data_type": "VARCHAR",
-      "size": "500",
-      "key": false,
-      "description": "Formula used to compute the amount when Amount Type is Formula",
-      "sequence": 6
-    },
-    {
       "column_name": "ACTIVE_FLAG",
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Whether this pay head is active",
+      "description": "Whether this pay head is active and selectable",
       "sequence": 7,
       "mandatory": true,
       "allowed_values": [
@@ -142,7 +142,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last-change timestamp",
+      "description": "Last change timestamp",
       "sequence": 11
     },
     {

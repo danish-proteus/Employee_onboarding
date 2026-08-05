@@ -17,7 +17,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Employment site name",
+      "description": "Name of the employment site",
       "sequence": 2,
       "mandatory": true
     },
@@ -34,7 +34,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Payroll site name",
+      "description": "Name of the payroll site",
       "sequence": 4
     },
     {
@@ -50,7 +50,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Work shift name",
+      "description": "Name of the work shift",
       "sequence": 6
     },
     {
@@ -58,7 +58,7 @@
       "data_type": "VARCHAR",
       "size": "50",
       "key": false,
-      "description": "Shift timing range, e.g. 09:00-18:00",
+      "description": "Timing details of the work shift",
       "sequence": 7
     },
     {
@@ -66,7 +66,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Holiday table code",
+      "description": "Holiday table number",
       "sequence": 8
     },
     {
@@ -74,7 +74,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Holiday table name",
+      "description": "Name of the holiday table",
       "sequence": 9
     },
     {
@@ -82,17 +82,17 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Only active rows are selectable in finalization",
+      "description": "Whether this setup row is active and selectable in finalization",
       "sequence": 10,
       "mandatory": true,
       "allowed_values": [
         {
           "value": "Y",
-          "label": "Yes"
+          "label": "Active"
         },
         {
           "value": "N",
-          "label": "No"
+          "label": "Inactive"
         }
       ]
     },
@@ -125,7 +125,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last-change timestamp",
+      "description": "Last change timestamp",
       "sequence": 14
     },
     {
@@ -141,7 +141,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP of the last change",
+      "description": "Terminal/IP that last changed the record",
       "sequence": 16
     }
   ]

@@ -1,0 +1,33 @@
+{
+  "id": "b3d8ff2a-fdc0-499c-8426-759d45a54ab7",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Make the Candidate Self form upsert (overwrite) an existing candidate record ins",
+  "kind": "change",
+  "status": "completed",
+  "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
+  "created_at": 1784789260.5027142,
+  "updated_at": 1785128388.7758603,
+  "todos": [
+    {
+      "id": "change_1",
+      "step": "change",
+      "label": "Allow overwriting an existing Candidate ID on the Candidate Self form",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_self",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1784727818.4120784,
+      "completed_at": 1784727857.950546
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
+  "resume_ref": {
+    "session_id": "189feb17-8f25-427a-a337-6213406b0fa4",
+    "plan_id": "b3d8ff2a-fdc0-499c-8426-759d45a54ab7",
+    "scope": null
+  },
+  "depends_on": []
+}

@@ -2,42 +2,9 @@
   "table_name": "EMPONB_PAYHEAD_MASTER",
   "objects": [
     {
-      "object_name": "emponb_payhead_master",
-      "form_no": "1",
-      "usage_type": "M",
-      "referred_columns": [
-        "RES_FORMULA",
-        "APPL_MODE",
-        "ADD_USER",
-        "ADD_TERM",
-        "CHG_TERM",
-        "ACTIVE_FLAG",
-        "AD_NAME",
-        "CHG_DATE",
-        "CHG_USER",
-        "DEFAULT_FREQUENCY",
-        "AMOUNT_TYPE",
-        "AD_CODE",
-        "ADD_DATE"
-      ]
-    },
-    {
-      "object_name": "emponb_candidate_self",
-      "form_no": "5",
-      "usage_type": "R",
-      "referred_columns": [
-        "AD_CODE"
-      ],
-      "join_info": {
-        "column": "AD_CODE",
-        "join_table": "EMPONB_CAND_SELF_PAY",
-        "join_column": "AD_CODE"
-      }
-    },
-    {
       "object_name": "emponb_candidate_record",
       "form_no": "5",
-      "usage_type": "M",
+      "usage_type": "R",
       "referred_columns": [
         "AD_CODE"
       ],
@@ -46,6 +13,26 @@
         "join_table": "EMPONB_CAND_PAY",
         "join_column": "AD_CODE"
       }
+    },
+    {
+      "object_name": "emponb_payhead_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "CHG_USER",
+        "DEFAULT_FREQUENCY",
+        "RES_FORMULA",
+        "AMOUNT_TYPE",
+        "APPL_MODE",
+        "ADD_USER",
+        "ACTIVE_FLAG",
+        "CHG_TERM",
+        "ADD_DATE",
+        "ADD_TERM",
+        "CHG_DATE",
+        "AD_NAME",
+        "AD_CODE"
+      ]
     }
   ]
 }

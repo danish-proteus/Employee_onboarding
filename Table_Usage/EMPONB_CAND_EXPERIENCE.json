@@ -7,11 +7,11 @@
       "usage_type": "M",
       "referred_columns": [
         "TO_DATE",
-        "FROM_DATE",
-        "LINE_NO",
-        "GROSS_AMT",
-        "ORGANISATION",
         "CANDIDATE_ID",
+        "FROM_DATE",
+        "ORGANISATION",
+        "GROSS_AMT",
+        "LINE_NO",
         "DESIGNATION"
       ]
     }

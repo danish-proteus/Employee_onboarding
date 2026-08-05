@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, IOFLOW validation, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-07-21T12:58:48.959342+00:00",
+  "generated_at": "2026-07-24T07:28:10.911701+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -44,7 +44,7 @@
       "obj_name": "emponb_candidate_self",
       "obj_type": "T",
       "title": "Candidate Self",
-      "description": "HR creates and manages candidate onboarding from initial capture through submission, review and confirmation as employee"
+      "description": "Candidate self-service onboarding: a header form plus four detail (child) forms - Past Experience, Educational Qualifica"
     },
     {
       "obj_name": "candidate_page",
@@ -179,46 +179,47 @@
       "table_name": "EMPONB_CANDIDATE_SELF",
       "description": "",
       "key_columns": [
-        "CANDIDATE_ID CHAR"
+        "CANDIDATE_ID VARCHAR"
       ],
       "other_columns": [
         "CANDIDATE_NAME VARCHAR",
-        "GENDER CHAR",
-        "DESIGN_CODE CHAR",
         "EMAIL_ID VARCHAR",
+        "GENDER VARCHAR",
+        "DESIGN_CODE VARCHAR",
         "STATUS VARCHAR",
         "STATUS_DATE DATETIME",
-        "INITIATED_BY CHAR",
+        "INITIATED_BY VARCHAR",
         "INITIATED_ON DATETIME",
         "ACCESS_KEY VARCHAR",
         "KEY_GENERATED_ON DATETIME",
         "KEY_EXPIRY_DATETIME DATETIME",
-        "KEY_VALID_FLAG CHAR",
+        "KEY_VALID_FLAG VARCHAR",
         "FORM_URL VARCHAR",
         "LINK_SENT_ON DATETIME",
         "LINK_ACCESSED_ON DATETIME",
         "SUBMITTED_ON DATETIME",
-        "NAME_PREFIX CHAR",
+        "NAME_PREFIX VARCHAR",
         "EMP_FNAME VARCHAR",
         "EMP_MNAME VARCHAR",
         "EMP_LNAME VARCHAR",
         "BIRTHDATE DATE",
+        "NATIONALITY VARCHAR",
         "MARITAL_STATUS VARCHAR",
         "MARRIAGE_ANNIVERSARY DATE",
         "BLOOD_GROUP VARCHAR",
         "RELIGION VARCHAR",
         "CAST_CATEGORY VARCHAR",
         "MOTHER_TONGUE VARCHAR",
-        "PHYSICAL_HANDICAP CHAR",
+        "PHYSICAL_HANDICAP VARCHAR",
         "HOBBY1 VARCHAR",
         "HOBBY2 VARCHAR",
         "TOTAL_EXPERIENCE NUMBER",
         "CURRENT_ADDRESS VARCHAR",
-        "CURRENT_PIN CHAR",
+        "CURRENT_PIN VARCHAR",
         "CURRENT_CITY VARCHAR",
         "CURRENT_STATE VARCHAR",
         "PERMANENT_ADDRESS VARCHAR",
-        "PERMANENT_PIN CHAR",
+        "PERMANENT_PIN VARCHAR",
         "PERMANENT_CITY VARCHAR",
         "PERMANENT_STATE VARCHAR",
         "MOBILE CHAR",
@@ -242,20 +243,20 @@
         "BANK_IFSC_CODE CHAR",
         "BANK_NAME VARCHAR",
         "BANK_DOC VARCHAR",
-        "PAN_VALIDATED CHAR",
+        "PAN_VALIDATED VARCHAR",
         "PAN_VALIDATED_NAME VARCHAR",
         "PAN_ATTEMPTS NUMBER",
-        "AADHAR_VALIDATED CHAR",
+        "AADHAR_VALIDATED VARCHAR",
         "AADHAR_VALIDATED_NAME VARCHAR",
         "AADHAR_ATTEMPTS NUMBER",
-        "BANK_VALIDATED CHAR",
+        "BANK_VALIDATED VARCHAR",
         "BANK_VALIDATED_NAME VARCHAR",
         "BANK_ATTEMPTS NUMBER",
         "ADD_DATE DATETIME",
-        "ADD_USER CHAR",
+        "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",
         "CHG_DATE DATETIME",
-        "CHG_USER CHAR",
+        "CHG_USER VARCHAR",
         "CHG_TERM VARCHAR"
       ]
     },
@@ -329,17 +330,17 @@
       "table_name": "EMPONB_CAND_SELF_EDUCATION",
       "description": "",
       "key_columns": [
-        "CANDIDATE_ID CHAR",
+        "CANDIDATE_ID VARCHAR",
         "LINE_NO NUMBER"
       ],
       "other_columns": [
-        "QLF_CODE CHAR",
+        "QLF_CODE VARCHAR",
         "QLF_TYPE VARCHAR",
         "INSTITUTE VARCHAR",
         "PASS_YEAR NUMBER",
         "CLASS VARCHAR",
         "PERCENTAGE NUMBER",
-        "COUNTRY_CODE CHAR",
+        "COUNTRY_CODE VARCHAR",
         "COURSE_TYPE VARCHAR",
         "COURSE_DURATION VARCHAR"
       ]
@@ -348,7 +349,7 @@
       "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
       "description": "",
       "key_columns": [
-        "CANDIDATE_ID CHAR",
+        "CANDIDATE_ID VARCHAR",
         "LINE_NO NUMBER"
       ],
       "other_columns": [
@@ -363,31 +364,31 @@
       "table_name": "EMPONB_CAND_SELF_FAMILY",
       "description": "",
       "key_columns": [
-        "CANDIDATE_ID CHAR",
+        "CANDIDATE_ID VARCHAR",
         "LINE_NO NUMBER"
       ],
       "other_columns": [
         "MEMBER_NAME VARCHAR",
         "DATE_BIRTH DATE",
-        "GENDER CHAR",
-        "RELATION CHAR"
+        "GENDER VARCHAR",
+        "RELATION VARCHAR"
       ]
     },
     {
       "table_name": "EMPONB_CAND_SELF_PAY",
       "description": "",
       "key_columns": [
-        "CANDIDATE_ID CHAR",
+        "CANDIDATE_ID VARCHAR",
         "LINE_NO NUMBER"
       ],
       "other_columns": [
-        "AD_CODE CHAR",
+        "AD_CODE VARCHAR",
         "AMOUNT NUMBER",
         "AMOUNT_TYPE VARCHAR",
         "FREQUENCY VARCHAR",
         "RES_FORMULA VARCHAR",
         "AMOUNT_CALC NUMBER",
-        "UPD_PAYSTRU CHAR",
+        "UPD_PAYSTRU VARCHAR",
         "APPL_MODE VARCHAR"
       ]
     },
@@ -512,8 +513,8 @@
         "AD_NAME VARCHAR",
         "APPL_MODE VARCHAR",
         "AMOUNT_TYPE VARCHAR",
-        "DEFAULT_FREQUENCY VARCHAR",
         "RES_FORMULA VARCHAR",
+        "DEFAULT_FREQUENCY VARCHAR",
         "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
         "ADD_USER VARCHAR",

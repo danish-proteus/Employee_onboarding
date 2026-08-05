@@ -5,10 +5,10 @@
   "columns": [
     {
       "column_name": "CANDIDATE_ID",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Parent candidate id",
+      "description": "Parent candidate reference",
       "sequence": 1
     },
     {
@@ -16,7 +16,7 @@
       "data_type": "NUMBER",
       "size": "5",
       "key": true,
-      "description": "Auto-sequenced line number",
+      "description": "Line sequence number",
       "sequence": 2
     },
     {
@@ -24,7 +24,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Previous organisation",
+      "description": "Employer organisation name",
       "sequence": 3,
       "mandatory": true
     },
@@ -57,7 +57,7 @@
       "data_type": "NUMBER",
       "size": "12,2",
       "key": false,
-      "description": "Gross amount earned",
+      "description": "Gross salary drawn",
       "sequence": 7
     }
   ]

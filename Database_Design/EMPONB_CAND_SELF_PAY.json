@@ -5,10 +5,10 @@
   "columns": [
     {
       "column_name": "CANDIDATE_ID",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Parent candidate id",
+      "description": "Parent candidate reference",
       "sequence": 1
     },
     {
@@ -16,63 +16,22 @@
       "data_type": "NUMBER",
       "size": "5",
       "key": true,
-      "description": "Auto-sequenced line number",
+      "description": "Line sequence number",
       "sequence": 2
     },
     {
       "column_name": "AD_CODE",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "Allowance/Deduction code",
       "sequence": 3,
       "mandatory": true,
-      "allowed_values": [
-        {
-          "value": "BASIC",
-          "label": "Basic Salary"
-        },
-        {
-          "value": "BONUS",
-          "label": "Annual Bonus"
-        },
-        {
-          "value": "CONVEY",
-          "label": "Conveyance Allowance"
-        },
-        {
-          "value": "DA",
-          "label": "Dearness Allowance"
-        },
-        {
-          "value": "ESI",
-          "label": "Employee State Insurance"
-        },
-        {
-          "value": "HRA",
-          "label": "House Rent Allowance"
-        },
-        {
-          "value": "MEDALW",
-          "label": "Medical Allowance"
-        },
-        {
-          "value": "PF",
-          "label": "Provident Fund"
-        },
-        {
-          "value": "PTAX",
-          "label": "Professional Tax"
-        },
-        {
-          "value": "SPLALW",
-          "label": "Special Allowance"
-        },
-        {
-          "value": "TDS",
-          "label": "Income Tax (TDS)"
-        }
-      ]
+      "lookup": {
+        "table": "EMPONB_PAYHEAD_MASTER",
+        "display_column": "AD_NAME",
+        "value_column": "AD_CODE"
+      }
     },
     {
       "column_name": "AMOUNT",
@@ -87,7 +46,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Amount type",
+      "description": "Fixed / Percentage / Formula",
       "sequence": 5,
       "allowed_values": [
         {
@@ -109,7 +68,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Frequency",
+      "description": "Monthly / Annual / One-time",
       "sequence": 6,
       "allowed_values": [
         {
@@ -131,7 +90,7 @@
       "data_type": "VARCHAR",
       "size": "500",
       "key": false,
-      "description": "Formula when amount type is Formula",
+      "description": "Computation formula when Amount Type is Formula",
       "sequence": 7
     },
     {
@@ -139,15 +98,15 @@
       "data_type": "NUMBER",
       "size": "12,2",
       "key": false,
-      "description": "Derived amount",
+      "description": "Derived amount for formula-based pay heads",
       "sequence": 8
     },
     {
       "column_name": "UPD_PAYSTRU",
-      "data_type": "CHAR",
+      "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Write-back to payroll flag",
+      "description": "Whether this line writes back to payroll",
       "sequence": 9,
       "allowed_values": [
         {
@@ -165,7 +124,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Earning or deduction",
+      "description": "Earning / Deduction",
       "sequence": 10,
       "allowed_values": [
         {
