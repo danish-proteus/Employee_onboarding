@@ -1,0 +1,293 @@
+{
+  "version": 2,
+  "events": [
+    {
+      "event_name": "emponb_candidate_sendLink",
+      "display_name": "Candidate Send/Resend Link",
+      "description": "Raised explicitly by the Send/Resend Link action's business logic on a candidate record (emponb_candidate_record), so an IOFlow flow can deliver the onboarding link to the candidate. Emitted only from code (api.emit_event) \u2014 the engine does NOT auto-raise it on the action.",
+      "source": {
+        "type": "custom"
+      },
+      "params": [],
+      "active": true,
+      "arguments": [],
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string"
+          },
+          "project": {
+            "type": "string"
+          },
+          "obj_name": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "txn_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Record id (composite keys are encoded)"
+          },
+          "pk": {
+            "type": "object",
+            "description": "Primary-key column values"
+          },
+          "record": {
+            "type": "object",
+            "properties": {
+              "CANDIDATE_ID": {
+                "type": "string",
+                "title": "Candidate ID"
+              },
+              "ACCESS_KEY": {
+                "type": "string",
+                "title": "Access Key"
+              },
+              "FORM_URL": {
+                "type": "string",
+                "title": "Form URL"
+              }
+            }
+          },
+          "user": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "action": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "apis": [
+    {
+      "api_name": "validate_pan_vayana",
+      "display_name": "Validate PAN (Vayana API)",
+      "description": "Synchronous PAN verification for the Candidate Onboarding Record's 'Validate PAN' action button. The engine invokes this as a sync api_call event on the project's IOFlow application; the IOFlow flow behind it calls the connected IOFlow application 'Vayana API' (operation ValidatePAN) and shapes the reply into the item_change return contract below. The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form.",
+      "category": "http",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "description": "CANDIDATE_ID of the record the button was clicked on"
+          },
+          "pan_no": {
+            "type": "string",
+            "description": "PAN to verify (already checked non-blank by the action)"
+          },
+          "candidate_name": {
+            "type": "string",
+            "description": "Name on record, for the name-match comparison"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "pan_no"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "description": "item_change return contract applied to the open form.",
+        "properties": {
+          "updates": {
+            "type": "object",
+            "properties": {
+              "PAN_VALIDATED": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N"
+                ],
+                "description": "'Y' when Vayana confirms the PAN, else 'N'"
+              },
+              "PAN_VALIDATED_NAME": {
+                "type": "string",
+                "description": "Registered name as returned by Vayana"
+              }
+            },
+            "required": [
+              "PAN_VALIDATED"
+            ]
+          },
+          "error": {
+            "type": "string",
+            "description": "Set instead of updates to fail the action with a message"
+          }
+        }
+      },
+      "sync": true,
+      "active": true
+    },
+    {
+      "api_name": "push_to_vision",
+      "display_name": "Push To Vision (Vison ERP HR)",
+      "description": "Synchronous employee push for the Candidate Onboarding Record's 'Push To Vision' action button. The engine invokes this as a sync api_call event on the project's IOFlow application; the IOFlow flow behind it composes the Vision employee payload (Root.Detail1) from these fields and calls the connected IOFlow application 'Vison ERP HR' (service save_transaction, enterprise APPVIS, app ERP_HR). The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form, so the record shows STATUS 'PushedToVision' and persists it on save.",
+      "category": "http",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "description": "CANDIDATE_ID of the record the button was clicked on"
+          },
+          "candidate_name": {
+            "type": "string",
+            "description": "Full candidate name, for logging/traceability"
+          },
+          "emp_code": {
+            "type": "string",
+            "description": "EMP_CODE \u2014 the employee code Vision creates the employee under (mandatory)"
+          },
+          "emp_fname": {
+            "type": "string",
+            "description": "First name \u2192 Detail1.emp_fname / emp_fname_long"
+          },
+          "emp_mname": {
+            "type": "string",
+            "description": "Middle name \u2192 Detail1.emp_mname / emp_mname_long"
+          },
+          "emp_lname": {
+            "type": "string",
+            "description": "Last name \u2192 Detail1.emp_lname / emp_lname_long"
+          },
+          "dept_code": {
+            "type": "string",
+            "description": "DEPT_CODE \u2192 Detail1.dept_code"
+          },
+          "grade_code": {
+            "type": "string",
+            "description": "GRADE \u2192 Detail1.grade_code"
+          },
+          "cadre_code": {
+            "type": "string",
+            "description": "CADRE \u2192 Detail1.cadre_code"
+          },
+          "design_code": {
+            "type": "string",
+            "description": "FIN_DESIGN_CODE \u2192 Detail1.design_code (the finalized designation)"
+          },
+          "design_code_initial": {
+            "type": "string",
+            "description": "DESIGN_CODE captured at initiation \u2014 used only as a fallback when FIN_DESIGN_CODE is blank"
+          },
+          "per_state": {
+            "type": "string",
+            "description": "PERMANENT_STATE \u2192 Detail1.per_state"
+          },
+          "cur_state": {
+            "type": "string",
+            "description": "CURRENT_STATE \u2192 Detail1.cur_state"
+          },
+          "date_join": {
+            "type": "string",
+            "description": "DATE_JOIN (ISO) \u2192 Detail1.date_join, reformatted by the flow to Vision's dd/mm/yy"
+          },
+          "birthdate": {
+            "type": "string",
+            "description": "BIRTHDATE (ISO), for the employee master"
+          },
+          "gender": {
+            "type": "string",
+            "description": "GENDER code"
+          },
+          "email_id": {
+            "type": "string",
+            "description": "EMAIL_ID of the candidate"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "MOBILE of the candidate"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "emp_code"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "description": "item_change return contract applied to the open form.",
+        "properties": {
+          "updates": {
+            "type": "object",
+            "properties": {
+              "STATUS": {
+                "type": "string",
+                "description": "'PushedToVision' when Vision accepted the employee"
+              },
+              "STATUS_DATE": {
+                "type": "string",
+                "description": "Timestamp of the push"
+              },
+              "EMPLOYEE_PUSHED_FLAG": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N"
+                ],
+                "description": "'Y' when Vision accepted the employee"
+              },
+              "EMPLOYEE_PUSH_REF": {
+                "type": "string",
+                "description": "Reference returned by Vision (or the pushed EMP_CODE when Vision returns none)"
+              }
+            },
+            "required": [
+              "STATUS"
+            ]
+          },
+          "error": {
+            "type": "string",
+            "description": "Set instead of updates to fail the action with a message"
+          }
+        }
+      },
+      "sync": true,
+      "active": true
+    }
+  ],
+  "ioflow": {
+    "app_id": "f21cdff7-a82e-4fc5-8a46-514bebacc777",
+    "url": "http://localhost:7001",
+    "event_ids": {
+      "emponb_candidate_record_add": "0c99ab86-207d-457b-9ce5-ed19accb32e5",
+      "emponb_candidate_sendLink": "0689975e-e0d6-4684-a44e-30ab2867d798"
+    },
+    "api_event_ids": {
+      "api_api_onboard_validate_key_6afd29": "40def460-47b8-4f81-89fa-30ccd83442d1",
+      "api_api_onboard_draft_31bc88": "8b2681e1-7394-4e5f-bbf1-57666dec7814",
+      "api_api_onboard_validate_pan_b7378c": "96ab07e6-e0cb-47b6-b165-5bb734536915",
+      "api_api_onboard_validate_aadhar_50098b": "043564fe-9e4f-4616-b2c0-65889c49d681",
+      "api_api_onboard_validate_bank_fb0c23": "c217048e-b00a-4ea7-a281-9ce7725ed30b",
+      "api_api_onboard_save_06f4e4": "4483fb20-27ff-4aed-9728-a8c17298f99b",
+      "api_api_onboard_submit_225a6e": "fd25e7e8-8e73-47b4-ab42-5980d38440d5",
+      "validate_pan_vayana": "3d4fea7c-a475-4bc6-a79a-a3acdf1386f8",
+      "api_api_onboard_candidate_self_ad05bd": "b4bb73a0-2865-4017-bdab-408a10d04e10",
+      "push_to_vision": "451c1867-febe-4ed5-93b8-8c1c8c026f0b"
+    },
+    "service_ids": {
+      "api_api_onboard_validate_key_6afd29": "b62ae4c9-f3a6-47d9-be15-0180239f794b",
+      "api_api_onboard_draft_31bc88": "d3bd4974-26c3-4368-8ada-467b1f63d198",
+      "api_api_onboard_validate_pan_b7378c": "d48232dd-b38f-4baa-941c-fa0f7357cdf6",
+      "api_api_onboard_validate_aadhar_50098b": "d544d130-d643-4957-a417-cbe11a6f48a8",
+      "api_api_onboard_validate_bank_fb0c23": "3d3e9308-56d9-492b-ad54-ede26c967fb5",
+      "api_api_onboard_save_06f4e4": "34419383-06e3-43a0-853b-a2c4620db433",
+      "api_api_onboard_submit_225a6e": "d915beb0-0696-4fc5-920d-b4013040bc06",
+      "api_api_onboard_candidate_self_ad05bd": "7de1904c-d1b9-4669-993b-e9fd5f06b79c"
+    },
+    "last_synced_at": "2026-08-10T12:20:00.965027+00:00"
+  }
+}

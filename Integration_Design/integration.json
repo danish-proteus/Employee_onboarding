@@ -130,6 +130,515 @@
       },
       "sync": true,
       "active": true
+    },
+    {
+      "api_name": "push_to_vision",
+      "display_name": "Push To Vision (Vison ERP HR)",
+      "description": "Synchronous employee push for the Candidate Onboarding Record's 'Push To Vision' action button. The engine invokes this as a sync api_call event on the project's IOFlow application, carrying the WHOLE record as it stands on screen: every captured header field plus the four child grids (past_experience, education, family, pay_structure) as row arrays. The IOFlow flow (emponb_push_to_vision) maps them onto Vision's emp_complete sections \u2014 Root.Detail1 (employee master), Detail2 (family), Detail4 (qualification), Detail6 (past experience) \u2014 and calls the connected IOFlow application 'Vison ERP HR' (service save_transaction, enterprise APPVIS, app ERP_HR). The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form, so the record shows STATUS 'PushedToVision' and persists it on save.",
+      "category": "http",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "description": "System-generated unique candidate identifier"
+          },
+          "candidate_name": {
+            "type": "string",
+            "description": "Full name of the candidate captured by HR"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Candidate gender"
+          },
+          "design_code": {
+            "type": "string",
+            "description": "Designation reference at initiation"
+          },
+          "design_name": {
+            "type": "string",
+            "description": "Designation name from master"
+          },
+          "email_id": {
+            "type": "string",
+            "description": "Candidate email; mandatory and valid before link generation"
+          },
+          "status": {
+            "type": "string",
+            "description": "Lifecycle status of the candidate record"
+          },
+          "status_date": {
+            "type": "string",
+            "description": "Date stamped on each status transition"
+          },
+          "initiated_by": {
+            "type": "string",
+            "description": "HR user who initiated the candidate"
+          },
+          "initiated_on": {
+            "type": "string",
+            "description": "Initiation timestamp"
+          },
+          "name_prefix": {
+            "type": "string",
+            "description": "Name prefix/title"
+          },
+          "emp_fname": {
+            "type": "string",
+            "description": "First name (candidate self-service)"
+          },
+          "emp_mname": {
+            "type": "string",
+            "description": "Middle name"
+          },
+          "emp_lname": {
+            "type": "string",
+            "description": "Last name"
+          },
+          "birthdate": {
+            "type": "string",
+            "description": "Date of birth"
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Nationality"
+          },
+          "marital_status": {
+            "type": "string",
+            "description": "Marital status"
+          },
+          "marriage_anniversary": {
+            "type": "string",
+            "description": "Marriage anniversary date"
+          },
+          "blood_group": {
+            "type": "string",
+            "description": "Blood group"
+          },
+          "religion": {
+            "type": "string",
+            "description": "Religion"
+          },
+          "cast_category": {
+            "type": "string",
+            "description": "Caste category"
+          },
+          "mother_tongue": {
+            "type": "string",
+            "description": "Mother tongue"
+          },
+          "physical_handicap": {
+            "type": "string",
+            "description": "Physically handicapped flag"
+          },
+          "hobby1": {
+            "type": "string",
+            "description": "Primary hobby"
+          },
+          "hobby2": {
+            "type": "string",
+            "description": "Secondary hobby"
+          },
+          "total_experience": {
+            "type": "number",
+            "description": "Total years of experience"
+          },
+          "current_address": {
+            "type": "string",
+            "description": "Current address"
+          },
+          "current_pin": {
+            "type": "string",
+            "description": "Current PIN code (6 digits)"
+          },
+          "current_city": {
+            "type": "string",
+            "description": "Current city"
+          },
+          "current_state": {
+            "type": "string",
+            "description": "Current state"
+          },
+          "permanent_address": {
+            "type": "string",
+            "description": "Permanent address"
+          },
+          "permanent_pin": {
+            "type": "string",
+            "description": "Permanent PIN code (6 digits)"
+          },
+          "permanent_city": {
+            "type": "string",
+            "description": "Permanent city"
+          },
+          "permanent_state": {
+            "type": "string",
+            "description": "Permanent state"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "Mobile number (10 digits)"
+          },
+          "alternate_telephone": {
+            "type": "string",
+            "description": "Alternate telephone number"
+          },
+          "contact_person": {
+            "type": "string",
+            "description": "Emergency contact person"
+          },
+          "contact_person_mobile": {
+            "type": "string",
+            "description": "Emergency contact mobile (10 digits)"
+          },
+          "contact_person_email": {
+            "type": "string",
+            "description": "Emergency contact email"
+          },
+          "pan_no": {
+            "type": "string",
+            "description": "PAN number (AAAAA9999A)"
+          },
+          "aadhar_no": {
+            "type": "string",
+            "description": "Aadhaar number (12 digits)"
+          },
+          "passport_no": {
+            "type": "string",
+            "description": "Passport number"
+          },
+          "driving_lic_no": {
+            "type": "string",
+            "description": "Driving license number"
+          },
+          "pf_no": {
+            "type": "string",
+            "description": "Provident fund number"
+          },
+          "esic_no": {
+            "type": "string",
+            "description": "ESIC number"
+          },
+          "bank_account_no": {
+            "type": "string",
+            "description": "Bank account number"
+          },
+          "bank_ifsc_code": {
+            "type": "string",
+            "description": "Bank IFSC code (11-char)"
+          },
+          "bank_name": {
+            "type": "string",
+            "description": "Bank name"
+          },
+          "pan_validated": {
+            "type": "string",
+            "description": "PAN validation result"
+          },
+          "pan_validated_name": {
+            "type": "string",
+            "description": "Name returned by PAN validation"
+          },
+          "pan_attempts": {
+            "type": "number",
+            "description": "PAN validation attempts"
+          },
+          "aadhar_validated": {
+            "type": "string",
+            "description": "Aadhaar validation result"
+          },
+          "aadhar_validated_name": {
+            "type": "string",
+            "description": "Name returned by Aadhaar validation"
+          },
+          "aadhar_attempts": {
+            "type": "number",
+            "description": "Aadhaar validation attempts"
+          },
+          "bank_validated": {
+            "type": "string",
+            "description": "Bank validation result"
+          },
+          "bank_validated_name": {
+            "type": "string",
+            "description": "Name returned by bank validation"
+          },
+          "bank_attempts": {
+            "type": "number",
+            "description": "Bank validation attempts"
+          },
+          "emp_code": {
+            "type": "string",
+            "description": "Employee code (unique, mandatory before Confirm)"
+          },
+          "designation": {
+            "type": "string",
+            "description": "Final designation"
+          },
+          "dept_code": {
+            "type": "string",
+            "description": "Department code"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade"
+          },
+          "cadre": {
+            "type": "string",
+            "description": "Cadre"
+          },
+          "fin_design_code": {
+            "type": "string",
+            "description": "Finalization designation code"
+          },
+          "report_to": {
+            "type": "string",
+            "description": "Reporting manager"
+          },
+          "joined_as": {
+            "type": "string",
+            "description": "Joining role"
+          },
+          "date_join": {
+            "type": "string",
+            "description": "Joining date (mandatory before Confirm)"
+          },
+          "work_shift": {
+            "type": "string",
+            "description": "Work shift"
+          },
+          "hol_tblno": {
+            "type": "string",
+            "description": "Holiday table number"
+          },
+          "emp_site": {
+            "type": "string",
+            "description": "Employment site"
+          },
+          "pay_site": {
+            "type": "string",
+            "description": "Payroll site"
+          },
+          "basic": {
+            "type": "number",
+            "description": "Basic pay"
+          },
+          "gross": {
+            "type": "number",
+            "description": "Gross pay (must be >= Basic)"
+          },
+          "probation_date": {
+            "type": "string",
+            "description": "Probation end date"
+          },
+          "probation_prd": {
+            "type": "number",
+            "description": "Probation period (months)"
+          },
+          "notice_prd": {
+            "type": "number",
+            "description": "Notice period (days)"
+          },
+          "email_id_off": {
+            "type": "string",
+            "description": "Official email id"
+          },
+          "report_to__admin": {
+            "type": "string",
+            "description": "Administrative reporting manager"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Assigned user id"
+          },
+          "remarks": {
+            "type": "string",
+            "description": "HR remarks"
+          },
+          "past_experience": {
+            "type": "array",
+            "description": "Past Experience grid (EMPONB_CAND_EXPERIENCE) rows for this candidate \u2192 Vision Root.Detail6",
+            "items": {
+              "type": "object",
+              "properties": {
+                "candidate_id": {
+                  "type": "string"
+                },
+                "line_no": {
+                  "type": "string"
+                },
+                "organisation": {
+                  "type": "string"
+                },
+                "designation": {
+                  "type": "string"
+                },
+                "from_date": {
+                  "type": "string"
+                },
+                "to_date": {
+                  "type": "string"
+                },
+                "gross_amt": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "education": {
+            "type": "array",
+            "description": "Education grid (EMPONB_CAND_EDUCATION) rows \u2192 Vision Root.Detail4",
+            "items": {
+              "type": "object",
+              "properties": {
+                "candidate_id": {
+                  "type": "string"
+                },
+                "line_no": {
+                  "type": "string"
+                },
+                "qlf_code": {
+                  "type": "string"
+                },
+                "qlf_type": {
+                  "type": "string"
+                },
+                "institute": {
+                  "type": "string"
+                },
+                "pass_year": {
+                  "type": "string"
+                },
+                "class": {
+                  "type": "string"
+                },
+                "percentage": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "course_type": {
+                  "type": "string"
+                },
+                "course_duration": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "family": {
+            "type": "array",
+            "description": "Family grid (EMPONB_CAND_FAMILY) rows \u2192 Vision Root.Detail2",
+            "items": {
+              "type": "object",
+              "properties": {
+                "candidate_id": {
+                  "type": "string"
+                },
+                "line_no": {
+                  "type": "string"
+                },
+                "member_name": {
+                  "type": "string"
+                },
+                "date_birth": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "relation": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "pay_structure": {
+            "type": "array",
+            "description": "Candidate Pay grid (EMPONB_CAND_PAY) rows \u2014 carried for completeness; Vision emp_complete has no matching Detail section today",
+            "items": {
+              "type": "object",
+              "properties": {
+                "candidate_id": {
+                  "type": "string"
+                },
+                "line_no": {
+                  "type": "string"
+                },
+                "ad_code": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                },
+                "amount_type": {
+                  "type": "string"
+                },
+                "frequency": {
+                  "type": "string"
+                },
+                "res_formula": {
+                  "type": "string"
+                },
+                "amount_calc": {
+                  "type": "string"
+                },
+                "upd_paystru": {
+                  "type": "string"
+                },
+                "appl_mode": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "candidate_id",
+          "emp_code"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "description": "item_change return contract applied to the open form.",
+        "properties": {
+          "updates": {
+            "type": "object",
+            "properties": {
+              "STATUS": {
+                "type": "string",
+                "description": "'PushedToVision' when Vision accepted the employee"
+              },
+              "STATUS_DATE": {
+                "type": "string",
+                "description": "Timestamp of the push"
+              },
+              "EMPLOYEE_PUSHED_FLAG": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N"
+                ],
+                "description": "'Y' when Vision accepted the employee"
+              },
+              "EMPLOYEE_PUSH_REF": {
+                "type": "string",
+                "description": "Reference returned by Vision (or the pushed EMP_CODE when Vision returns none)"
+              }
+            },
+            "required": [
+              "STATUS"
+            ]
+          },
+          "error": {
+            "type": "string",
+            "description": "Set instead of updates to fail the action with a message"
+          }
+        }
+      },
+      "sync": true,
+      "active": true
     }
   ],
   "ioflow": {
@@ -148,7 +657,8 @@
       "api_api_onboard_save_06f4e4": "4483fb20-27ff-4aed-9728-a8c17298f99b",
       "api_api_onboard_submit_225a6e": "fd25e7e8-8e73-47b4-ab42-5980d38440d5",
       "validate_pan_vayana": "3d4fea7c-a475-4bc6-a79a-a3acdf1386f8",
-      "api_api_onboard_candidate_self_ad05bd": "b4bb73a0-2865-4017-bdab-408a10d04e10"
+      "api_api_onboard_candidate_self_ad05bd": "b4bb73a0-2865-4017-bdab-408a10d04e10",
+      "push_to_vision": "451c1867-febe-4ed5-93b8-8c1c8c026f0b"
     },
     "service_ids": {
       "api_api_onboard_validate_key_6afd29": "b62ae4c9-f3a6-47d9-be15-0180239f794b",
@@ -160,6 +670,6 @@
       "api_api_onboard_submit_225a6e": "d915beb0-0696-4fc5-920d-b4013040bc06",
       "api_api_onboard_candidate_self_ad05bd": "7de1904c-d1b9-4669-993b-e9fd5f06b79c"
     },
-    "last_synced_at": "2026-08-04T03:48:57.217939+00:00"
+    "last_synced_at": "2026-08-10T14:09:14.779348+00:00"
   }
 }

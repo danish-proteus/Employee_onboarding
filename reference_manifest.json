@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-08-05T06:14:01.044754+00:00",
+  "generated_at": "2026-08-11T11:06:48.488095+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -33,6 +33,12 @@
       "obj_type": "T",
       "title": "Demographic Reference Master",
       "description": "Maintain lookup values for Religion, Caste, Blood Group, Marital Status, Name Prefix, Mother Tongue, Nationality and Rel"
+    },
+    {
+      "obj_name": "emponb_state_master",
+      "obj_type": "T",
+      "title": "State Master",
+      "description": "Maintain the list of Indian states/union territories used as a reference master."
     },
     {
       "obj_name": "emponb_candidate_record",
@@ -487,6 +493,8 @@
       ],
       "other_columns": [
         "SITE_NAME VARCHAR",
+        "PIN VARCHAR",
+        "STATE_CODE VARCHAR",
         "PAY_SITE VARCHAR",
         "PAY_SITE_NAME VARCHAR",
         "WORK_SHIFT VARCHAR",
@@ -534,6 +542,24 @@
         "QLF_NAME VARCHAR",
         "QLF_TYPE VARCHAR",
         "COURSE_TYPE VARCHAR",
+        "ACTIVE_FLAG VARCHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER VARCHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER VARCHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_STATE_MASTER",
+      "description": "",
+      "key_columns": [
+        "STATE_CODE VARCHAR"
+      ],
+      "other_columns": [
+        "STATE_NAME VARCHAR",
+        "COUNTRY VARCHAR",
         "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
         "ADD_USER VARCHAR",

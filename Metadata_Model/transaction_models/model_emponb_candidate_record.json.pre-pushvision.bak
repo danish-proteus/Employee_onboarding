@@ -28,7 +28,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
-                "width": 87,
+                "width": 100,
                 "hidden": "",
                 "format": "",
                 "default_function": "",
@@ -53,7 +53,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 209,
+                "width": 385,
                 "key": false,
                 "hidden": "",
                 "format": "",
@@ -165,7 +165,7 @@
                 "col_id": "5",
                 "table_display_name": "Designation & department master",
                 "db_size": "100",
-                "width": 164,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -211,7 +211,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "120",
-                "width": 278,
+                "width": 500,
                 "key": false,
                 "hidden": "",
                 "format": "",
@@ -306,7 +306,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 131,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -332,7 +332,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 129,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -389,7 +389,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 128,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -416,7 +416,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 206,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -444,7 +444,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 103,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -472,7 +472,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 122,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -513,7 +513,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
-                "width": 75,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -543,7 +543,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 317,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -571,7 +571,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 123,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -599,7 +599,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 87,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -627,7 +627,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 128,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -655,7 +655,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
-                "width": 74,
+                "width": 100,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -683,7 +683,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 155,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -711,7 +711,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 154,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -739,7 +739,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 133,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -767,7 +767,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 114,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -795,7 +795,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 84,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -823,7 +823,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 72,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -851,7 +851,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 106,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -879,7 +879,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
-                "width": 69,
+                "width": 100,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -907,7 +907,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 98,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -935,7 +935,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 119,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -963,7 +963,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 93,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1004,7 +1004,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
-                "width": 78,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1031,7 +1031,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 96,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1059,7 +1059,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 102,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1087,7 +1087,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "5,2",
-                "width": 81,
+                "width": 60,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1115,7 +1115,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 215,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1151,7 +1151,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "6",
-                "width": 93,
+                "width": 60,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1178,7 +1178,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 99,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1206,7 +1206,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 117,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1234,7 +1234,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 213,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1270,7 +1270,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "6",
-                "width": 102,
+                "width": 60,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1297,7 +1297,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 121,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1325,7 +1325,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "50",
-                "width": 133,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1364,7 +1364,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
-                "width": 138,
+                "width": 100,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1391,7 +1391,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 142,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1419,7 +1419,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 121,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1493,7 +1493,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "120",
-                "width": 182,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1528,7 +1528,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "10",
-                "width": 130,
+                "width": 100,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1558,7 +1558,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 148,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1623,7 +1623,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 167,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1650,7 +1650,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 157,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1681,7 +1681,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 143,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1708,7 +1708,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 149,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1739,7 +1739,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 179,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1766,7 +1766,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 148,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1797,7 +1797,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 143,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1824,7 +1824,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 133,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1855,7 +1855,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 235,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1882,7 +1882,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "20",
-                "width": 139,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1945,7 +1945,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 244,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -1976,7 +1976,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 131,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2043,7 +2043,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 150,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2139,7 +2139,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 160,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2235,7 +2235,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 150,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2327,7 +2327,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 188,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2435,25 +2435,6 @@
                 "descr": "Finalization designation code",
                 "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)",
                 "must_exist_in": "EMPONB_DESIG_DEPT_MASTER",
-                "item_change": {
-                  "mode": "rule",
-                  "source_table": "EMPONB_DESIG_DEPT_MASTER",
-                  "match_table_col": "DESIGN_CODE",
-                  "fill": [
-                    {
-                      "form_col": "dept_code",
-                      "table_col": "DEPT_CODE"
-                    },
-                    {
-                      "form_col": "grade",
-                      "table_col": "GRADE"
-                    },
-                    {
-                      "form_col": "cadre",
-                      "table_col": "CADRE"
-                    }
-                  ]
-                },
                 "x": "780",
                 "y": "780",
                 "col_id": "78",
@@ -2487,7 +2468,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 170,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2515,7 +2496,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 200,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2543,7 +2524,7 @@
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 119,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2625,21 +2606,6 @@
                 "descr": "Employment site",
                 "lookup": "EMPONB_ORG_SETUP_MASTER(SITE_NAME, EMP_SITE)",
                 "must_exist_in": "EMPONB_ORG_SETUP_MASTER",
-                "item_change": {
-                  "mode": "rule",
-                  "source_table": "EMPONB_ORG_SETUP_MASTER",
-                  "match_table_col": "EMP_SITE",
-                  "fill": [
-                    {
-                      "form_col": "pin",
-                      "table_col": "PIN"
-                    },
-                    {
-                      "form_col": "state_code",
-                      "table_col": "STATE_CODE"
-                    }
-                  ]
-                },
                 "x": "840",
                 "y": "840",
                 "col_id": "84",
@@ -2661,62 +2627,6 @@
             },
             {
               "column": {
-                "name": "pin",
-                "db_name": "PIN",
-                "group_name": "HR Finalization",
-                "col_type": "VARCHAR",
-                "heading": "PIN",
-                "descr": "Postal code of the employment site, filled from the site master",
-                "x": "850",
-                "y": "841",
-                "col_id": "103",
-                "table_name": "EMPONB_CANDIDATE_RECORD",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "6",
-                "width": 100,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "protect": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
-                "name": "state_code",
-                "db_name": "STATE_CODE",
-                "group_name": "HR Finalization",
-                "col_type": "VARCHAR",
-                "heading": "State Code",
-                "descr": "State code of the employment site, filled from the site master",
-                "x": "860",
-                "y": "842",
-                "col_id": "104",
-                "table_name": "EMPONB_CANDIDATE_RECORD",
-                "table_display_name": "Candidate onboarding record (main table)",
-                "db_size": "10",
-                "width": 100,
-                "key": false,
-                "mandatory": false,
-                "hidden": "",
-                "format": "",
-                "default_function": "",
-                "default_value": "",
-                "expression": "",
-                "edit_mask": "",
-                "protect": "",
-                "validations": "",
-                "lookup": ""
-              }
-            },
-            {
-              "column": {
                 "name": "pay_site",
                 "db_name": "PAY_SITE",
                 "group_name": "HR Finalization",
@@ -2725,7 +2635,7 @@
                 "descr": "Payroll site",
                 "lookup": "EMPONB_ORG_SETUP_MASTER(PAY_SITE_NAME, PAY_SITE)",
                 "must_exist_in": "EMPONB_ORG_SETUP_MASTER",
-                "x": "870",
+                "x": "850",
                 "y": "850",
                 "col_id": "85",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2752,7 +2662,7 @@
                 "col_type": "NUMBER",
                 "heading": "Basic",
                 "descr": "Basic pay",
-                "x": "880",
+                "x": "860",
                 "y": "860",
                 "col_id": "86",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2788,7 +2698,7 @@
                     "expression": "is_empty({form.gross}) or {form.gross} >= {form.basic}"
                   }
                 ],
-                "x": "890",
+                "x": "870",
                 "y": "870",
                 "col_id": "87",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2815,7 +2725,7 @@
                 "col_type": "DATE",
                 "heading": "Probation Date",
                 "descr": "Probation end date",
-                "x": "900",
+                "x": "880",
                 "y": "880",
                 "col_id": "88",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2843,7 +2753,7 @@
                 "col_type": "NUMBER",
                 "heading": "Probation Period",
                 "descr": "Probation period (months)",
-                "x": "910",
+                "x": "890",
                 "y": "890",
                 "col_id": "89",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2871,7 +2781,7 @@
                 "col_type": "NUMBER",
                 "heading": "Notice Period",
                 "descr": "Notice period (days)",
-                "x": "920",
+                "x": "900",
                 "y": "900",
                 "col_id": "90",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2902,13 +2812,13 @@
                 "display": {
                   "type": "email"
                 },
-                "x": "930",
+                "x": "910",
                 "y": "910",
                 "col_id": "91",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "120",
-                "width": 248,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2930,13 +2840,13 @@
                 "col_type": "VARCHAR",
                 "heading": "Report To (Admin)",
                 "descr": "Administrative reporting manager",
-                "x": "940",
+                "x": "920",
                 "y": "920",
                 "col_id": "92",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 153,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -2958,7 +2868,7 @@
                 "col_type": "CHAR",
                 "heading": "User ID",
                 "descr": "Assigned user id",
-                "x": "950",
+                "x": "930",
                 "y": "930",
                 "col_id": "93",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -2986,13 +2896,13 @@
                 "col_type": "VARCHAR",
                 "heading": "Remarks",
                 "descr": "HR remarks",
-                "x": "960",
+                "x": "940",
                 "y": "940",
                 "col_id": "94",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "500",
-                "width": 157,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -3028,13 +2938,13 @@
                     }
                   ]
                 },
-                "x": "970",
+                "x": "950",
                 "y": "950",
                 "col_id": "95",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "1",
-                "width": 91,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -3055,13 +2965,13 @@
                 "heading": "Employee Push Ref",
                 "descr": "Reference returned by IOFLOW employee creation",
                 "protect": "1",
-                "x": "980",
+                "x": "960",
                 "y": "960",
                 "col_id": "96",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "100",
-                "width": 149,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -3084,13 +2994,13 @@
                 "descr": "Record creation timestamp",
                 "protect": "1",
                 "default_value": ":audit_add_date",
-                "x": "990",
+                "x": "970",
                 "y": "970",
                 "col_id": "97",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 122,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -3112,7 +3022,7 @@
                 "descr": "Record creator",
                 "protect": "1",
                 "default_value": ":audit_add_user",
-                "x": "1000",
+                "x": "980",
                 "y": "980",
                 "col_id": "98",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -3140,7 +3050,7 @@
                 "descr": "Creation terminal",
                 "protect": "1",
                 "default_value": ":audit_add_terminal",
-                "x": "1010",
+                "x": "990",
                 "y": "990",
                 "col_id": "99",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -3168,13 +3078,13 @@
                 "descr": "Last change timestamp",
                 "protect": "1",
                 "default_value": ":audit_chg_date",
-                "x": "1020",
+                "x": "1000",
                 "y": "1000",
                 "col_id": "100",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
                 "db_size": "",
-                "width": 124,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -3196,7 +3106,7 @@
                 "descr": "Last changer",
                 "protect": "1",
                 "default_value": ":audit_chg_user",
-                "x": "1030",
+                "x": "1010",
                 "y": "1010",
                 "col_id": "101",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -3224,7 +3134,7 @@
                 "descr": "Change terminal",
                 "protect": "1",
                 "default_value": ":audit_chg_terminal",
-                "x": "1040",
+                "x": "1020",
                 "y": "1020",
                 "col_id": "102",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
@@ -3483,49 +3393,9 @@
                     "value": "candidate_name"
                   },
                   {
-                    "name": "gender",
+                    "name": "emp_code",
                     "source": "form",
-                    "value": "gender"
-                  },
-                  {
-                    "name": "design_code",
-                    "source": "form",
-                    "value": "design_code"
-                  },
-                  {
-                    "name": "design_name",
-                    "source": "form",
-                    "value": "design_name"
-                  },
-                  {
-                    "name": "email_id",
-                    "source": "form",
-                    "value": "email_id"
-                  },
-                  {
-                    "name": "status",
-                    "source": "form",
-                    "value": "status"
-                  },
-                  {
-                    "name": "status_date",
-                    "source": "form",
-                    "value": "status_date"
-                  },
-                  {
-                    "name": "initiated_by",
-                    "source": "form",
-                    "value": "initiated_by"
-                  },
-                  {
-                    "name": "initiated_on",
-                    "source": "form",
-                    "value": "initiated_on"
-                  },
-                  {
-                    "name": "name_prefix",
-                    "source": "form",
-                    "value": "name_prefix"
+                    "value": "emp_code"
                   },
                   {
                     "name": "emp_fname",
@@ -3543,259 +3413,39 @@
                     "value": "emp_lname"
                   },
                   {
-                    "name": "birthdate",
-                    "source": "form",
-                    "value": "birthdate"
-                  },
-                  {
-                    "name": "nationality",
-                    "source": "form",
-                    "value": "nationality"
-                  },
-                  {
-                    "name": "marital_status",
-                    "source": "form",
-                    "value": "marital_status"
-                  },
-                  {
-                    "name": "marriage_anniversary",
-                    "source": "form",
-                    "value": "marriage_anniversary"
-                  },
-                  {
-                    "name": "blood_group",
-                    "source": "form",
-                    "value": "blood_group"
-                  },
-                  {
-                    "name": "religion",
-                    "source": "form",
-                    "value": "religion"
-                  },
-                  {
-                    "name": "cast_category",
-                    "source": "form",
-                    "value": "cast_category"
-                  },
-                  {
-                    "name": "mother_tongue",
-                    "source": "form",
-                    "value": "mother_tongue"
-                  },
-                  {
-                    "name": "physical_handicap",
-                    "source": "form",
-                    "value": "physical_handicap"
-                  },
-                  {
-                    "name": "hobby1",
-                    "source": "form",
-                    "value": "hobby1"
-                  },
-                  {
-                    "name": "hobby2",
-                    "source": "form",
-                    "value": "hobby2"
-                  },
-                  {
-                    "name": "total_experience",
-                    "source": "form",
-                    "value": "total_experience"
-                  },
-                  {
-                    "name": "current_address",
-                    "source": "form",
-                    "value": "current_address"
-                  },
-                  {
-                    "name": "current_pin",
-                    "source": "form",
-                    "value": "current_pin"
-                  },
-                  {
-                    "name": "current_city",
-                    "source": "form",
-                    "value": "current_city"
-                  },
-                  {
-                    "name": "current_state",
-                    "source": "form",
-                    "value": "current_state"
-                  },
-                  {
-                    "name": "permanent_address",
-                    "source": "form",
-                    "value": "permanent_address"
-                  },
-                  {
-                    "name": "permanent_pin",
-                    "source": "form",
-                    "value": "permanent_pin"
-                  },
-                  {
-                    "name": "permanent_city",
-                    "source": "form",
-                    "value": "permanent_city"
-                  },
-                  {
-                    "name": "permanent_state",
-                    "source": "form",
-                    "value": "permanent_state"
-                  },
-                  {
-                    "name": "mobile",
-                    "source": "form",
-                    "value": "mobile"
-                  },
-                  {
-                    "name": "alternate_telephone",
-                    "source": "form",
-                    "value": "alternate_telephone"
-                  },
-                  {
-                    "name": "contact_person",
-                    "source": "form",
-                    "value": "contact_person"
-                  },
-                  {
-                    "name": "contact_person_mobile",
-                    "source": "form",
-                    "value": "contact_person_mobile"
-                  },
-                  {
-                    "name": "contact_person_email",
-                    "source": "form",
-                    "value": "contact_person_email"
-                  },
-                  {
-                    "name": "pan_no",
-                    "source": "form",
-                    "value": "pan_no"
-                  },
-                  {
-                    "name": "aadhar_no",
-                    "source": "form",
-                    "value": "aadhar_no"
-                  },
-                  {
-                    "name": "passport_no",
-                    "source": "form",
-                    "value": "passport_no"
-                  },
-                  {
-                    "name": "driving_lic_no",
-                    "source": "form",
-                    "value": "driving_lic_no"
-                  },
-                  {
-                    "name": "pf_no",
-                    "source": "form",
-                    "value": "pf_no"
-                  },
-                  {
-                    "name": "esic_no",
-                    "source": "form",
-                    "value": "esic_no"
-                  },
-                  {
-                    "name": "bank_account_no",
-                    "source": "form",
-                    "value": "bank_account_no"
-                  },
-                  {
-                    "name": "bank_ifsc_code",
-                    "source": "form",
-                    "value": "bank_ifsc_code"
-                  },
-                  {
-                    "name": "bank_name",
-                    "source": "form",
-                    "value": "bank_name"
-                  },
-                  {
-                    "name": "pan_validated",
-                    "source": "form",
-                    "value": "pan_validated"
-                  },
-                  {
-                    "name": "pan_validated_name",
-                    "source": "form",
-                    "value": "pan_validated_name"
-                  },
-                  {
-                    "name": "pan_attempts",
-                    "source": "form",
-                    "value": "pan_attempts"
-                  },
-                  {
-                    "name": "aadhar_validated",
-                    "source": "form",
-                    "value": "aadhar_validated"
-                  },
-                  {
-                    "name": "aadhar_validated_name",
-                    "source": "form",
-                    "value": "aadhar_validated_name"
-                  },
-                  {
-                    "name": "aadhar_attempts",
-                    "source": "form",
-                    "value": "aadhar_attempts"
-                  },
-                  {
-                    "name": "bank_validated",
-                    "source": "form",
-                    "value": "bank_validated"
-                  },
-                  {
-                    "name": "bank_validated_name",
-                    "source": "form",
-                    "value": "bank_validated_name"
-                  },
-                  {
-                    "name": "bank_attempts",
-                    "source": "form",
-                    "value": "bank_attempts"
-                  },
-                  {
-                    "name": "emp_code",
-                    "source": "form",
-                    "value": "emp_code"
-                  },
-                  {
-                    "name": "designation",
-                    "source": "form",
-                    "value": "designation"
-                  },
-                  {
                     "name": "dept_code",
                     "source": "form",
                     "value": "dept_code"
                   },
                   {
-                    "name": "grade",
+                    "name": "grade_code",
                     "source": "form",
                     "value": "grade"
                   },
                   {
-                    "name": "cadre",
+                    "name": "cadre_code",
                     "source": "form",
                     "value": "cadre"
                   },
                   {
-                    "name": "fin_design_code",
+                    "name": "design_code",
                     "source": "form",
                     "value": "fin_design_code"
                   },
                   {
-                    "name": "report_to",
+                    "name": "design_code_initial",
                     "source": "form",
-                    "value": "report_to"
+                    "value": "design_code"
                   },
                   {
-                    "name": "joined_as",
+                    "name": "per_state",
                     "source": "form",
-                    "value": "joined_as"
+                    "value": "permanent_state"
+                  },
+                  {
+                    "name": "cur_state",
+                    "source": "form",
+                    "value": "current_state"
                   },
                   {
                     "name": "date_join",
@@ -3803,89 +3453,24 @@
                     "value": "date_join"
                   },
                   {
-                    "name": "work_shift",
+                    "name": "birthdate",
                     "source": "form",
-                    "value": "work_shift"
+                    "value": "birthdate"
                   },
                   {
-                    "name": "hol_tblno",
+                    "name": "gender",
                     "source": "form",
-                    "value": "hol_tblno"
+                    "value": "gender"
                   },
                   {
-                    "name": "emp_site",
+                    "name": "email_id",
                     "source": "form",
-                    "value": "emp_site"
+                    "value": "email_id"
                   },
                   {
-                    "name": "pay_site",
+                    "name": "mobile",
                     "source": "form",
-                    "value": "pay_site"
-                  },
-                  {
-                    "name": "basic",
-                    "source": "form",
-                    "value": "basic"
-                  },
-                  {
-                    "name": "gross",
-                    "source": "form",
-                    "value": "gross"
-                  },
-                  {
-                    "name": "probation_date",
-                    "source": "form",
-                    "value": "probation_date"
-                  },
-                  {
-                    "name": "probation_prd",
-                    "source": "form",
-                    "value": "probation_prd"
-                  },
-                  {
-                    "name": "notice_prd",
-                    "source": "form",
-                    "value": "notice_prd"
-                  },
-                  {
-                    "name": "email_id_off",
-                    "source": "form",
-                    "value": "email_id_off"
-                  },
-                  {
-                    "name": "report_to__admin",
-                    "source": "form",
-                    "value": "report_to__admin"
-                  },
-                  {
-                    "name": "user_id",
-                    "source": "form",
-                    "value": "user_id"
-                  },
-                  {
-                    "name": "remarks",
-                    "source": "form",
-                    "value": "remarks"
-                  },
-                  {
-                    "name": "past_experience",
-                    "source": "detail",
-                    "value": "2"
-                  },
-                  {
-                    "name": "education",
-                    "source": "detail",
-                    "value": "3"
-                  },
-                  {
-                    "name": "family",
-                    "source": "detail",
-                    "value": "4"
-                  },
-                  {
-                    "name": "pay_structure",
-                    "source": "detail",
-                    "value": "5"
+                    "value": "mobile"
                   }
                 ]
               },
@@ -3943,7 +3528,7 @@
                 "key": true,
                 "default_value": "auto_generate_line_no()",
                 "protect": "1",
-                "x": "60",
+                "x": "70",
                 "y": "70",
                 "col_id": "2",
                 "table_name": "EMPONB_CAND_EXPERIENCE",
@@ -3975,7 +3560,7 @@
                 "table_name": "EMPONB_CAND_EXPERIENCE",
                 "table_display_name": "Candidate past experience (main table)",
                 "db_size": "100",
-                "width": 215,
+                "width": 500,
                 "key": false,
                 "hidden": "",
                 "format": "",
@@ -4002,7 +3587,7 @@
                 "table_name": "EMPONB_CAND_EXPERIENCE",
                 "table_display_name": "Candidate past experience (main table)",
                 "db_size": "100",
-                "width": 193,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4030,7 +3615,7 @@
                 "table_name": "EMPONB_CAND_EXPERIENCE",
                 "table_display_name": "Candidate past experience (main table)",
                 "db_size": "",
-                "width": 111,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4066,7 +3651,7 @@
                 "table_name": "EMPONB_CAND_EXPERIENCE",
                 "table_display_name": "Candidate past experience (main table)",
                 "db_size": "",
-                "width": 109,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4177,7 +3762,7 @@
                 "key": true,
                 "default_value": "auto_generate_line_no()",
                 "protect": "1",
-                "x": "100",
+                "x": "110",
                 "y": "110",
                 "col_id": "2",
                 "table_name": "EMPONB_CAND_EDUCATION",
@@ -4300,7 +3885,7 @@
                 "table_name": "EMPONB_CAND_EDUCATION",
                 "table_display_name": "Candidate education (main table)",
                 "db_size": "100",
-                "width": 212,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4355,7 +3940,7 @@
                 "table_name": "EMPONB_CAND_EDUCATION",
                 "table_display_name": "Candidate education (main table)",
                 "db_size": "4",
-                "width": 96,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4382,7 +3967,7 @@
                 "table_name": "EMPONB_CAND_EDUCATION",
                 "table_display_name": "Candidate education (main table)",
                 "db_size": "50",
-                "width": 105,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4418,7 +4003,7 @@
                 "table_name": "EMPONB_CAND_EDUCATION",
                 "table_display_name": "Candidate education (main table)",
                 "db_size": "5,2",
-                "width": 106,
+                "width": 60,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4469,8 +4054,21 @@
                 "heading": "Course Type",
                 "descr": "Course type",
                 "edit_mask": {
-                  "mask": "textbox",
-                  "values": []
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Full-time",
+                      "display": "Full-time"
+                    },
+                    {
+                      "data": "Part-time",
+                      "display": "Part-time"
+                    },
+                    {
+                      "data": "Distance",
+                      "display": "Distance"
+                    }
+                  ]
                 },
                 "x": "80",
                 "y": "80",
@@ -4478,13 +4076,13 @@
                 "table_name": "EMPONB_CAND_EDUCATION",
                 "table_display_name": "Candidate education (main table)",
                 "db_size": "20",
-                "width": 105,
+                "width": 200,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
                 "format": "",
                 "default_function": "",
-                "default_value": "FULLT",
+                "default_value": "",
                 "expression": "",
                 "protect": "",
                 "validations": "",
@@ -4505,7 +4103,7 @@
                 "table_name": "EMPONB_CAND_EDUCATION",
                 "table_display_name": "Candidate education (main table)",
                 "db_size": "50",
-                "width": 138,
+                "width": 500,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4600,7 +4198,7 @@
                 "key": true,
                 "default_value": "auto_generate_line_no()",
                 "protect": "1",
-                "x": "50",
+                "x": "60",
                 "y": "60",
                 "col_id": "2",
                 "table_name": "EMPONB_CAND_FAMILY",
@@ -4632,7 +4230,7 @@
                 "table_name": "EMPONB_CAND_FAMILY",
                 "table_display_name": "Candidate family (main table)",
                 "db_size": "100",
-                "width": 161,
+                "width": 500,
                 "key": false,
                 "hidden": "",
                 "format": "",
@@ -4700,7 +4298,7 @@
                 "table_name": "EMPONB_CAND_FAMILY",
                 "table_display_name": "Candidate family (main table)",
                 "db_size": "",
-                "width": 130,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",
@@ -4744,7 +4342,7 @@
                 "table_name": "EMPONB_CAND_FAMILY",
                 "table_display_name": "Candidate family (main table)",
                 "db_size": "1",
-                "width": 75,
+                "width": 50,
                 "key": false,
                 "mandatory": false,
                 "hidden": "",

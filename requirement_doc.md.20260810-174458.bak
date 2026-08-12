@@ -9,7 +9,7 @@ Reference masters that drive selection lists, validations and cross-updates acro
 
 ### Organisation Setup Master (Sites, Shifts, Holiday Tables)
 - Description: Maintain employment site, payroll site, work shift and holiday table values used at confirmation.
-- Data points: EMP_SITE, SITE_NAME; PAY_SITE, PAY_SITE_NAME; WORK_SHIFT, SHIFT_NAME, SHIFT_TIMINGS; HOL_TBLNO, HOL_TBL_NAME; ACTIVE_FLAG; PIN, STATE_CODE (site pincode and state code, state code validated against the State Master).
+- Data points: EMP_SITE, SITE_NAME; PAY_SITE, PAY_SITE_NAME; WORK_SHIFT, SHIFT_NAME, SHIFT_TIMINGS; HOL_TBLNO, HOL_TBL_NAME; ACTIVE_FLAG.
 - Business rules: Codes unique within master; only active rows selectable in finalization.
 - Business actions: Search, Add, Edit, Delete.
 
@@ -23,12 +23,6 @@ Reference masters that drive selection lists, validations and cross-updates acro
 - Description: Maintain qualification codes/types used in the candidate education detail.
 - Data points: QLF_CODE, QLF_NAME, QLF_TYPE (Academic/Professional/Certification), COURSE_TYPE (Full-time/Part-time/Distance), ACTIVE_FLAG.
 - Business rules: QLF_CODE unique; QLF_TYPE mandatory.
-- Business actions: Search, Add, Edit, Delete.
-
-### State Master
-- Description: Maintain the list of Indian states/union territories used as a reference for address and demographic capture across the onboarding process.
-- Data points: STATE_CODE, STATE_NAME, COUNTRY (captured as plain text, always "IND" — the application is India-only and there is no Country Master or COUNTRY_CODE lookup), ACTIVE_FLAG.
-- Business rules: STATE_CODE unique within the master; only active rows selectable elsewhere.
 - Business actions: Search, Add, Edit, Delete.
 
 ### Demographic Reference Master
@@ -62,23 +56,20 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
 - Data points (attachments): PAN_DOC (image/file), AADHAR_DOC (image/file), BANK_DOC (cancelled cheque / passbook image).
 - Data points (HR finalization): EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF.
 - Business rules:
-  - STATUS lifecycle: Link Generated → Link Accessed → DataSubmitted → Review → Confirmed → PushedToVision; STATUS_DATE updated on each transition. PushedToVision is set by the **Push To Vision** action once Vision ERP HR has accepted the employee.
+  - STATUS lifecycle: Link Generated → Link Accessed → DataSubmitted → Review → Confirmed; STATUS_DATE updated on each transition.
   - EMAIL_ID mandatory and valid format before a link can be generated.
   - ACCESS_KEY unique; KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days. Key invalid after expiry or after submission.
   - PAN_NO format AAAAA9999A; AADHAR_NO 12 digits; BANK_IFSC_CODE 11-char IFSC pattern; MOBILE numeric 10 digits; PIN numeric 6 digits; CONTACT_PERSON_EMAIL valid email.
   - Once STATUS = DataSubmitted the candidate-editable fields become read-only to candidate; HR can edit finalization fields only.
   - EMP_CODE mandatory and unique before Confirm; DATE_JOIN mandatory before Confirm; GROSS ≥ BASIC.
   - Confirm allowed only when STATUS = Review and mandatory finalization fields complete.
-  - When DESIGN_CODE is selected/changed on the header, DEPT_CODE, DEPT_NAME, GRADE, GRADE_NAME, CADRE and CADRE_NAME are auto-filled (read-only) from the matching row in the Designation & Department Master (matched on DESIGN_CODE). When HR selects a Designation (DESIGN_CODE) on the Candidate Record header, the system auto-fills the Designation Name, Department Code, Department Name, Grade, Grade Name, Cadre and Cadre Name read-only fields from the Designation & Department Master (EMPONB_DESIG_DEPT_MASTER), matched on DESIGN_CODE.
-- Business actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while STATUS = Link Generated and link not accessed), **Send/Resend Link**, **Validate PAN** (Vayana API via IOFlow), **Review**, **Confirm** (Push to IOFLOW Employee), **Push To Vision** (Vison ERP HR via IOFlow), Cancel.
+- Business actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while STATUS = Link Generated and link not accessed), **Send/Resend Link**, **Validate PAN** (Vayana API via IOFlow), **Review**, **Confirm** (Push to IOFLOW Employee), Cancel.
 - Additional data management & cross-updates:
   - On **Add/Initiate**: generate CANDIDATE_ID, set STATUS = (blank/Initiated).
   - On **Send Link**: generate ACCESS_KEY, compute KEY_EXPIRY_DATETIME, build FORM_URL (external candidate form + key), set STATUS = 'Link Generated', stamp STATUS_DATE & LINK_SENT_ON. Trigger: send-email to candidate with the link.
   - On **Validate PAN**: the button is offered only when PAN_NO is present, and is blocked with 'PAN No must be entered before validation.' if clicked without one. It calls the IOFlow application **Vayana API** synchronously (designed API `validate_pan_vayana`, operation ValidatePAN), passing CANDIDATE_ID, PAN_NO and CANDIDATE_NAME (the last for name comparison). The response sets PAN_VALIDATED = 'Y' when Vayana confirms the PAN, else 'N', and PAN_VALIDATED_NAME to the registered name Vayana returns; both land on the open record and persist on save. A service that is unreachable or errors blocks the action with a message and leaves both columns unchanged. STATUS is not affected, and no retry cap is applied.
   - On **Review**: set STATUS = 'Review', stamp STATUS_DATE.
   - On **Confirm**: trigger IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization + pay structure); store EMPLOYEE_PUSHED_FLAG and EMPLOYEE_PUSH_REF; set STATUS = 'Confirmed', stamp STATUS_DATE; send-notification to INITIATED_BY HR user.
-  - On **Push To Vision**: the button hands the finalized candidate to the ERP as an employee. It is blocked unless EMP_CODE and DATE_JOIN are present, the record is not Cancelled, and EMPLOYEE_PUSHED_FLAG is not already 'Y' (so a candidate is not pushed twice); HR reconfirms before it runs. It calls the IOFlow application **Vison ERP HR** synchronously (designed API `push_to_vision`, service `save_transaction`, enterprise APPVIS, application ERP_HR), passing the employee-master fields listed below. The IOFlow flow composes Vision's `Root.Detail1` employee payload from them — EMP_CODE, first/middle/last name (both short and long forms), DEPT_CODE, GRADE, CADRE, FIN_DESIGN_CODE (falling back to DESIGN_CODE when the finalized designation is blank), PERMANENT_STATE, CURRENT_STATE and DATE_JOIN reformatted to Vision's dd/mm/yy — and blank codes are dropped rather than sent empty. On acceptance the response sets STATUS = 'PushedToVision', stamps STATUS_DATE, sets EMPLOYEE_PUSHED_FLAG = 'Y' and EMPLOYEE_PUSH_REF to the reference Vision returns (falling back to the pushed EMP_CODE); all four land on the open record and persist on save. A rejection by Vision, or a service that is unreachable, blocks the action with a message and leaves the record unchanged.
-    - Scope note: the push carries the employee master only. The Past Experience, Educational Qualification and Family detail lines (Vision's Detail6 / Detail4 / Detail2 sections) are **not** included, because a synchronous action Call-API can only carry the header form's own fields. Sending the detail sections would require either the flow reading them back through an inbound API, or moving the push to an asynchronous emitted event.
   - On candidate **Submit** (from the external form): set STATUS = 'DataSubmitted', stamp STATUS_DATE & SUBMITTED_ON, invalidate ACCESS_KEY, send-notification to initiating HR user and send-email summary to candidate.
 
 ### Past Experience (detail)
@@ -216,4 +207,3 @@ Public, key-validated intake screen the candidate opens from the emailed link. I
 
 ### IOFlow designed APIs (app → IOFlow)
 - `validate_pan_vayana` — **Validate PAN (Vayana API)**. Invoked synchronously by the Candidate Onboarding Record's **Validate PAN** action as a sync `api_call` event on the project's IOFlow application. Request: `{ candidate_id, pan_no, candidate_name }`. The IOFlow flow behind it calls the connected IOFlow application **Vayana API** (operation ValidatePAN) and must shape the reply into the engine's item_change return contract: `{ "updates": { "PAN_VALIDATED": "Y"|"N", "PAN_VALIDATED_NAME": "<registered name>" } }`, or `{ "error": "<message>" }` to fail the action. Any other shape leaves the record unchanged. Declared in `Integration_Design/integration.json`; the flow, and the Vayana API application connection, are configured on the IOFlow side.
-- `push_to_vision` — **Push To Vision (Vison ERP HR)**. Invoked synchronously by the Candidate Onboarding Record's **Push To Vision** action as a sync `api_call` event on the project's IOFlow application. Request: `{ candidate_id, candidate_name, emp_code, emp_fname, emp_mname, emp_lname, dept_code, grade_code, cadre_code, design_code, design_code_initial, per_state, cur_state, date_join, birthdate, gender, email_id, mobile }`. The IOFlow flow behind it (`emponb_push_to_vision`) builds Vision's employee payload `{"Root":{"Detail1":[ … ]}}` from those fields and calls the connected IOFlow application **Vison ERP HR**, service `save_transaction` (`POST …/EDIService/setData/emp_complete/{enterprise}/{app_id}/writefilesavetrans`, enterprise `APPVIS`, app `ERP_HR`). It must shape the reply into the engine's item_change return contract: `{ "updates": { "STATUS": "PushedToVision", "STATUS_DATE": "<timestamp>", "EMPLOYEE_PUSHED_FLAG": "Y", "EMPLOYEE_PUSH_REF": "<vision reference>" } }`, or `{ "error": "<message>" }` to fail the action. Any other shape leaves the record unchanged. Declared in `Integration_Design/integration.json`; the flow, and the Vison ERP HR application connection, are configured on the IOFlow side.

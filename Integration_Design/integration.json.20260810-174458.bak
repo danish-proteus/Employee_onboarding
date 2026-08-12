@@ -1,0 +1,165 @@
+{
+  "version": 2,
+  "events": [
+    {
+      "event_name": "emponb_candidate_sendLink",
+      "display_name": "Candidate Send/Resend Link",
+      "description": "Raised explicitly by the Send/Resend Link action's business logic on a candidate record (emponb_candidate_record), so an IOFlow flow can deliver the onboarding link to the candidate. Emitted only from code (api.emit_event) \u2014 the engine does NOT auto-raise it on the action.",
+      "source": {
+        "type": "custom"
+      },
+      "params": [],
+      "active": true,
+      "arguments": [],
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string"
+          },
+          "project": {
+            "type": "string"
+          },
+          "obj_name": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "txn_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Record id (composite keys are encoded)"
+          },
+          "pk": {
+            "type": "object",
+            "description": "Primary-key column values"
+          },
+          "record": {
+            "type": "object",
+            "properties": {
+              "CANDIDATE_ID": {
+                "type": "string",
+                "title": "Candidate ID"
+              },
+              "ACCESS_KEY": {
+                "type": "string",
+                "title": "Access Key"
+              },
+              "FORM_URL": {
+                "type": "string",
+                "title": "Form URL"
+              }
+            }
+          },
+          "user": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "action": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "apis": [
+    {
+      "api_name": "validate_pan_vayana",
+      "display_name": "Validate PAN (Vayana API)",
+      "description": "Synchronous PAN verification for the Candidate Onboarding Record's 'Validate PAN' action button. The engine invokes this as a sync api_call event on the project's IOFlow application; the IOFlow flow behind it calls the connected IOFlow application 'Vayana API' (operation ValidatePAN) and shapes the reply into the item_change return contract below. The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form.",
+      "category": "http",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "description": "CANDIDATE_ID of the record the button was clicked on"
+          },
+          "pan_no": {
+            "type": "string",
+            "description": "PAN to verify (already checked non-blank by the action)"
+          },
+          "candidate_name": {
+            "type": "string",
+            "description": "Name on record, for the name-match comparison"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "pan_no"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "description": "item_change return contract applied to the open form.",
+        "properties": {
+          "updates": {
+            "type": "object",
+            "properties": {
+              "PAN_VALIDATED": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N"
+                ],
+                "description": "'Y' when Vayana confirms the PAN, else 'N'"
+              },
+              "PAN_VALIDATED_NAME": {
+                "type": "string",
+                "description": "Registered name as returned by Vayana"
+              }
+            },
+            "required": [
+              "PAN_VALIDATED"
+            ]
+          },
+          "error": {
+            "type": "string",
+            "description": "Set instead of updates to fail the action with a message"
+          }
+        }
+      },
+      "sync": true,
+      "active": true
+    }
+  ],
+  "ioflow": {
+    "app_id": "f21cdff7-a82e-4fc5-8a46-514bebacc777",
+    "url": "http://localhost:7001",
+    "event_ids": {
+      "emponb_candidate_record_add": "0c99ab86-207d-457b-9ce5-ed19accb32e5",
+      "emponb_candidate_sendLink": "0689975e-e0d6-4684-a44e-30ab2867d798"
+    },
+    "api_event_ids": {
+      "api_api_onboard_validate_key_6afd29": "40def460-47b8-4f81-89fa-30ccd83442d1",
+      "api_api_onboard_draft_31bc88": "8b2681e1-7394-4e5f-bbf1-57666dec7814",
+      "api_api_onboard_validate_pan_b7378c": "96ab07e6-e0cb-47b6-b165-5bb734536915",
+      "api_api_onboard_validate_aadhar_50098b": "043564fe-9e4f-4616-b2c0-65889c49d681",
+      "api_api_onboard_validate_bank_fb0c23": "c217048e-b00a-4ea7-a281-9ce7725ed30b",
+      "api_api_onboard_save_06f4e4": "4483fb20-27ff-4aed-9728-a8c17298f99b",
+      "api_api_onboard_submit_225a6e": "fd25e7e8-8e73-47b4-ab42-5980d38440d5",
+      "validate_pan_vayana": "3d4fea7c-a475-4bc6-a79a-a3acdf1386f8",
+      "api_api_onboard_candidate_self_ad05bd": "b4bb73a0-2865-4017-bdab-408a10d04e10"
+    },
+    "service_ids": {
+      "api_api_onboard_validate_key_6afd29": "b62ae4c9-f3a6-47d9-be15-0180239f794b",
+      "api_api_onboard_draft_31bc88": "d3bd4974-26c3-4368-8ada-467b1f63d198",
+      "api_api_onboard_validate_pan_b7378c": "d48232dd-b38f-4baa-941c-fa0f7357cdf6",
+      "api_api_onboard_validate_aadhar_50098b": "d544d130-d643-4957-a417-cbe11a6f48a8",
+      "api_api_onboard_validate_bank_fb0c23": "3d3e9308-56d9-492b-ad54-ede26c967fb5",
+      "api_api_onboard_save_06f4e4": "34419383-06e3-43a0-853b-a2c4620db433",
+      "api_api_onboard_submit_225a6e": "d915beb0-0696-4fc5-920d-b4013040bc06",
+      "api_api_onboard_candidate_self_ad05bd": "7de1904c-d1b9-4669-993b-e9fd5f06b79c"
+    },
+    "last_synced_at": "2026-08-04T03:48:57.217939+00:00"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "object_name": "emponb_state_master",
+  "tables": {
+    "EMPONB_STATE_MASTER": [
+      "CHG_DATE",
+      "ADD_DATE",
+      "CHG_USER",
+      "ACTIVE_FLAG",
+      "COUNTRY",
+      "STATE_NAME",
+      "CHG_TERM",
+      "ADD_USER",
+      "STATE_CODE",
+      "ADD_TERM"
+    ]
+  }
+}

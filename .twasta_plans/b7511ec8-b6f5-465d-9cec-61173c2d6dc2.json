@@ -1,0 +1,37 @@
+{
+  "id": "b7511ec8-b6f5-465d-9cec-61173c2d6dc2",
+  "project": "Employee_onboarding",
+  "backend": "autoagent",
+  "title": "Sample data: emponb_designation_dept_master",
+  "kind": "sample_data",
+  "status": "completed",
+  "description": "[The user currently has the \"Designation & Department Master\" screen open (object emponb_designation_dept_master, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nemponb_candidate_record have dept_code, grade and cadre, it should set on itemChange of design_code selected, should get populated from emponb_designation_dept_master",
+  "created_at": 1786449415.7226915,
+  "updated_at": 1786451322.5531225,
+  "todos": [
+    {
+      "id": "seed_emponb_designation_dept_master",
+      "step": "sample_data",
+      "label": "Sample data: emponb_designation_dept_master",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_designation_dept_master",
+      "obj_type": "T",
+      "phase_id": null,
+      "started_at": 1786449415.7658203,
+      "completed_at": 1786449431.2146013,
+      "input_tokens": 2,
+      "output_tokens": 1376,
+      "cost_usd": 0.050515
+    }
+  ],
+  "phases": [],
+  "originating_prompt": "[The user currently has the \"Designation & Department Master\" screen open (object emponb_designation_dept_master, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nemponb_candidate_record have dept_code, grade and cadre, it should set on itemChange of design_code selected, should get populated from emponb_designation_dept_master",
+  "resume_ref": {
+    "session_id": "2b6ded84-ac52-4ce6-b95e-03ad7b5136a5",
+    "plan_id": "b7511ec8-b6f5-465d-9cec-61173c2d6dc2",
+    "scope": "all"
+  },
+  "depends_on": [],
+  "result_summary": ""
+}

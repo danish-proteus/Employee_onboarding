@@ -14,6 +14,29 @@
       "requireLogin": true,
       "defaultRoles": [
         "member"
+      ],
+      "grants": [
+        {
+          "role": "site-visitor",
+          "obj_name": "emponb_candidate_self",
+          "actions": [
+            "list",
+            "load",
+            "add",
+            "edit",
+            "save",
+            "delete",
+            "item_change",
+            "action:Submit to HR"
+          ]
+        },
+        {
+          "role": "member",
+          "obj_name": "emponb_candidate_self",
+          "actions": [
+            "*"
+          ]
+        }
       ]
     },
     "folder_name": "Employee_onboarding"
@@ -73,7 +96,7 @@
       "obj_name": "emponb_org_setup_master",
       "obj_type": "T",
       "menu_path": "emponb.1.3",
-      "functional_specs": "Header-only master with EMP_SITE, SITE_NAME, PAY_SITE, PAY_SITE_NAME, WORK_SHIFT, SHIFT_NAME, SHIFT_TIMINGS, HOL_TBLNO, HOL_TBL_NAME, ACTIVE_FLAG. Codes unique; only active rows selectable in finalization. Search, Add, Edit, Delete."
+      "functional_specs": "Header-only master with EMP_SITE, SITE_NAME, PAY_SITE, PAY_SITE_NAME, WORK_SHIFT, SHIFT_NAME, SHIFT_TIMINGS, HOL_TBLNO, HOL_TBL_NAME, ACTIVE_FLAG. Codes unique; only active rows selectable in finalization. Search, Add, Edit, Delete. Also captures PIN (site pincode) and STATE_CODE (validated against the State Master EMPONB_STATE_MASTER)."
     },
     {
       "id": "emponb.1.4",
@@ -109,6 +132,17 @@
       "functional_specs": "Header-only master with LOOKUP_TYPE, LOOKUP_CODE, LOOKUP_DESC, ACTIVE_FLAG. (LOOKUP_TYPE, LOOKUP_CODE) unique; only active values appear in candidate drop-downs. Search, Add, Edit, Delete."
     },
     {
+      "id": "emponb.1.7",
+      "title": "State Master",
+      "parent_id": "emponb.1",
+      "icon_image": "map",
+      "description": "Maintain the list of Indian states/union territories used as a reference master.",
+      "obj_name": "emponb_state_master",
+      "obj_type": "T",
+      "menu_path": "emponb.1.7",
+      "functional_specs": "Header-only master on table EMPONB_STATE_MASTER with columns STATE_CODE (VARCHAR(10), primary/unique code), STATE_NAME (VARCHAR(100)), COUNTRY (VARCHAR(50), plain text, always IND — no Country Master/lookup per project rule), ACTIVE_FLAG (CHAR(1), Y/N, default Y). STATE_CODE must be unique. Business actions: Search, Add, Edit, Delete. Table is seeded with the standard list of Indian states/UTs and their codes."
+    },
+    {
       "id": "emponb.3",
       "title": "Candidate Onboarding Management",
       "parent_id": "",
@@ -128,7 +162,7 @@
       "obj_name": "emponb_candidate_record",
       "obj_type": "T",
       "menu_path": "emponb.3.1",
-      "functional_specs": "Header form on table EMPONB_CANDIDATE_RECORD plus four detail (child) forms, each linked to the header by CANDIDATE_ID and ordered by LINE_NO: (a) Past Experience -> EMPONB_CAND_EXPERIENCE, (b) Educational Qualification -> EMPONB_CAND_EDUCATION, (c) Family -> EMPONB_CAND_FAMILY, (d) Candidate Pay -> EMPONB_CAND_PAY. STATUS lifecycle Link Generated -> Link Accessed -> DataSubmitted -> Review -> Confirmed with STATUS_DATE stamped on each transition. Header fields: HR capture (CANDIDATE_ID, CANDIDATE_NAME, GENDER, COUNTRY_CODE, DESIGN_CODE, EMAIL_ID, STATUS, STATUS_DATE, INITIATED_BY, INITIATED_ON), access key (ACCESS_KEY, KEY_GENERATED_ON, KEY_EXPIRY_DATETIME, KEY_VALID_FLAG, FORM_URL, LINK_SENT_ON, LINK_ACCESSED_ON, SUBMITTED_ON), candidate personal/contact/statutory/financial, validation status (PAN/AADHAR/BANK *_VALIDATED, *_VALIDATED_NAME, *_ATTEMPTS), attachments (PAN_DOC, AADHAR_DOC, BANK_DOC), HR finalization (EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF). Field validations: PAN AAAAA9999A, AADHAR 12 digits, IFSC 11-char, MOBILE 10 digits, PIN 6 digits, valid emails; KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days; EMP_CODE unique & DATE_JOIN mandatory & GROSS>=BASIC before Confirm; Confirm only when STATUS=Review. Actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while Link Generated and not accessed), Generate Access Key, Send Candidate Link (and Resend Link), Mark Review, Confirm Candidate (Push to IOFLOW Employee), Cancel Candidate. Triggers: send-email candidate link on Send Candidate Link, set STATUS=Review + STATUS_DATE on Mark Review, IOFLOW Employee-creation API + store EMPLOYEE_PUSHED_FLAG/EMPLOYEE_PUSH_REF + send-notification to HR on Confirm Candidate, STATUS reset and key invalidation on Cancel Candidate, set STATUS=DataSubmitted + invalidate key + notify on candidate Submit."
+      "functional_specs": "Header form on table EMPONB_CANDIDATE_RECORD plus four detail (child) forms, each linked to the header by CANDIDATE_ID and ordered by LINE_NO: (a) Past Experience -> EMPONB_CAND_EXPERIENCE, (b) Educational Qualification -> EMPONB_CAND_EDUCATION, (c) Family -> EMPONB_CAND_FAMILY, (d) Candidate Pay -> EMPONB_CAND_PAY. STATUS lifecycle Link Generated -> Link Accessed -> DataSubmitted -> Review -> Confirmed with STATUS_DATE stamped on each transition. Header fields: HR capture (CANDIDATE_ID, CANDIDATE_NAME, GENDER, COUNTRY_CODE, DESIGN_CODE, EMAIL_ID, STATUS, STATUS_DATE, INITIATED_BY, INITIATED_ON), access key (ACCESS_KEY, KEY_GENERATED_ON, KEY_EXPIRY_DATETIME, KEY_VALID_FLAG, FORM_URL, LINK_SENT_ON, LINK_ACCESSED_ON, SUBMITTED_ON), candidate personal/contact/statutory/financial, validation status (PAN/AADHAR/BANK *_VALIDATED, *_VALIDATED_NAME, *_ATTEMPTS), attachments (PAN_DOC, AADHAR_DOC, BANK_DOC), HR finalization (EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF). Field validations: PAN AAAAA9999A, AADHAR 12 digits, IFSC 11-char, MOBILE 10 digits, PIN 6 digits, valid emails; KEY_EXPIRY_DATETIME = KEY_GENERATED_ON + :key_validity_days; EMP_CODE unique & DATE_JOIN mandatory & GROSS>=BASIC before Confirm; Confirm only when STATUS=Review. Actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while Link Generated and not accessed), Generate Access Key, Send Candidate Link (and Resend Link), Mark Review, Confirm Candidate (Push to IOFLOW Employee), Cancel Candidate. Triggers: send-email candidate link on Send Candidate Link, set STATUS=Review + STATUS_DATE on Mark Review, IOFLOW Employee-creation API + store EMPLOYEE_PUSHED_FLAG/EMPLOYEE_PUSH_REF + send-notification to HR on Confirm Candidate, STATUS reset and key invalidation on Cancel Candidate, set STATUS=DataSubmitted + invalidate key + notify on candidate Submit. On item_change of DESIGN_CODE, DEPT_CODE, DEPT_NAME, GRADE, GRADE_NAME, CADRE and CADRE_NAME are auto-filled from the matching EMPONB_DESIG_DEPT_MASTER row (matched on DESIGN_CODE) and shown read-only on the header. Selecting a Designation (DESIGN_CODE) on the header auto-fills Designation Name, Department Code, Department Name, Grade, Grade Name, Cadre and Cadre Name from the Designation & Department Master (EMPONB_DESIG_DEPT_MASTER), matched on DESIGN_CODE."
     },
     {
       "id": "emponb.3.2",

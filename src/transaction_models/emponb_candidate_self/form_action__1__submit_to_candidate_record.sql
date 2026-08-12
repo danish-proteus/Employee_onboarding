@@ -8,7 +8,7 @@ form_no: 1
 action_name: Submit
 language: plpgsql
 description: Submit candidate self-service data to the Candidate Onboarding Record
-functional_specification: Push the candidate's self-service data into the HR Candidate Onboarding Record for the CANDIDATE_ID on the current form, replacing any existing record with delete-then-insert semantics because the data received from the Candidate Website must fully overwrite whatever is already held. Read candidate_id from the input payload. An existing EMPONB_CANDIDATE_RECORD row is NOT required. (1) Header: DELETE the existing EMPONB_CANDIDATE_RECORD row for this CANDIDATE_ID (if any), then INSERT a fresh row from EMPONB_CANDIDATE_SELF carrying CANDIDATE_ID plus every candidate-supplied header field held on EMPONB_CANDIDATE_SELF that also exists on EMPONB_CANDIDATE_RECORD - the personal identity fields (NAME_PREFIX, EMP_FNAME, EMP_MNAME, EMP_LNAME, BIRTHDATE, MARITAL_STATUS, MARRIAGE_ANNIVERSARY, BLOOD_GROUP, RELIGION, CAST_CATEGORY, MOTHER_TONGUE, PHYSICAL_HANDICAP, HOBBY1, HOBBY2, TOTAL_EXPERIENCE), the contact/address block (CURRENT_ADDRESS, CURRENT_PIN, CURRENT_CITY, CURRENT_STATE, PERMANENT_ADDRESS, PERMANENT_PIN, PERMANENT_CITY, PERMANENT_STATE, MOBILE, ALTERNATE_TELEPHONE, CONTACT_PERSON, CONTACT_PERSON_MOBILE, CONTACT_PERSON_EMAIL), and the statutory/financial block (PAN_NO, AADHAR_NO, PASSPORT_NO, DRIVING_LIC_NO, PF_NO, ESIC_NO, BANK_ACCOUNT_NO, BANK_IFSC_CODE, BANK_NAME) - copying the values that currently sit on the EMPONB_CANDIDATE_SELF row for that CANDIDATE_ID. Also stamp the record lifecycle: STATUS = 'DataSubmitted', STATUS_DATE = now(), SUBMITTED_ON = now(). Only carry columns that actually exist on BOTH tables; do NOT insert HR-owned columns the candidate does not supply (access-key/link/initiation and validation-status columns are left out entirely, defaulting on insert). (2) Refresh ALL detail tables: for each self detail table -> record detail table pair (EMPONB_CAND_SELF_EXPERIENCE -> EMPONB_CAND_EXPERIENCE, EMPONB_CAND_SELF_EDUCATION -> EMPONB_CAND_EDUCATION, EMPONB_CAND_SELF_FAMILY -> EMPONB_CAND_FAMILY, EMPONB_CAND_SELF_PAY -> EMPONB_CAND_PAY), delete the existing rows in the record detail table for this CANDIDATE_ID and re-insert one row per corresponding self detail row, mapping the columns common to both tables and carrying CANDIDATE_ID and LINE_NO so the parent-detail linkage is preserved. Return {"message": "..."} confirming the candidate data was submitted to the onboarding record (mention the CANDIDATE_ID and how many experience/education/family/pay rows were copied). The whole operation must be atomic - any failure rolls the action back.
+functional_specification: Push the candidate's self-service data into the HR Candidate Onboarding Record for the CANDIDATE_ID on the current form, replacing any existing record with delete-then-insert semantics because the data received from the Candidate Website must fully overwrite whatever is already held. Read candidate_id from the input payload. An existing EMPONB_CANDIDATE_RECORD row is NOT required. (1) Header: DELETE the existing EMPONB_CANDIDATE_RECORD row for this CANDIDATE_ID (if any), then INSERT a fresh row from EMPONB_CANDIDATE_SELF carrying CANDIDATE_ID plus every candidate-supplied header field held on EMPONB_CANDIDATE_SELF that also exists on EMPONB_CANDIDATE_RECORD - the personal identity fields (NAME_PREFIX, EMP_FNAME, EMP_MNAME, EMP_LNAME, BIRTHDATE, MARITAL_STATUS, MARRIAGE_ANNIVERSARY, BLOOD_GROUP, RELIGION, CAST_CATEGORY, MOTHER_TONGUE, PHYSICAL_HANDICAP, HOBBY1, HOBBY2, TOTAL_EXPERIENCE), the contact/address block (CURRENT_ADDRESS, CURRENT_PIN, CURRENT_CITY, CURRENT_STATE, PERMANENT_ADDRESS, PERMANENT_PIN, PERMANENT_CITY, PERMANENT_STATE, MOBILE, ALTERNATE_TELEPHONE, CONTACT_PERSON, CONTACT_PERSON_MOBILE, CONTACT_PERSON_EMAIL), and the statutory/financial block (PAN_NO, AADHAR_NO, PASSPORT_NO, DRIVING_LIC_NO, PF_NO, ESIC_NO, BANK_ACCOUNT_NO, BANK_IFSC_CODE, BANK_NAME) - copying the values that currently sit on the EMPONB_CANDIDATE_SELF row for that CANDIDATE_ID. Also stamp the record lifecycle: STATUS = 'DataSubmitted', STATUS_DATE = now(), SUBMITTED_ON = now(). Only carry columns that actually exist on BOTH tables; do NOT insert HR-owned columns the candidate does not supply (access-key/link/initiation and validation-status columns are left out entirely, defaulting on insert). (2) Refresh ALL detail tables: for each self detail table -> record detail table pair (EMPONB_CAND_SELF_EXPERIENCE -> EMPONB_CAND_EXPERIENCE, EMPONB_CAND_SELF_EDUCATION -> EMPONB_CAND_EDUCATION, EMPONB_CAND_SELF_FAMILY -> EMPONB_CAND_FAMILY, EMPONB_CAND_SELF_PAY -> EMPONB_CAND_PAY), delete the existing rows in the record detail table for this CANDIDATE_ID and re-insert one row per corresponding self detail row, mapping the columns common to both tables and carrying CANDIDATE_ID and LINE_NO so the parent-detail linkage is preserved. (3) Close the form: set EMPONB_CANDIDATE_SELF.STATUS = 'Submit' and STATUS_DATE = now() for this CANDIDATE_ID. Submission is once-only - before doing any of the above, read the STORED EMPONB_CANDIDATE_SELF.STATUS and, if it is already 'Submit', return {"error": "..."} without copying anything (the form value cannot be trusted; a repeat click or a direct API call must not re-submit). Return {"message": "..."} confirming the candidate data was submitted to the onboarding record (mention the CANDIDATE_ID and how many experience/education/family/pay rows were copied). The whole operation must be atomic - any failure rolls the action back.
 business_logic: Submit candidate self-service data to the Candidate Onboarding Record
 */
 
@@ -17,6 +17,7 @@ LANGUAGE plpgsql AS $$
 DECLARE
     -- CANDIDATE_ID from the current form (lowercase form-col key; fall back to upper)
     v_candidate_id CHAR(10) := COALESCE(p->>'candidate_id', p->>'CANDIDATE_ID');
+    v_stored_status text;          -- self status as it stands in the DB
     v_exp_cnt      integer := 0;   -- experience rows copied
     v_edu_cnt      integer := 0;   -- education rows copied
     v_fam_cnt      integer := 0;   -- family rows copied
@@ -24,6 +25,21 @@ DECLARE
 BEGIN
     IF v_candidate_id IS NULL OR btrim(v_candidate_id) = '' THEN
         RETURN jsonb_build_object('error', 'No candidate id supplied on the form.');
+    END IF;
+
+    -- Submit once, and only once. The STORED status is the source of truth —
+    -- the form value arrives from the browser and a repeat click (or a direct
+    -- API call that skips the UI) must not push the data a second time. The
+    -- whole action rolls back on this error, so nothing is copied.
+    SELECT STATUS
+      INTO v_stored_status
+      FROM EMPONB_CANDIDATE_SELF
+     WHERE CANDIDATE_ID = v_candidate_id;
+
+    IF btrim(COALESCE(v_stored_status, '')) = 'Submit' THEN
+        RETURN jsonb_build_object('error',
+            'This form has already been submitted to HR and cannot be ' ||
+            'submitted again.');
     END IF;
 
     -- (1) Header: merge the candidate's self-service values into the existing
@@ -139,6 +155,15 @@ BEGIN
     FROM EMPONB_CAND_SELF_PAY
     WHERE CANDIDATE_ID = v_candidate_id;
     GET DIAGNOSTICS v_pay_cnt = ROW_COUNT;
+
+    -- (3) Stamp the self record as submitted. This is what closes the form:
+    --     the edit-lock rule on form 1 turns every record with STATUS='Submit'
+    --     view-only (Save + Submit both go away on the candidate page), and
+    --     the block_edit_after_submit validation refuses any later save.
+    UPDATE EMPONB_CANDIDATE_SELF
+       SET STATUS      = 'Submit',
+           STATUS_DATE = now()
+     WHERE CANDIDATE_ID = v_candidate_id;
 
     RETURN jsonb_build_object('message',
         'Candidate ' || v_candidate_id ||

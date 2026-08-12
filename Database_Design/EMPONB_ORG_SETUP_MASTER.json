@@ -22,12 +22,28 @@
       "mandatory": true
     },
     {
+      "column_name": "PIN",
+      "data_type": "VARCHAR",
+      "size": "6",
+      "key": false,
+      "description": "Site pincode",
+      "sequence": 3
+    },
+    {
+      "column_name": "STATE_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "State code of the site, validated against the State Master",
+      "sequence": 4
+    },
+    {
       "column_name": "PAY_SITE",
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
       "description": "Payroll site code",
-      "sequence": 3
+      "sequence": 5
     },
     {
       "column_name": "PAY_SITE_NAME",
@@ -35,7 +51,7 @@
       "size": "100",
       "key": false,
       "description": "Name of the payroll site",
-      "sequence": 4
+      "sequence": 6
     },
     {
       "column_name": "WORK_SHIFT",
@@ -43,7 +59,7 @@
       "size": "10",
       "key": false,
       "description": "Work shift code",
-      "sequence": 5
+      "sequence": 7
     },
     {
       "column_name": "SHIFT_NAME",
@@ -51,7 +67,7 @@
       "size": "100",
       "key": false,
       "description": "Name of the work shift",
-      "sequence": 6
+      "sequence": 8
     },
     {
       "column_name": "SHIFT_TIMINGS",
@@ -59,7 +75,7 @@
       "size": "50",
       "key": false,
       "description": "Timing details of the work shift",
-      "sequence": 7
+      "sequence": 9
     },
     {
       "column_name": "HOL_TBLNO",
@@ -67,7 +83,7 @@
       "size": "10",
       "key": false,
       "description": "Holiday table number",
-      "sequence": 8
+      "sequence": 10
     },
     {
       "column_name": "HOL_TBL_NAME",
@@ -75,7 +91,7 @@
       "size": "100",
       "key": false,
       "description": "Name of the holiday table",
-      "sequence": 9
+      "sequence": 11
     },
     {
       "column_name": "ACTIVE_FLAG",
@@ -83,7 +99,7 @@
       "size": "1",
       "key": false,
       "description": "Whether this setup row is active and selectable in finalization",
-      "sequence": 10,
+      "sequence": 12,
       "mandatory": true,
       "allowed_values": [
         {
@@ -102,7 +118,7 @@
       "size": "",
       "key": false,
       "description": "Record creation timestamp",
-      "sequence": 11
+      "sequence": 13
     },
     {
       "column_name": "ADD_USER",
@@ -110,7 +126,7 @@
       "size": "10",
       "key": false,
       "description": "User who created the record",
-      "sequence": 12
+      "sequence": 14
     },
     {
       "column_name": "ADD_TERM",
@@ -118,7 +134,7 @@
       "size": "15",
       "key": false,
       "description": "Terminal/IP that created the record",
-      "sequence": 13
+      "sequence": 15
     },
     {
       "column_name": "CHG_DATE",
@@ -126,7 +142,7 @@
       "size": "",
       "key": false,
       "description": "Last change timestamp",
-      "sequence": 14
+      "sequence": 16
     },
     {
       "column_name": "CHG_USER",
@@ -134,7 +150,7 @@
       "size": "10",
       "key": false,
       "description": "User who last changed the record",
-      "sequence": 15
+      "sequence": 17
     },
     {
       "column_name": "CHG_TERM",
@@ -142,7 +158,7 @@
       "size": "15",
       "key": false,
       "description": "Terminal/IP that last changed the record",
-      "sequence": 16
+      "sequence": 18
     }
   ]
 }
