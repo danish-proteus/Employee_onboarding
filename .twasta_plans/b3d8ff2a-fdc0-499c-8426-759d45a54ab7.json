@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
   "created_at": 1784789260.5027142,
-  "updated_at": 1785128388.7758603,
+  "updated_at": 1785996549.356559,
   "todos": [
     {
       "id": "change_1",
@@ -25,9 +25,10 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
   "resume_ref": {
-    "session_id": "189feb17-8f25-427a-a337-6213406b0fa4",
+    "session_id": "87688b7e-12ce-4b64-b79d-2f68b3bf2c09",
     "plan_id": "b3d8ff2a-fdc0-499c-8426-759d45a54ab7",
     "scope": null
   },
-  "depends_on": []
+  "depends_on": [],
+  "result_summary": ""
 }

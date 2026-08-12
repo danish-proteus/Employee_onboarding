@@ -200,67 +200,7 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "DSG001",
-                      "display": "Chief Executive Officer"
-                    },
-                    {
-                      "data": "DSG002",
-                      "display": "Software Engineer"
-                    },
-                    {
-                      "data": "DSG003",
-                      "display": "Senior Software Engineer"
-                    },
-                    {
-                      "data": "DSG004",
-                      "display": "Engineering Manager"
-                    },
-                    {
-                      "data": "DSG005",
-                      "display": "HR Executive"
-                    },
-                    {
-                      "data": "DSG006",
-                      "display": "HR Manager"
-                    },
-                    {
-                      "data": "DSG007",
-                      "display": "Accountant"
-                    },
-                    {
-                      "data": "DSG008",
-                      "display": "Finance Manager"
-                    },
-                    {
-                      "data": "DSG009",
-                      "display": "Sales Executive"
-                    },
-                    {
-                      "data": "DSG010",
-                      "display": "Regional Sales Manager"
-                    },
-                    {
-                      "data": "DSG011",
-                      "display": "Marketing Specialist"
-                    },
-                    {
-                      "data": "DSG012",
-                      "display": "IT Support Analyst"
-                    },
-                    {
-                      "data": "DSG013",
-                      "display": "Flutter Developer"
-                    },
-                    {
-                      "data": "NP001",
-                      "display": "NP"
-                    }
-                  ]
-                },
+                "edit_mask": "",
                 "protect": "",
                 "validations": ""
               }
@@ -331,10 +271,6 @@
                     {
                       "data": "Cancelled",
                       "display": "Cancelled"
-                    },
-                    {
-                      "data": "Submit",
-                      "display": "Submit"
                     }
                   ]
                 },
@@ -2643,14 +2579,13 @@
           },
           "actions": [
             {
-              "name": "Submit to HR",
-              "label": "Submit",
+              "name": "submit_to_candidate_record",
               "handler": "message",
               "scope": "row",
               "business_logic": {
                 "method": "submit_to_candidate_record",
                 "description": "Push captured self-service data to the Candidate Onboarding Record",
-                "spec": "For the given CANDIDATE_ID, copy all captured header fields (personal, contact, statutory, financial) from EMPONB_CANDIDATE_SELF onto the matching row of EMPONB_CANDIDATE_RECORD, and replace EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION and EMPONB_CAND_FAMILY rows for this CANDIDATE_ID with the current EMPONB_CAND_SELF_EXPERIENCE, EMPONB_CAND_SELF_EDUCATION and EMPONB_CAND_SELF_FAMILY rows respectively. Set EMPONB_CANDIDATE_RECORD.STATUS = 'DataSubmitted', stamp STATUS_DATE and SUBMITTED_ON to now(), invalidate the ACCESS_KEY (KEY_VALID_FLAG = 'N') on both the self and record tables, and return a confirmation message. In the same transaction, also set EMPONB_CANDIDATE_SELF.STATUS = 'Submit' and EMPONB_CANDIDATE_SELF.STATUS_DATE = now() for this CANDIDATE_ID (this is in addition to setting EMPONB_CANDIDATE_RECORD.STATUS = 'DataSubmitted' and stamping SUBMITTED_ON/STATUS_DATE there, and invalidating ACCESS_KEY on both tables as already specified).",
+                "spec": "For the given CANDIDATE_ID, copy all captured header fields (personal, contact, statutory, financial) from EMPONB_CANDIDATE_SELF onto the matching row of EMPONB_CANDIDATE_RECORD, and replace EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION and EMPONB_CAND_FAMILY rows for this CANDIDATE_ID with the current EMPONB_CAND_SELF_EXPERIENCE, EMPONB_CAND_SELF_EDUCATION and EMPONB_CAND_SELF_FAMILY rows respectively. Set EMPONB_CANDIDATE_RECORD.STATUS = 'DataSubmitted', stamp STATUS_DATE and SUBMITTED_ON to now(), invalidate the ACCESS_KEY (KEY_VALID_FLAG = 'N') on both the self and record tables, and return a confirmation message.",
                 "language": "plpgsql"
               },
               "validations": [
@@ -2658,25 +2593,12 @@
                   "type": "expression",
                   "name": "Not already submitted",
                   "message": "This candidate record has already been submitted or confirmed.",
-                  "expression": "not in_list({form.status}, \"Submit,DataSubmitted,Review,Confirmed\")"
+                  "expression": "not in_list({form.status}, \"DataSubmitted,Review,Confirmed\")"
                 }
               ]
             }
           ],
-          "validations": [
-            {
-              "type": "business_logic",
-              "name": "Record locked after submission",
-              "error_code": "SELF_LOCKED_AFTER_SUBMIT",
-              "message": "This record has already been submitted and cannot be changed.",
-              "business_logic": {
-                "method": "block_edit_after_submit",
-                "description": "Prevent any changes to the header once the self record status is Submit",
-                "spec": "On save of the header form (add or edit), look up the CURRENTLY STORED STATUS on EMPONB_CANDIDATE_SELF for this CANDIDATE_ID (the value in the database BEFORE this save is applied, not the incoming form value). If the stored STATUS = 'Submit', return an error blocking the save with message 'This record has already been submitted and cannot be changed.'. If no stored row exists yet (first-time add) or stored STATUS is anything else, pass with no error.",
-                "language": "plpgsql"
-              }
-            }
-          ]
+          "validations": []
         }
       },
       {
@@ -3029,63 +2951,7 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "QL001",
-                      "display": "Bachelor of Science"
-                    },
-                    {
-                      "data": "QL002",
-                      "display": "Master of Business Administration"
-                    },
-                    {
-                      "data": "QL003",
-                      "display": "Bachelor of Commerce"
-                    },
-                    {
-                      "data": "QL004",
-                      "display": "Chartered Accountant"
-                    },
-                    {
-                      "data": "QL005",
-                      "display": "Company Secretary"
-                    },
-                    {
-                      "data": "QL006",
-                      "display": "Cost and Management Accountant"
-                    },
-                    {
-                      "data": "QL007",
-                      "display": "PMP Certification"
-                    },
-                    {
-                      "data": "QL008",
-                      "display": "AWS Solutions Architect"
-                    },
-                    {
-                      "data": "QL009",
-                      "display": "Six Sigma Green Belt"
-                    },
-                    {
-                      "data": "QL010",
-                      "display": "Doctor of Philosophy"
-                    },
-                    {
-                      "data": "QL011",
-                      "display": "Diploma in Mechanical Engineering"
-                    },
-                    {
-                      "data": "QL012",
-                      "display": "CISSP Certification"
-                    },
-                    {
-                      "data": "QL013",
-                      "display": "Master of Computer Applications"
-                    }
-                  ]
-                },
+                "edit_mask": "",
                 "protect": ""
               }
             },
@@ -3293,15 +3159,7 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "IN",
-                      "display": "India"
-                    }
-                  ]
-                },
+                "edit_mask": "",
                 "protect": "",
                 "validations": ""
               }
@@ -3818,63 +3676,7 @@
                 "default_function": "",
                 "default_value": "",
                 "expression": "",
-                "edit_mask": {
-                  "mask": "ddlb",
-                  "values": [
-                    {
-                      "data": "AN5523",
-                      "display": "Annual Insentive"
-                    },
-                    {
-                      "data": "BASIC",
-                      "display": "Basic Salary"
-                    },
-                    {
-                      "data": "BONUS",
-                      "display": "Annual Bonus"
-                    },
-                    {
-                      "data": "CONVEY",
-                      "display": "Conveyance Allowance"
-                    },
-                    {
-                      "data": "DA",
-                      "display": "Dearness Allowance"
-                    },
-                    {
-                      "data": "ESI",
-                      "display": "Employee State Insurance"
-                    },
-                    {
-                      "data": "HRA",
-                      "display": "House Rent Allowance"
-                    },
-                    {
-                      "data": "LOAN",
-                      "display": "Staff Loan Recovery"
-                    },
-                    {
-                      "data": "MEDALW",
-                      "display": "Medical Allowance"
-                    },
-                    {
-                      "data": "PF",
-                      "display": "Provident Fund"
-                    },
-                    {
-                      "data": "PTAX",
-                      "display": "Professional Tax"
-                    },
-                    {
-                      "data": "SPLALW",
-                      "display": "Special Allowance"
-                    },
-                    {
-                      "data": "TDS",
-                      "display": "Income Tax (TDS)"
-                    }
-                  ]
-                },
+                "edit_mask": "",
                 "protect": "",
                 "validations": ""
               }

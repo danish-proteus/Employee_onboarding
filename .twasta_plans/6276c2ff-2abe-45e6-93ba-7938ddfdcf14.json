@@ -7,7 +7,7 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nwhy dont you make the changes even after multiple prompts why am i getting \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" validation message again and again while saving \"Candidate Self\" form submission.",
   "created_at": 1784789260.5024567,
-  "updated_at": 1785128388.774745,
+  "updated_at": 1785996549.3561223,
   "todos": [
     {
       "id": "change_1",
@@ -37,9 +37,10 @@
   "phases": [],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nwhy dont you make the changes even after multiple prompts why am i getting \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" validation message again and again while saving \"Candidate Self\" form submission.",
   "resume_ref": {
-    "session_id": "189feb17-8f25-427a-a337-6213406b0fa4",
+    "session_id": "87688b7e-12ce-4b64-b79d-2f68b3bf2c09",
     "plan_id": "6276c2ff-2abe-45e6-93ba-7938ddfdcf14",
     "scope": null
   },
-  "depends_on": []
+  "depends_on": [],
+  "result_summary": ""
 }

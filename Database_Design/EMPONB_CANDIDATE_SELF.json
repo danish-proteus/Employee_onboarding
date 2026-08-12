@@ -158,6 +158,10 @@
         {
           "value": "Cancelled",
           "label": "Cancelled"
+        },
+        {
+          "value": "Submit",
+          "label": "Submit"
         }
       ]
     },

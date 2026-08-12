@@ -1,582 +1,10 @@
 {
   "version": 2,
-  "id": "86c46f73-5d93-457b-b240-8bbb954d481d",
+  "id": "87688b7e-12ce-4b64-b79d-2f68b3bf2c09",
   "project": "Employee_onboarding",
   "description": "Process is as below\n1. HR team will fill initial information about the candidate like Name, Gender, Country, Designations, emailID, status like [Link Generate, Link Open, DataSubmitted, Review, Confirmed], status date. \n2. It should have a button to send link to candidate over email to candidate with a key. \n3. Key will have a life for say 1 day [Should be configurable]. \n4. Link will contain the URL of the form which will be embedded inside application. \n5. Stauts should be changed to \u2018Link Generated\u2019, Status date should be updated.\n6. Application will validate the key, if key is valid then only it should open the application. \n7. Status should be changed to \u2018Link Accessed\u2019, Status date should be updated.\n8. Candidate should fill the required fields like EMP_FNAME,EMP_MNAME,EMP_LNAME,NAME_PREFIX, Gender, Current Address, Current PIN, Current CITY, CURRENT STATE, Mobile, Alternate Telephone, Permanent Address, Permanent PIN, Permanent CITY, Permanent STATE, NATIONALITY, BIRTHDATE, MARITAL STATUS, MARRIAGE ANNIVERSARY, BLOOD GROUP, Contact Person, Contact Person Mobile, Contact person Email, Religion, Bank Account No, Bank IFSC Code, Bank Name, Total Experience, PF NO, ESIC NO, HOBBY1, HOBBY2, PASSPORT_NO, PAN_NO, AADHAR_NO, DRIVING LIC NO, PHYSICAL_HANDICAP, MOTHER_TONGUE, CAST_CATEGORY, \n9. Form Should have option to validate the PAN_NO, AADHAR_NO, BANK_DETAIL, It shoudl call IOFLOW API to validate, Allow only 3 try. It shoudl also store the status of these requests Validated True or False with Name returned\n10. It should also allow Candidate to attach Image/File for PAN_NO, AADHAR_NO, Bank Account No [Should attach image of crossed Cheque or Passbook].\n11. It Should have a detail table like form where Candidate can enter multiple rows for his 'Past Experince', it should have field like [LINE_NO, ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, GROSS_AMT, COUNTRY_CODE]\n12. It Should have a detail table like form where Candidate can enter multiple rows for his 'Educational Qualification', it should have field like [LINE_NO, QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION]\n13. It Should have a detail table like form where Candidate can enter multiple rows for his \u2018FAMILY', it should have field like [LINE_NO, MEMBER_NAME, DATE_BIRTH, GENDER, RELATION]\n14. Candidate Can have Save and Submit 2 options. \n15. Candidate Can edit the detail till he 'Submit\u2019. \n16. Once Submitted Candidate cannot open link. \n17. On Submission it should intimate the HR person who initiated the link. \n18. On Submission an email will be sent to Candidate with all informations Candidate filled on the form. \n19. Status should be changed to \u2018DataSubmitted\u2019, Status date should be updated.\n20. Now, HR Person Can Open the transaction and check the data submitted. Can Re-Check the AN_NO, AADHAR_NO, BANK_DETAIL via IOFLOW if needed.\n21. HR Person can further update following EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, \n22. HR PERSON Should have a detail table like form where can enter multiple rows for his \u2018CANDIDATE_PAY', it should have field like [LINE_NO, AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, RES_FORMULA, AMOUNT_CALC, UPD_PAYSTRU, APPL_MODE]\n23. ON CONFIRMATION IT SHOULD CALL IOFLOW API FOR EMPLOYEE",
-  "active_plan_id": "12390983-3de7-479f-8798-e57ee2828e2e",
+  "active_plan_id": "4f604360-39c8-44d7-9976-4f65288db9af",
   "plans": [
-    {
-      "id": "6d888a41-14c1-40f2-a2bd-130699915154",
-      "title": "Set the CANDIDATE_ID field to disabled (read-only) on the Candidate Self transac",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake 'candidate_id' disabled",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Disable CANDIDATE_ID field on Candidate Self form",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784175638.3194635,
-          "completed_at": 1784175660.0362751
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784175638.2975295,
-      "updated_at": 1784175718.9013681,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "bf976814-ca40-4c2d-a60b-5c4567539564",
-      "title": "Disable the Designation field on the Candidate Self transaction screen so it is ",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nmake 'Designation' disabled",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Disable the Designation field on the Candidate Self form",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784175732.1378803,
-          "completed_at": 1784175753.0352194
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784175732.1198375,
-      "updated_at": 1784175732.1198378,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "1a40763b-e9b6-4446-b1c1-9314ef12d4ac",
-      "title": "Fix the Candidate Self 'Submit to Candidate Onboarding Record' action so it copi",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nSubmit candidate 6 's data to the Candidate Onboarding Record? This will overwrite the record's candidate-entered details.\nnull value in column \"email_id\" of relation \"emponb_candidate_record\" violates not-null constraint DETAIL: Failing row contains (6 , Anita R Desai, null, null, null, null, DataSubmitted, 2026-07-16 05:34:02.637365, null, null, null, null, null, null, null, null, null, 2026-07-16 05:34:02.637365, Miss , Anita, R, Desai, 2025-10-08, null, null, null, B-, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 11112",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Copy EMAIL_ID and core identity fields into the onboarding record on submit",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784180122.656276,
-          "completed_at": 1784180176.2351363
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784180122.6192005,
-      "updated_at": 1784180122.6192007,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "a056acbb-1b05-4ba0-80ab-dc5030859bc3",
-      "title": "Add 'Validate PAN' and 'Validate Aadhar' action buttons on the Candidate Onboard",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOnClick 'Validate PAN', 'Validate Aadhar', call IOFLOW event 'EmpOnboardingValidate' and pass 'ValidatePAN'/ 'ValidateAadhar', candidate_id, pan_no / aadhar_no for the candidate_id.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Add 'Validate PAN' and 'Validate Aadhar' action buttons to the candidate record form",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784183704.0445654,
-          "completed_at": 1784183740.165522
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Business logic: validate_pan \u2014 invoke IOFLOW event EmpOnboardingValidate for PAN",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784183740.1866584,
-          "completed_at": 1784183830.5476327
-        },
-        {
-          "id": "change_3",
-          "step": "change",
-          "label": "Business logic: validate_aadhar \u2014 invoke IOFLOW event EmpOnboardingValidate for Aadhar",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784183830.740757,
-          "completed_at": 1784183881.1507814
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784183704.0222976,
-      "updated_at": 1784183704.022298,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "b4f595f5-c4b1-4024-9609-67c0fbf0f2b7",
-      "title": "Modify the existing Submit business-logic function on emponb_candidate_self so i",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nOn 'Submit', it should update only the change to 'Candidate Onboarding Record' for the given candidate_id",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Make Submit apply only changed values (preserve existing record fields)",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784187312.1107109,
-          "completed_at": 1784187511.7924683
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784187312.0942817,
-      "updated_at": 1784187312.0942822,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "d22b1aa5-c5bd-4ccc-b070-0115ebd3440a",
-      "title": "Make the Relation field in the Family section of the Candidate Self form use the",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n1. All the 7 lookup relation options are showing for Relation field under the \"Family\" section \nof the \"Candidate Onboarding Record\" page but not the \"Candidate Self\" page, it should show same \nrelation options for both the fields.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Point Candidate Self \u2192 Family \u2192 Relation at the demographic-master lookup",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784265267.0196304,
-          "completed_at": 1784265287.7552729
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784265267.0011218,
-      "updated_at": 1784265786.5749354,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "b5c2295a-152e-4172-8238-ede9d9138fee",
-      "title": "Fix the blank-screen crash when a candidate adds a new row under the Family sect",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nWhen \"Candidate Self\" page link is sent to the user via mail from \"Candidate Onboarding Record\" page and user tries to add new record under \"Family\" section \nthen the pages crashes and shows blank screen because of this user is unable to add new family member details. Check this issue and fix it.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Fix Relation field in the Family detail form so adding a new family row no longer crashes the candidate self-service page",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784266019.7108972,
-          "completed_at": 1784266048.229747
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784266019.6947207,
-      "updated_at": 1784266265.4856377,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "c32e7deb-3ede-48eb-8fed-1d978f06f790",
-      "title": "Add a duplicate-prevention validation on the Education detail section of both th",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\n3. In \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Education\" section, \nit should not allow records with similar 1. Qualification and 2. Pass Year, if one of them are same then it should show \nan appropriate validation message to the user.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Add duplicate Qualification+Pass Year validation on Education detail of Candidate Onboarding Record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784266414.622462,
-          "completed_at": 1784266446.2311904
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Add duplicate Qualification+Pass Year validation on Education detail of Candidate Self",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784266446.2499511,
-          "completed_at": 1784266471.2116046
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784266414.604928,
-      "updated_at": 1784266798.5996292,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "012ec9b6-d516-4e1e-9d0b-b00762ac3338",
-      "title": "Align the Education \u2192 Qualification field on the Candidate Self form (emponb_can",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nEducation qualification still not applied for the \"Candidate Self\" form, it should work same as the form available for \"Candidate Onboarding Record\".",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Make Candidate Self Education qualification use the live Qualification Master lookup",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784277096.8165827,
-          "completed_at": 1784277166.2330525
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784277096.797655,
-      "updated_at": 1784277096.7976553,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "bce1b0ff-4939-49c2-b664-2e0cfe41dfbe",
-      "title": "Add a duplicate-qualification check on the Qualification (education) detail line",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Self\" page, while adding Qualification saving it, It should check whether the qualification is already\n exist and restrict duplicate qualification with appropriate message.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Block duplicate qualification codes on Candidate Self education detail",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784278669.1352174,
-          "completed_at": 1784278707.1574802
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784278669.1130676,
-      "updated_at": 1784278669.1130679,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "ceb6939d-a8a5-46c0-b9b6-042a8b9d30b8",
-      "title": "Restrict duplicate qualifications in the Candidate Self Education detail grid by",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt allows to add duplicate Education record with same qualification for existing records, it should restrict for these records as well.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Wire duplicate-qualification business-logic validation on Candidate Self Education QLF_CODE",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784279421.1399798,
-          "completed_at": 1784279442.8512528
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Implement check_duplicate_qualification for Candidate Self Education",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784279442.8717053,
-          "completed_at": 1784279508.7007687
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784279421.1196225,
-      "updated_at": 1784279421.1196232,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "4e7d432b-005f-4a7c-9209-547c53e19e36",
-      "title": "Fix the crash when adding a new Education detail line on the Candidate Self form",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Self\" screen open (object emponb_candidate_self, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nAfter \"Candidate Self\" form link sent to the user, and user tries to add new record under \"Education\" section it is \ncrashing the form and showing blank screen, check this issue and fix it.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Fix malformed Pass Year validation expression on the Education detail form",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784529068.187891,
-          "completed_at": 1784529085.3785057
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784529068.1681104,
-      "updated_at": 1784529068.1681104,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "9319ad12-40d8-46dd-84f6-2c26757f22ce",
-      "title": "Add a per-candidate uniqueness validation on the Family detail line's MEMBER_NAM",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Onboarding Record\" and \"Candidate Self\" pages, while adding new record under \"Family\" section, \nit should not allow records with similar Member Name",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Block duplicate Family member names in Candidate Onboarding Record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784537133.9589772,
-          "completed_at": 1784537166.687464
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Block duplicate Family member names in Candidate Self",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784537166.7032592,
-          "completed_at": 1784537214.978552
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784537133.9369578,
-      "updated_at": 1784537133.9369583,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "3dcf46d1-bc17-4d33-8680-3aaa4b52020a",
-      "title": "Add a per-candidate duplicate-check (must_be_unique) validation on the Family de",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIn \"Candidate Onboarding Record\" and \"Candidate Self\" pages, when adding new record under \"Family\" section, \nit should not allow records with duplicate Member Name and should show the validation message if duplicate member \nname is added.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Block duplicate Family member name in Candidate Onboarding Record",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784537771.7609675,
-          "completed_at": 1784537807.405122
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Block duplicate Family member name in Candidate Self",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_self",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784537807.4210637,
-          "completed_at": 1784537849.2345207
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784537771.7430282,
-      "updated_at": 1784540973.0073764,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "4500ca78-c60d-4e45-b6bd-9a883fab03ed",
-      "title": "Add a duplicate-name validation on MEMBER_NAME in the Family detail form of the ",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nin \"Candidate Onboarding Record\" page, make the following restrictions:\n1. When adding new family member in \"Family\" section, it should check all the existing family member names and restrict duplicate \"Member Name\" with a validation message on click of \"Save\" button.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Document family member name uniqueness rule in FRS",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784614207.7506962,
-          "completed_at": 1784614223.3874679
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Add duplicate Member Name validation on the Family detail form",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784614223.4005802,
-          "completed_at": 1784614275.5953038
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784614207.716737,
-      "updated_at": 1784614207.7167373,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "dfd06466-b7dd-4d6f-a4a7-12378500140f",
-      "title": "Change the family member name duplicate check on the Candidate Onboarding Record",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt should not validate family member names with DB records instead check existing records which have been added on the screen and compare with them.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Family detail: replace DB-based name uniqueness with in-form duplicate check",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784615055.797677,
-          "completed_at": 1784615076.336946
-        },
-        {
-          "id": "change_2",
-          "step": "change",
-          "label": "Implement check_duplicate_family_member against on-screen rows",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784615076.3537366,
-          "completed_at": 1784615123.168283
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784615055.7771277,
-      "updated_at": 1784615381.8541203,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
-    {
-      "id": "15202b6c-cd31-4df5-b751-88920d48e33b",
-      "title": "Fix the \"Save blocked \u2014 AttributeError: 'str' object has no attribute 'get'\" err",
-      "kind": "change",
-      "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nIt shows \"Save blocked\nAttributeError: 'str' object has no attribute 'get'\" error while saving new family member details in \"Family\" section, can you check and resolve it.",
-      "todos": [
-        {
-          "id": "change_1",
-          "step": "change",
-          "label": "Replace the crashing business_logic duplicate check on Family \u2192 Member Name with a builtin must_be_unique validation",
-          "status": "completed",
-          "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
-          "phase_id": null,
-          "started_at": 1784615445.7273567,
-          "completed_at": 1784615464.8222134
-        }
-      ],
-      "phases": [],
-      "profile_id": null,
-      "created_at": 1784615445.704933,
-      "updated_at": 1784615749.10404,
-      "depends_on": [],
-      "dependency_spec": null,
-      "run_scope": null
-    },
     {
       "id": "4f604360-39c8-44d7-9976-4f65288db9af",
       "title": "Change the Family detail duplicate check on the Candidate Onboarding Record so i",
@@ -594,7 +22,7 @@
           "obj_type": "T",
           "phase_id": null,
           "started_at": 1784615773.2834268,
-          "completed_at": 1784615794.7440755
+          "completed_at": 1785910402.9291687
         },
         {
           "id": "change_2",
@@ -606,13 +34,13 @@
           "obj_type": "T",
           "phase_id": null,
           "started_at": 1784615794.7612355,
-          "completed_at": 1784615813.9368792
+          "completed_at": 1785910411.7903793
         }
       ],
       "phases": [],
       "profile_id": null,
       "created_at": 1784615773.261878,
-      "updated_at": 1784615958.6281173,
+      "updated_at": 1785910237.6127384,
       "depends_on": [],
       "dependency_spec": null,
       "run_scope": null
@@ -646,41 +74,69 @@
       "run_scope": null
     },
     {
-      "id": "12390983-3de7-479f-8798-e57ee2828e2e",
-      "title": "Re-apply the Email ID uniqueness validation on the Candidate Onboarding Record s",
+      "id": "6276c2ff-2abe-45e6-93ba-7938ddfdcf14",
+      "title": "Fix the repeating \"A record with Candidate ID = '10 ' already exists\" save block",
       "kind": "change",
       "status": "completed",
-      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\ndo it again: Update the \"Candidate Onboarding Record\" model/form, and validate \"Email ID\" field value in add and edit mode but there \nis a condition for edit mode, it should validate \"Email ID\" value only when it is edited else skip it.",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nwhy dont you make the changes even after multiple prompts why am i getting \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" validation message again and again while saving \"Candidate Self\" form submission.",
       "todos": [
         {
           "id": "change_1",
           "step": "change",
-          "label": "Ensure EMAIL_ID field-level business_logic validation is declared on the candidate header form",
+          "label": "Make Candidate Self save update the existing CANDIDATE_ID row instead of raising duplicate-key",
           "status": "completed",
           "error": null,
-          "obj_name": "emponb_candidate_record",
+          "obj_name": "emponb_candidate_self",
           "obj_type": "T",
           "phase_id": null,
-          "started_at": 1784638706.117045,
-          "completed_at": 1784638728.9638937
+          "started_at": 1784726873.4807646,
+          "completed_at": 1784726892.4979277
         },
         {
           "id": "change_2",
           "step": "change",
-          "label": "Implement check_email_id_unique: always validate on Add, validate on Edit only when EMAIL_ID changed",
+          "label": "Open the embedded Candidate Self form in edit mode for the seeded candidate instead of add-new mode",
           "status": "completed",
           "error": null,
-          "obj_name": "emponb_candidate_record",
-          "obj_type": "T",
+          "obj_name": "emponb_candidate_form",
+          "obj_type": "S",
           "phase_id": null,
-          "started_at": 1784638728.981598,
-          "completed_at": 1784638774.1491475
+          "started_at": 1784726892.516805,
+          "completed_at": 1784726956.8464277
         }
       ],
       "phases": [],
       "profile_id": null,
-      "created_at": 1784638706.0937994,
-      "updated_at": 1784638706.0937996,
+      "created_at": 1784726873.45738,
+      "updated_at": 1784727777.5084617,
+      "depends_on": [],
+      "dependency_spec": null,
+      "run_scope": null
+    },
+    {
+      "id": "b3d8ff2a-fdc0-499c-8426-759d45a54ab7",
+      "title": "Make the Candidate Self form upsert (overwrite) an existing candidate record ins",
+      "kind": "change",
+      "status": "completed",
+      "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
+      "todos": [
+        {
+          "id": "change_1",
+          "step": "change",
+          "label": "Allow overwriting an existing Candidate ID on the Candidate Self form",
+          "status": "completed",
+          "error": null,
+          "obj_name": "emponb_candidate_self",
+          "obj_type": "T",
+          "phase_id": null,
+          "started_at": 1784727818.4120784,
+          "completed_at": 1784727857.950546
+        }
+      ],
+      "phases": [],
+      "profile_id": null,
+      "created_at": 1784727818.3900168,
+      "updated_at": 1784728166.6401994,
       "depends_on": [],
       "dependency_spec": null,
       "run_scope": null

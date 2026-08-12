@@ -29,55 +29,55 @@
       "mandatory": true,
       "allowed_values": [
         {
-          "value": "QL001",
+          "value": "QLF001",
           "label": "Bachelor of Science"
         },
         {
-          "value": "QL002",
+          "value": "QLF002",
           "label": "Master of Business Administration"
         },
         {
-          "value": "QL003",
+          "value": "QLF003",
           "label": "Bachelor of Commerce"
         },
         {
-          "value": "QL004",
+          "value": "QLF004",
           "label": "Chartered Accountant"
         },
         {
-          "value": "QL005",
+          "value": "QLF005",
           "label": "Company Secretary"
         },
         {
-          "value": "QL006",
+          "value": "QLF006",
           "label": "Cost and Management Accountant"
         },
         {
-          "value": "QL007",
+          "value": "QLF007",
           "label": "PMP Certification"
         },
         {
-          "value": "QL008",
+          "value": "QLF008",
           "label": "AWS Solutions Architect"
         },
         {
-          "value": "QL009",
+          "value": "QLF009",
           "label": "Six Sigma Green Belt"
         },
         {
-          "value": "QL010",
+          "value": "QLF010",
           "label": "Doctor of Philosophy"
         },
         {
-          "value": "QL011",
+          "value": "QLF011",
           "label": "Diploma in Mechanical Engineering"
         },
         {
-          "value": "QL012",
+          "value": "QLF012",
           "label": "CISSP Certification"
         },
         {
-          "value": "QL013",
+          "value": "QLF013",
           "label": "Master of Computer Applications"
         }
       ],
