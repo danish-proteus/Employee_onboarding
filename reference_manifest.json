@@ -1,7 +1,7 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-08-11T11:06:48.488095+00:00",
+  "generated_at": "2026-08-19T05:45:15.867415+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
@@ -228,6 +228,7 @@
         "PERMANENT_PIN VARCHAR",
         "PERMANENT_CITY VARCHAR",
         "PERMANENT_STATE VARCHAR",
+        "SAME_AS_CURRENT_ADDRESS VARCHAR",
         "MOBILE CHAR",
         "ALTERNATE_TELEPHONE VARCHAR",
         "CONTACT_PERSON VARCHAR",
@@ -378,24 +379,6 @@
         "DATE_BIRTH DATE",
         "GENDER VARCHAR",
         "RELATION VARCHAR"
-      ]
-    },
-    {
-      "table_name": "EMPONB_CAND_SELF_PAY",
-      "description": "",
-      "key_columns": [
-        "CANDIDATE_ID VARCHAR",
-        "LINE_NO NUMBER"
-      ],
-      "other_columns": [
-        "AD_CODE VARCHAR",
-        "AMOUNT NUMBER",
-        "AMOUNT_TYPE VARCHAR",
-        "FREQUENCY VARCHAR",
-        "RES_FORMULA VARCHAR",
-        "AMOUNT_CALC NUMBER",
-        "UPD_PAYSTRU VARCHAR",
-        "APPL_MODE VARCHAR"
       ]
     },
     {

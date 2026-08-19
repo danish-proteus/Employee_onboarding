@@ -6,17 +6,17 @@
       "form_no": "3",
       "usage_type": "M",
       "referred_columns": [
-        "QLF_TYPE",
-        "CLASS",
-        "COURSE_DURATION",
-        "CANDIDATE_ID",
-        "LINE_NO",
-        "COURSE_TYPE",
-        "COUNTRY_CODE",
-        "PASS_YEAR",
         "PERCENTAGE",
+        "INSTITUTE",
+        "PASS_YEAR",
+        "COUNTRY_CODE",
         "QLF_CODE",
-        "INSTITUTE"
+        "COURSE_TYPE",
+        "QLF_TYPE",
+        "COURSE_DURATION",
+        "LINE_NO",
+        "CANDIDATE_ID",
+        "CLASS"
       ]
     }
   ]

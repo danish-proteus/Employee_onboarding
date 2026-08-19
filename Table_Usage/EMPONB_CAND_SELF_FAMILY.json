@@ -6,12 +6,12 @@
       "form_no": "4",
       "usage_type": "M",
       "referred_columns": [
-        "CANDIDATE_ID",
+        "DATE_BIRTH",
         "MEMBER_NAME",
         "RELATION",
         "GENDER",
-        "DATE_BIRTH",
-        "LINE_NO"
+        "LINE_NO",
+        "CANDIDATE_ID"
       ]
     }
   ]

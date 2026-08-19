@@ -41,7 +41,7 @@
     {
       "object_name": "emponb_candidate_self",
       "form_no": "1",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "DESIGNATION_NAME",
         "DESIGN_CODE"

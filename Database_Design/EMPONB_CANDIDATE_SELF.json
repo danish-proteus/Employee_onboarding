@@ -37,6 +37,7 @@
       "key": false,
       "description": "Candidate gender",
       "sequence": 4,
+      "mandatory": true,
       "allowed_values": [
         {
           "value": "M",
@@ -59,64 +60,6 @@
       "key": false,
       "description": "Designation applied for",
       "sequence": 5,
-      "allowed_values": [
-        {
-          "value": "DSG001",
-          "label": "Chief Executive Officer"
-        },
-        {
-          "value": "DSG002",
-          "label": "Software Engineer"
-        },
-        {
-          "value": "DSG003",
-          "label": "Senior Software Engineer"
-        },
-        {
-          "value": "DSG004",
-          "label": "Engineering Manager"
-        },
-        {
-          "value": "DSG005",
-          "label": "HR Executive"
-        },
-        {
-          "value": "DSG006",
-          "label": "HR Manager"
-        },
-        {
-          "value": "DSG007",
-          "label": "Accountant"
-        },
-        {
-          "value": "DSG008",
-          "label": "Finance Manager"
-        },
-        {
-          "value": "DSG009",
-          "label": "Sales Executive"
-        },
-        {
-          "value": "DSG010",
-          "label": "Regional Sales Manager"
-        },
-        {
-          "value": "DSG011",
-          "label": "Marketing Specialist"
-        },
-        {
-          "value": "DSG012",
-          "label": "IT Support Analyst"
-        },
-        {
-          "value": "DSG013",
-          "label": "Flutter Developer"
-        },
-        {
-          "value": "NP001",
-          "label": "NP"
-        }
-      ],
       "lookup": {
         "table": "EMPONB_DESIG_DEPT_MASTER",
         "display_column": "DESIGNATION_NAME",
@@ -303,7 +246,8 @@
       "size": "50",
       "key": false,
       "description": "First name",
-      "sequence": 19
+      "sequence": 19,
+      "mandatory": true
     },
     {
       "column_name": "EMP_MNAME",
@@ -311,7 +255,8 @@
       "size": "50",
       "key": false,
       "description": "Middle name",
-      "sequence": 20
+      "sequence": 20,
+      "mandatory": true
     },
     {
       "column_name": "EMP_LNAME",
@@ -319,7 +264,8 @@
       "size": "50",
       "key": false,
       "description": "Last name",
-      "sequence": 21
+      "sequence": 21,
+      "mandatory": true
     },
     {
       "column_name": "BIRTHDATE",
@@ -541,7 +487,12 @@
       "size": "50",
       "key": false,
       "description": "Current state",
-      "sequence": 37
+      "sequence": 37,
+      "lookup": {
+        "table": "emponb_state_master",
+        "display_column": "state_name",
+        "value_column": "state_code"
+      }
     },
     {
       "column_name": "PERMANENT_ADDRESS",
@@ -573,7 +524,30 @@
       "size": "50",
       "key": false,
       "description": "Permanent state",
-      "sequence": 41
+      "sequence": 41,
+      "lookup": {
+        "table": "emponb_state_master",
+        "display_column": "state_name",
+        "value_column": "state_code"
+      }
+    },
+    {
+      "column_name": "SAME_AS_CURRENT_ADDRESS",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Check to copy current address details into the permanent address fields",
+      "sequence": 42,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
     },
     {
       "column_name": "MOBILE",
@@ -581,7 +555,7 @@
       "size": "10",
       "key": false,
       "description": "Mobile number",
-      "sequence": 42
+      "sequence": 43
     },
     {
       "column_name": "ALTERNATE_TELEPHONE",
@@ -589,7 +563,7 @@
       "size": "20",
       "key": false,
       "description": "Alternate telephone",
-      "sequence": 43
+      "sequence": 44
     },
     {
       "column_name": "CONTACT_PERSON",
@@ -597,7 +571,7 @@
       "size": "100",
       "key": false,
       "description": "Emergency contact person name",
-      "sequence": 44
+      "sequence": 45
     },
     {
       "column_name": "CONTACT_PERSON_MOBILE",
@@ -605,7 +579,7 @@
       "size": "10",
       "key": false,
       "description": "Emergency contact mobile",
-      "sequence": 45
+      "sequence": 46
     },
     {
       "column_name": "CONTACT_PERSON_EMAIL",
@@ -613,7 +587,7 @@
       "size": "120",
       "key": false,
       "description": "Emergency contact email",
-      "sequence": 46
+      "sequence": 47
     },
     {
       "column_name": "PAN_NO",
@@ -621,7 +595,7 @@
       "size": "10",
       "key": false,
       "description": "PAN number",
-      "sequence": 47
+      "sequence": 48
     },
     {
       "column_name": "PAN_DOC",
@@ -629,7 +603,7 @@
       "size": "500",
       "key": false,
       "description": "PAN document image",
-      "sequence": 48
+      "sequence": 49
     },
     {
       "column_name": "AADHAR_NO",
@@ -637,7 +611,7 @@
       "size": "12",
       "key": false,
       "description": "Aadhar number",
-      "sequence": 49
+      "sequence": 50
     },
     {
       "column_name": "AADHAR_DOC",
@@ -645,7 +619,7 @@
       "size": "500",
       "key": false,
       "description": "Aadhar document image",
-      "sequence": 50
+      "sequence": 51
     },
     {
       "column_name": "PASSPORT_NO",
@@ -653,7 +627,7 @@
       "size": "20",
       "key": false,
       "description": "Passport number",
-      "sequence": 51
+      "sequence": 52
     },
     {
       "column_name": "PASSPORT_DOC",
@@ -661,7 +635,7 @@
       "size": "500",
       "key": false,
       "description": "Passport document",
-      "sequence": 52
+      "sequence": 53
     },
     {
       "column_name": "DRIVING_LIC_NO",
@@ -669,7 +643,7 @@
       "size": "20",
       "key": false,
       "description": "Driving license number",
-      "sequence": 53
+      "sequence": 54
     },
     {
       "column_name": "DRIVING_LIC_DOC",
@@ -677,7 +651,7 @@
       "size": "500",
       "key": false,
       "description": "Driving license document",
-      "sequence": 54
+      "sequence": 55
     },
     {
       "column_name": "PF_NO",
@@ -685,7 +659,7 @@
       "size": "20",
       "key": false,
       "description": "Provident fund number",
-      "sequence": 55
+      "sequence": 56
     },
     {
       "column_name": "PF_DOC",
@@ -693,7 +667,7 @@
       "size": "500",
       "key": false,
       "description": "PF document",
-      "sequence": 56
+      "sequence": 57
     },
     {
       "column_name": "ESIC_NO",
@@ -701,7 +675,7 @@
       "size": "20",
       "key": false,
       "description": "ESIC number",
-      "sequence": 57
+      "sequence": 58
     },
     {
       "column_name": "ESIC_DOC",
@@ -709,7 +683,7 @@
       "size": "500",
       "key": false,
       "description": "ESIC document",
-      "sequence": 58
+      "sequence": 59
     },
     {
       "column_name": "BANK_ACCOUNT_NO",
@@ -717,7 +691,7 @@
       "size": "20",
       "key": false,
       "description": "Bank account number",
-      "sequence": 59
+      "sequence": 60
     },
     {
       "column_name": "BANK_IFSC_CODE",
@@ -725,7 +699,7 @@
       "size": "11",
       "key": false,
       "description": "Bank IFSC code",
-      "sequence": 60
+      "sequence": 61
     },
     {
       "column_name": "BANK_NAME",
@@ -733,7 +707,7 @@
       "size": "100",
       "key": false,
       "description": "Bank name",
-      "sequence": 61
+      "sequence": 62
     },
     {
       "column_name": "BANK_DOC",
@@ -741,7 +715,7 @@
       "size": "500",
       "key": false,
       "description": "Cancelled cheque / passbook image",
-      "sequence": 62
+      "sequence": 63
     },
     {
       "column_name": "PAN_VALIDATED",
@@ -749,7 +723,7 @@
       "size": "1",
       "key": false,
       "description": "PAN validation status",
-      "sequence": 63,
+      "sequence": 64,
       "allowed_values": [
         {
           "value": "Y",
@@ -767,7 +741,7 @@
       "size": "100",
       "key": false,
       "description": "Name returned by PAN validation",
-      "sequence": 64
+      "sequence": 65
     },
     {
       "column_name": "PAN_ATTEMPTS",
@@ -775,7 +749,7 @@
       "size": "3",
       "key": false,
       "description": "PAN validation attempts used",
-      "sequence": 65
+      "sequence": 66
     },
     {
       "column_name": "AADHAR_VALIDATED",
@@ -783,7 +757,7 @@
       "size": "1",
       "key": false,
       "description": "Aadhar validation status",
-      "sequence": 66,
+      "sequence": 67,
       "allowed_values": [
         {
           "value": "Y",
@@ -801,7 +775,7 @@
       "size": "100",
       "key": false,
       "description": "Name returned by Aadhar validation",
-      "sequence": 67
+      "sequence": 68
     },
     {
       "column_name": "AADHAR_ATTEMPTS",
@@ -809,7 +783,7 @@
       "size": "3",
       "key": false,
       "description": "Aadhar validation attempts used",
-      "sequence": 68
+      "sequence": 69
     },
     {
       "column_name": "BANK_VALIDATED",
@@ -817,7 +791,7 @@
       "size": "1",
       "key": false,
       "description": "Bank validation status",
-      "sequence": 69,
+      "sequence": 70,
       "allowed_values": [
         {
           "value": "Y",
@@ -835,7 +809,7 @@
       "size": "100",
       "key": false,
       "description": "Name returned by bank validation",
-      "sequence": 70
+      "sequence": 71
     },
     {
       "column_name": "BANK_ATTEMPTS",
@@ -843,7 +817,7 @@
       "size": "3",
       "key": false,
       "description": "Bank validation attempts used",
-      "sequence": 71
+      "sequence": 72
     },
     {
       "column_name": "ADD_DATE",
@@ -851,7 +825,7 @@
       "size": "",
       "key": false,
       "description": "Record creation timestamp",
-      "sequence": 72
+      "sequence": 73
     },
     {
       "column_name": "ADD_USER",
@@ -859,7 +833,7 @@
       "size": "10",
       "key": false,
       "description": "User who created the record",
-      "sequence": 73
+      "sequence": 74
     },
     {
       "column_name": "ADD_TERM",
@@ -867,7 +841,7 @@
       "size": "15",
       "key": false,
       "description": "Terminal used to create the record",
-      "sequence": 74
+      "sequence": 75
     },
     {
       "column_name": "CHG_DATE",
@@ -875,7 +849,7 @@
       "size": "",
       "key": false,
       "description": "Last change timestamp",
-      "sequence": 75
+      "sequence": 76
     },
     {
       "column_name": "CHG_USER",
@@ -883,7 +857,7 @@
       "size": "10",
       "key": false,
       "description": "User who last changed the record",
-      "sequence": 76
+      "sequence": 77
     },
     {
       "column_name": "CHG_TERM",
@@ -891,7 +865,7 @@
       "size": "15",
       "key": false,
       "description": "Terminal used for the last change",
-      "sequence": 77
+      "sequence": 78
     }
   ]
 }

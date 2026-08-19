@@ -168,7 +168,7 @@
                 "width": 164,
                 "key": false,
                 "mandatory": false,
-                "hidden": "",
+                "hidden": true,
                 "format": "",
                 "default_function": "",
                 "default_value": "",
@@ -2322,7 +2322,7 @@
                 "heading": "Designation",
                 "descr": "Final designation",
                 "x": "740",
-                "y": "740",
+                "y": "1230",
                 "col_id": "74",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2350,7 +2350,7 @@
                 "heading": "Department Code",
                 "descr": "Department code",
                 "x": "750",
-                "y": "750",
+                "y": "1030",
                 "col_id": "75",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2378,7 +2378,7 @@
                 "heading": "Grade",
                 "descr": "Grade",
                 "x": "760",
-                "y": "760",
+                "y": "1130",
                 "col_id": "76",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2406,7 +2406,7 @@
                 "heading": "Cadre",
                 "descr": "Cadre",
                 "x": "770",
-                "y": "770",
+                "y": "1330",
                 "col_id": "77",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2455,7 +2455,7 @@
                   ]
                 },
                 "x": "780",
-                "y": "780",
+                "y": "930",
                 "col_id": "78",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2482,7 +2482,7 @@
                 "heading": "Report To",
                 "descr": "Reporting manager",
                 "x": "790",
-                "y": "790",
+                "y": "1430",
                 "col_id": "79",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2510,7 +2510,7 @@
                 "heading": "Joined As",
                 "descr": "Joining role",
                 "x": "800",
-                "y": "800",
+                "y": "1530",
                 "col_id": "80",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2538,7 +2538,7 @@
                 "heading": "Date of Joining",
                 "descr": "Joining date (mandatory before Confirm)",
                 "x": "810",
-                "y": "810",
+                "y": "830",
                 "col_id": "81",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2568,7 +2568,7 @@
                 "lookup": "EMPONB_ORG_SETUP_MASTER(SHIFT_NAME, WORK_SHIFT)",
                 "must_exist_in": "EMPONB_ORG_SETUP_MASTER",
                 "x": "820",
-                "y": "820",
+                "y": "1730",
                 "col_id": "82",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2597,7 +2597,7 @@
                 "lookup": "EMPONB_ORG_SETUP_MASTER(HOL_TBL_NAME, HOL_TBLNO)",
                 "must_exist_in": "EMPONB_ORG_SETUP_MASTER",
                 "x": "830",
-                "y": "830",
+                "y": "1830",
                 "col_id": "83",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2641,7 +2641,7 @@
                   ]
                 },
                 "x": "840",
-                "y": "840",
+                "y": "1630",
                 "col_id": "84",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2668,7 +2668,7 @@
                 "heading": "PIN",
                 "descr": "Postal code of the employment site, filled from the site master",
                 "x": "850",
-                "y": "841",
+                "y": "1930",
                 "col_id": "103",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2696,7 +2696,7 @@
                 "heading": "State Code",
                 "descr": "State code of the employment site, filled from the site master",
                 "x": "860",
-                "y": "842",
+                "y": "2030",
                 "col_id": "104",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2726,7 +2726,7 @@
                 "lookup": "EMPONB_ORG_SETUP_MASTER(PAY_SITE_NAME, PAY_SITE)",
                 "must_exist_in": "EMPONB_ORG_SETUP_MASTER",
                 "x": "870",
-                "y": "850",
+                "y": "2130",
                 "col_id": "85",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2753,7 +2753,7 @@
                 "heading": "Basic",
                 "descr": "Basic pay",
                 "x": "880",
-                "y": "860",
+                "y": "2230",
                 "col_id": "86",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2789,7 +2789,7 @@
                   }
                 ],
                 "x": "890",
-                "y": "870",
+                "y": "2330",
                 "col_id": "87",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2816,7 +2816,7 @@
                 "heading": "Probation Date",
                 "descr": "Probation end date",
                 "x": "900",
-                "y": "880",
+                "y": "2430",
                 "col_id": "88",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2844,7 +2844,7 @@
                 "heading": "Probation Period",
                 "descr": "Probation period (months)",
                 "x": "910",
-                "y": "890",
+                "y": "2530",
                 "col_id": "89",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2872,7 +2872,7 @@
                 "heading": "Notice Period",
                 "descr": "Notice period (days)",
                 "x": "920",
-                "y": "900",
+                "y": "2630",
                 "col_id": "90",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2903,7 +2903,7 @@
                   "type": "email"
                 },
                 "x": "930",
-                "y": "910",
+                "y": "2730",
                 "col_id": "91",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2931,7 +2931,7 @@
                 "heading": "Report To (Admin)",
                 "descr": "Administrative reporting manager",
                 "x": "940",
-                "y": "920",
+                "y": "2830",
                 "col_id": "92",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2959,7 +2959,7 @@
                 "heading": "User ID",
                 "descr": "Assigned user id",
                 "x": "950",
-                "y": "930",
+                "y": "2930",
                 "col_id": "93",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -2987,7 +2987,7 @@
                 "heading": "Remarks",
                 "descr": "HR remarks",
                 "x": "960",
-                "y": "940",
+                "y": "3030",
                 "col_id": "94",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -3029,7 +3029,7 @@
                   ]
                 },
                 "x": "970",
-                "y": "950",
+                "y": "3130",
                 "col_id": "95",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -3056,7 +3056,7 @@
                 "descr": "Reference returned by IOFLOW employee creation",
                 "protect": "1",
                 "x": "980",
-                "y": "960",
+                "y": "3230",
                 "col_id": "96",
                 "table_name": "EMPONB_CANDIDATE_RECORD",
                 "table_display_name": "Candidate onboarding record (main table)",
@@ -3352,48 +3352,6 @@
               "order": 2
             },
             {
-              "name": "Confirm",
-              "handler": "message",
-              "scope": "row",
-              "confirmation": {
-                "mode": "reconfirm",
-                "message": "Confirm and push candidate {form.candidate_name} to IOFLOW as an employee?"
-              },
-              "validations": [
-                {
-                  "type": "expression",
-                  "name": "Status Review",
-                  "message": "Confirm is allowed only when status is Review.",
-                  "expression": "{form.status} == \"Review\""
-                },
-                {
-                  "type": "expression",
-                  "name": "Emp code required",
-                  "message": "Employee code is mandatory before Confirm.",
-                  "expression": "not_empty({form.emp_code})"
-                },
-                {
-                  "type": "expression",
-                  "name": "Date join required",
-                  "message": "Date of joining is mandatory before Confirm.",
-                  "expression": "not_empty({form.date_join})"
-                },
-                {
-                  "type": "expression",
-                  "name": "Gross >= Basic",
-                  "message": "Gross must be greater than or equal to Basic before Confirm.",
-                  "expression": "{form.gross} >= {form.basic}"
-                }
-              ],
-              "rest_api": {
-                "url": "",
-                "method": "POST",
-                "on_error": "allow",
-                "params": []
-              },
-              "order": 3
-            },
-            {
               "name": "Cancel",
               "handler": "message",
               "scope": "row",
@@ -3415,7 +3373,7 @@
                   "expression": "{form.status} != \"Confirmed\""
                 }
               ],
-              "order": 4
+              "order": 3
             },
             {
               "name": "Delete",
@@ -3430,7 +3388,7 @@
                   "expression": "in_list({form.status}, \"Initiated,Link Generated\") and is_empty({form.link_accessed_on})"
                 }
               ],
-              "order": 5
+              "order": 4
             },
             {
               "name": "Push To Vision",
@@ -3889,7 +3847,7 @@
                   }
                 ]
               },
-              "order": 6
+              "order": 5
             }
           ]
         }

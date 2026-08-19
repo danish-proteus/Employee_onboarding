@@ -166,21 +166,7 @@
       "size": "20",
       "key": false,
       "description": "Full-time / Part-time / Distance",
-      "sequence": 10,
-      "allowed_values": [
-        {
-          "value": "Full-time",
-          "label": "Full-time"
-        },
-        {
-          "value": "Part-time",
-          "label": "Part-time"
-        },
-        {
-          "value": "Distance",
-          "label": "Distance"
-        }
-      ]
+      "sequence": 10
     },
     {
       "column_name": "COURSE_DURATION",
