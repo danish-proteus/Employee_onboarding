@@ -17,6 +17,12 @@
       "description": "Maintain employment site, payroll site, work shift and holiday table values used at confirmation."
     },
     {
+      "obj_name": "emponb_payhead_master",
+      "obj_type": "T",
+      "title": "Allowance / Deduction (Pay Head) Master",
+      "description": "Maintain pay heads referenced by the candidate pay structure (AD_CODE)."
+    },
+    {
       "obj_name": "emponb_qualification_master",
       "obj_type": "T",
       "title": "Qualification Master",
@@ -310,6 +316,24 @@
       ]
     },
     {
+      "table_name": "EMPONB_CAND_PAY",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "AD_CODE CHAR",
+        "AMOUNT NUMBER",
+        "AMOUNT_TYPE VARCHAR",
+        "FREQUENCY VARCHAR",
+        "RES_FORMULA VARCHAR",
+        "AMOUNT_CALC NUMBER",
+        "UPD_PAYSTRU CHAR",
+        "APPL_MODE VARCHAR"
+      ]
+    },
+    {
       "table_name": "EMPONB_CAND_SELF_EDUCATION",
       "description": "",
       "key_columns": [
@@ -461,6 +485,27 @@
         "SHIFT_TIMINGS VARCHAR",
         "HOL_TBLNO VARCHAR",
         "HOL_TBL_NAME VARCHAR",
+        "ACTIVE_FLAG VARCHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER VARCHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER VARCHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_PAYHEAD_MASTER",
+      "description": "",
+      "key_columns": [
+        "AD_CODE CHAR"
+      ],
+      "other_columns": [
+        "AD_NAME VARCHAR",
+        "APPL_MODE VARCHAR",
+        "AMOUNT_TYPE VARCHAR",
+        "RES_FORMULA VARCHAR",
+        "DEFAULT_FREQUENCY VARCHAR",
         "ACTIVE_FLAG VARCHAR",
         "ADD_DATE DATETIME",
         "ADD_USER VARCHAR",

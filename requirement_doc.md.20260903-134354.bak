@@ -43,7 +43,7 @@ System parameters controlling link generation, key behaviour and integration end
 - Note: online verification is available for **PAN only**, and only on the HR-facing Candidate Onboarding Record (see its **Validate PAN** action). Aadhaar and Bank online verification has been withdrawn, and the candidate self-service form performs no online verification at all. IOFLOW_AADHAR_ENDPOINT and IOFLOW_BANK_ENDPOINT are retained for configuration continuity but are no longer consumed by any screen. IOFLOW_EMPLOYEE_ENDPOINT remains in use by **Confirm**. PAN verification is routed through IOFlow to the connected **Vayana API** application rather than through IOFLOW_PAN_ENDPOINT.
 
 ## Candidate Onboarding Management
-HR-facing master transaction covering the full lifecycle of a candidate record. Initiation, link dispatch, review and finalization are handled as **actions** on this single transaction, with STATUS driving the stage. Header + three detail tables (Past Experience, Educational Qualification, Family).
+HR-facing master transaction covering the full lifecycle of a candidate record. Initiation, link dispatch, review and finalization are handled as **actions** on this single transaction, with STATUS driving the stage. Header + four detail tables (Past Experience, Educational Qualification, Family, Candidate Pay).
 
 ### Candidate Onboarding Record
 - Description: HR creates and manages the candidate's onboarding record from initial capture through submission, review and confirmation as employee. The record carries a STATUS that advances through the process and a STATUS_DATE that is stamped on every transition.
@@ -70,7 +70,7 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
   - On **Send Link**: generate ACCESS_KEY, compute KEY_EXPIRY_DATETIME, build FORM_URL (external candidate form + key), set STATUS = 'Link Generated', stamp STATUS_DATE & LINK_SENT_ON. Trigger: send-email to candidate with the link.
   - On **Validate PAN**: the button is offered only when PAN_NO is present, and is blocked with 'PAN No must be entered before validation.' if clicked without one. It calls the IOFlow application **Vayana API** synchronously (designed API `validate_pan_vayana`, operation ValidatePAN), passing CANDIDATE_ID, PAN_NO and CANDIDATE_NAME (the last for name comparison). The response sets PAN_VALIDATED = 'Y' when Vayana confirms the PAN, else 'N', and PAN_VALIDATED_NAME to the registered name Vayana returns; both land on the open record and persist on save. A service that is unreachable or errors blocks the action with a message and leaves both columns unchanged. STATUS is not affected, and no retry cap is applied.
   - On **Review**: set STATUS = 'Review', stamp STATUS_DATE.
-  - On **Confirm**: trigger IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization); store EMPLOYEE_PUSHED_FLAG and EMPLOYEE_PUSH_REF; set STATUS = 'Confirmed', stamp STATUS_DATE; send-notification to INITIATED_BY HR user.
+  - On **Confirm**: trigger IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization + pay structure); store EMPLOYEE_PUSHED_FLAG and EMPLOYEE_PUSH_REF; set STATUS = 'Confirmed', stamp STATUS_DATE; send-notification to INITIATED_BY HR user.
   - On **Push To Vision**: the button hands the finalized candidate to the ERP as an employee. It is blocked unless EMP_CODE and DATE_JOIN are present, the record is not Cancelled, and EMPLOYEE_PUSHED_FLAG is not already 'Y' (so a candidate is not pushed twice); HR reconfirms before it runs. It calls the IOFlow application **Vison ERP HR** synchronously (designed API `push_to_vision`, service `save_transaction`, enterprise APPVIS, application ERP_HR), passing the employee-master fields listed below. The IOFlow flow composes Vision's `Root.Detail1` employee payload from them — EMP_CODE, first/middle/last name (both short and long forms), DEPT_CODE, GRADE, CADRE, FIN_DESIGN_CODE (falling back to DESIGN_CODE when the finalized designation is blank), PERMANENT_STATE, CURRENT_STATE and DATE_JOIN reformatted to Vision's dd/mm/yy — and blank codes are dropped rather than sent empty. On acceptance the response sets STATUS = 'PushedToVision', stamps STATUS_DATE, sets EMPLOYEE_PUSHED_FLAG = 'Y' and EMPLOYEE_PUSH_REF to the reference Vision returns (falling back to the pushed EMP_CODE); all four land on the open record and persist on save. A rejection by Vision, or a service that is unreachable, blocks the action with a message and leaves the record unchanged.
     - Scope note: the push carries the employee master only. The Past Experience, Educational Qualification and Family detail lines (Vision's Detail6 / Detail4 / Detail2 sections) are **not** included, because a synchronous action Call-API can only carry the header form's own fields. Sending the detail sections would require either the flow reading them back through an inbound API, or moving the push to an asynchronous emitted event.
   - On candidate **Submit** (from the external form): set STATUS = 'DataSubmitted', stamp STATUS_DATE & SUBMITTED_ON, invalidate ACCESS_KEY, send-notification to initiating HR user and send-email summary to candidate.
@@ -94,6 +94,13 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
 - Family member GENDER and RELATION must be consistent. The following combinations are not allowed and are blocked with a message: Female+Brother ('Brother cannot be female.'), Female+Father ('Father cannot be female.'), Female+GrandFather ('GrandFather cannot be female.'), Female+Son ('Son cannot be female.'), Female+Husband ('Husband cannot be female.'), Male+Mother ('Mother cannot be male.'), Male+Sister ('Sister cannot be male.'), Male+GrandMother ('GrandMother cannot be male.'), Male+Wife ('Wife cannot be male.'), Male+Daughter ('Daughter cannot be male.'). The rule applies identically in the HR-maintained Candidate Onboarding Record and the candidate self-service form. The check is enforced when either GENDER or RELATION is entered/changed.
 - MEMBER_NAME must be unique within a candidate — the same family member name cannot be added twice in the Family section; a duplicate is blocked on Save with the message 'Family member <name> is already added. Duplicate member names are not allowed.'
 - Business actions: Add row, Edit row, Delete row.
+
+### Candidate Pay Structure (detail — HR only)
+- Description: HR enters multiple pay-head rows defining the candidate's compensation structure during finalization.
+- Data points: LINE_NO, AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, RES_FORMULA, AMOUNT_CALC, UPD_PAYSTRU, APPL_MODE.
+- Business rules: if AMOUNT_TYPE = 'Formula' then RES_FORMULA mandatory and AMOUNT_CALC is derived; AMOUNT ≥ 0; UPD_PAYSTRU (Y/N) controls write-back to payroll; APPL_MODE = Earning/Deduction; LINE_NO auto-sequenced.
+- Business actions: Add row, Edit row, Delete row.
+- Additional data management: rows with UPD_PAYSTRU = 'Y' are included in the IOFLOW Employee payload on Confirm.
 
 ## Candidate Self-Service Onboarding Form
 Public, key-validated intake screen the candidate opens from the emailed link. It is anonymous (no Vision app login) and is delivered as a Smart Page hosted on the External Website (see below). Documented here as a process activity for traceability; the page blocks are detailed under Smart Pages / External Website.
@@ -143,8 +150,9 @@ Public, key-validated intake screen the candidate opens from the emailed link. I
 - Description: Pixel-perfect printable consolidation of a confirmed/submitted candidate, used for the personnel file.
 - Layout type: Document with header (company logo + title), candidate photo block, and signature block; page breaks between sections.
 - Criteria: CANDIDATE_ID.
-- Grouping levels: (1) Personal & Contact, (2) Statutory & Bank with validation status, (3) Past Experience, (4) Educational Qualification, (5) Family, (6) Employment.
-- Columns: all header fields plus the three detail tables in their listed columns.
+- Grouping levels: (1) Personal & Contact, (2) Statutory & Bank with validation status, (3) Past Experience, (4) Educational Qualification, (5) Family, (6) Employment & Pay Structure.
+- Sub-total/total rows: Pay Structure sub-totals of earnings and deductions and net (GROSS) at the foot of the pay section.
+- Columns: all header fields plus the four detail tables in their listed columns.
 
 ## HR Onboarding Dashboard (D)
 - Role: HR / Onboarding Coordinator.

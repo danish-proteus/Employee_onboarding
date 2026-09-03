@@ -120,6 +120,7 @@ def run(args):
     # tables key on candidate_id). Idempotent — no error if nothing matches.
     for _self_table in (
         "emponb_cand_self_experience",
+        "emponb_cand_self_pay",
         "emponb_cand_self_family",
         "emponb_cand_self_education",
         "emponb_candidate_self",

@@ -362,6 +362,13 @@
         "type": "json",
         "display": true,
         "default": []
+      },
+      {
+        "name": "pay_rows",
+        "label": "Candidate Pay Rows",
+        "type": "json",
+        "display": true,
+        "default": []
       }
     ],
     "actions": [
@@ -631,6 +638,24 @@
             "rows": [],
             "bindings": { "rows": { "source": "page_input", "name": "fam_rows", "fallback": [] } }
           },
+          { "id": "h_pay", "type": "heading", "level": 2, "text": "Candidate Pay" },
+          { "id": "p_pay", "type": "paragraph", "text": "Compensation structure set by HR for your onboarding record." },
+          {
+            "id": "embed_pay",
+            "type": "table",
+            "heading": "Candidate Pay",
+            "striped": true,
+            "align": "left",
+            "columns": [
+              { "id": "pc1", "label": "Pay Head", "align": "left" },
+              { "id": "pc2", "label": "Amount", "align": "right" },
+              { "id": "pc3", "label": "Amount Type", "align": "left" },
+              { "id": "pc4", "label": "Frequency", "align": "left" },
+              { "id": "pc5", "label": "Earning/Deduction", "align": "left" }
+            ],
+            "rows": [],
+            "bindings": { "rows": { "source": "page_input", "name": "pay_rows", "fallback": [] } }
+          },
           { "id": "div_5", "type": "divider" },
           {
             "id": "bg_actions",
@@ -663,7 +688,7 @@
         "method": "seed_access_key",
         "language": "plpgsql",
         "description": "Read the onboarding key from the URL and pre-populate the form with the candidate's on-file details, and detail rows, for that key",
-        "spec": "On page load, read the candidate key from the page URL params (accept either ?key= or ?access_key=), trim it, and always return it via set_vars as access_key so the key-validation gate and API loaders can run. Do not deny access here (always return allowed=true); key validity, expiry and already-submitted checks are handled by the client-side validate-key API gate, which also renders the form only when the key is valid. If no key is present, return access_key as an empty string and set no other vars. When a non-empty key is present, look up the single emponb_candidate_record row whose ACCESS_KEY equals that trimmed key; if a matching candidate is found, additionally return via set_vars that candidate's identity and on-file onboarding details so the form is pre-filled with whatever has already been captured for this candidate_id (HR-captured values on first open, plus any previously saved values on a return visit). Map each candidate_record column to the matching page input variable of the same lowercased name: candidate_id (CANDIDATE_ID), candidate_name (CANDIDATE_NAME), name_prefix (NAME_PREFIX), emp_fname (EMP_FNAME), emp_mname (EMP_MNAME), emp_lname (EMP_LNAME), gender (GENDER), birthdate (BIRTHDATE), nationality (NATIONALITY), marital_status (MARITAL_STATUS), marriage_anniversary (MARRIAGE_ANNIVERSARY), blood_group (BLOOD_GROUP), religion (RELIGION), cast_category (CAST_CATEGORY), mother_tongue (MOTHER_TONGUE), physical_handicap (PHYSICAL_HANDICAP), hobby1 (HOBBY1), hobby2 (HOBBY2), total_experience (TOTAL_EXPERIENCE), current_address (CURRENT_ADDRESS), current_pin (CURRENT_PIN), current_city (CURRENT_CITY), current_state (CURRENT_STATE), permanent_address (PERMANENT_ADDRESS), permanent_pin (PERMANENT_PIN), permanent_city (PERMANENT_CITY), permanent_state (PERMANENT_STATE), mobile (MOBILE), alternate_telephone (ALTERNATE_TELEPHONE), contact_person (CONTACT_PERSON), contact_person_mobile (CONTACT_PERSON_MOBILE), contact_person_email (CONTACT_PERSON_EMAIL), pan_no (PAN_NO), aadhar_no (AADHAR_NO), passport_no (PASSPORT_NO), driving_lic_no (DRIVING_LIC_NO), pf_no (PF_NO), esic_no (ESIC_NO), bank_account_no (BANK_ACCOUNT_NO), bank_ifsc_code (BANK_IFSC_CODE), bank_name (BANK_NAME). Dates should be returned as ISO yyyy-mm-dd strings and NULL columns omitted or returned as empty so they do not overwrite anything. Also, when a matching candidate is found, load that candidate's detail rows (by CANDIDATE_ID) from EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION and EMPONB_CAND_FAMILY, ordered by LINE_NO, and return each as an array-of-arrays via set_vars matching the page table columns in order: exp_rows = [[ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, '', ''] ...] (FROM_DATE/TO_DATE as ISO yyyy-mm-dd strings; the trailing two positions correspond to Currency/Country columns which EMPONB_CAND_EXPERIENCE does not store, so return empty strings there), edu_rows = [[QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION] ...], fam_rows = [[MEMBER_NAME, DATE_BIRTH, GENDER, RELATION] ...] (DATE_BIRTH as ISO yyyy-mm-dd). If no rows exist for a table, return an empty array for that variable. If no candidate row matches the key, return only access_key (still allowed=true), with exp_rows/edu_rows/fam_rows left unset (empty), so the invalid-link callout can show."
+        "spec": "On page load, read the candidate key from the page URL params (accept either ?key= or ?access_key=), trim it, and always return it via set_vars as access_key so the key-validation gate and API loaders can run. Do not deny access here (always return allowed=true); key validity, expiry and already-submitted checks are handled by the client-side validate-key API gate, which also renders the form only when the key is valid. If no key is present, return access_key as an empty string and set no other vars. When a non-empty key is present, look up the single emponb_candidate_record row whose ACCESS_KEY equals that trimmed key; if a matching candidate is found, additionally return via set_vars that candidate's identity and on-file onboarding details so the form is pre-filled with whatever has already been captured for this candidate_id (HR-captured values on first open, plus any previously saved values on a return visit). Map each candidate_record column to the matching page input variable of the same lowercased name: candidate_id (CANDIDATE_ID), candidate_name (CANDIDATE_NAME), name_prefix (NAME_PREFIX), emp_fname (EMP_FNAME), emp_mname (EMP_MNAME), emp_lname (EMP_LNAME), gender (GENDER), birthdate (BIRTHDATE), nationality (NATIONALITY), marital_status (MARITAL_STATUS), marriage_anniversary (MARRIAGE_ANNIVERSARY), blood_group (BLOOD_GROUP), religion (RELIGION), cast_category (CAST_CATEGORY), mother_tongue (MOTHER_TONGUE), physical_handicap (PHYSICAL_HANDICAP), hobby1 (HOBBY1), hobby2 (HOBBY2), total_experience (TOTAL_EXPERIENCE), current_address (CURRENT_ADDRESS), current_pin (CURRENT_PIN), current_city (CURRENT_CITY), current_state (CURRENT_STATE), permanent_address (PERMANENT_ADDRESS), permanent_pin (PERMANENT_PIN), permanent_city (PERMANENT_CITY), permanent_state (PERMANENT_STATE), mobile (MOBILE), alternate_telephone (ALTERNATE_TELEPHONE), contact_person (CONTACT_PERSON), contact_person_mobile (CONTACT_PERSON_MOBILE), contact_person_email (CONTACT_PERSON_EMAIL), pan_no (PAN_NO), aadhar_no (AADHAR_NO), passport_no (PASSPORT_NO), driving_lic_no (DRIVING_LIC_NO), pf_no (PF_NO), esic_no (ESIC_NO), bank_account_no (BANK_ACCOUNT_NO), bank_ifsc_code (BANK_IFSC_CODE), bank_name (BANK_NAME). Dates should be returned as ISO yyyy-mm-dd strings and NULL columns omitted or returned as empty so they do not overwrite anything. Also, when a matching candidate is found, load that candidate's detail rows (by CANDIDATE_ID) from EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION, EMPONB_CAND_FAMILY and EMPONB_CAND_PAY, ordered by LINE_NO, and return each as an array-of-arrays via set_vars matching the page table columns in order: exp_rows = [[ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE, GROSS_AMT, '', ''] ...] (FROM_DATE/TO_DATE as ISO yyyy-mm-dd strings; the trailing two positions correspond to Currency/Country columns which EMPONB_CAND_EXPERIENCE does not store, so return empty strings there), edu_rows = [[QLF_CODE, QLF_TYPE, INSTITUTE, PASS_YEAR, CLASS, PERCENTAGE, COUNTRY_CODE, COURSE_TYPE, COURSE_DURATION] ...], fam_rows = [[MEMBER_NAME, DATE_BIRTH, GENDER, RELATION] ...] (DATE_BIRTH as ISO yyyy-mm-dd), pay_rows = [[AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, APPL_MODE] ...] from EMPONB_CAND_PAY. If no rows exist for a table, return an empty array for that variable. If no candidate row matches the key, return only access_key (still allowed=true), with exp_rows/edu_rows/fam_rows/pay_rows left unset (empty), so the invalid-link callout can show."
       }
     },
     "blocks": []

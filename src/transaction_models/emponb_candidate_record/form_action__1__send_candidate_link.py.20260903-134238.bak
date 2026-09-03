@@ -120,6 +120,7 @@ def run(args):
     # tables key on candidate_id). Idempotent — no error if nothing matches.
     for _self_table in (
         "emponb_cand_self_experience",
+        "emponb_cand_self_pay",
         "emponb_cand_self_family",
         "emponb_cand_self_education",
         "emponb_candidate_self",
@@ -175,6 +176,9 @@ def run(args):
           "percentage", "country_code", "course_type", "course_duration")),
         ("emponb_cand_family", "emponb_cand_self_family",
          ("member_name", "date_birth", "gender", "relation")),
+        ("emponb_cand_pay", "emponb_cand_self_pay",
+         ("ad_code", "amount", "amount_type", "frequency", "res_formula",
+          "amount_calc", "upd_paystru", "appl_mode")),
     ):
         _col_list = ", ".join(("candidate_id", "line_no") + _cols)
         db.execute(

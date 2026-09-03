@@ -29,6 +29,7 @@ DECLARE
     v_exp   int := 0;
     v_edu   int := 0;
     v_fam   int := 0;
+    v_pay   int := 0;
 BEGIN
     -- Guard: a candidate id must be supplied on the form.
     IF v_cid IS NULL OR v_cid = '' THEN
@@ -127,11 +128,19 @@ BEGIN
     WHERE rtrim(candidate_id) = v_cid;
     GET DIAGNOSTICS v_fam = ROW_COUNT;
 
+    -- Pay
+    DELETE FROM emponb_cand_pay WHERE rtrim(candidate_id) = v_cid;
+    INSERT INTO emponb_cand_pay
+        (candidate_id, line_no, ad_code, amount, amount_type, frequency, res_formula, amount_calc, upd_paystru, appl_mode)
+    SELECT candidate_id, line_no, ad_code, amount, amount_type, frequency, res_formula, amount_calc, upd_paystru, appl_mode
+    FROM emponb_cand_self_pay
+    WHERE rtrim(candidate_id) = v_cid;
+    GET DIAGNOSTICS v_pay = ROW_COUNT;
 
     RETURN jsonb_build_object(
         'message',
-        format('Candidate %s data submitted to the onboarding record: %s experience, %s education and %s family row(s) copied.',
-               v_cid, v_exp, v_edu, v_fam)
+        format('Candidate %s data submitted to the onboarding record: %s experience, %s education, %s family and %s pay row(s) copied.',
+               v_cid, v_exp, v_edu, v_fam, v_pay)
     );
 END;
 $$;

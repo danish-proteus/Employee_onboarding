@@ -134,7 +134,7 @@
     {
       "api_name": "push_to_vision",
       "display_name": "Push To Vision (Vison ERP HR)",
-      "description": "Synchronous employee push for the Candidate Onboarding Record's 'Push To Vision' action button. The engine invokes this as a sync api_call event on the project's IOFlow application, carrying the WHOLE record as it stands on screen: every captured header field plus the three child grids (past_experience, education, family) as row arrays. The IOFlow flow (emponb_push_to_vision) maps them onto Vision's emp_complete sections \u2014 Root.Detail1 (employee master), Detail2 (family), Detail4 (qualification), Detail6 (past experience) \u2014 and calls the connected IOFlow application 'Vison ERP HR' (service save_transaction, enterprise APPVIS, app ERP_HR). The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form, so the record shows STATUS 'PushedToVision' and persists it on save.",
+      "description": "Synchronous employee push for the Candidate Onboarding Record's 'Push To Vision' action button. The engine invokes this as a sync api_call event on the project's IOFlow application, carrying the WHOLE record as it stands on screen: every captured header field plus the four child grids (past_experience, education, family, pay_structure) as row arrays. The IOFlow flow (emponb_push_to_vision) maps them onto Vision's emp_complete sections \u2014 Root.Detail1 (employee master), Detail2 (family), Detail4 (qualification), Detail6 (past experience) \u2014 and calls the connected IOFlow application 'Vison ERP HR' (service save_transaction, enterprise APPVIS, app ERP_HR). The flow MUST answer with {\"updates\": {...}} \u2014 the engine applies those keys straight onto the open Candidate Onboarding Record form, so the record shows STATUS 'PushedToVision' and persists it on save.",
       "category": "http",
       "input_schema": {
         "type": "object",
@@ -549,6 +549,45 @@
                   "type": "string"
                 },
                 "relation": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "pay_structure": {
+            "type": "array",
+            "description": "Candidate Pay grid (EMPONB_CAND_PAY) rows \u2014 carried for completeness; Vision emp_complete has no matching Detail section today",
+            "items": {
+              "type": "object",
+              "properties": {
+                "candidate_id": {
+                  "type": "string"
+                },
+                "line_no": {
+                  "type": "string"
+                },
+                "ad_code": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                },
+                "amount_type": {
+                  "type": "string"
+                },
+                "frequency": {
+                  "type": "string"
+                },
+                "res_formula": {
+                  "type": "string"
+                },
+                "amount_calc": {
+                  "type": "string"
+                },
+                "upd_paystru": {
+                  "type": "string"
+                },
+                "appl_mode": {
                   "type": "string"
                 }
               }

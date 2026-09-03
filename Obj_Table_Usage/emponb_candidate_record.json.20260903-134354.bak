@@ -143,6 +143,18 @@
       "DATE_BIRTH",
       "RELATION",
       "GENDER"
+    ],
+    "EMPONB_CAND_PAY": [
+      "CANDIDATE_ID",
+      "AMOUNT_TYPE",
+      "APPL_MODE",
+      "LINE_NO",
+      "AMOUNT_CALC",
+      "UPD_PAYSTRU",
+      "AD_CODE",
+      "RES_FORMULA",
+      "AMOUNT",
+      "FREQUENCY"
     ]
   }
 }

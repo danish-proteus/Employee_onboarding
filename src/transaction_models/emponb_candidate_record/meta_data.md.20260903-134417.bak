@@ -2,3 +2,4 @@
 [2] Past Experience: candidate_id(C10), line_no(N5), organisation(V100), designation(V100), from_date(D), to_date(D), gross_amt(N12,2)
 [3] Education: candidate_id(C10), line_no(N5), qlf_code(C10), qlf_type(V20), institute(V100), pass_year(N4), class(V50), percentage(N5,2), country_code(C10), course_type(V20), course_duration(V50)
 [4] Family: candidate_id(C10), line_no(N5), member_name(V100), date_birth(D), gender(C1), relation(C10)
+[5] Candidate Pay: candidate_id(C10), line_no(N5), ad_code(C10), amount(N12,2), amount_type(V20), frequency(V20), res_formula(V500), amount_calc(N12,2), upd_paystru(C1), appl_mode(V20)

@@ -310,6 +310,24 @@
       ]
     },
     {
+      "table_name": "EMPONB_CAND_PAY",
+      "description": "",
+      "key_columns": [
+        "CANDIDATE_ID CHAR",
+        "LINE_NO NUMBER"
+      ],
+      "other_columns": [
+        "AD_CODE CHAR",
+        "AMOUNT NUMBER",
+        "AMOUNT_TYPE VARCHAR",
+        "FREQUENCY VARCHAR",
+        "RES_FORMULA VARCHAR",
+        "AMOUNT_CALC NUMBER",
+        "UPD_PAYSTRU CHAR",
+        "APPL_MODE VARCHAR"
+      ]
+    },
+    {
       "table_name": "EMPONB_CAND_SELF_EDUCATION",
       "description": "",
       "key_columns": [

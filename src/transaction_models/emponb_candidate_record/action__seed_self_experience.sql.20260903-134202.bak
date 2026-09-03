@@ -19,6 +19,7 @@ DECLARE
     v_count        integer := 0;
     v_edu_count    integer := 0;
     v_fam_count    integer := 0;
+    v_pay_count    integer := 0;
 BEGIN
     -- Nothing to seed when the action fires before the record carries a key.
     IF v_candidate_id IS NULL THEN
@@ -89,9 +90,23 @@ BEGIN
 
     GET DIAGNOSTICS v_fam_count = ROW_COUNT;
 
+    -- (5) Refresh (not append) the self-service candidate pay lines.
+    DELETE FROM EMPONB_CAND_SELF_PAY
+     WHERE CANDIDATE_ID = v_candidate_id;
+
+    INSERT INTO EMPONB_CAND_SELF_PAY
+           (CANDIDATE_ID, LINE_NO, AD_CODE, AMOUNT, AMOUNT_TYPE, FREQUENCY, RES_FORMULA,
+            AMOUNT_CALC, UPD_PAYSTRU, APPL_MODE)
+    SELECT pay.CANDIDATE_ID, pay.LINE_NO, pay.AD_CODE, pay.AMOUNT, pay.AMOUNT_TYPE, pay.FREQUENCY, pay.RES_FORMULA,
+           pay.AMOUNT_CALC, pay.UPD_PAYSTRU, pay.APPL_MODE
+      FROM EMPONB_CAND_PAY pay
+     WHERE pay.CANDIDATE_ID = v_candidate_id;
+
+    GET DIAGNOSTICS v_pay_count = ROW_COUNT;
 
     RETURN jsonb_build_object('status', 'success',
                               'message', v_count || ' experience, ' || v_edu_count || ' education, '
-                                         || v_fam_count || ' family line(s) copied to the candidate form');
+                                         || v_fam_count || ' family and ' || v_pay_count
+                                         || ' pay line(s) copied to the candidate form');
 END;
 $$;

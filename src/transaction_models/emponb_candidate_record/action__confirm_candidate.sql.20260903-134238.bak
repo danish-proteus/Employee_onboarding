@@ -75,6 +75,19 @@ BEGIN
         RETURN jsonb_build_object('error', 'Onboarding settings are not configured.');
     END IF;
 
+    -- Pay structure rows that should flow into the payroll master.
+    SELECT COALESCE(jsonb_agg(jsonb_build_object(
+                'ad_code',     AD_CODE,
+                'amount',      AMOUNT,
+                'amount_type', AMOUNT_TYPE,
+                'frequency',   FREQUENCY,
+                'res_formula', RES_FORMULA,
+                'amount_calc', AMOUNT_CALC,
+                'appl_mode',   APPL_MODE)), '[]'::jsonb)
+      INTO v_pay_rows
+      FROM EMPONB_CAND_PAY
+     WHERE CANDIDATE_ID = v_candidate_id
+       AND UPD_PAYSTRU = 'Y';
 
     -- Consolidated employee payload: personal + finalisation.
     v_payload := jsonb_build_object(

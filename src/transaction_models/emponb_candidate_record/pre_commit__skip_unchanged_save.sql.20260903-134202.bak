@@ -7,11 +7,12 @@
 --
 --   1. New record (no stored EMPONB_CANDIDATE_RECORD row for the
 --      submitted CANDIDATE_ID)  -> allow the save (no messages).
---   2. Existing record          -> compare the header row and all three
+--   2. Existing record          -> compare the header row and all four
 --      detail forms against their stored rows:
 --         form 2 -> EMPONB_CAND_EXPERIENCE  (Past Experience)
 --         form 3 -> EMPONB_CAND_EDUCATION   (Educational Qualification)
 --         form 4 -> EMPONB_CAND_FAMILY      (Family)
+--         form 5 -> EMPONB_CAND_PAY         (Candidate Pay)
 --      each keyed by CANDIDATE_ID + LINE_NO.
 --   3. Nothing differs          -> blocking message NO_CHANGES_TO_SAVE.
 --   4. Something differs        -> empty message list, save proceeds.
@@ -131,12 +132,13 @@ BEGIN
     -- (2b) Detail form comparison - one pass per form
     -- ---------------------------------------------------------------
     IF NOT v_changed THEN
-        FOREACH v_form IN ARRAY ARRAY['2', '3', '4']
+        FOREACH v_form IN ARRAY ARRAY['2', '3', '4', '5']
         LOOP
             v_table := CASE v_form
                            WHEN '2' THEN 'emponb_cand_experience'
                            WHEN '3' THEN 'emponb_cand_education'
                            WHEN '4' THEN 'emponb_cand_family'
+                           WHEN '5' THEN 'emponb_cand_pay'
                        END;
 
             -- stored rows of this form, keyed by LINE_NO, keys upper-cased

@@ -7,7 +7,7 @@ function_name: confirm_candidate
 action_name: Confirm
 language: plpgsql
 description: Confirm and push to IOFLOW Employee
-functional_specification: Validate EMP_CODE present and unique, DATE_JOIN present, GROSS>=BASIC. Trigger the IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization). Store EMPLOYEE_PUSHED_FLAG='Y' and EMPLOYEE_PUSH_REF from the response. Set STATUS='Confirmed' and stamp STATUS_DATE. Send a notification to the INITIATED_BY HR user. Return a confirmation message.
+functional_specification: Validate EMP_CODE present and unique, DATE_JOIN present, GROSS>=BASIC. Trigger the IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization + pay structure rows where UPD_PAYSTRU='Y'). Store EMPLOYEE_PUSHED_FLAG='Y' and EMPLOYEE_PUSH_REF from the response. Set STATUS='Confirmed' and stamp STATUS_DATE. Send a notification to the INITIATED_BY HR user. Return a confirmation message.
 business_logic: Confirm and push to IOFLOW Employee
 */
 
@@ -19,6 +19,7 @@ DECLARE
     v_base_url     varchar(500);
     v_endpoint     varchar(500);
     v_token        varchar(500);
+    v_pay_rows     jsonb;
     v_payload      jsonb;
     v_resp         jsonb;
     v_push_ref     varchar(100);
@@ -75,8 +76,21 @@ BEGIN
         RETURN jsonb_build_object('error', 'Onboarding settings are not configured.');
     END IF;
 
+    -- Pay structure rows that should flow into the payroll master.
+    SELECT COALESCE(jsonb_agg(jsonb_build_object(
+                'ad_code',     AD_CODE,
+                'amount',      AMOUNT,
+                'amount_type', AMOUNT_TYPE,
+                'frequency',   FREQUENCY,
+                'res_formula', RES_FORMULA,
+                'amount_calc', AMOUNT_CALC,
+                'appl_mode',   APPL_MODE)), '[]'::jsonb)
+      INTO v_pay_rows
+      FROM EMPONB_CAND_PAY
+     WHERE CANDIDATE_ID = v_candidate_id
+       AND UPD_PAYSTRU = 'Y';
 
-    -- Consolidated employee payload: personal + finalisation.
+    -- Consolidated employee payload: personal + finalisation + pay structure.
     v_payload := jsonb_build_object(
         'candidate_id',  v_rec.CANDIDATE_ID,
         'emp_code',      v_rec.EMP_CODE,
@@ -107,7 +121,8 @@ BEGIN
         'probation_date', v_rec.PROBATION_DATE,
         'probation_prd', v_rec.PROBATION_PRD,
         'notice_prd',    v_rec.NOTICE_PRD,
-        'report_to',     v_rec.REPORT_TO
+        'report_to',     v_rec.REPORT_TO,
+        'pay_structure', v_pay_rows
     );
 
     -- Trigger the IOFLOW Employee-creation API.

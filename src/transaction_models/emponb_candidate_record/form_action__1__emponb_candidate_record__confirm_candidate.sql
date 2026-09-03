@@ -8,7 +8,7 @@ form_no: 1
 action_name: Confirm
 language: plpgsql
 description: Push to IOFLOW Employee and confirm
-functional_specification: Validate EMP_CODE present and unique, DATE_JOIN present, GROSS>=BASIC. Trigger the IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization + pay structure rows where UPD_PAYSTRU='Y'). Store EMPLOYEE_PUSHED_FLAG='Y' and EMPLOYEE_PUSH_REF from the response. Set STATUS='Confirmed' and stamp STATUS_DATE. Send a notification to the INITIATED_BY HR user. Return a confirmation message.
+functional_specification: Validate EMP_CODE present and unique, DATE_JOIN present, GROSS>=BASIC. Trigger the IOFLOW Employee-creation API with the consolidated employee payload (personal + finalization). Store EMPLOYEE_PUSHED_FLAG='Y' and EMPLOYEE_PUSH_REF from the response. Set STATUS='Confirmed' and stamp STATUS_DATE. Send a notification to the INITIATED_BY HR user. Return a confirmation message.
 business_logic: Push to IOFLOW Employee and confirm
 */
 
@@ -21,7 +21,6 @@ DECLARE
     v_auth_token   text;
     v_template     text;
     v_notify_body  text;
-    v_pay_rows     jsonb;
     v_payload      jsonb;
     v_push_ref     text;
     v_issues       jsonb := '[]'::jsonb;
@@ -106,20 +105,6 @@ BEGIN
                || jsonb_build_object('error', v_issues->0->>'message');
     END IF;
 
-    -- Pay-structure rows flagged for the employee pay structure.
-    SELECT COALESCE(jsonb_agg(jsonb_build_object(
-               'line_no',     pay.LINE_NO,
-               'ad_code',     TRIM(pay.AD_CODE),
-               'amount',      pay.AMOUNT,
-               'amount_type', pay.AMOUNT_TYPE,
-               'frequency',   pay.FREQUENCY,
-               'res_formula', pay.RES_FORMULA,
-               'amount_calc', pay.AMOUNT_CALC,
-               'appl_mode',   pay.APPL_MODE) ORDER BY pay.LINE_NO), '[]'::jsonb)
-      INTO v_pay_rows
-      FROM EMPONB_CAND_PAY pay
-     WHERE pay.CANDIDATE_ID = v_candidate_id
-       AND pay.UPD_PAYSTRU = 'Y';
 
     -- Consolidated employee payload for the IOFLOW Employee-creation API.
     v_payload := jsonb_build_object(
@@ -164,8 +149,7 @@ BEGIN
             'gross',          v_rec.GROSS,
             'probation_date', v_rec.PROBATION_DATE,
             'probation_prd',  v_rec.PROBATION_PRD,
-            'notice_prd',     v_rec.NOTICE_PRD),
-        'pay_structure', v_pay_rows);
+            'notice_prd',     v_rec.NOTICE_PRD));
 
     -- The outbound call is dispatched by the platform integration layer using this
     -- reference; a failure there rolls back together with the update below.
@@ -192,7 +176,6 @@ BEGIN
                'code', 'ECF900', 'type', 'P',
                'message', 'Candidate ' || COALESCE(TRIM(v_rec.CANDIDATE_NAME), v_candidate_id)
                           || ' confirmed and pushed to IOFLOW Employee (ref: ' || v_push_ref || '). '
-                          || jsonb_array_length(v_pay_rows) || ' pay head(s) sent. '
                           || CASE WHEN TRIM(COALESCE(v_rec.INITIATED_BY, '')) <> ''
                                   THEN 'Notification queued for HR user ' || TRIM(v_rec.INITIATED_BY) || '.'
                                   ELSE 'No initiating HR user on record - notification skipped.' END)));

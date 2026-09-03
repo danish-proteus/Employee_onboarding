@@ -3277,7 +3277,7 @@
               "business_logic": {
                 "method": "skip_unchanged_save",
                 "description": "Block/skip save in edit mode when no field of the header or any detail line has been changed",
-                "spec": "Runs before COMMIT on the Candidate Record transaction. Only applies when the transaction action is an edit/update. Compare the incoming header values (EMPONB_CANDIDATE_RECORD) and every detail line (EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION, EMPONB_CAND_FAMILY) against the currently stored rows for the same CANDIDATE_ID, ignoring audit columns (ADD_DATE, ADD_USER, ADD_TERM, CHG_DATE, CHG_USER, CHG_TERM). If no header field differs and no detail line has been added, removed or modified, return an error so the save is skipped/rolled back with a message telling the user that there is nothing to save. Otherwise return no error so the save proceeds normally.",
+                "spec": "Runs before COMMIT on the Candidate Record transaction. Only applies when the transaction action is an edit/update. Compare the incoming header values (EMPONB_CANDIDATE_RECORD) and every detail line (EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION, EMPONB_CAND_FAMILY, EMPONB_CAND_PAY) against the currently stored rows for the same CANDIDATE_ID, ignoring audit columns (ADD_DATE, ADD_USER, ADD_TERM, CHG_DATE, CHG_USER, CHG_TERM). If no header field differs and no detail line has been added, removed or modified, return an error so the save is skipped/rolled back with a message telling the user that there is nothing to save. Otherwise return no error so the save proceeds normally.",
                 "language": "plpgsql"
               }
             }
@@ -3839,6 +3839,11 @@
                     "name": "family",
                     "source": "detail",
                     "value": "4"
+                  },
+                  {
+                    "name": "pay_structure",
+                    "source": "detail",
+                    "value": "5"
                   }
                 ]
               },
@@ -5006,6 +5011,380 @@
                   "table": "EMPONB_CAND_FAMILY",
                   "main_table": true,
                   "table_descr": "Candidate family (main table)"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Candidate Pay",
+          "form_descr": "HR-entered pay structure for the candidate.",
+          "form_no": "5",
+          "parent_form_no": "1",
+          "parent_key_col": "CANDIDATE_ID",
+          "save_on_tab_change": false,
+          "main_table": "EMPONB_CAND_PAY",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "group_name": "Others",
+                "col_type": "CHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate id",
+                "key": true,
+                "hidden": "1",
+                "x": "90",
+                "y": "90",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "group_name": "Others",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Auto-sequenced line number",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "100",
+                "y": "100",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "ad_code",
+                "db_name": "AD_CODE",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Pay Head",
+                "descr": "Allowance/Deduction code",
+                "mandatory": true,
+                "lookup": "",
+                "x": "10",
+                "y": "10",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount",
+                "db_name": "AMOUNT",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Amount",
+                "descr": "Pay head amount",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Amount >= 0",
+                    "message": "Amount cannot be negative.",
+                    "expression": "is_empty({form.amount}) or {form.amount} >= 0"
+                  }
+                ],
+                "x": "20",
+                "y": "20",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount_type",
+                "db_name": "AMOUNT_TYPE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Amount Type",
+                "descr": "Amount type",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Fixed",
+                      "display": "Fixed"
+                    },
+                    {
+                      "data": "Percentage",
+                      "display": "Percentage"
+                    },
+                    {
+                      "data": "Formula",
+                      "display": "Formula"
+                    }
+                  ]
+                },
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Formula needs formula",
+                    "message": "Resolution formula is mandatory when Amount Type is Formula.",
+                    "expression": "{form.amount_type} != \"Formula\" or not_empty({form.res_formula})"
+                  }
+                ],
+                "x": "30",
+                "y": "30",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "frequency",
+                "db_name": "FREQUENCY",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Frequency",
+                "descr": "Frequency",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Monthly",
+                      "display": "Monthly"
+                    },
+                    {
+                      "data": "Annual",
+                      "display": "Annual"
+                    },
+                    {
+                      "data": "One-time",
+                      "display": "One-time"
+                    }
+                  ]
+                },
+                "x": "40",
+                "y": "40",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "res_formula",
+                "db_name": "RES_FORMULA",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Resolution Formula",
+                "descr": "Formula when amount type is Formula",
+                "x": "50",
+                "y": "50",
+                "col_id": "7",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "amount_calc",
+                "db_name": "AMOUNT_CALC",
+                "group_name": "Basic",
+                "col_type": "NUMBER",
+                "heading": "Calculated Amount",
+                "descr": "Derived amount",
+                "protect": "1",
+                "x": "60",
+                "y": "60",
+                "col_id": "8",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "upd_paystru",
+                "db_name": "UPD_PAYSTRU",
+                "group_name": "Basic",
+                "col_type": "CHAR",
+                "heading": "Update Pay Structure",
+                "descr": "Write-back to payroll flag",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "70",
+                "y": "70",
+                "col_id": "9",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "appl_mode",
+                "db_name": "APPL_MODE",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Applicability",
+                "descr": "Earning or deduction",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Earning",
+                      "display": "Earning"
+                    },
+                    {
+                      "data": "Deduction",
+                      "display": "Deduction"
+                    }
+                  ]
+                },
+                "x": "80",
+                "y": "80",
+                "col_id": "10",
+                "table_name": "EMPONB_CAND_PAY",
+                "table_display_name": "Candidate pay structure (main table)",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_PAY",
+                  "main_table": true,
+                  "table_descr": "Candidate pay structure (main table)"
                 }
               ]
             }
