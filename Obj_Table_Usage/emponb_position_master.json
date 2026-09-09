@@ -1,0 +1,23 @@
+{
+  "object_name": "emponb_position_master",
+  "tables": {
+    "EMPONB_POSITION_MASTER": [
+      "CHG_TERM",
+      "DESIGNATION_NAME",
+      "CHG_USER",
+      "POSITION_DESCR",
+      "DEPT_CODE",
+      "POSITION_CODE",
+      "GRADE",
+      "ADD_DATE",
+      "ADD_USER",
+      "DESIGN_CODE",
+      "CADRE",
+      "CHG_DATE",
+      "DEPT_NAME",
+      "CADRE_NAME",
+      "GRADE_NAME",
+      "ADD_TERM"
+    ]
+  }
+}

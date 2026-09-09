@@ -1,0 +1,879 @@
+{
+  "table_name": "EMPONB_CANDIDATE_SELF",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "CANDIDATE_ID",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": true,
+      "description": "Candidate reference - must exist in Candidate Onboarding Record",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "CANDIDATE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Candidate full name",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "EMAIL_ID",
+      "data_type": "VARCHAR",
+      "size": "120",
+      "key": false,
+      "description": "Candidate email address",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "GENDER",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Candidate gender",
+      "sequence": 4,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "M",
+          "label": "Male"
+        },
+        {
+          "value": "F",
+          "label": "Female"
+        },
+        {
+          "value": "O",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "column_name": "DESIGN_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Designation applied for",
+      "sequence": 6
+    },
+    {
+      "column_name": "STATUS",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Onboarding status",
+      "sequence": 7,
+      "allowed_values": [
+        {
+          "value": "Initiated",
+          "label": "Initiated"
+        },
+        {
+          "value": "Link Generated",
+          "label": "Link Generated"
+        },
+        {
+          "value": "Link Accessed",
+          "label": "Link Accessed"
+        },
+        {
+          "value": "DataSubmitted",
+          "label": "Data Submitted"
+        },
+        {
+          "value": "Review",
+          "label": "Review"
+        },
+        {
+          "value": "Confirmed",
+          "label": "Confirmed"
+        },
+        {
+          "value": "Cancelled",
+          "label": "Cancelled"
+        },
+        {
+          "value": "Submit",
+          "label": "Submit"
+        }
+      ]
+    },
+    {
+      "column_name": "STATUS_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Date of last status change",
+      "sequence": 8
+    },
+    {
+      "column_name": "INITIATED_BY",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "HR user who initiated the record",
+      "sequence": 9
+    },
+    {
+      "column_name": "INITIATED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Date the record was initiated",
+      "sequence": 10
+    },
+    {
+      "column_name": "ACCESS_KEY",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Onboarding link access token",
+      "sequence": 11
+    },
+    {
+      "column_name": "KEY_GENERATED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the access key was generated",
+      "sequence": 12
+    },
+    {
+      "column_name": "KEY_EXPIRY_DATETIME",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Access key expiry date/time",
+      "sequence": 13
+    },
+    {
+      "column_name": "KEY_VALID_FLAG",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Whether the access key is currently valid",
+      "sequence": 14,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "FORM_URL",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Candidate onboarding link URL",
+      "sequence": 15
+    },
+    {
+      "column_name": "LINK_SENT_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the onboarding link was sent",
+      "sequence": 16
+    },
+    {
+      "column_name": "LINK_ACCESSED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the candidate first opened the link",
+      "sequence": 17
+    },
+    {
+      "column_name": "SUBMITTED_ON",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "When the candidate submitted the form",
+      "sequence": 18
+    },
+    {
+      "column_name": "NAME_PREFIX",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Salutation",
+      "sequence": 19,
+      "allowed_values": [
+        {
+          "value": "Mr.",
+          "label": "Mr."
+        },
+        {
+          "value": "Mrs.",
+          "label": "Mrs."
+        },
+        {
+          "value": "Ms.",
+          "label": "Ms."
+        },
+        {
+          "value": "Miss",
+          "label": "Miss"
+        },
+        {
+          "value": "Dr.",
+          "label": "Dr."
+        },
+        {
+          "value": "Prof.",
+          "label": "Prof."
+        }
+      ]
+    },
+    {
+      "column_name": "EMP_FNAME",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "First name",
+      "sequence": 20,
+      "mandatory": true
+    },
+    {
+      "column_name": "EMP_MNAME",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Middle name",
+      "sequence": 21,
+      "mandatory": true
+    },
+    {
+      "column_name": "EMP_LNAME",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Last name",
+      "sequence": 22,
+      "mandatory": true
+    },
+    {
+      "column_name": "BIRTHDATE",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Date of birth",
+      "sequence": 23,
+      "mandatory": true
+    },
+    {
+      "column_name": "NATIONALITY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Nationality",
+      "sequence": 24
+    },
+    {
+      "column_name": "MARITAL_STATUS",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Marital status",
+      "sequence": 25,
+      "allowed_values": [
+        {
+          "value": "Yes",
+          "label": "Married"
+        },
+        {
+          "value": "No",
+          "label": "Unmarried"
+        }
+      ]
+    },
+    {
+      "column_name": "MARRIAGE_ANNIVERSARY",
+      "data_type": "DATE",
+      "size": "",
+      "key": false,
+      "description": "Marriage anniversary date (only when married)",
+      "sequence": 26
+    },
+    {
+      "column_name": "BLOOD_GROUP",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Blood group",
+      "sequence": 27,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "A+",
+          "label": "A+"
+        },
+        {
+          "value": "A-",
+          "label": "A-"
+        },
+        {
+          "value": "B+",
+          "label": "B+"
+        },
+        {
+          "value": "B-",
+          "label": "B-"
+        },
+        {
+          "value": "AB+",
+          "label": "AB+"
+        },
+        {
+          "value": "AB-",
+          "label": "AB-"
+        },
+        {
+          "value": "O+",
+          "label": "O+"
+        },
+        {
+          "value": "O-",
+          "label": "O-"
+        }
+      ]
+    },
+    {
+      "column_name": "RELIGION",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Religion",
+      "sequence": 28,
+      "allowed_values": [
+        {
+          "value": "Hindu",
+          "label": "Hindu"
+        },
+        {
+          "value": "Muslim",
+          "label": "Muslim"
+        },
+        {
+          "value": "Christian",
+          "label": "Christian"
+        },
+        {
+          "value": "Sikh",
+          "label": "Sikh"
+        },
+        {
+          "value": "Buddhist",
+          "label": "Buddhist"
+        },
+        {
+          "value": "Jain",
+          "label": "Jain"
+        },
+        {
+          "value": "Parsi",
+          "label": "Parsi"
+        },
+        {
+          "value": "Jewish",
+          "label": "Jewish"
+        },
+        {
+          "value": "Other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "column_name": "CAST_CATEGORY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Caste category",
+      "sequence": 29
+    },
+    {
+      "column_name": "MOTHER_TONGUE",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Mother tongue",
+      "sequence": 30
+    },
+    {
+      "column_name": "PHYSICAL_HANDICAP",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Physical handicap flag",
+      "sequence": 31,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "HOBBY1",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Hobby 1",
+      "sequence": 32
+    },
+    {
+      "column_name": "HOBBY2",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Hobby 2",
+      "sequence": 33
+    },
+    {
+      "column_name": "TOTAL_EXPERIENCE",
+      "data_type": "NUMBER",
+      "size": "5,2",
+      "key": false,
+      "description": "Total years of experience",
+      "sequence": 34
+    },
+    {
+      "column_name": "CURRENT_ADDRESS",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Current address",
+      "sequence": 35
+    },
+    {
+      "column_name": "CURRENT_PIN",
+      "data_type": "VARCHAR",
+      "size": "6",
+      "key": false,
+      "description": "Current address PIN code",
+      "sequence": 36
+    },
+    {
+      "column_name": "CURRENT_CITY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Current city",
+      "sequence": 37
+    },
+    {
+      "column_name": "CURRENT_STATE",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Current state",
+      "sequence": 38,
+      "lookup": {
+        "table": "emponb_state_master",
+        "display_column": "state_name",
+        "value_column": "state_code"
+      }
+    },
+    {
+      "column_name": "PERMANENT_ADDRESS",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Permanent address",
+      "sequence": 39
+    },
+    {
+      "column_name": "PERMANENT_PIN",
+      "data_type": "VARCHAR",
+      "size": "6",
+      "key": false,
+      "description": "Permanent address PIN code",
+      "sequence": 40
+    },
+    {
+      "column_name": "PERMANENT_CITY",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Permanent city",
+      "sequence": 41
+    },
+    {
+      "column_name": "PERMANENT_STATE",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Permanent state",
+      "sequence": 42,
+      "lookup": {
+        "table": "emponb_state_master",
+        "display_column": "state_name",
+        "value_column": "state_code"
+      }
+    },
+    {
+      "column_name": "SAME_AS_CURRENT_ADDRESS",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Check to copy current address details into the permanent address fields",
+      "sequence": 43,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "MOBILE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Mobile number",
+      "sequence": 44
+    },
+    {
+      "column_name": "ALTERNATE_TELEPHONE",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Alternate telephone",
+      "sequence": 45
+    },
+    {
+      "column_name": "CONTACT_PERSON",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Emergency contact person name",
+      "sequence": 46
+    },
+    {
+      "column_name": "CONTACT_PERSON_MOBILE",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "Emergency contact mobile",
+      "sequence": 47
+    },
+    {
+      "column_name": "CONTACT_PERSON_EMAIL",
+      "data_type": "VARCHAR",
+      "size": "120",
+      "key": false,
+      "description": "Emergency contact email",
+      "sequence": 48
+    },
+    {
+      "column_name": "PAN_NO",
+      "data_type": "CHAR",
+      "size": "10",
+      "key": false,
+      "description": "PAN number",
+      "sequence": 49
+    },
+    {
+      "column_name": "PAN_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "PAN document image",
+      "sequence": 50
+    },
+    {
+      "column_name": "AADHAR_NO",
+      "data_type": "CHAR",
+      "size": "12",
+      "key": false,
+      "description": "Aadhar number",
+      "sequence": 51
+    },
+    {
+      "column_name": "AADHAR_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Aadhar document image",
+      "sequence": 52
+    },
+    {
+      "column_name": "PASSPORT_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Passport number",
+      "sequence": 53
+    },
+    {
+      "column_name": "PASSPORT_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Passport document",
+      "sequence": 54
+    },
+    {
+      "column_name": "DRIVING_LIC_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Driving license number",
+      "sequence": 55
+    },
+    {
+      "column_name": "DRIVING_LIC_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Driving license document",
+      "sequence": 56
+    },
+    {
+      "column_name": "PF_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Provident fund number",
+      "sequence": 57
+    },
+    {
+      "column_name": "PF_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "PF document",
+      "sequence": 58
+    },
+    {
+      "column_name": "ESIC_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "ESIC number",
+      "sequence": 59
+    },
+    {
+      "column_name": "ESIC_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "ESIC document",
+      "sequence": 60
+    },
+    {
+      "column_name": "BANK_ACCOUNT_NO",
+      "data_type": "VARCHAR",
+      "size": "20",
+      "key": false,
+      "description": "Bank account number",
+      "sequence": 61
+    },
+    {
+      "column_name": "BANK_IFSC_CODE",
+      "data_type": "CHAR",
+      "size": "11",
+      "key": false,
+      "description": "Bank IFSC code",
+      "sequence": 62
+    },
+    {
+      "column_name": "BANK_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Bank name",
+      "sequence": 63
+    },
+    {
+      "column_name": "BANK_DOC",
+      "data_type": "VARCHAR",
+      "size": "500",
+      "key": false,
+      "description": "Cancelled cheque / passbook image",
+      "sequence": 64
+    },
+    {
+      "column_name": "PAN_VALIDATED",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "PAN validation status",
+      "sequence": 65,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "PAN_VALIDATED_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name returned by PAN validation",
+      "sequence": 66
+    },
+    {
+      "column_name": "PAN_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "PAN validation attempts used",
+      "sequence": 67
+    },
+    {
+      "column_name": "AADHAR_VALIDATED",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Aadhar validation status",
+      "sequence": 68,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "AADHAR_VALIDATED_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name returned by Aadhar validation",
+      "sequence": 69
+    },
+    {
+      "column_name": "AADHAR_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "Aadhar validation attempts used",
+      "sequence": 70
+    },
+    {
+      "column_name": "BANK_VALIDATED",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Bank validation status",
+      "sequence": 71,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "BANK_VALIDATED_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name returned by bank validation",
+      "sequence": 72
+    },
+    {
+      "column_name": "BANK_ATTEMPTS",
+      "data_type": "NUMBER",
+      "size": "3",
+      "key": false,
+      "description": "Bank validation attempts used",
+      "sequence": 73
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Record creation timestamp",
+      "sequence": 74
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who created the record",
+      "sequence": 75
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal used to create the record",
+      "sequence": 76
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Last change timestamp",
+      "sequence": 77
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "User who last changed the record",
+      "sequence": 78
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Terminal used for the last change",
+      "sequence": 79
+    },
+    {
+      "column_name": "POSITION_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Position applied for",
+      "sequence": 5,
+      "lookup": {
+        "table": "EMPONB_POSITION_MASTER",
+        "display_column": "POSITION_DESCR",
+        "value_column": "POSITION_CODE"
+      }
+    }
+  ]
+}

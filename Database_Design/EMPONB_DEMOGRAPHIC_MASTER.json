@@ -8,7 +8,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": true,
-      "description": "Category of lookup value",
+      "description": "Category this reference value belongs to",
       "sequence": 1,
       "mandatory": true,
       "allowed_values": [
@@ -51,7 +51,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Unique code within the lookup type",
+      "description": "Code for this reference value, unique within its lookup type",
       "sequence": 2,
       "mandatory": true
     },
@@ -60,7 +60,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Display text shown in candidate drop-downs",
+      "description": "Display text shown for this reference value in candidate drop-downs",
       "sequence": 3,
       "mandatory": true
     },
@@ -88,7 +88,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record creation timestamp",
+      "description": "Audit - record creation timestamp",
       "sequence": 5
     },
     {
@@ -96,7 +96,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who created the record",
+      "description": "Audit - user who created the record",
       "sequence": 6
     },
     {
@@ -104,7 +104,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that created the record",
+      "description": "Audit - terminal/IP that created the record",
       "sequence": 7
     },
     {
@@ -112,7 +112,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last-change timestamp",
+      "description": "Audit - last change timestamp",
       "sequence": 8
     },
     {
@@ -120,7 +120,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last changed the record",
+      "description": "Audit - user who last changed the record",
       "sequence": 9
     },
     {
@@ -128,7 +128,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that last changed the record",
+      "description": "Audit - terminal/IP that last changed the record",
       "sequence": 10
     }
   ]

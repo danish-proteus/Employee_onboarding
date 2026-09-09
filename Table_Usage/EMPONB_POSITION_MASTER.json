@@ -1,0 +1,58 @@
+{
+  "table_name": "EMPONB_POSITION_MASTER",
+  "objects": [
+    {
+      "object_name": "emponb_candidate_self",
+      "form_no": "1",
+      "usage_type": "R",
+      "referred_columns": [
+        "POSITION_CODE",
+        "POSITION_DESCR",
+        "DESIGNATION_NAME"
+      ],
+      "join_info": {
+        "column": "POSITION_CODE",
+        "join_table": "EMPONB_CANDIDATE_SELF",
+        "join_column": "POSITION_CODE"
+      }
+    },
+    {
+      "object_name": "emponb_position_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "CHG_TERM",
+        "DESIGNATION_NAME",
+        "CHG_USER",
+        "DEPT_CODE",
+        "POSITION_DESCR",
+        "POSITION_CODE",
+        "GRADE",
+        "ADD_DATE",
+        "ADD_USER",
+        "DESIGN_CODE",
+        "CADRE",
+        "CHG_DATE",
+        "DEPT_NAME",
+        "CADRE_NAME",
+        "GRADE_NAME",
+        "ADD_TERM"
+      ]
+    },
+    {
+      "object_name": "emponb_candidate_record",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "POSITION_CODE",
+        "DESIGNATION_NAME",
+        "POSITION_DESCR"
+      ],
+      "join_info": {
+        "column": "POSITION_CODE",
+        "join_table": "EMPONB_CANDIDATE_RECORD",
+        "join_column": "POSITION_CODE"
+      }
+    }
+  ]
+}

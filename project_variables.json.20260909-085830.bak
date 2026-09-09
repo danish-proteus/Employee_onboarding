@@ -1,0 +1,20 @@
+{
+  "variables": [
+    {
+      "name": "fin_entity",
+      "kind": "prompt",
+      "input_mode": "select",
+      "value": "SELECT FIN_ENTITY, ENTITY_NAME FROM EMPONB_FIN_ENTITY_MASTER WHERE ACTIVE_FLAG = 'Y' ORDER BY ENTITY_NAME",
+      "prompt": "Select your Financial Entity (Company)",
+      "default": "",
+      "required": true,
+      "external": false,
+      "remember_default": true,
+      "description": "The Financial Entity (Company) the logged-in user belongs to. Asked once at first login and remembered per user; scopes Position Master, Organisation Setup Master and Candidate Onboarding Record, and is stamped on every record they add. Internal-only - the public candidate portal is never asked. Administrators (admin / func-admin) are never asked and never blocked, so they can sign in and create the entities everyone else picks from.",
+      "exempt_roles": [
+        "admin",
+        "func-admin"
+      ]
+    }
+  ]
+}

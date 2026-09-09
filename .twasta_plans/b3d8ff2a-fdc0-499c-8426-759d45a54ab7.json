@@ -7,27 +7,203 @@
   "status": "completed",
   "description": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
   "created_at": 1784789260.5027142,
-  "updated_at": 1787552585.388003,
+  "updated_at": 1788870744.964405,
   "todos": [
     {
-      "id": "change_1",
-      "step": "change",
-      "label": "Allow overwriting an existing Candidate ID on the Candidate Self form",
+      "id": "frs",
+      "step": "frs",
+      "label": "Generate Functional Requirements",
+      "status": "completed",
+      "error": null,
+      "obj_name": null,
+      "obj_type": null,
+      "phase_id": null
+    },
+    {
+      "id": "app_json",
+      "step": "app_json",
+      "label": "Generate Application Structure",
+      "status": "completed",
+      "error": null,
+      "obj_name": null,
+      "obj_type": null,
+      "phase_id": null
+    },
+    {
+      "id": "analyze_deps",
+      "step": "analyze_deps",
+      "label": "Analyze Object Dependencies",
+      "status": "completed",
+      "error": null,
+      "obj_name": null,
+      "obj_type": null,
+      "phase_id": null
+    },
+    {
+      "id": "obj_emponb_state_master",
+      "step": "object",
+      "label": "Build & verify: State Master",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_state_master",
+      "obj_type": "T",
+      "phase_id": "phase_1",
+      "started_at": 1788866260.7287776,
+      "completed_at": 1788866287.3312936,
+      "review_iters": 1,
+      "model_sig": "feeae55a1a48c5d124e1f4dc3c6bf20340200085",
+      "input_tokens": 6,
+      "output_tokens": 2611,
+      "cost_usd": 0.42129
+    },
+    {
+      "id": "obj_emponb_demographic_master",
+      "step": "object",
+      "label": "Build & verify: Demographic Reference Master",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_demographic_master",
+      "obj_type": "T",
+      "phase_id": "phase_1",
+      "started_at": 1788866287.333621,
+      "completed_at": 1788866314.9263036,
+      "review_iters": 1,
+      "model_sig": "e4a6b60e939e9b567620208ad245ab6172112194",
+      "input_tokens": 6,
+      "output_tokens": 2965,
+      "cost_usd": 0.69334
+    },
+    {
+      "id": "obj_emponb_qualification_master",
+      "step": "object",
+      "label": "Build & verify: Qualification Master",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_qualification_master",
+      "obj_type": "T",
+      "phase_id": "phase_1",
+      "started_at": 1788866314.9284208,
+      "completed_at": 1788866346.2194586,
+      "review_iters": 1,
+      "model_sig": "c6e89ba8225a420e1c0982c5aaa84291002905d5",
+      "input_tokens": 6,
+      "output_tokens": 2845,
+      "cost_usd": 1.02082
+    },
+    {
+      "id": "obj_emponb_position_master",
+      "step": "object",
+      "label": "Build & verify: Position Master",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_position_master",
+      "obj_type": "T",
+      "phase_id": "phase_1",
+      "started_at": 1788866346.2226698,
+      "completed_at": 1788866380.7714698,
+      "review_iters": 1,
+      "model_sig": "7730d6e106a76f6034f18b68ddf9b57a9fae8754",
+      "input_tokens": 6,
+      "output_tokens": 3600,
+      "cost_usd": 1.36078
+    },
+    {
+      "id": "obj_emponb_org_setup_master",
+      "step": "object",
+      "label": "Build & verify: Organisation Setup Master",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_org_setup_master",
+      "obj_type": "T",
+      "phase_id": "phase_1",
+      "started_at": 1788866380.7746902,
+      "completed_at": 1788866422.718932,
+      "review_iters": 1,
+      "model_sig": "925158cc852918ba52e3b5808cf05964af51985d",
+      "input_tokens": 8,
+      "output_tokens": 4550,
+      "cost_usd": 1.798625
+    },
+    {
+      "id": "obj_emponb_candidate_record",
+      "step": "object",
+      "label": "Build & verify: Candidate Onboarding Record",
+      "status": "completed",
+      "error": null,
+      "obj_name": "emponb_candidate_record",
+      "obj_type": "T",
+      "phase_id": "phase_2",
+      "review_iters": 1,
+      "stage": "bl_done"
+    },
+    {
+      "id": "obj_emponb_candidate_self",
+      "step": "object",
+      "label": "Build & verify: Candidate Self",
       "status": "completed",
       "error": null,
       "obj_name": "emponb_candidate_self",
       "obj_type": "T",
-      "phase_id": null,
-      "started_at": 1784727818.4120784,
-      "completed_at": 1784727857.950546
+      "phase_id": "phase_2"
+    },
+    {
+      "id": "obj_pending_from_candidate",
+      "step": "object",
+      "label": "Build & verify: Pending From Candidate",
+      "status": "completed",
+      "error": null,
+      "obj_name": "pending_from_candidate",
+      "obj_type": "D",
+      "phase_id": "phase_3"
+    },
+    {
+      "id": "obj_candidate_page",
+      "step": "object",
+      "label": "Build & verify: Candidate Page",
+      "status": "completed",
+      "error": null,
+      "obj_name": "candidate_page",
+      "obj_type": "S",
+      "phase_id": "phase_3"
     }
   ],
-  "phases": [],
+  "phases": [
+    {
+      "id": "phase_1",
+      "title": "Master & lookup data",
+      "rationale": "Reference masters must exist before candidate transactions reference them.",
+      "objects": [
+        "emponb_state_master",
+        "emponb_demographic_master",
+        "emponb_qualification_master",
+        "emponb_position_master",
+        "emponb_org_setup_master"
+      ]
+    },
+    {
+      "id": "phase_2",
+      "title": "Core transactions",
+      "rationale": "Candidate onboarding transactions build on the lookup masters.",
+      "objects": [
+        "emponb_candidate_record",
+        "emponb_candidate_self"
+      ]
+    },
+    {
+      "id": "phase_3",
+      "title": "Dashboards & pages",
+      "rationale": "Pipeline dashboard and candidate page consume the transactions built earlier.",
+      "objects": [
+        "pending_from_candidate",
+        "candidate_page"
+      ]
+    }
+  ],
   "originating_prompt": "[The user currently has the \"Candidate Onboarding Record\" screen open (object emponb_candidate_record, type T). Resolve \"this\", \"this form/page/screen\", or \"here\" to this object unless they name a different one.]\n\nThe \"Candidate Self\" form_link was shared to employee, and he was filling the form, but encountered with \"Save blocked \u2014 1 \nvalidation error Candidate ID: A record with Candidate ID = '10 ' already exists.\" error, if this candidate_id is already \nexists then it should override the existing record instead of throwing the error. Check this logic and make the changes accordingly.",
   "resume_ref": {
-    "session_id": "7cd2a7c2-47fd-4ee7-834e-3e061185f43a",
+    "session_id": "f0be3ca8-8d1a-406c-ac1f-1604a745edd1",
     "plan_id": "b3d8ff2a-fdc0-499c-8426-759d45a54ab7",
-    "scope": null
+    "scope": "phase"
   },
   "depends_on": [],
   "result_summary": ""

@@ -1,16 +1,25 @@
 ## Master Data Management
-Reference masters that drive selection lists, validations and cross-updates across the onboarding process — Designation & Department, Organisation Setup, Qualification and Demographic Reference only. Each is a header-only transaction (T) with Search, Add, Edit, Delete. The application is India-only: there is no Country Master and no COUNTRY_CODE lookup anywhere in the process; nationality is taken from the Demographic Reference Master (LOOKUP_TYPE = 'NATIONALITY') and any other country-like value is captured as plain text.
+Reference masters that drive selection lists, validations and cross-updates across the onboarding process — Position, Organisation Setup, Qualification and Demographic Reference only. Each is a header-only transaction (T) with Search, Add, Edit, Delete. The application is India-only: there is no Country Master and no COUNTRY_CODE lookup anywhere in the process; nationality is taken from the Demographic Reference Master (LOOKUP_TYPE = 'NATIONALITY') and any other country-like value is captured as plain text.
 
-### Designation & Department Master
-- Description: Maintain designations, departments, grades, cadres and design codes used by HR during initiation and finalization.
-- Data points: DESIGNATION (DESIGN_CODE, DESIGNATION_NAME), DEPT_CODE, DEPT_NAME, GRADE, GRADE_NAME, CADRE, CADRE_NAME, JOINED_AS, ACTIVE_FLAG.
-- Business rules: Each code unique within its master; DESIGN_CODE mandatory and active to be selectable.
+### Financial Entity Master
+- Description: Maintain the financial entities (companies) the application is partitioned by. Every internal user belongs to exactly one financial entity, and the masters and candidate records they work with are restricted to it.
+- Data points: FIN_ENTITY, ENTITY_NAME, ACTIVE_FLAG.
+- Business rules: FIN_ENTITY unique within the master; ENTITY_NAME mandatory; only ACTIVE_FLAG = 'Y' rows are offered at login. This master is deliberately NOT row-secured — every user must be able to resolve the entity list.
+- Business actions: Search, Add, Edit, Delete.
+- Additional data management: this master supplies the `:fin_entity` project variable (kind `prompt`, `input_mode` `select`, `required`, internal-only). On a user's FIRST login the app asks "Select your Financial Entity (Company)" and remembers the answer per user; users change it later from the user menu -> Project settings. `:fin_entity` is the row-security source for Position Master, Organisation Setup Master and Candidate Onboarding Record, and the default value of the hidden, protected FIN_ENTITY column on each of them (plus Candidate Self).
+- Administrator start-up exemption: the `:fin_entity` variable carries `exempt_roles: ["admin", "func-admin"]`, which applies ONLY while the Financial Entity Master is empty. With no entities defined an administrator is not asked and not blocked, so they can sign in and create the first entities. As soon as at least one active entity exists the exemption lapses: administrators are asked to select their Financial Entity at login and are blocked by `required` exactly like every other user, and the rest of the application treats them like every other user — row security scopes them to the entity they picked. An administrator who signed in on the exemption has no value yet, so the scoped screens list nothing for them until they set one (asked at their next sign-in, or set immediately from the user menu -> Project settings).
+### Position Master
+- Description: Maintain positions and the designation, department, grade and cadre each position maps to, used by HR during initiation and finalization. Replaces the former Designation & Department Master.
+- Data points: POSITION_CODE, POSITION_DESCR, DESIGN_CODE, DESIGNATION_NAME, DEPT_CODE, DEPT_NAME, GRADE, GRADE_NAME, CADRE, CADRE_NAME.
+- Business rules: POSITION_CODE unique within the master; POSITION_DESCR, DESIGN_CODE, DESIGNATION_NAME, DEPT_CODE and CADRE mandatory.
+- Row security: restricted to the logged-in user's financial entity — hidden, protected FIN_ENTITY column defaulted `:fin_entity`, with `row_security` `FIN_ENTITY = :fin_entity`. POSITION_CODE stays unique ACROSS entities (it is the primary key), so two entities cannot reuse the same code.
 - Business actions: Search, Add, Edit, Delete.
 
 ### Organisation Setup Master (Sites, Shifts, Holiday Tables)
 - Description: Maintain employment site, payroll site, work shift and holiday table values used at confirmation.
 - Data points: EMP_SITE, SITE_NAME; PAY_SITE, PAY_SITE_NAME; WORK_SHIFT, SHIFT_NAME, SHIFT_TIMINGS; HOL_TBLNO, HOL_TBL_NAME; ACTIVE_FLAG; PIN, STATE_CODE (site pincode and state code, state code validated against the State Master).
 - Business rules: Codes unique within master; only active rows selectable in finalization.
+- Row security: restricted to the logged-in user's financial entity — hidden, protected FIN_ENTITY column defaulted `:fin_entity`, with `row_security` `FIN_ENTITY = :fin_entity`. EMP_SITE / PAY_SITE / WORK_SHIFT / HOL_TBLNO codes stay unique ACROSS entities.
 - Business actions: Search, Add, Edit, Delete.
 
 ### Qualification Master
@@ -47,14 +56,15 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
 
 ### Candidate Onboarding Record
 - Description: HR creates and manages the candidate's onboarding record from initial capture through submission, review and confirmation as employee. The record carries a STATUS that advances through the process and a STATUS_DATE that is stamped on every transition.
-- Data points (HR initial capture): CANDIDATE_ID (system), CANDIDATE_NAME, GENDER, DESIGNATION (DESIGN_CODE), EMAIL_ID, STATUS, STATUS_DATE, INITIATED_BY (HR user), INITIATED_ON. The application is India-only, so no country code is captured or validated at initiation.
+- Data points (HR initial capture): CANDIDATE_ID (system), CANDIDATE_NAME, GENDER, POSITION (POSITION_CODE, with DESIGN_CODE derived from it), EMAIL_ID, STATUS, STATUS_DATE, INITIATED_BY (HR user), INITIATED_ON. The application is India-only, so no country code is captured or validated at initiation.
 - Data points (access key): ACCESS_KEY (system-generated token), KEY_GENERATED_ON, KEY_EXPIRY_DATETIME, KEY_VALID_FLAG, FORM_URL, LINK_SENT_ON, LINK_ACCESSED_ON, SUBMITTED_ON.
 - Data points (candidate personal — captured via self-service form, displayed/read-only here): EMP_FNAME, EMP_MNAME, EMP_LNAME, NAME_PREFIX, GENDER, BIRTHDATE, NATIONALITY, MARITAL_STATUS, MARRIAGE_ANNIVERSARY, BLOOD_GROUP, RELIGION, CAST_CATEGORY, MOTHER_TONGUE, PHYSICAL_HANDICAP, HOBBY1, HOBBY2, TOTAL_EXPERIENCE.
 - Data points (contact & address): CURRENT_ADDRESS, CURRENT_PIN, CURRENT_CITY, CURRENT_STATE, PERMANENT_ADDRESS, PERMANENT_PIN, PERMANENT_CITY, PERMANENT_STATE, MOBILE, ALTERNATE_TELEPHONE, CONTACT_PERSON, CONTACT_PERSON_MOBILE, CONTACT_PERSON_EMAIL. Addresses are India-only — no country field is captured and no country master is referenced; CITY and STATE are plain text and PIN is the 6-digit Indian PIN code. NATIONALITY is selected from the Demographic Reference Master (LOOKUP_TYPE = 'NATIONALITY'), not from a country master.
 - Data points (statutory & financial): PAN_NO, AADHAR_NO, PASSPORT_NO, DRIVING_LIC_NO, PF_NO, ESIC_NO, BANK_ACCOUNT_NO, BANK_IFSC_CODE, BANK_NAME.
 - Data points (validation status): PAN_VALIDATED (Y/N), PAN_VALIDATED_NAME — written by the **Validate PAN** action (below). AADHAR_VALIDATED (Y/N), AADHAR_VALIDATED_NAME, AADHAR_ATTEMPTS; BANK_VALIDATED (Y/N), BANK_VALIDATED_NAME, BANK_ATTEMPTS; PAN_ATTEMPTS — legacy, retained read-only: the Aadhaar and Bank verification actions that populated them have been withdrawn, and PAN_ATTEMPTS is no longer maintained (the Validate PAN action does not cap retries).
 - Data points (attachments): PAN_DOC (image/file), AADHAR_DOC (image/file), BANK_DOC (cancelled cheque / passbook image).
-- Data points (HR finalization): EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, DESIGN_CODE, REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF.
+- Data points (HR finalization): EMP_CODE, DESIGNATION, DEPT_CODE, GRADE, CADRE, FIN_POSITION_CODE (with FIN_DESIGN_CODE derived from it), REPORT_TO, JOINED_AS, DATE_JOIN, WORK_SHIFT, HOL_TBLNO, EMP_SITE, PAY_SITE, BASIC, GROSS, PROBATION_DATE, PROBATION_PRD, NOTICE_PRD, EMAIL_ID_OFF, REPORT_TO__ADMIN, USER_ID, REMARKS, EMPLOYEE_PUSHED_FLAG, EMPLOYEE_PUSH_REF.
+- Row security: restricted to the logged-in user's financial entity — hidden, protected FIN_ENTITY column defaulted `:fin_entity`, with `row_security` `FIN_ENTITY = :fin_entity`. The three detail tables are reached only through the scoped header, so they carry no FIN_ENTITY of their own.
 - Business rules:
   - STATUS lifecycle: Link Generated → Link Accessed → DataSubmitted → Review → Confirmed → PushedToVision; STATUS_DATE updated on each transition. PushedToVision is set by the **Push To Vision** action once Vision ERP HR has accepted the employee.
   - EMAIL_ID mandatory and valid format before a link can be generated.
@@ -63,7 +73,7 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
   - Once STATUS = DataSubmitted the candidate-editable fields become read-only to candidate; HR can edit finalization fields only.
   - EMP_CODE mandatory and unique before Confirm; DATE_JOIN mandatory before Confirm; GROSS ≥ BASIC.
   - Confirm allowed only when STATUS = Review and mandatory finalization fields complete.
-  - When DESIGN_CODE is selected/changed on the header, DEPT_CODE, DEPT_NAME, GRADE, GRADE_NAME, CADRE and CADRE_NAME are auto-filled (read-only) from the matching row in the Designation & Department Master (matched on DESIGN_CODE). When HR selects a Designation (DESIGN_CODE) on the Candidate Record header, the system auto-fills the Designation Name, Department Code, Department Name, Grade, Grade Name, Cadre and Cadre Name read-only fields from the Designation & Department Master (EMPONB_DESIG_DEPT_MASTER), matched on DESIGN_CODE.
+  - When POSITION_CODE is selected/changed on the header, DESIGN_CODE is auto-filled from the matching row in the Position Master (EMPONB_POSITION_MASTER, matched on POSITION_CODE), and the Position Description and Designation Name are displayed read-only from that row. At HR finalization, selecting FIN_POSITION_CODE auto-fills FIN_DESIGN_CODE, DEPT_CODE, GRADE and CADRE (read-only) from the same master, matched on POSITION_CODE.
 - Business actions: Search, List Recent, Add (Initiate Candidate), Edit, Delete (only while STATUS = Link Generated and link not accessed), **Send/Resend Link**, **Validate PAN** (Vayana API via IOFlow), **Review**, **Confirm** (Push to IOFLOW Employee), **Push To Vision** (Vison ERP HR via IOFlow), Cancel.
 - Additional data management & cross-updates:
   - On **Add/Initiate**: generate CANDIDATE_ID, set STATUS = (blank/Initiated).
@@ -98,6 +108,8 @@ HR-facing master transaction covering the full lifecycle of a candidate record. 
 ## Candidate Self-Service Onboarding Form
 Public, key-validated intake screen the candidate opens from the emailed link. It is anonymous (no Vision app login) and is delivered as a Smart Page hosted on the External Website (see below). Documented here as a process activity for traceability; the page blocks are detailed under Smart Pages / External Website.
 
+**Financial entity on the self-service form.** EMPONB_CANDIDATE_SELF carries the same hidden, protected FIN_ENTITY column, but it is deliberately NOT row-secured: the candidate is an anonymous visitor with no logged-in user, so `:fin_entity` would resolve to nothing and row security would filter the form's own row away, breaking the emailed link. The value is instead part of the record's initial data — the Send/Resend Link action copies FIN_ENTITY across from EMPONB_CANDIDATE_RECORD when it seeds the self-service row, so every self record belongs to the same entity as its candidate record. Access to a self record stays governed by the access key.
+
 ### Validate Access & Open Form
 - Description: On opening the link, the form validates the key before rendering any input.
 - Data points (read): ACCESS_KEY, KEY_EXPIRY_DATETIME, STATUS.
@@ -121,7 +133,7 @@ Public, key-validated intake screen the candidate opens from the emailed link. I
 ## Reports & Visuals
 
 ### Onboarding Pipeline by Status (V)
-- Visualization: Stacked-Column-Chart. Criteria: date range (INITIATED_ON), DESIGN_CODE. Data points: count of candidates per STATUS per period. Drill-down: click a segment → filtered candidate list.
+- Visualization: Stacked-Column-Chart. Criteria: date range (INITIATED_ON), POSITION_CODE. Data points: count of candidates per STATUS per period. Drill-down: click a segment → filtered candidate list.
 
 ### Candidate Status Distribution (V)
 - Visualization: Pie-Chart / Doughnut-Chart. Criteria: date range. Data points: STATUS vs candidate count.
@@ -148,7 +160,7 @@ Public, key-validated intake screen the candidate opens from the emailed link. I
 
 ## HR Onboarding Dashboard (D)
 - Role: HR / Onboarding Coordinator.
-- Criteria (with defaults): date range (default current month, on INITIATED_ON), DESIGN_CODE (default All), INITIATED_BY (default current user), STATUS (default All).
+- Criteria (with defaults): date range (default current month, on INITIATED_ON), POSITION_CODE (default All), INITIATED_BY (default current user), STATUS (default All).
 - Key metric Cards (top): Total Candidates Initiated, Links Pending Action, Data Submitted (awaiting review), Confirmed this period, Expired Links.
 - Visuals:
   - Onboarding Pipeline by Status (Stacked-Column-Chart) — count per STATUS per period.

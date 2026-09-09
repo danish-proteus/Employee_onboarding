@@ -1,0 +1,1 @@
+[1] Position Master: position_code(V10), position_descr(V100), design_code(V10), designation_name(V100), dept_code(V10), dept_name(V100), grade(V10), grade_name(V100), cadre(V10), cadre_name(V100), add_date(DT), add_user(V10), add_term(V15), chg_date(DT), chg_user(V10), chg_term(V15)

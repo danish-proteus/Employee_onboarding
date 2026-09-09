@@ -8,7 +8,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Unique code for the state/UT",
+      "description": "Unique code identifying the state/UT",
       "sequence": 1,
       "mandatory": true
     },
@@ -17,7 +17,7 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the state/union territory",
+      "description": "Full name of the state/union territory",
       "sequence": 2,
       "mandatory": true
     },
@@ -26,7 +26,7 @@
       "data_type": "VARCHAR",
       "size": "50",
       "key": false,
-      "description": "Plain text, always IND \u2014 application is India-only, no Country Master/lookup",
+      "description": "Country - plain text, always IND (application is India-only; no Country Master/lookup used)",
       "sequence": 3,
       "mandatory": true
     },
@@ -35,7 +35,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Whether this state is active/selectable",
+      "description": "Whether this state is selectable elsewhere",
       "sequence": 4,
       "mandatory": true,
       "allowed_values": [
@@ -54,7 +54,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record creation timestamp",
+      "description": "Audit - record creation timestamp",
       "sequence": 5
     },
     {
@@ -62,7 +62,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who created the record",
+      "description": "Audit - user who created the record",
       "sequence": 6
     },
     {
@@ -70,7 +70,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that created the record",
+      "description": "Audit - terminal/IP that created the record",
       "sequence": 7
     },
     {
@@ -78,7 +78,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last-change timestamp",
+      "description": "Audit - last change timestamp",
       "sequence": 8
     },
     {
@@ -86,7 +86,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last changed the record",
+      "description": "Audit - user who last changed the record",
       "sequence": 9
     },
     {
@@ -94,7 +94,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that last changed the record",
+      "description": "Audit - terminal/IP that last changed the record",
       "sequence": 10
     }
   ]

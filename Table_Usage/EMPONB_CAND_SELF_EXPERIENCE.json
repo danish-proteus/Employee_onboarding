@@ -6,13 +6,13 @@
       "form_no": "2",
       "usage_type": "M",
       "referred_columns": [
+        "TO_DATE",
+        "ORGANISATION",
+        "DESIGNATION",
         "CANDIDATE_ID",
         "GROSS_AMT",
-        "TO_DATE",
-        "DESIGNATION",
         "FROM_DATE",
-        "LINE_NO",
-        "ORGANISATION"
+        "LINE_NO"
       ]
     }
   ]

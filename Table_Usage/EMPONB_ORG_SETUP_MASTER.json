@@ -4,27 +4,32 @@
     {
       "object_name": "emponb_org_setup_master",
       "form_no": "1",
-      "usage_type": "M",
+      "usage_type": "R",
       "referred_columns": [
-        "HOL_TBL_NAME",
-        "CHG_DATE",
-        "PIN",
-        "PAY_SITE_NAME",
-        "ADD_DATE",
-        "SHIFT_NAME",
-        "CHG_USER",
-        "ACTIVE_FLAG",
-        "EMP_SITE",
-        "HOL_TBLNO",
-        "SHIFT_TIMINGS",
-        "CHG_TERM",
-        "SITE_NAME",
-        "WORK_SHIFT",
-        "ADD_USER",
-        "PAY_SITE",
         "STATE_CODE",
-        "ADD_TERM"
-      ]
+        "WORK_SHIFT",
+        "CHG_TERM",
+        "CHG_USER",
+        "CHG_DATE",
+        "ADD_DATE",
+        "ADD_USER",
+        "ADD_TERM",
+        "PAY_SITE_NAME",
+        "ACTIVE_FLAG",
+        "HOL_TBLNO",
+        "HOL_TBL_NAME",
+        "SITE_NAME",
+        "PAY_SITE",
+        "SHIFT_NAME",
+        "EMP_SITE",
+        "SHIFT_TIMINGS",
+        "PIN"
+      ],
+      "join_info": {
+        "column": "STATE_CODE",
+        "join_table": "EMPONB_STATE_MASTER",
+        "join_column": "STATE_CODE"
+      }
     }
   ]
 }

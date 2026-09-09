@@ -7,7 +7,7 @@ function_name: load_candidate_header
 trigger_column: candidate_id
 language: plpgsql
 description: Load the candidate header/profile when a candidate id is entered
-functional_specification: When candidate_id is entered, prefer the candidate self record: if a row exists in EMPONB_CANDIDATE_SELF for that id, fill the header/profile fields from EMPONB_CANDIDATE_SELF; otherwise fall back to EMPONB_CANDIDATE_RECORD. The designation display name is resolved from EMPONB_DESIG_DEPT_MASTER. If neither table has the id (or the id is blank) the header fields are cleared. Returns the standard item_change {updates} contract keyed by form column name.
+functional_specification: When candidate_id is entered, prefer the candidate self record: if a row exists in EMPONB_CANDIDATE_SELF for that id, fill the header/profile fields from EMPONB_CANDIDATE_SELF; otherwise fall back to EMPONB_CANDIDATE_RECORD. The position description and designation display name are resolved from EMPONB_POSITION_MASTER. If neither table has the id (or the id is blank) the header fields are cleared. Returns the standard item_change {updates} contract keyed by form column name.
 business_logic: Auto-populate the candidate profile from the existing candidate record when HR enters an existing candidate id.
 */
 
@@ -19,7 +19,7 @@ DECLARE
     f         text;
     -- Header/profile fields shared by the self form and both source tables.
     v_fields  text[] := ARRAY[
-        'candidate_name','gender','design_code','design_name','email_id',
+        'candidate_name','gender','position_code','position_descr','design_code','design_name','email_id',
         'name_prefix','emp_fname','emp_mname','emp_lname','birthdate','nationality',
         'marital_status','marriage_anniversary','blood_group','religion','cast_category',
         'mother_tongue','physical_handicap','hobby1','hobby2','total_experience',
@@ -40,8 +40,9 @@ BEGIN
 
     -- Prefer the candidate self record.
     SELECT to_jsonb(sub) INTO v_updates FROM (
-        SELECT s.candidate_name, s.gender, s.design_code,
-               dm.designation_name AS design_name,
+        SELECT s.candidate_name, s.gender, s.position_code,
+               pm.position_descr, s.design_code,
+               pm.designation_name AS design_name,
                s.email_id, s.name_prefix, s.emp_fname, s.emp_mname, s.emp_lname,
                s.birthdate, s.nationality, s.marital_status, s.marriage_anniversary,
                s.blood_group, s.religion, s.cast_category, s.mother_tongue,
@@ -52,7 +53,7 @@ BEGIN
                s.contact_person_email, s.pan_no, s.aadhar_no, s.passport_no,
                s.driving_lic_no, s.pf_no, s.esic_no, s.bank_account_no, s.bank_ifsc_code
         FROM emponb_candidate_self s
-        LEFT JOIN emponb_desig_dept_master dm ON dm.design_code = s.design_code
+        LEFT JOIN emponb_position_master pm ON pm.position_code = s.position_code
         WHERE s.candidate_id = v_id
         LIMIT 1
     ) sub;
@@ -60,8 +61,9 @@ BEGIN
     -- Fall back to the candidate onboarding record.
     IF v_updates IS NULL THEN
         SELECT to_jsonb(sub) INTO v_updates FROM (
-            SELECT r.candidate_name, r.gender, r.design_code,
-                   dm.designation_name AS design_name,
+            SELECT r.candidate_name, r.gender, r.position_code,
+                   pm.position_descr, r.design_code,
+                   pm.designation_name AS design_name,
                    r.email_id, r.name_prefix, r.emp_fname, r.emp_mname, r.emp_lname,
                    r.birthdate, r.nationality, r.marital_status, r.marriage_anniversary,
                    r.blood_group, r.religion, r.cast_category, r.mother_tongue,
@@ -72,7 +74,7 @@ BEGIN
                    r.contact_person_email, r.pan_no, r.aadhar_no, r.passport_no,
                    r.driving_lic_no, r.pf_no, r.esic_no, r.bank_account_no, r.bank_ifsc_code
             FROM emponb_candidate_record r
-            LEFT JOIN emponb_desig_dept_master dm ON dm.design_code = r.design_code
+            LEFT JOIN emponb_position_master pm ON pm.position_code = r.position_code
             WHERE r.candidate_id = v_id
             LIMIT 1
         ) sub;

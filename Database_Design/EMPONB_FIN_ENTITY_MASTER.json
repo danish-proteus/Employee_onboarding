@@ -1,0 +1,92 @@
+{
+  "table_name": "EMPONB_FIN_ENTITY_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "FIN_ENTITY",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique code identifying the financial entity (company)",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "ENTITY_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the financial entity (company)",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Whether this financial entity is selectable at login",
+      "sequence": 3,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Audit - record creation timestamp",
+      "sequence": 4
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Audit - user who created the record",
+      "sequence": 5
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Audit - terminal/IP that created the record",
+      "sequence": 6
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Audit - last change timestamp",
+      "sequence": 7
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Audit - user who last changed the record",
+      "sequence": 8
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Audit - terminal/IP that last changed the record",
+      "sequence": 9
+    }
+  ]
+}

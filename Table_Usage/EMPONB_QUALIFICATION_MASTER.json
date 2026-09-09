@@ -6,23 +6,23 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
-        "ADD_TERM",
-        "QLF_CODE",
-        "ADD_DATE",
-        "QLF_NAME",
-        "CHG_USER",
-        "QLF_TYPE",
-        "ACTIVE_FLAG",
-        "CHG_DATE",
         "CHG_TERM",
+        "QLF_TYPE",
+        "CHG_USER",
+        "CHG_DATE",
+        "ADD_DATE",
+        "ADD_USER",
         "COURSE_TYPE",
-        "ADD_USER"
+        "ACTIVE_FLAG",
+        "QLF_NAME",
+        "QLF_CODE",
+        "ADD_TERM"
       ]
     },
     {
       "object_name": "emponb_candidate_record",
       "form_no": "3",
-      "usage_type": "M",
+      "usage_type": "R",
       "referred_columns": [
         "QLF_CODE"
       ],

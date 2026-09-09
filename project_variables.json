@@ -1,0 +1,21 @@
+{
+  "variables": [
+    {
+      "name": "fin_entity",
+      "kind": "prompt",
+      "input_mode": "select",
+      "value": "SELECT FIN_ENTITY, ENTITY_NAME FROM EMPONB_FIN_ENTITY_MASTER WHERE ACTIVE_FLAG = 'Y' ORDER BY ENTITY_NAME",
+      "prompt": "Select your Financial Entity (Company)",
+      "default": "",
+      "required": true,
+      "external": false,
+      "remember_default": true,
+      "description": "The Financial Entity (Company) the logged-in user belongs to. Asked once at first login and then FIXED - it is the row-security scope for Position Master, Organisation Setup Master and Candidate Onboarding Record, and is stamped on every record the user adds, so re-picking it would move which rows they own. Only admin / func-admin can change their own value afterwards. Internal-only - the public candidate portal is never asked. While the Financial Entity Master is still EMPTY administrators are not asked and not blocked, so they can sign in and create the first entities; once an active entity exists they are asked and blocked like every other user.",
+      "exempt_roles": [
+        "admin",
+        "func-admin"
+      ],
+      "lock_once_set": true
+    }
+  ]
+}

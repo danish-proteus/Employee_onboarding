@@ -1,0 +1,3764 @@
+{
+  "transaction": {
+    "obj_name": "emponb_candidate_self",
+    "sql_models": [
+      {
+        "sql_model": {
+          "form_title": "Candidate Self Onboard",
+          "form_descr": "Candidate self-service onboarding form",
+          "form_no": "1",
+          "main_table": "EMPONB_CANDIDATE_SELF",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "col_type": "VARCHAR",
+                "heading": "Candidate ID",
+                "descr": "Candidate reference - must exist in Candidate Onboarding Record",
+                "group_name": "Basic",
+                "key": true,
+                "mandatory": true,
+                "must_exist_in": "EMPONB_CANDIDATE_RECORD",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Candidate must exist",
+                    "message": "Candidate ID not found in Candidate Onboarding Record.",
+                    "builtin": {
+                      "kind": "must_exist_in_master",
+                      "table": "EMPONB_CANDIDATE_RECORD",
+                      "match_column": "candidate_id"
+                    }
+                  }
+                ],
+                "item_change": {
+                  "mode": "business_logic",
+                  "business_logic": {
+                    "method": "load_candidate_header",
+                    "description": "Load header from self record, fallback to candidate record",
+                    "spec": "On change of CANDIDATE_ID: first look up EMPONB_CANDIDATE_SELF for this CANDIDATE_ID; if a row exists, return its fields as updates (candidate_name, email_id, gender, position_code, position_descr, design_code, design_name, and all personal/contact/statutory/financial fields). If no EMPONB_CANDIDATE_SELF row exists yet, fall back to EMPONB_CANDIDATE_RECORD for the same CANDIDATE_ID and return candidate_name, email_id, gender, position_code, position_descr, design_code, design_name and any personal/contact/statutory/financial fields already captured there so the candidate form is pre-populated. If neither exists, return no updates.",
+                    "language": "plpgsql"
+                  }
+                },
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "candidate_name",
+                "db_name": "CANDIDATE_NAME",
+                "col_type": "VARCHAR",
+                "heading": "Candidate Name",
+                "descr": "Candidate full name",
+                "group_name": "Basic",
+                "mandatory": true,
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "email_id",
+                "db_name": "EMAIL_ID",
+                "col_type": "VARCHAR",
+                "heading": "Email ID",
+                "descr": "Candidate email address",
+                "group_name": "Basic",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Email format",
+                    "message": "Enter a valid email address.",
+                    "expression": "match({form.email_id}, \"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$\")"
+                  },
+                  {
+                    "type": "business_logic",
+                    "name": "Email unique on self record",
+                    "message": "This email address is already registered for another candidate.",
+                    "business_logic": {
+                      "method": "check_self_email_unique",
+                      "description": "Validate email uniqueness, skip when unchanged in edit mode",
+                      "spec": "If _action = 'edit' and the submitted EMAIL_ID equals the EMAIL_ID already stored on this CANDIDATE_ID's EMPONB_CANDIDATE_SELF row, pass (return NULL) without checking. Otherwise check whether EMAIL_ID already exists on any OTHER row of EMPONB_CANDIDATE_SELF (CANDIDATE_ID <> current) or on EMPONB_CANDIDATE_RECORD for a different CANDIDATE_ID; if found, return an error indicating the email address is already registered.",
+                      "language": "plpgsql"
+                    }
+                  }
+                ],
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "120",
+                "width": 500,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gender",
+                "db_name": "GENDER",
+                "col_type": "VARCHAR",
+                "heading": "Gender",
+                "descr": "Candidate gender",
+                "group_name": "Basic",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "M",
+                      "display": "Male"
+                    },
+                    {
+                      "data": "F",
+                      "display": "Female"
+                    },
+                    {
+                      "data": "O",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "position_code",
+                "db_name": "POSITION_CODE",
+                "col_type": "VARCHAR",
+                "heading": "Position",
+                "descr": "Position applied for",
+                "group_name": "Basic",
+                "lookup": "EMPONB_POSITION_MASTER(POSITION_DESCR, POSITION_CODE)",
+                "must_exist_in": "EMPONB_POSITION_MASTER",
+                "x": "50",
+                "y": "50",
+                "col_id": "80",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": {
+                  "mask": "textbox",
+                  "values": []
+                },
+                "protect": true,
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "position_descr",
+                "db_name": "POSITION_DESCR",
+                "table_name": "EMPONB_POSITION_MASTER",
+                "table_display_name": "Position master",
+                "col_type": "VARCHAR",
+                "heading": "Position Description",
+                "descr": "Position description from the Position master",
+                "group_name": "Basic",
+                "protect": "1",
+                "x": "55",
+                "y": "55",
+                "col_id": "81",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "design_code",
+                "db_name": "DESIGN_CODE",
+                "col_type": "VARCHAR",
+                "heading": "Designation Code",
+                "descr": "Designation code derived from the selected Position",
+                "group_name": "Basic",
+                "lookup": "",
+                "x": "56",
+                "y": "56",
+                "col_id": "5",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": {
+                  "mask": "textbox",
+                  "values": []
+                },
+                "protect": true,
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "design_name",
+                "db_name": "DESIGNATION_NAME",
+                "table_name": "EMPONB_POSITION_MASTER",
+                "col_type": "VARCHAR",
+                "heading": "Designation Name",
+                "descr": "Designation name from the Position master",
+                "group_name": "Basic",
+                "protect": "1",
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_display_name": "Position master",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "status",
+                "db_name": "STATUS",
+                "col_type": "VARCHAR",
+                "heading": "Status",
+                "descr": "Onboarding status",
+                "group_name": "Basic",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Initiated",
+                      "display": "Initiated"
+                    },
+                    {
+                      "data": "Link Generated",
+                      "display": "Link Generated"
+                    },
+                    {
+                      "data": "Link Accessed",
+                      "display": "Link Accessed"
+                    },
+                    {
+                      "data": "DataSubmitted",
+                      "display": "Data Submitted"
+                    },
+                    {
+                      "data": "Review",
+                      "display": "Review"
+                    },
+                    {
+                      "data": "Confirmed",
+                      "display": "Confirmed"
+                    },
+                    {
+                      "data": "Cancelled",
+                      "display": "Cancelled"
+                    },
+                    {
+                      "data": "Submit",
+                      "display": "Submit"
+                    }
+                  ]
+                },
+                "protect": "1",
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "status_date",
+                "db_name": "STATUS_DATE",
+                "col_type": "DATETIME",
+                "heading": "Status Date",
+                "descr": "Date of last status change",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "630",
+                "y": "630",
+                "col_id": "8",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "initiated_by",
+                "db_name": "INITIATED_BY",
+                "col_type": "VARCHAR",
+                "heading": "Initiated By",
+                "descr": "HR user who initiated the record",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "640",
+                "y": "640",
+                "col_id": "9",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "initiated_on",
+                "db_name": "INITIATED_ON",
+                "col_type": "DATETIME",
+                "heading": "Initiated On",
+                "descr": "Date the record was initiated",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "650",
+                "y": "650",
+                "col_id": "10",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "access_key",
+                "db_name": "ACCESS_KEY",
+                "col_type": "VARCHAR",
+                "heading": "Access Key",
+                "descr": "Onboarding link access token",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "660",
+                "y": "660",
+                "col_id": "11",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_generated_on",
+                "db_name": "KEY_GENERATED_ON",
+                "col_type": "DATETIME",
+                "heading": "Key Generated On",
+                "descr": "When the access key was generated",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "670",
+                "y": "670",
+                "col_id": "12",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_expiry_datetime",
+                "db_name": "KEY_EXPIRY_DATETIME",
+                "col_type": "DATETIME",
+                "heading": "Key Expiry",
+                "descr": "Access key expiry date/time",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "680",
+                "y": "680",
+                "col_id": "13",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "key_valid_flag",
+                "db_name": "KEY_VALID_FLAG",
+                "col_type": "VARCHAR",
+                "heading": "Key Valid",
+                "descr": "Whether the access key is currently valid",
+                "group_name": "Others",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "protect": "1",
+                "x": "690",
+                "y": "690",
+                "col_id": "14",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "form_url",
+                "db_name": "FORM_URL",
+                "col_type": "VARCHAR",
+                "heading": "Form URL",
+                "descr": "Candidate onboarding link URL",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "700",
+                "y": "700",
+                "col_id": "15",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "link_sent_on",
+                "db_name": "LINK_SENT_ON",
+                "col_type": "DATETIME",
+                "heading": "Link Sent On",
+                "descr": "When the onboarding link was sent",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "710",
+                "y": "710",
+                "col_id": "16",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "link_accessed_on",
+                "db_name": "LINK_ACCESSED_ON",
+                "col_type": "DATETIME",
+                "heading": "Link Accessed On",
+                "descr": "When the candidate first opened the link",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "720",
+                "y": "720",
+                "col_id": "17",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "submitted_on",
+                "db_name": "SUBMITTED_ON",
+                "col_type": "DATETIME",
+                "heading": "Submitted On",
+                "descr": "When the candidate submitted the form",
+                "group_name": "Others",
+                "protect": "1",
+                "x": "730",
+                "y": "730",
+                "col_id": "18",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "name_prefix",
+                "db_name": "NAME_PREFIX",
+                "col_type": "VARCHAR",
+                "heading": "Name Prefix",
+                "descr": "Salutation",
+                "group_name": "Personal",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Mr.",
+                      "display": "Mr."
+                    },
+                    {
+                      "data": "Mrs.",
+                      "display": "Mrs."
+                    },
+                    {
+                      "data": "Ms.",
+                      "display": "Ms."
+                    },
+                    {
+                      "data": "Miss",
+                      "display": "Miss"
+                    },
+                    {
+                      "data": "Dr.",
+                      "display": "Dr."
+                    },
+                    {
+                      "data": "Prof.",
+                      "display": "Prof."
+                    }
+                  ]
+                },
+                "x": "80",
+                "y": "80",
+                "col_id": "19",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_fname",
+                "db_name": "EMP_FNAME",
+                "col_type": "VARCHAR",
+                "heading": "First Name",
+                "descr": "First name",
+                "group_name": "Personal",
+                "x": "90",
+                "y": "90",
+                "col_id": "20",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_mname",
+                "db_name": "EMP_MNAME",
+                "col_type": "VARCHAR",
+                "heading": "Middle Name",
+                "descr": "Middle name",
+                "group_name": "Personal",
+                "x": "100",
+                "y": "100",
+                "col_id": "21",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "emp_lname",
+                "db_name": "EMP_LNAME",
+                "col_type": "VARCHAR",
+                "heading": "Last Name",
+                "descr": "Last name",
+                "group_name": "Personal",
+                "x": "110",
+                "y": "110",
+                "col_id": "22",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "birthdate",
+                "db_name": "BIRTHDATE",
+                "col_type": "DATE",
+                "heading": "Birth Date",
+                "descr": "Date of birth",
+                "group_name": "Personal",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "No future birth date",
+                    "message": "Birth Date cannot be a future date.",
+                    "expression": "{form.birthdate} <= today()"
+                  }
+                ],
+                "x": "120",
+                "y": "120",
+                "col_id": "23",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "nationality",
+                "db_name": "NATIONALITY",
+                "col_type": "VARCHAR",
+                "heading": "Nationality",
+                "descr": "Nationality",
+                "group_name": "Personal",
+                "x": "130",
+                "y": "130",
+                "col_id": "24",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "IND",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "marital_status",
+                "db_name": "MARITAL_STATUS",
+                "col_type": "VARCHAR",
+                "heading": "Marital Status",
+                "descr": "Marital status",
+                "group_name": "Personal",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Yes",
+                      "display": "Married"
+                    },
+                    {
+                      "data": "No",
+                      "display": "Unmarried"
+                    }
+                  ]
+                },
+                "item_change": {
+                  "mode": "rule",
+                  "fill": [
+                    {
+                      "form_col": "marriage_anniversary",
+                      "expr": "iif({form.marital_status} == \"No\", \"\", {form.marriage_anniversary})"
+                    }
+                  ],
+                  "protect": [
+                    {
+                      "form_col": "marriage_anniversary",
+                      "when": "{form.marital_status} == \"No\""
+                    }
+                  ]
+                },
+                "x": "140",
+                "y": "140",
+                "col_id": "25",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "marriage_anniversary",
+                "db_name": "MARRIAGE_ANNIVERSARY",
+                "col_type": "DATE",
+                "heading": "Marriage Anniversary",
+                "descr": "Marriage anniversary date (only when married)",
+                "group_name": "Personal",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "No future anniversary",
+                    "message": "Marriage Anniversary cannot be a future date.",
+                    "expression": "is_empty({form.marriage_anniversary}) or {form.marriage_anniversary} <= today()"
+                  }
+                ],
+                "x": "150",
+                "y": "150",
+                "col_id": "26",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "blood_group",
+                "db_name": "BLOOD_GROUP",
+                "col_type": "VARCHAR",
+                "heading": "Blood Group",
+                "descr": "Blood group",
+                "group_name": "Personal",
+                "mandatory": true,
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "A+",
+                      "display": "A+"
+                    },
+                    {
+                      "data": "A-",
+                      "display": "A-"
+                    },
+                    {
+                      "data": "B+",
+                      "display": "B+"
+                    },
+                    {
+                      "data": "B-",
+                      "display": "B-"
+                    },
+                    {
+                      "data": "AB+",
+                      "display": "AB+"
+                    },
+                    {
+                      "data": "AB-",
+                      "display": "AB-"
+                    },
+                    {
+                      "data": "O+",
+                      "display": "O+"
+                    },
+                    {
+                      "data": "O-",
+                      "display": "O-"
+                    }
+                  ]
+                },
+                "x": "160",
+                "y": "160",
+                "col_id": "27",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "religion",
+                "db_name": "RELIGION",
+                "col_type": "VARCHAR",
+                "heading": "Religion",
+                "descr": "Religion",
+                "group_name": "Personal",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Hindu",
+                      "display": "Hindu"
+                    },
+                    {
+                      "data": "Muslim",
+                      "display": "Muslim"
+                    },
+                    {
+                      "data": "Christian",
+                      "display": "Christian"
+                    },
+                    {
+                      "data": "Sikh",
+                      "display": "Sikh"
+                    },
+                    {
+                      "data": "Buddhist",
+                      "display": "Buddhist"
+                    },
+                    {
+                      "data": "Jain",
+                      "display": "Jain"
+                    },
+                    {
+                      "data": "Parsi",
+                      "display": "Parsi"
+                    },
+                    {
+                      "data": "Jewish",
+                      "display": "Jewish"
+                    },
+                    {
+                      "data": "Other",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "x": "170",
+                "y": "170",
+                "col_id": "28",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "cast_category",
+                "db_name": "CAST_CATEGORY",
+                "col_type": "VARCHAR",
+                "heading": "Caste Category",
+                "descr": "Caste category",
+                "group_name": "Personal",
+                "x": "180",
+                "y": "180",
+                "col_id": "29",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "mother_tongue",
+                "db_name": "MOTHER_TONGUE",
+                "col_type": "VARCHAR",
+                "heading": "Mother Tongue",
+                "descr": "Mother tongue",
+                "group_name": "Personal",
+                "x": "190",
+                "y": "190",
+                "col_id": "30",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "physical_handicap",
+                "db_name": "PHYSICAL_HANDICAP",
+                "col_type": "VARCHAR",
+                "heading": "Physically Handicapped",
+                "descr": "Physical handicap flag",
+                "group_name": "Personal",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "x": "200",
+                "y": "200",
+                "col_id": "31",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hobby1",
+                "db_name": "HOBBY1",
+                "col_type": "VARCHAR",
+                "heading": "Hobby 1",
+                "descr": "Hobby 1",
+                "group_name": "Personal",
+                "x": "210",
+                "y": "210",
+                "col_id": "32",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "hobby2",
+                "db_name": "HOBBY2",
+                "col_type": "VARCHAR",
+                "heading": "Hobby 2",
+                "descr": "Hobby 2",
+                "group_name": "Personal",
+                "x": "220",
+                "y": "220",
+                "col_id": "33",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "total_experience",
+                "db_name": "TOTAL_EXPERIENCE",
+                "col_type": "NUMBER",
+                "heading": "Total Experience (yrs)",
+                "descr": "Total years of experience",
+                "group_name": "Personal",
+                "x": "230",
+                "y": "230",
+                "col_id": "34",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "5,2",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_address",
+                "db_name": "CURRENT_ADDRESS",
+                "col_type": "VARCHAR",
+                "heading": "Current Address",
+                "descr": "Current address",
+                "group_name": "Contact",
+                "x": "240",
+                "y": "240",
+                "col_id": "35",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_pin",
+                "db_name": "CURRENT_PIN",
+                "col_type": "VARCHAR",
+                "heading": "Current PIN",
+                "descr": "Current address PIN code",
+                "group_name": "Contact",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "PIN numeric 6 digits",
+                    "message": "Current PIN must be 6 digits.",
+                    "expression": "is_empty({form.current_pin}) or match({form.current_pin}, \"^[0-9]{6}$\")"
+                  }
+                ],
+                "x": "250",
+                "y": "340",
+                "col_id": "36",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "6",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_city",
+                "db_name": "CURRENT_CITY",
+                "col_type": "VARCHAR",
+                "heading": "Current City",
+                "descr": "Current city",
+                "group_name": "Contact",
+                "x": "260",
+                "y": "440",
+                "col_id": "37",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "current_state",
+                "db_name": "CURRENT_STATE",
+                "col_type": "VARCHAR",
+                "heading": "Current State",
+                "descr": "Current state",
+                "group_name": "Contact",
+                "x": "270",
+                "y": "540",
+                "col_id": "38",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": "emponb_state_master(state_name, state_code)"
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_address",
+                "db_name": "PERMANENT_ADDRESS",
+                "col_type": "VARCHAR",
+                "heading": "Permanent Address",
+                "descr": "Permanent address",
+                "group_name": "Contact",
+                "x": "280",
+                "y": "740",
+                "col_id": "39",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_pin",
+                "db_name": "PERMANENT_PIN",
+                "col_type": "VARCHAR",
+                "heading": "Permanent PIN",
+                "descr": "Permanent address PIN code",
+                "group_name": "Contact",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "PIN numeric 6 digits",
+                    "message": "Permanent PIN must be 6 digits.",
+                    "expression": "is_empty({form.permanent_pin}) or match({form.permanent_pin}, \"^[0-9]{6}$\")"
+                  }
+                ],
+                "x": "290",
+                "y": "840",
+                "col_id": "40",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "6",
+                "width": 60,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_city",
+                "db_name": "PERMANENT_CITY",
+                "col_type": "VARCHAR",
+                "heading": "Permanent City",
+                "descr": "Permanent city",
+                "group_name": "Contact",
+                "x": "300",
+                "y": "940",
+                "col_id": "41",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "permanent_state",
+                "db_name": "PERMANENT_STATE",
+                "col_type": "VARCHAR",
+                "heading": "Permanent State",
+                "descr": "Permanent state",
+                "group_name": "Contact",
+                "x": "310",
+                "y": "1040",
+                "col_id": "42",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "50",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": "emponb_state_master(state_name, state_code)"
+              }
+            },
+            {
+              "column": {
+                "name": "same_as_current_address",
+                "db_name": "SAME_AS_CURRENT_ADDRESS",
+                "col_type": "VARCHAR",
+                "heading": "Same as Current Address",
+                "descr": "Check to copy current address details into the permanent address fields",
+                "group_name": "Contact",
+                "edit_mask": {
+                  "mask": "bool_check",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "item_change": {
+                  "mode": "business_logic",
+                  "business_logic": {
+                    "method": "copy_current_to_permanent_address",
+                    "description": "Copy current address to permanent address when checkbox is checked",
+                    "spec": "On change of SAME_AS_CURRENT_ADDRESS: if the new value is 'Y', return updates setting permanent_address = current_address, permanent_pin = current_pin, permanent_city = current_city, permanent_state = current_state. If the new value is 'N', return no updates (leave the permanent address fields as the user last entered them for manual editing).",
+                    "language": "plpgsql"
+                  }
+                },
+                "x": "320",
+                "y": "640",
+                "col_id": "43",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "N",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "mobile",
+                "db_name": "MOBILE",
+                "col_type": "CHAR",
+                "heading": "Mobile",
+                "descr": "Mobile number",
+                "group_name": "Contact",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Mobile numeric 10 digits",
+                    "message": "Mobile must be 10 digits.",
+                    "expression": "is_empty({form.mobile}) or match({form.mobile}, \"^[0-9]{10}$\")"
+                  }
+                ],
+                "x": "330",
+                "y": "1140",
+                "col_id": "44",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "alternate_telephone",
+                "db_name": "ALTERNATE_TELEPHONE",
+                "col_type": "VARCHAR",
+                "heading": "Alternate Telephone",
+                "descr": "Alternate telephone",
+                "group_name": "Contact",
+                "x": "340",
+                "y": "1240",
+                "col_id": "45",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "contact_person",
+                "db_name": "CONTACT_PERSON",
+                "col_type": "VARCHAR",
+                "heading": "Emergency Contact Person",
+                "descr": "Emergency contact person name",
+                "group_name": "Contact",
+                "x": "350",
+                "y": "1340",
+                "col_id": "46",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "contact_person_mobile",
+                "db_name": "CONTACT_PERSON_MOBILE",
+                "col_type": "CHAR",
+                "heading": "Contact Person Mobile",
+                "descr": "Emergency contact mobile",
+                "group_name": "Contact",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Contact mobile numeric 10 digits",
+                    "message": "Contact Person Mobile must be 10 digits.",
+                    "expression": "is_empty({form.contact_person_mobile}) or match({form.contact_person_mobile}, \"^[0-9]{10}$\")"
+                  }
+                ],
+                "x": "360",
+                "y": "1440",
+                "col_id": "47",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "contact_person_email",
+                "db_name": "CONTACT_PERSON_EMAIL",
+                "col_type": "VARCHAR",
+                "heading": "Contact Person Email",
+                "descr": "Emergency contact email",
+                "group_name": "Contact",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Contact email format",
+                    "message": "Enter a valid email address for the contact person.",
+                    "expression": "is_empty({form.contact_person_email}) or match({form.contact_person_email}, \"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$\")"
+                  }
+                ],
+                "x": "370",
+                "y": "1540",
+                "col_id": "48",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "120",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_no",
+                "db_name": "PAN_NO",
+                "col_type": "CHAR",
+                "heading": "PAN No",
+                "descr": "PAN number",
+                "group_name": "Statutory",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "PAN format",
+                    "message": "PAN must be in the format AAAAA9999A.",
+                    "expression": "is_empty({form.pan_no}) or match({form.pan_no}, \"^[A-Z]{5}[0-9]{4}[A-Z]$\")"
+                  }
+                ],
+                "x": "380",
+                "y": "380",
+                "col_id": "49",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_doc",
+                "db_name": "PAN_DOC",
+                "col_type": "VARCHAR",
+                "heading": "PAN Document",
+                "descr": "PAN document image",
+                "group_name": "Statutory",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "390",
+                "y": "390",
+                "col_id": "50",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_no",
+                "db_name": "AADHAR_NO",
+                "col_type": "CHAR",
+                "heading": "Aadhar No",
+                "descr": "Aadhar number",
+                "group_name": "Statutory",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Aadhar 12 digits",
+                    "message": "Aadhar No must be 12 digits.",
+                    "expression": "is_empty({form.aadhar_no}) or match({form.aadhar_no}, \"^[0-9]{12}$\")"
+                  }
+                ],
+                "x": "400",
+                "y": "400",
+                "col_id": "51",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "12",
+                "width": 120,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_doc",
+                "db_name": "AADHAR_DOC",
+                "col_type": "VARCHAR",
+                "heading": "Aadhar Document",
+                "descr": "Aadhar document image",
+                "group_name": "Statutory",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "410",
+                "y": "410",
+                "col_id": "52",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "passport_no",
+                "db_name": "PASSPORT_NO",
+                "col_type": "VARCHAR",
+                "heading": "Passport No",
+                "descr": "Passport number",
+                "group_name": "Statutory",
+                "x": "420",
+                "y": "420",
+                "col_id": "53",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "passport_doc",
+                "db_name": "PASSPORT_DOC",
+                "col_type": "VARCHAR",
+                "heading": "Passport Document",
+                "descr": "Passport document",
+                "group_name": "Statutory",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "430",
+                "y": "430",
+                "col_id": "54",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "driving_lic_no",
+                "db_name": "DRIVING_LIC_NO",
+                "col_type": "VARCHAR",
+                "heading": "Driving License No",
+                "descr": "Driving license number",
+                "group_name": "Statutory",
+                "x": "440",
+                "y": "440",
+                "col_id": "55",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "driving_lic_doc",
+                "db_name": "DRIVING_LIC_DOC",
+                "col_type": "VARCHAR",
+                "heading": "Driving License Document",
+                "descr": "Driving license document",
+                "group_name": "Statutory",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "450",
+                "y": "450",
+                "col_id": "56",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pf_no",
+                "db_name": "PF_NO",
+                "col_type": "VARCHAR",
+                "heading": "PF No",
+                "descr": "Provident fund number",
+                "group_name": "Statutory",
+                "x": "460",
+                "y": "460",
+                "col_id": "57",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pf_doc",
+                "db_name": "PF_DOC",
+                "col_type": "VARCHAR",
+                "heading": "PF Document",
+                "descr": "PF document",
+                "group_name": "Statutory",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "470",
+                "y": "470",
+                "col_id": "58",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "esic_no",
+                "db_name": "ESIC_NO",
+                "col_type": "VARCHAR",
+                "heading": "ESIC No",
+                "descr": "ESIC number",
+                "group_name": "Statutory",
+                "x": "480",
+                "y": "480",
+                "col_id": "59",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "esic_doc",
+                "db_name": "ESIC_DOC",
+                "col_type": "VARCHAR",
+                "heading": "ESIC Document",
+                "descr": "ESIC document",
+                "group_name": "Statutory",
+                "edit_mask": {
+                  "mask": "document"
+                },
+                "x": "490",
+                "y": "490",
+                "col_id": "60",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_account_no",
+                "db_name": "BANK_ACCOUNT_NO",
+                "col_type": "VARCHAR",
+                "heading": "Bank Account No",
+                "descr": "Bank account number",
+                "group_name": "Bank",
+                "x": "500",
+                "y": "500",
+                "col_id": "61",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_ifsc_code",
+                "db_name": "BANK_IFSC_CODE",
+                "col_type": "CHAR",
+                "heading": "Bank IFSC Code",
+                "descr": "Bank IFSC code",
+                "group_name": "Bank",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "IFSC format",
+                    "message": "Enter a valid 11-character IFSC code.",
+                    "expression": "is_empty({form.bank_ifsc_code}) or match({form.bank_ifsc_code}, \"^[A-Z]{4}0[A-Z0-9]{6}$\")"
+                  }
+                ],
+                "x": "510",
+                "y": "510",
+                "col_id": "62",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "11",
+                "width": 110,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_name",
+                "db_name": "BANK_NAME",
+                "col_type": "VARCHAR",
+                "heading": "Bank Name",
+                "descr": "Bank name",
+                "group_name": "Bank",
+                "x": "520",
+                "y": "520",
+                "col_id": "63",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_doc",
+                "db_name": "BANK_DOC",
+                "col_type": "VARCHAR",
+                "heading": "Bank Document",
+                "descr": "Cancelled cheque / passbook image",
+                "group_name": "Bank",
+                "edit_mask": {
+                  "mask": "image"
+                },
+                "x": "530",
+                "y": "530",
+                "col_id": "64",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "500",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_validated",
+                "db_name": "PAN_VALIDATED",
+                "col_type": "VARCHAR",
+                "heading": "PAN Validated",
+                "descr": "PAN validation status",
+                "group_name": "Validation Status",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "protect": "1",
+                "x": "540",
+                "y": "540",
+                "col_id": "65",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_validated_name",
+                "db_name": "PAN_VALIDATED_NAME",
+                "col_type": "VARCHAR",
+                "heading": "PAN Validated Name",
+                "descr": "Name returned by PAN validation",
+                "group_name": "Validation Status",
+                "protect": "1",
+                "x": "550",
+                "y": "550",
+                "col_id": "66",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pan_attempts",
+                "db_name": "PAN_ATTEMPTS",
+                "col_type": "NUMBER",
+                "heading": "PAN Attempts",
+                "descr": "PAN validation attempts used",
+                "group_name": "Validation Status",
+                "protect": "1",
+                "x": "560",
+                "y": "560",
+                "col_id": "67",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_validated",
+                "db_name": "AADHAR_VALIDATED",
+                "col_type": "VARCHAR",
+                "heading": "Aadhar Validated",
+                "descr": "Aadhar validation status",
+                "group_name": "Validation Status",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "protect": "1",
+                "x": "570",
+                "y": "570",
+                "col_id": "68",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_validated_name",
+                "db_name": "AADHAR_VALIDATED_NAME",
+                "col_type": "VARCHAR",
+                "heading": "Aadhar Validated Name",
+                "descr": "Name returned by Aadhar validation",
+                "group_name": "Validation Status",
+                "protect": "1",
+                "x": "580",
+                "y": "580",
+                "col_id": "69",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "aadhar_attempts",
+                "db_name": "AADHAR_ATTEMPTS",
+                "col_type": "NUMBER",
+                "heading": "Aadhar Attempts",
+                "descr": "Aadhar validation attempts used",
+                "group_name": "Validation Status",
+                "protect": "1",
+                "x": "590",
+                "y": "590",
+                "col_id": "70",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_validated",
+                "db_name": "BANK_VALIDATED",
+                "col_type": "VARCHAR",
+                "heading": "Bank Validated",
+                "descr": "Bank validation status",
+                "group_name": "Validation Status",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "protect": "1",
+                "x": "600",
+                "y": "600",
+                "col_id": "71",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_validated_name",
+                "db_name": "BANK_VALIDATED_NAME",
+                "col_type": "VARCHAR",
+                "heading": "Bank Validated Name",
+                "descr": "Name returned by bank validation",
+                "group_name": "Validation Status",
+                "protect": "1",
+                "x": "610",
+                "y": "610",
+                "col_id": "72",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "bank_attempts",
+                "db_name": "BANK_ATTEMPTS",
+                "col_type": "NUMBER",
+                "heading": "Bank Attempts",
+                "descr": "Bank validation attempts used",
+                "group_name": "Validation Status",
+                "protect": "1",
+                "x": "620",
+                "y": "620",
+                "col_id": "73",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "3",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_date",
+                "db_name": "ADD_DATE",
+                "col_type": "DATETIME",
+                "heading": "Added On",
+                "descr": "Record creation timestamp",
+                "group_name": "Others",
+                "default_value": ":audit_add_date",
+                "protect": "1",
+                "x": "740",
+                "y": "740",
+                "col_id": "74",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_user",
+                "db_name": "ADD_USER",
+                "col_type": "VARCHAR",
+                "heading": "Added By",
+                "descr": "User who created the record",
+                "group_name": "Others",
+                "default_value": ":audit_add_user",
+                "protect": "1",
+                "x": "750",
+                "y": "750",
+                "col_id": "75",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_term",
+                "db_name": "ADD_TERM",
+                "col_type": "VARCHAR",
+                "heading": "Added Terminal",
+                "descr": "Terminal used to create the record",
+                "group_name": "Others",
+                "default_value": ":audit_add_terminal",
+                "protect": "1",
+                "x": "760",
+                "y": "760",
+                "col_id": "76",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_date",
+                "db_name": "CHG_DATE",
+                "col_type": "DATETIME",
+                "heading": "Changed On",
+                "descr": "Last change timestamp",
+                "group_name": "Others",
+                "default_value": ":audit_chg_date",
+                "protect": "1",
+                "x": "770",
+                "y": "770",
+                "col_id": "77",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_user",
+                "db_name": "CHG_USER",
+                "col_type": "VARCHAR",
+                "heading": "Changed By",
+                "descr": "User who last changed the record",
+                "group_name": "Others",
+                "default_value": ":audit_chg_user",
+                "protect": "1",
+                "x": "780",
+                "y": "780",
+                "col_id": "78",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_term",
+                "db_name": "CHG_TERM",
+                "col_type": "VARCHAR",
+                "heading": "Changed Terminal",
+                "descr": "Terminal used for the last change",
+                "group_name": "Others",
+                "default_value": ":audit_chg_terminal",
+                "protect": "1",
+                "x": "790",
+                "y": "790",
+                "col_id": "79",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CANDIDATE_SELF",
+                  "main_table": true,
+                  "table_descr": "Candidate self-service header"
+                },
+                {
+                  "table": "EMPONB_POSITION_MASTER",
+                  "main_table": false,
+                  "table_descr": "Position master",
+                  "column": "POSITION_CODE",
+                  "join_table": "EMPONB_CANDIDATE_SELF",
+                  "join_column": "POSITION_CODE",
+                  "join_type": "left"
+                }
+              ]
+            }
+          },
+          "list_view": {
+            "edit_lock": {
+              "expression": "{form.status} == 'Submit'",
+              "reason": "You have already submitted this form to HR. It can no longer be changed."
+            }
+          },
+          "actions": [
+            {
+              "name": "Submit to HR",
+              "label": "Submit",
+              "handler": "message",
+              "scope": "row",
+              "business_logic": {
+                "method": "submit_to_candidate_record",
+                "description": "Push captured self-service data to the Candidate Onboarding Record",
+                "spec": "For the given CANDIDATE_ID, copy all captured header fields (personal, contact, statutory, financial) from EMPONB_CANDIDATE_SELF onto the matching row of EMPONB_CANDIDATE_RECORD, and replace EMPONB_CAND_EXPERIENCE, EMPONB_CAND_EDUCATION and EMPONB_CAND_FAMILY rows for this CANDIDATE_ID with the current EMPONB_CAND_SELF_EXPERIENCE, EMPONB_CAND_SELF_EDUCATION and EMPONB_CAND_SELF_FAMILY rows respectively. Set EMPONB_CANDIDATE_RECORD.STATUS = 'DataSubmitted', stamp STATUS_DATE and SUBMITTED_ON to now(), invalidate the ACCESS_KEY (KEY_VALID_FLAG = 'N') on both the self and record tables, and return a confirmation message. In the same transaction, also set EMPONB_CANDIDATE_SELF.STATUS = 'Submit' and EMPONB_CANDIDATE_SELF.STATUS_DATE = now() for this CANDIDATE_ID (this is in addition to setting EMPONB_CANDIDATE_RECORD.STATUS = 'DataSubmitted' and stamping SUBMITTED_ON/STATUS_DATE there, and invalidating ACCESS_KEY on both tables as already specified).",
+                "language": "plpgsql"
+              },
+              "validations": [
+                {
+                  "type": "expression",
+                  "name": "Not already submitted",
+                  "message": "This candidate record has already been submitted or confirmed.",
+                  "expression": "not in_list({form.status}, \"Submit,DataSubmitted,Review,Confirmed\")"
+                }
+              ]
+            }
+          ],
+          "validations": [
+            {
+              "type": "business_logic",
+              "name": "Record locked after submission",
+              "error_code": "SELF_LOCKED_AFTER_SUBMIT",
+              "message": "This record has already been submitted and cannot be changed.",
+              "business_logic": {
+                "method": "block_edit_after_submit",
+                "description": "Prevent any changes to the header once the self record status is Submit",
+                "spec": "On save of the header form (add or edit), look up the CURRENTLY STORED STATUS on EMPONB_CANDIDATE_SELF for this CANDIDATE_ID (the value in the database BEFORE this save is applied, not the incoming form value). If the stored STATUS = 'Submit', return an error blocking the save with message 'This record has already been submitted and cannot be changed.'. If no stored row exists yet (first-time add) or stored STATUS is anything else, pass with no error.",
+                "language": "plpgsql"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Past Experience",
+          "form_descr": "Candidate past employment experience lines",
+          "form_no": "2",
+          "parent_form_no": "1",
+          "main_table": "EMPONB_CAND_SELF_EXPERIENCE",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "col_type": "VARCHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate reference",
+                "group_name": "Basic",
+                "key": true,
+                "hidden": 1,
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Line sequence number",
+                "group_name": "Basic",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "organisation",
+                "db_name": "ORGANISATION",
+                "col_type": "VARCHAR",
+                "heading": "Organisation",
+                "descr": "Employer organisation name",
+                "group_name": "Basic",
+                "mandatory": true,
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "100",
+                "width": 235,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "designation",
+                "db_name": "DESIGNATION",
+                "col_type": "VARCHAR",
+                "heading": "Designation",
+                "descr": "Designation held",
+                "group_name": "Basic",
+                "x": "40",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "100",
+                "width": 151,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "from_date",
+                "db_name": "FROM_DATE",
+                "col_type": "DATE",
+                "heading": "From Date",
+                "descr": "Employment start date",
+                "group_name": "Basic",
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "to_date",
+                "db_name": "TO_DATE",
+                "col_type": "DATE",
+                "heading": "To Date",
+                "descr": "Employment end date",
+                "group_name": "Basic",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "To date after from date",
+                    "message": "To Date must be on or after From Date.",
+                    "expression": "is_empty({form.from_date}) or is_empty({form.to_date}) or {form.to_date} >= {form.from_date}"
+                  }
+                ],
+                "x": "60",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "",
+                "width": 148,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gross_amt",
+                "db_name": "GROSS_AMT",
+                "col_type": "NUMBER",
+                "heading": "Gross Amount",
+                "descr": "Gross salary drawn",
+                "group_name": "Basic",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Gross amount non-negative",
+                    "message": "Gross Amount cannot be negative.",
+                    "expression": "is_empty({form.gross_amt}) or {form.gross_amt} >= 0"
+                  }
+                ],
+                "x": "70",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_CAND_SELF_EXPERIENCE",
+                "table_display_name": "Past experience lines",
+                "db_size": "12,2",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_SELF_EXPERIENCE",
+                  "main_table": true,
+                  "table_descr": "Past experience lines"
+                }
+              ]
+            }
+          },
+          "actions": [],
+          "validations": []
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Educational Qualif.",
+          "form_descr": "Candidate educational qualification lines",
+          "form_no": "3",
+          "parent_form_no": "1",
+          "main_table": "EMPONB_CAND_SELF_EDUCATION",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "col_type": "VARCHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate reference",
+                "group_name": "Basic",
+                "key": true,
+                "hidden": 1,
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Line sequence number",
+                "group_name": "Basic",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "qlf_code",
+                "db_name": "QLF_CODE",
+                "col_type": "VARCHAR",
+                "heading": "Qualification Code",
+                "descr": "Qualification code",
+                "group_name": "Basic",
+                "mandatory": true,
+                "lookup": "EMPONB_QUALIFICATION_MASTER(QLF_NAME, QLF_CODE)",
+                "must_exist_in": "EMPONB_QUALIFICATION_MASTER",
+                "validations": [
+                  {
+                    "type": "business_logic",
+                    "name": "Qualification not duplicated",
+                    "message": "This qualification is already added for the candidate.",
+                    "business_logic": {
+                      "method": "check_self_qualification_duplicate",
+                      "description": "Block duplicate QLF_CODE lines for the same candidate",
+                      "spec": "Excluding the row being edited when _action = 'edit' (match on CANDIDATE_ID and LINE_NO), check whether another EMPONB_CAND_SELF_EDUCATION row for the same CANDIDATE_ID already has this QLF_CODE; if found, return an error that the qualification is already added.",
+                      "language": "plpgsql"
+                    }
+                  }
+                ],
+                "item_change": {
+                  "mode": "rule",
+                  "source_table": "EMPONB_QUALIFICATION_MASTER",
+                  "match_table_col": "QLF_CODE",
+                  "fill": [
+                    {
+                      "form_col": "qlf_type",
+                      "table_col": "QLF_TYPE"
+                    },
+                    {
+                      "form_col": "course_type",
+                      "table_col": "COURSE_TYPE"
+                    }
+                  ]
+                },
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "10",
+                "width": 223,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "QL001",
+                      "display": "Bachelor of Science"
+                    },
+                    {
+                      "data": "QL002",
+                      "display": "Master of Business Administration"
+                    },
+                    {
+                      "data": "QL003",
+                      "display": "Bachelor of Commerce"
+                    },
+                    {
+                      "data": "QL004",
+                      "display": "Chartered Accountant"
+                    },
+                    {
+                      "data": "QL005",
+                      "display": "Company Secretary"
+                    },
+                    {
+                      "data": "QL006",
+                      "display": "Cost and Management Accountant"
+                    },
+                    {
+                      "data": "QL007",
+                      "display": "PMP Certification"
+                    },
+                    {
+                      "data": "QL008",
+                      "display": "AWS Solutions Architect"
+                    },
+                    {
+                      "data": "QL009",
+                      "display": "Six Sigma Green Belt"
+                    },
+                    {
+                      "data": "QL010",
+                      "display": "Doctor of Philosophy"
+                    },
+                    {
+                      "data": "QL011",
+                      "display": "Diploma in Mechanical Engineering"
+                    },
+                    {
+                      "data": "QL012",
+                      "display": "CISSP Certification"
+                    },
+                    {
+                      "data": "QL013",
+                      "display": "Master of Computer Applications"
+                    }
+                  ]
+                },
+                "protect": ""
+              }
+            },
+            {
+              "column": {
+                "name": "qlf_type",
+                "db_name": "QLF_TYPE",
+                "col_type": "VARCHAR",
+                "heading": "Qualification Type",
+                "descr": "Academic / Professional / Certification",
+                "group_name": "Basic",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Academic",
+                      "display": "Academic"
+                    },
+                    {
+                      "data": "Professional",
+                      "display": "Professional"
+                    },
+                    {
+                      "data": "Certification",
+                      "display": "Certification"
+                    }
+                  ]
+                },
+                "x": "100",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "institute",
+                "db_name": "INSTITUTE",
+                "col_type": "VARCHAR",
+                "heading": "Institute",
+                "descr": "Institute / university name",
+                "group_name": "Basic",
+                "x": "40",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "100",
+                "width": 213,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "pass_year",
+                "db_name": "PASS_YEAR",
+                "col_type": "NUMBER",
+                "heading": "Pass Year",
+                "descr": "Year of passing",
+                "group_name": "Basic",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "Pass year not future",
+                    "message": "Pass Year cannot be later than the current year.",
+                    "expression": "is_empty({form.pass_year}) or {form.pass_year} <= years_from_now(0)"
+                  }
+                ],
+                "x": "50",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "4",
+                "width": 89,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "class",
+                "db_name": "CLASS",
+                "col_type": "VARCHAR",
+                "heading": "Class/Grade",
+                "descr": "Class or grade obtained",
+                "group_name": "Basic",
+                "x": "60",
+                "y": "70",
+                "col_id": "7",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "50",
+                "width": 128,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "percentage",
+                "db_name": "PERCENTAGE",
+                "col_type": "NUMBER",
+                "heading": "Percentage",
+                "descr": "Percentage/marks obtained",
+                "group_name": "Basic",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Percentage range",
+                    "message": "Percentage must be between 0 and 100.",
+                    "builtin": {
+                      "kind": "value_in_range",
+                      "min": {
+                        "source": "const",
+                        "value": "0"
+                      },
+                      "max": {
+                        "source": "const",
+                        "value": "100"
+                      }
+                    }
+                  }
+                ],
+                "x": "70",
+                "y": "80",
+                "col_id": "8",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "5,2",
+                "width": 102,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "country_code",
+                "db_name": "COUNTRY_CODE",
+                "col_type": "VARCHAR",
+                "heading": "Country",
+                "descr": "Country of the institute",
+                "group_name": "Basic",
+                "lookup": "EMPONB_COUNTRY_MASTER(COUNTRY_NAME, COUNTRY_CODE)",
+                "must_exist_in": "EMPONB_COUNTRY_MASTER",
+                "x": "90",
+                "y": "90",
+                "col_id": "9",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "IN",
+                "expression": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "IN",
+                      "display": "India"
+                    }
+                  ]
+                },
+                "protect": "",
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "course_type",
+                "db_name": "COURSE_TYPE",
+                "col_type": "VARCHAR",
+                "heading": "Course Type",
+                "descr": "Full-time / Part-time / Distance",
+                "group_name": "Basic",
+                "edit_mask": {
+                  "mask": "textbox",
+                  "values": []
+                },
+                "x": "110",
+                "y": "100",
+                "col_id": "10",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "20",
+                "width": 200,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "FULLT",
+                "expression": "",
+                "protect": true,
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "course_duration",
+                "db_name": "COURSE_DURATION",
+                "col_type": "VARCHAR",
+                "heading": "Course Duration",
+                "descr": "Duration of the course",
+                "group_name": "Basic",
+                "x": "80",
+                "y": "110",
+                "col_id": "11",
+                "table_name": "EMPONB_CAND_SELF_EDUCATION",
+                "table_display_name": "Educational qualification lines",
+                "db_size": "50",
+                "width": 130,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_SELF_EDUCATION",
+                  "main_table": true,
+                  "table_descr": "Educational qualification lines"
+                }
+              ]
+            }
+          },
+          "actions": [],
+          "validations": []
+        }
+      },
+      {
+        "sql_model": {
+          "form_title": "Family Details",
+          "form_descr": "Candidate family member lines",
+          "form_no": "4",
+          "parent_form_no": "1",
+          "main_table": "EMPONB_CAND_SELF_FAMILY",
+          "columns": [
+            {
+              "column": {
+                "name": "candidate_id",
+                "db_name": "CANDIDATE_ID",
+                "col_type": "VARCHAR",
+                "heading": "Candidate ID",
+                "descr": "Parent candidate reference",
+                "group_name": "Basic",
+                "key": true,
+                "hidden": 1,
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_CAND_SELF_FAMILY",
+                "table_display_name": "Family member lines",
+                "db_size": "10",
+                "width": 100,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "line_no",
+                "db_name": "LINE_NO",
+                "col_type": "NUMBER",
+                "heading": "Line No",
+                "descr": "Line sequence number",
+                "group_name": "Basic",
+                "key": true,
+                "default_value": "auto_generate_line_no()",
+                "protect": "1",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_CAND_SELF_FAMILY",
+                "table_display_name": "Family member lines",
+                "db_size": "5",
+                "width": 50,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "member_name",
+                "db_name": "MEMBER_NAME",
+                "col_type": "VARCHAR",
+                "heading": "Member Name",
+                "descr": "Family member name",
+                "group_name": "Basic",
+                "mandatory": true,
+                "validations": [
+                  {
+                    "type": "business_logic",
+                    "name": "Family member name unique",
+                    "message": "Family member <name> is already added. Duplicate member names are not allowed.",
+                    "business_logic": {
+                      "method": "check_self_family_member_unique",
+                      "description": "Block duplicate family member names for the same candidate",
+                      "spec": "Excluding the row being edited when _action = 'edit' (match on CANDIDATE_ID and LINE_NO), check whether another EMPONB_CAND_SELF_FAMILY row for the same CANDIDATE_ID already has the same MEMBER_NAME (case-insensitive, trimmed). If found, return an error: 'Family member ' || MEMBER_NAME || ' is already added. Duplicate member names are not allowed.'",
+                      "language": "plpgsql"
+                    }
+                  }
+                ],
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_CAND_SELF_FAMILY",
+                "table_display_name": "Family member lines",
+                "db_size": "100",
+                "width": 222,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "date_birth",
+                "db_name": "DATE_BIRTH",
+                "col_type": "DATE",
+                "heading": "Date of Birth",
+                "descr": "Family member date of birth",
+                "group_name": "Basic",
+                "validations": [
+                  {
+                    "type": "expression",
+                    "name": "DOB not future",
+                    "message": "Date of Birth cannot be a future date.",
+                    "expression": "is_empty({form.date_birth}) or {form.date_birth} <= today()"
+                  }
+                ],
+                "x": "60",
+                "y": "40",
+                "col_id": "4",
+                "table_name": "EMPONB_CAND_SELF_FAMILY",
+                "table_display_name": "Family member lines",
+                "db_size": "",
+                "width": 114,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "gender",
+                "db_name": "GENDER",
+                "col_type": "VARCHAR",
+                "heading": "Gender",
+                "descr": "Family member gender",
+                "group_name": "Basic",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "M",
+                      "display": "Male"
+                    },
+                    {
+                      "data": "F",
+                      "display": "Female"
+                    },
+                    {
+                      "data": "O",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "item_change": {
+                  "mode": "business_logic",
+                  "business_logic": {
+                    "method": "validate_self_family_gender_relation",
+                    "description": "Validate gender-relation combination on gender change",
+                    "spec": "On change of GENDER, check the current RELATION on the row. Block the combination (return an error / do not update) for: Female+Brother ('Brother cannot be female.'), Female+Father ('Father cannot be female.'), Female+GrandFather ('GrandFather cannot be female.'), Female+Son ('Son cannot be female.'), Female+Husband ('Husband cannot be female.'), Male+Mother ('Mother cannot be male.'), Male+Sister ('Sister cannot be male.'), Male+GrandMother ('GrandMother cannot be male.'), Male+Wife ('Wife cannot be male.'), Male+Daughter ('Daughter cannot be male.'). Return no updates when the combination is valid.",
+                    "language": "plpgsql"
+                  }
+                },
+                "x": "50",
+                "y": "50",
+                "col_id": "5",
+                "table_name": "EMPONB_CAND_SELF_FAMILY",
+                "table_display_name": "Family member lines",
+                "db_size": "1",
+                "width": 121,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "relation",
+                "db_name": "RELATION",
+                "col_type": "VARCHAR",
+                "heading": "Relation",
+                "descr": "Relation to candidate",
+                "group_name": "Basic",
+                "mandatory": true,
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Father",
+                      "display": "Father"
+                    },
+                    {
+                      "data": "Mother",
+                      "display": "Mother"
+                    },
+                    {
+                      "data": "Spouse",
+                      "display": "Spouse"
+                    },
+                    {
+                      "data": "Husband",
+                      "display": "Husband"
+                    },
+                    {
+                      "data": "Wife",
+                      "display": "Wife"
+                    },
+                    {
+                      "data": "Son",
+                      "display": "Son"
+                    },
+                    {
+                      "data": "Daughter",
+                      "display": "Daughter"
+                    },
+                    {
+                      "data": "Brother",
+                      "display": "Brother"
+                    },
+                    {
+                      "data": "Sister",
+                      "display": "Sister"
+                    },
+                    {
+                      "data": "Guardian",
+                      "display": "Guardian"
+                    },
+                    {
+                      "data": "Other",
+                      "display": "Other"
+                    }
+                  ]
+                },
+                "item_change": {
+                  "mode": "business_logic",
+                  "business_logic": {
+                    "method": "validate_self_family_relation_gender",
+                    "description": "Validate gender-relation combination on relation change",
+                    "spec": "On change of RELATION, check the current GENDER on the row. Block the combination (return an error / do not update) for: Female+Brother ('Brother cannot be female.'), Female+Father ('Father cannot be female.'), Female+GrandFather ('GrandFather cannot be female.'), Female+Son ('Son cannot be female.'), Female+Husband ('Husband cannot be female.'), Male+Mother ('Mother cannot be male.'), Male+Sister ('Sister cannot be male.'), Male+GrandMother ('GrandMother cannot be male.'), Male+Wife ('Wife cannot be male.'), Male+Daughter ('Daughter cannot be male.'). Return no updates when the combination is valid.",
+                    "language": "plpgsql"
+                  }
+                },
+                "x": "40",
+                "y": "60",
+                "col_id": "6",
+                "table_name": "EMPONB_CAND_SELF_FAMILY",
+                "table_display_name": "Family member lines",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_CAND_SELF_FAMILY",
+                  "main_table": true,
+                  "table_descr": "Family member lines"
+                }
+              ]
+            }
+          },
+          "actions": [],
+          "validations": [
+            {
+              "type": "business_logic",
+              "name": "Gender-relation combination valid",
+              "message": "The selected gender and relation combination is not valid for this family member.",
+              "business_logic": {
+                "method": "validate_self_family_gender_relation_form",
+                "description": "Form-level gender/relation consistency check on save",
+                "spec": "On save of a family line, validate GENDER against RELATION per the same combination rules used on item_change (Female cannot be Brother/Father/GrandFather/Son/Husband; Male cannot be Mother/Sister/GrandMother/Wife/Daughter). Return the specific mismatch message as the error when a blocked combination is found; otherwise pass.",
+                "language": "plpgsql"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "actions": [],
+    "cross_updates": [],
+    "pre_commit": [],
+    "post_commit": [
+      {
+        "mode": "business_logic",
+        "business_logic": {
+          "method": "seed_self_experience_from_record",
+          "description": "Seed/refresh Past Experience lines from the Candidate Onboarding Record",
+          "spec": "After a save of EMPONB_CANDIDATE_SELF (add or edit), when the header's STATUS is 'Link Generated' or 'Link Accessed', copy every EMPONB_CAND_EXPERIENCE row for this CANDIDATE_ID into EMPONB_CAND_SELF_EXPERIENCE for the same CANDIDATE_ID: delete existing EMPONB_CAND_SELF_EXPERIENCE rows for this candidate that no longer correspond to a source row, then upsert (insert/update by LINE_NO) each source row's ORGANISATION, DESIGNATION, FROM_DATE, TO_DATE and GROSS_AMT so the copy is idempotent and safe to run on every resend. When STATUS is 'DataSubmitted', 'Review' or 'Confirmed', do nothing so the candidate's own edits are preserved.",
+          "language": "plpgsql"
+        }
+      }
+    ],
+    "attach_docs": [],
+    "follow_up_actions": []
+  }
+}

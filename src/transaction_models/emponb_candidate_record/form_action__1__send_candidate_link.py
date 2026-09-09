@@ -135,13 +135,15 @@ def run(args):
     # entered. The SELF *header* is recreated FIRST: the detail tables carry a FK
     # to emponb_candidate_self(candidate_id), so a header row must exist before any
     # child row can be inserted, and it also makes the header's personal fields
-    # appear immediately. We copy ONLY the personal / contact / statutory /
-    # financial columns — the same vetted set the candidate_id item_change
+    # appear immediately. We carry FIN_ENTITY across so the SELF row belongs to the
+    # same financial entity as the candidate record (the public portal has no
+    # logged-in user to stamp it from). Beyond that we copy ONLY the personal /
+    # contact / statutory / financial columns — the same vetted set the candidate_id item_change
     # (load_candidate_self_header) seeds — and deliberately NOT the SELF-side
     # workflow / validation columns (status, access_key, *_validated, key_*, …),
     # which must start fresh for the candidate's own submission.
     _self_header_cols = (
-        "candidate_id", "candidate_name", "gender", "design_code", "email_id",
+        "candidate_id", "fin_entity", "candidate_name", "gender", "position_code", "design_code", "email_id",
         "name_prefix", "emp_fname", "emp_mname", "emp_lname", "birthdate",
         "nationality", "marital_status", "marriage_anniversary", "blood_group",
         "religion", "cast_category", "mother_tongue", "physical_handicap",

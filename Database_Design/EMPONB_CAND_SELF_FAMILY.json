@@ -104,14 +104,6 @@
           "label": "Sister"
         },
         {
-          "value": "GrandFather",
-          "label": "GrandFather"
-        },
-        {
-          "value": "GrandMother",
-          "label": "GrandMother"
-        },
-        {
           "value": "Guardian",
           "label": "Guardian"
         },

@@ -163,8 +163,8 @@
           },
           {
             "id": "Criteria_3",
-            "field": "EMPONB_CANDIDATE_RECORD.DESIGN_CODE",
-            "DBNAME": "DESIGN_CODE",
+            "field": "EMPONB_CANDIDATE_RECORD.POSITION_CODE",
+            "DBNAME": "POSITION_CODE",
             "tableName": "EMPONB_CANDIDATE_RECORD",
             "COLTYPE": "string",
             "currentFieldType": "string",
@@ -172,11 +172,11 @@
             "queryOption": "P",
             "prevOption": "P",
             "customValue": "FixedValue",
-            "promptLabel": "Designation Code",
-            "promptName": "design_code",
+            "promptLabel": "Position",
+            "promptName": "position_code",
             "value": "%",
             "chipValue": [],
-            "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)"
+            "lookup": "EMPONB_POSITION_MASTER(POSITION_DESCR, POSITION_CODE)"
           }
         ],
         "condition": "and"

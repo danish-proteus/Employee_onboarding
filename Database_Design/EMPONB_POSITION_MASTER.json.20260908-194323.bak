@@ -1,15 +1,24 @@
 {
-  "table_name": "EMPONB_DESIG_DEPT_MASTER",
+  "table_name": "EMPONB_POSITION_MASTER",
   "table_description": "",
   "project": "Employee_onboarding",
   "columns": [
     {
-      "column_name": "DESIGN_CODE",
+      "column_name": "POSITION_CODE",
       "data_type": "VARCHAR",
       "size": "10",
       "key": true,
-      "description": "Unique designation code, mandatory and must be active to be selectable elsewhere",
+      "description": "Unique code identifying the position",
       "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "POSITION_DESCR",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Description of the position",
+      "sequence": 2,
       "mandatory": true
     },
     {
@@ -18,7 +27,16 @@
       "size": "100",
       "key": false,
       "description": "Name of the designation",
-      "sequence": 2,
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "DESIGN_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Code of the designation this position maps to",
+      "sequence": 3,
       "mandatory": true
     },
     {
@@ -26,8 +44,8 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Department code",
-      "sequence": 3,
+      "description": "Code of the department this position maps to",
+      "sequence": 5,
       "mandatory": true
     },
     {
@@ -35,74 +53,48 @@
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the department",
-      "sequence": 4
+      "description": "Name of the department this position maps to",
+      "sequence": 6
     },
     {
       "column_name": "GRADE",
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Grade code",
-      "sequence": 5
+      "description": "Grade code this position maps to",
+      "sequence": 7
     },
     {
       "column_name": "GRADE_NAME",
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the grade",
-      "sequence": 6
+      "description": "Name of the grade this position maps to",
+      "sequence": 8
     },
     {
       "column_name": "CADRE",
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "Cadre code",
-      "sequence": 7
+      "description": "Cadre code this position maps to",
+      "sequence": 9,
+      "mandatory": true
     },
     {
       "column_name": "CADRE_NAME",
       "data_type": "VARCHAR",
       "size": "100",
       "key": false,
-      "description": "Name of the cadre",
-      "sequence": 8
-    },
-    {
-      "column_name": "JOINED_AS",
-      "data_type": "VARCHAR",
-      "size": "100",
-      "key": false,
-      "description": "Designation title on joining",
-      "sequence": 9
-    },
-    {
-      "column_name": "ACTIVE_FLAG",
-      "data_type": "VARCHAR",
-      "size": "1",
-      "key": false,
-      "description": "Whether this design code is active and selectable",
-      "sequence": 10,
-      "mandatory": true,
-      "allowed_values": [
-        {
-          "value": "Y",
-          "label": "Active"
-        },
-        {
-          "value": "N",
-          "label": "Inactive"
-        }
-      ]
+      "description": "Name of the cadre this position maps to",
+      "sequence": 10
     },
     {
       "column_name": "ADD_DATE",
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record creation timestamp",
+      "description": "Audit - record creation timestamp",
       "sequence": 11
     },
     {
@@ -110,7 +102,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who created the record",
+      "description": "Audit - user who created the record",
       "sequence": 12
     },
     {
@@ -118,7 +110,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that created the record",
+      "description": "Audit - terminal/IP that created the record",
       "sequence": 13
     },
     {
@@ -126,7 +118,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Last change timestamp",
+      "description": "Audit - last change timestamp",
       "sequence": 14
     },
     {
@@ -134,7 +126,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last changed the record",
+      "description": "Audit - user who last changed the record",
       "sequence": 15
     },
     {
@@ -142,7 +134,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP that last changed the record",
+      "description": "Audit - terminal/IP that last changed the record",
       "sequence": 16
     }
   ]

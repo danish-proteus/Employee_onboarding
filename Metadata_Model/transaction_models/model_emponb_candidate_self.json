@@ -37,7 +37,7 @@
                   "business_logic": {
                     "method": "load_candidate_header",
                     "description": "Load header from self record, fallback to candidate record",
-                    "spec": "On change of CANDIDATE_ID: first look up EMPONB_CANDIDATE_SELF for this CANDIDATE_ID; if a row exists, return its fields as updates (candidate_name, email_id, gender, design_code, and all personal/contact/statutory/financial fields). If no EMPONB_CANDIDATE_SELF row exists yet, fall back to EMPONB_CANDIDATE_RECORD for the same CANDIDATE_ID and return candidate_name, email_id, gender, design_code and any personal/contact/statutory/financial fields already captured there so the candidate form is pre-populated. If neither exists, return no updates.",
+                    "spec": "On change of CANDIDATE_ID: first look up EMPONB_CANDIDATE_SELF for this CANDIDATE_ID; if a row exists, return its fields as updates (candidate_name, email_id, gender, position_code, position_descr, design_code, design_name, and all personal/contact/statutory/financial fields). If no EMPONB_CANDIDATE_SELF row exists yet, fall back to EMPONB_CANDIDATE_RECORD for the same CANDIDATE_ID and return candidate_name, email_id, gender, position_code, position_descr, design_code, design_name and any personal/contact/statutory/financial fields already captured there so the candidate form is pre-populated. If neither exists, return no updates.",
                     "language": "plpgsql"
                   }
                 },
@@ -178,16 +178,75 @@
             },
             {
               "column": {
+                "name": "position_code",
+                "db_name": "POSITION_CODE",
+                "col_type": "VARCHAR",
+                "heading": "Position",
+                "descr": "Position applied for",
+                "group_name": "Basic",
+                "lookup": "EMPONB_POSITION_MASTER(POSITION_DESCR, POSITION_CODE)",
+                "must_exist_in": "EMPONB_POSITION_MASTER",
+                "x": "50",
+                "y": "50",
+                "col_id": "80",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": true,
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": {
+                  "mask": "textbox",
+                  "values": []
+                },
+                "protect": true,
+                "validations": ""
+              }
+            },
+            {
+              "column": {
+                "name": "position_descr",
+                "db_name": "POSITION_DESCR",
+                "table_name": "EMPONB_POSITION_MASTER",
+                "table_display_name": "Position master",
+                "col_type": "VARCHAR",
+                "heading": "Position Description",
+                "descr": "Position description from the Position master",
+                "group_name": "Basic",
+                "protect": "1",
+                "x": "55",
+                "y": "55",
+                "col_id": "81",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": false,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
                 "name": "design_code",
                 "db_name": "DESIGN_CODE",
                 "col_type": "VARCHAR",
-                "heading": "Designation",
-                "descr": "Designation applied for",
+                "heading": "Designation Code",
+                "descr": "Designation code derived from the selected Position",
                 "group_name": "Basic",
-                "lookup": "EMPONB_DESIG_DEPT_MASTER(DESIGNATION_NAME, DESIGN_CODE)",
-                "must_exist_in": "EMPONB_DESIG_DEPT_MASTER",
-                "x": "50",
-                "y": "50",
+                "lookup": "",
+                "x": "56",
+                "y": "56",
                 "col_id": "5",
                 "table_name": "EMPONB_CANDIDATE_SELF",
                 "table_display_name": "Candidate self-service header",
@@ -212,16 +271,16 @@
               "column": {
                 "name": "design_name",
                 "db_name": "DESIGNATION_NAME",
-                "table_name": "EMPONB_DESIG_DEPT_MASTER",
+                "table_name": "EMPONB_POSITION_MASTER",
                 "col_type": "VARCHAR",
                 "heading": "Designation Name",
-                "descr": "Designation name from master",
+                "descr": "Designation name from the Position master",
                 "group_name": "Basic",
                 "protect": "1",
                 "x": "60",
                 "y": "60",
                 "col_id": "6",
-                "table_display_name": "Designation master",
+                "table_display_name": "Position master",
                 "db_size": "100",
                 "width": 500,
                 "key": false,
@@ -2611,6 +2670,34 @@
                 "validations": "",
                 "lookup": ""
               }
+            },
+            {
+              "column": {
+                "name": "fin_entity",
+                "db_name": "FIN_ENTITY",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Financial Entity",
+                "descr": "Financial Entity (Company) that owns this record - stamped from the logged-in user's :fin_entity project variable",
+                "default_value": ":fin_entity",
+                "protect": "1",
+                "hidden": 1,
+                "x": "800",
+                "y": "800",
+                "col_id": "82",
+                "table_name": "EMPONB_CANDIDATE_SELF",
+                "table_display_name": "Candidate self-service header",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "format": "",
+                "default_function": "",
+                "expression": "",
+                "edit_mask": "",
+                "validations": "",
+                "lookup": ""
+              }
             }
           ],
           "joins": {
@@ -2622,12 +2709,12 @@
                   "table_descr": "Candidate self-service header"
                 },
                 {
-                  "table": "EMPONB_DESIG_DEPT_MASTER",
+                  "table": "EMPONB_POSITION_MASTER",
                   "main_table": false,
-                  "table_descr": "Designation master",
-                  "column": "DESIGN_CODE",
+                  "table_descr": "Position master",
+                  "column": "POSITION_CODE",
                   "join_table": "EMPONB_CANDIDATE_SELF",
-                  "join_column": "DESIGN_CODE",
+                  "join_column": "POSITION_CODE",
                   "join_type": "left"
                 }
               ]

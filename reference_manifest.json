@@ -1,14 +1,14 @@
 {
   "project_name": "Employee Onboarding",
   "project_description": "End-to-end candidate onboarding: HR initiation, key-based self-service capture, review and confirmation to employee, with supporting master data, dashboards, reports and a public candidate portal.",
-  "generated_at": "2026-08-19T05:45:15.867415+00:00",
+  "generated_at": "2026-09-08T11:29:15.946969+00:00",
   "owner_user_id": "",
   "navigation_summary": [
     {
-      "obj_name": "emponb_designation_dept_master",
+      "obj_name": "emponb_position_master",
       "obj_type": "T",
-      "title": "Designation & Department Master",
-      "description": "Maintain designations, departments, grades, cadres and design codes used by HR."
+      "title": "Position Master",
+      "description": "Maintain positions and the designation, department, grade and cadre each position maps to."
     },
     {
       "obj_name": "emponb_org_setup_master",
@@ -38,13 +38,13 @@
       "obj_name": "emponb_candidate_record",
       "obj_type": "T",
       "title": "Candidate Onboarding Record",
-      "description": "HR-facing candidate onboarding transaction: a header form on EMPONB_CANDIDATE_RECORD plus four detail forms - Past Exper"
+      "description": "HR-facing candidate onboarding transaction: a header form on EMPONB_CANDIDATE_RECORD plus three detail forms - Past Expe"
     },
     {
       "obj_name": "emponb_candidate_self",
       "obj_type": "T",
       "title": "Candidate Self",
-      "description": "Candidate self-service onboarding: a header form plus four detail (child) forms - Past Experience, Educational Qualifica"
+      "description": "Candidate self-service onboarding: a header form plus three detail (child) forms - Past Experience, Educational Qualific"
     },
     {
       "obj_name": "candidate_page",
@@ -75,6 +75,7 @@
       "other_columns": [
         "CANDIDATE_NAME VARCHAR",
         "GENDER CHAR",
+        "POSITION_CODE CHAR",
         "DESIGN_CODE CHAR",
         "EMAIL_ID VARCHAR",
         "STATUS VARCHAR",
@@ -148,6 +149,7 @@
         "DEPT_CODE CHAR",
         "GRADE CHAR",
         "CADRE CHAR",
+        "FIN_POSITION_CODE CHAR",
         "FIN_DESIGN_CODE CHAR",
         "REPORT_TO VARCHAR",
         "JOINED_AS VARCHAR",
@@ -155,6 +157,8 @@
         "WORK_SHIFT CHAR",
         "HOL_TBLNO CHAR",
         "EMP_SITE CHAR",
+        "PIN VARCHAR",
+        "STATE_CODE VARCHAR",
         "PAY_SITE CHAR",
         "BASIC NUMBER",
         "GROSS NUMBER",
@@ -185,6 +189,7 @@
         "CANDIDATE_NAME VARCHAR",
         "EMAIL_ID VARCHAR",
         "GENDER VARCHAR",
+        "POSITION_CODE VARCHAR",
         "DESIGN_CODE VARCHAR",
         "STATUS VARCHAR",
         "STATUS_DATE DATETIME",
@@ -396,30 +401,6 @@
       ]
     },
     {
-      "table_name": "EMPONB_DESIG_DEPT_MASTER",
-      "description": "",
-      "key_columns": [
-        "DESIGN_CODE VARCHAR"
-      ],
-      "other_columns": [
-        "DESIGNATION_NAME VARCHAR",
-        "DEPT_CODE VARCHAR",
-        "DEPT_NAME VARCHAR",
-        "GRADE VARCHAR",
-        "GRADE_NAME VARCHAR",
-        "CADRE VARCHAR",
-        "CADRE_NAME VARCHAR",
-        "JOINED_AS VARCHAR",
-        "ACTIVE_FLAG VARCHAR",
-        "ADD_DATE DATETIME",
-        "ADD_USER VARCHAR",
-        "ADD_TERM VARCHAR",
-        "CHG_DATE DATETIME",
-        "CHG_USER VARCHAR",
-        "CHG_TERM VARCHAR"
-      ]
-    },
-    {
       "table_name": "EMPONB_ONBOARDING_SETTINGS",
       "description": "",
       "key_columns": [
@@ -452,6 +433,7 @@
       ],
       "other_columns": [
         "SITE_NAME VARCHAR",
+        "ACTIVE_FLAG VARCHAR",
         "PIN VARCHAR",
         "STATE_CODE VARCHAR",
         "PAY_SITE VARCHAR",
@@ -461,7 +443,30 @@
         "SHIFT_TIMINGS VARCHAR",
         "HOL_TBLNO VARCHAR",
         "HOL_TBL_NAME VARCHAR",
-        "ACTIVE_FLAG VARCHAR",
+        "ADD_DATE DATETIME",
+        "ADD_USER VARCHAR",
+        "ADD_TERM VARCHAR",
+        "CHG_DATE DATETIME",
+        "CHG_USER VARCHAR",
+        "CHG_TERM VARCHAR"
+      ]
+    },
+    {
+      "table_name": "EMPONB_POSITION_MASTER",
+      "description": "",
+      "key_columns": [
+        "POSITION_CODE VARCHAR"
+      ],
+      "other_columns": [
+        "POSITION_DESCR VARCHAR",
+        "DESIGNATION_NAME VARCHAR",
+        "DESIGN_CODE VARCHAR",
+        "DEPT_CODE VARCHAR",
+        "DEPT_NAME VARCHAR",
+        "GRADE VARCHAR",
+        "GRADE_NAME VARCHAR",
+        "CADRE VARCHAR",
+        "CADRE_NAME VARCHAR",
         "ADD_DATE DATETIME",
         "ADD_USER VARCHAR",
         "ADD_TERM VARCHAR",

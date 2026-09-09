@@ -1,1 +1,1 @@
-{"session_id": "6c74fbc9-4cc4-40f7-961a-91e07ebc9a82", "backend_url": "http://localhost:7079", "allowed_tools": ["Read", "Edit", "Glob", "Grep"]}
+{"session_id": "f0be3ca8-8d1a-406c-ac1f-1604a745edd1", "backend_url": "http://localhost:7079", "allowed_tools": ["Read"]}

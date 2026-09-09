@@ -1,0 +1,320 @@
+{
+  "transaction": {
+    "obj_name": "emponb_fin_entity_master",
+    "sql_models": [
+      {
+        "sql_model": {
+          "form_title": "Financial Entity Master",
+          "form_descr": "Maintain the financial entities (companies) users are mapped to and every onboarding record is scoped by.",
+          "form_no": "1",
+          "main_table": "EMPONB_FIN_ENTITY_MASTER",
+          "columns": [
+            {
+              "column": {
+                "name": "fin_entity",
+                "db_name": "FIN_ENTITY",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Financial Entity",
+                "descr": "Unique code identifying the financial entity (company)",
+                "x": "10",
+                "y": "10",
+                "col_id": "1",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "10",
+                "width": 100,
+                "key": true,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": [
+                  {
+                    "type": "builtin",
+                    "name": "Financial entity code unique",
+                    "error_code": "FIN_ENTITY_DUP",
+                    "message": "Financial entity {form.fin_entity} already exists.",
+                    "builtin": {
+                      "kind": "must_be_unique"
+                    }
+                  }
+                ],
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "entity_name",
+                "db_name": "ENTITY_NAME",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Entity Name",
+                "descr": "Name of the financial entity (company)",
+                "x": "20",
+                "y": "20",
+                "col_id": "2",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "100",
+                "width": 500,
+                "key": false,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "active_flag",
+                "db_name": "ACTIVE_FLAG",
+                "group_name": "Basic",
+                "col_type": "VARCHAR",
+                "heading": "Active",
+                "descr": "Whether this financial entity is offered at login and usable across the application",
+                "x": "30",
+                "y": "30",
+                "col_id": "3",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "1",
+                "width": 50,
+                "key": false,
+                "mandatory": true,
+                "hidden": "",
+                "format": "",
+                "default_function": "",
+                "default_value": "Y",
+                "expression": "",
+                "edit_mask": {
+                  "mask": "ddlb",
+                  "values": [
+                    {
+                      "data": "Y",
+                      "display": "Yes"
+                    },
+                    {
+                      "data": "N",
+                      "display": "No"
+                    }
+                  ]
+                },
+                "protect": "",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_date",
+                "db_name": "ADD_DATE",
+                "group_name": "Others",
+                "col_type": "DATETIME",
+                "heading": "Added On",
+                "descr": "Audit - record creation timestamp",
+                "x": "50",
+                "y": "50",
+                "col_id": "4",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": 1,
+                "format": "",
+                "default_function": "",
+                "default_value": ":audit_add_date",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "1",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_user",
+                "db_name": "ADD_USER",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Added By",
+                "descr": "Audit - user who created the record",
+                "x": "60",
+                "y": "60",
+                "col_id": "5",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": 1,
+                "format": "",
+                "default_function": "",
+                "default_value": ":audit_add_user",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "1",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "add_term",
+                "db_name": "ADD_TERM",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Added From",
+                "descr": "Audit - terminal/IP that created the record",
+                "x": "70",
+                "y": "70",
+                "col_id": "6",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": 1,
+                "format": "",
+                "default_function": "",
+                "default_value": ":audit_add_terminal",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "1",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_date",
+                "db_name": "CHG_DATE",
+                "group_name": "Others",
+                "col_type": "DATETIME",
+                "heading": "Changed On",
+                "descr": "Audit - last change timestamp",
+                "x": "80",
+                "y": "80",
+                "col_id": "7",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "",
+                "width": 50,
+                "key": false,
+                "mandatory": false,
+                "hidden": 1,
+                "format": "",
+                "default_function": "",
+                "default_value": ":audit_chg_date",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "1",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_user",
+                "db_name": "CHG_USER",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Changed By",
+                "descr": "Audit - user who last changed the record",
+                "x": "90",
+                "y": "90",
+                "col_id": "8",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "10",
+                "width": 100,
+                "key": false,
+                "mandatory": false,
+                "hidden": 1,
+                "format": "",
+                "default_function": "",
+                "default_value": ":audit_chg_user",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "1",
+                "validations": "",
+                "lookup": ""
+              }
+            },
+            {
+              "column": {
+                "name": "chg_term",
+                "db_name": "CHG_TERM",
+                "group_name": "Others",
+                "col_type": "VARCHAR",
+                "heading": "Changed From",
+                "descr": "Audit - terminal/IP that last changed the record",
+                "x": "100",
+                "y": "100",
+                "col_id": "9",
+                "table_name": "EMPONB_FIN_ENTITY_MASTER",
+                "table_display_name": "Financial entity (company) master",
+                "db_size": "15",
+                "width": 150,
+                "key": false,
+                "mandatory": false,
+                "hidden": 1,
+                "format": "",
+                "default_function": "",
+                "default_value": ":audit_chg_terminal",
+                "expression": "",
+                "edit_mask": "",
+                "protect": "1",
+                "validations": "",
+                "lookup": ""
+              }
+            }
+          ],
+          "joins": {
+            "join_predicates": {
+              "joins": [
+                {
+                  "table": "EMPONB_FIN_ENTITY_MASTER",
+                  "main_table": true,
+                  "table_descr": "Financial entity (company) master"
+                }
+              ]
+            }
+          },
+          "validations": []
+        }
+      }
+    ],
+    "actions": [],
+    "cross_updates": [],
+    "pre_commit": [],
+    "post_commit": [],
+    "follow_up_actions": [],
+    "attach_docs": [],
+    "vector_search": {
+      "enabled": true,
+      "columns": [
+        "entity_name"
+      ],
+      "key_column": "fin_entity",
+      "display_column": "entity_name",
+      "allow_alias": true,
+      "auto": true,
+      "reason": "drives the :fin_entity login prompt and scopes Position Master, Organisation Setup Master and Candidate Onboarding Record; searched by entity_name"
+    }
+  }
+}

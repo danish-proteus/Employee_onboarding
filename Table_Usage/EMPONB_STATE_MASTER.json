@@ -6,17 +6,31 @@
       "form_no": "1",
       "usage_type": "M",
       "referred_columns": [
+        "STATE_CODE",
+        "CHG_TERM",
+        "CHG_USER",
         "CHG_DATE",
         "ADD_DATE",
-        "CHG_USER",
+        "ADD_USER",
         "ACTIVE_FLAG",
         "COUNTRY",
         "STATE_NAME",
-        "CHG_TERM",
-        "ADD_USER",
-        "STATE_CODE",
         "ADD_TERM"
       ]
+    },
+    {
+      "object_name": "emponb_org_setup_master",
+      "form_no": "1",
+      "usage_type": "M",
+      "referred_columns": [
+        "STATE_CODE",
+        "STATE_NAME"
+      ],
+      "join_info": {
+        "column": "STATE_CODE",
+        "join_table": "EMPONB_ORG_SETUP_MASTER",
+        "join_column": "STATE_CODE"
+      }
     }
   ]
 }

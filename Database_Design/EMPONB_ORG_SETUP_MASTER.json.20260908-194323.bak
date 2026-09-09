@@ -1,0 +1,169 @@
+{
+  "table_name": "EMPONB_ORG_SETUP_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "EMP_SITE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique code identifying the employment site",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "SITE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the employment site",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "ACTIVE_FLAG",
+      "data_type": "VARCHAR",
+      "size": "1",
+      "key": false,
+      "description": "Only active rows are selectable during HR finalization",
+      "sequence": 3,
+      "mandatory": true,
+      "allowed_values": [
+        {
+          "value": "Y",
+          "label": "Active"
+        },
+        {
+          "value": "N",
+          "label": "Inactive"
+        }
+      ]
+    },
+    {
+      "column_name": "PIN",
+      "data_type": "VARCHAR",
+      "size": "6",
+      "key": false,
+      "description": "6-digit Indian PIN code of the employment site",
+      "sequence": 4
+    },
+    {
+      "column_name": "STATE_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "State the employment site is located in, validated against the State Master",
+      "sequence": 5,
+      "lookup": {
+        "table": "EMPONB_STATE_MASTER",
+        "display_column": "STATE_NAME",
+        "value_column": "STATE_CODE"
+      }
+    },
+    {
+      "column_name": "PAY_SITE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Unique code identifying the payroll site",
+      "sequence": 6
+    },
+    {
+      "column_name": "PAY_SITE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the payroll site",
+      "sequence": 7
+    },
+    {
+      "column_name": "WORK_SHIFT",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Unique code identifying the work shift",
+      "sequence": 8
+    },
+    {
+      "column_name": "SHIFT_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the work shift",
+      "sequence": 9
+    },
+    {
+      "column_name": "SHIFT_TIMINGS",
+      "data_type": "VARCHAR",
+      "size": "50",
+      "key": false,
+      "description": "Timings for this work shift (e.g. 09:00-18:00)",
+      "sequence": 10
+    },
+    {
+      "column_name": "HOL_TBLNO",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Unique code identifying the holiday table",
+      "sequence": 11
+    },
+    {
+      "column_name": "HOL_TBL_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the holiday table",
+      "sequence": 12
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Audit - record creation timestamp",
+      "sequence": 13
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Audit - user who created the record",
+      "sequence": 14
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Audit - terminal/IP that created the record",
+      "sequence": 15
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Audit - last change timestamp",
+      "sequence": 16
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Audit - user who last changed the record",
+      "sequence": 17
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Audit - terminal/IP that last changed the record",
+      "sequence": 18
+    }
+  ]
+}

@@ -2,16 +2,16 @@
   "object_name": "emponb_demographic_master",
   "tables": {
     "EMPONB_DEMOGRAPHIC_MASTER": [
-      "LOOKUP_TYPE",
-      "LOOKUP_DESC",
-      "ADD_USER",
-      "ADD_TERM",
       "CHG_TERM",
-      "ACTIVE_FLAG",
-      "CHG_DATE",
       "CHG_USER",
+      "LOOKUP_TYPE",
+      "CHG_DATE",
       "ADD_DATE",
-      "LOOKUP_CODE"
+      "ADD_USER",
+      "LOOKUP_CODE",
+      "LOOKUP_DESC",
+      "ACTIVE_FLAG",
+      "ADD_TERM"
     ]
   }
 }

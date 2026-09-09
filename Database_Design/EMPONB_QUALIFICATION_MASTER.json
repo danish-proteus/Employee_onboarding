@@ -49,7 +49,7 @@
       "data_type": "VARCHAR",
       "size": "20",
       "key": false,
-      "description": "Mode of the course",
+      "description": "Mode of study for this qualification",
       "sequence": 4,
       "allowed_values": [
         {
@@ -71,7 +71,7 @@
       "data_type": "VARCHAR",
       "size": "1",
       "key": false,
-      "description": "Whether this qualification is active for selection",
+      "description": "Whether this qualification is selectable in candidate education detail",
       "sequence": 5,
       "mandatory": true,
       "allowed_values": [
@@ -90,7 +90,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record creation timestamp",
+      "description": "Audit - record creation timestamp",
       "sequence": 6
     },
     {
@@ -98,7 +98,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who created the record",
+      "description": "Audit - user who created the record",
       "sequence": 7
     },
     {
@@ -106,7 +106,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP from which record was created",
+      "description": "Audit - terminal/IP that created the record",
       "sequence": 8
     },
     {
@@ -114,7 +114,7 @@
       "data_type": "DATETIME",
       "size": "",
       "key": false,
-      "description": "Record last update timestamp",
+      "description": "Audit - last change timestamp",
       "sequence": 9
     },
     {
@@ -122,7 +122,7 @@
       "data_type": "VARCHAR",
       "size": "10",
       "key": false,
-      "description": "User who last updated the record",
+      "description": "Audit - user who last changed the record",
       "sequence": 10
     },
     {
@@ -130,7 +130,7 @@
       "data_type": "VARCHAR",
       "size": "15",
       "key": false,
-      "description": "Terminal/IP from which record was last updated",
+      "description": "Audit - terminal/IP that last changed the record",
       "sequence": 11
     }
   ]

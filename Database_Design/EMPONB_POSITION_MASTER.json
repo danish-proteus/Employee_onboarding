@@ -1,0 +1,149 @@
+{
+  "table_name": "EMPONB_POSITION_MASTER",
+  "table_description": "",
+  "project": "Employee_onboarding",
+  "columns": [
+    {
+      "column_name": "POSITION_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": true,
+      "description": "Unique code identifying the position",
+      "sequence": 1,
+      "mandatory": true
+    },
+    {
+      "column_name": "POSITION_DESCR",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Description of the position",
+      "sequence": 2,
+      "mandatory": true
+    },
+    {
+      "column_name": "DESIGNATION_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the designation",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "DESIGN_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Code of the designation this position maps to",
+      "sequence": 3,
+      "mandatory": true
+    },
+    {
+      "column_name": "DEPT_CODE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Code of the department this position maps to",
+      "sequence": 5,
+      "mandatory": true
+    },
+    {
+      "column_name": "DEPT_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the department this position maps to",
+      "sequence": 6
+    },
+    {
+      "column_name": "GRADE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Grade code this position maps to",
+      "sequence": 7
+    },
+    {
+      "column_name": "GRADE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the grade this position maps to",
+      "sequence": 8
+    },
+    {
+      "column_name": "CADRE",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Cadre code this position maps to",
+      "sequence": 9,
+      "mandatory": true
+    },
+    {
+      "column_name": "CADRE_NAME",
+      "data_type": "VARCHAR",
+      "size": "100",
+      "key": false,
+      "description": "Name of the cadre this position maps to",
+      "sequence": 10
+    },
+    {
+      "column_name": "ADD_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Audit - record creation timestamp",
+      "sequence": 11
+    },
+    {
+      "column_name": "ADD_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Audit - user who created the record",
+      "sequence": 12
+    },
+    {
+      "column_name": "ADD_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Audit - terminal/IP that created the record",
+      "sequence": 13
+    },
+    {
+      "column_name": "CHG_DATE",
+      "data_type": "DATETIME",
+      "size": "",
+      "key": false,
+      "description": "Audit - last change timestamp",
+      "sequence": 14
+    },
+    {
+      "column_name": "CHG_USER",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Audit - user who last changed the record",
+      "sequence": 15
+    },
+    {
+      "column_name": "CHG_TERM",
+      "data_type": "VARCHAR",
+      "size": "15",
+      "key": false,
+      "description": "Audit - terminal/IP that last changed the record",
+      "sequence": 16
+    },
+    {
+      "column_name": "FIN_ENTITY",
+      "data_type": "VARCHAR",
+      "size": "10",
+      "key": false,
+      "description": "Financial Entity (Company) that owns this record - stamped from the logged-in user's :fin_entity project variable",
+      "sequence": 17
+    }
+  ]
+}

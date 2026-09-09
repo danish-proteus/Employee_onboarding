@@ -8,8 +8,8 @@
       "referred_columns": [
         "CANDIDATE_ID",
         "MEMBER_NAME",
-        "LINE_NO",
         "DATE_BIRTH",
+        "LINE_NO",
         "RELATION",
         "GENDER"
       ]

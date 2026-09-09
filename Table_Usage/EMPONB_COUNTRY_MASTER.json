@@ -23,7 +23,7 @@
     {
       "object_name": "emponb_candidate_record",
       "form_no": "3",
-      "usage_type": "R",
+      "usage_type": "M",
       "referred_columns": [
         "COUNTRY_CODE"
       ],
